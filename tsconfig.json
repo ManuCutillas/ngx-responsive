@@ -1,12 +1,16 @@
 {
-	"compilerOptions": {
-		"declaration": true,
-		"module": "CommonJS",
-		"target": "es5",
-		"noImplicitAny": true,
-		"outDir": "dist"
-	},
-	"files": [
-		"src/devicesdetect-directives.ts"
-	]
+  "version": "1.8.10",
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "declaration": true
+  },
+  "files": [
+    "devicesdetect-directives.ts",
+    "sizesdetect/sizes.ts"
+  ]
 }

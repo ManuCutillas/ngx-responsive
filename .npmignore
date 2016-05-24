@@ -1,7 +1,8 @@
 node_modules/
-*.d.ts
+devicesdetect-directives.ts
+sizesdetect/sizes.ts
 *.log
 *.tgz
-
+*.ts
 !index.d.ts
 !index.ref.d.ts
