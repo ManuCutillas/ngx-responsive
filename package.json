@@ -1,0 +1,27 @@
+{
+  "name": "responsive-device-detect-angular2",
+  "version": "1.0.0",
+  "description": "Special directives to show or hide items according to the size of the device screen in Angular 2 ",
+  "main": "a2-responsive-directives.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "angular",
+    "2",
+    "responsive",
+    "detect",
+    "states",
+    "device",
+    "devices",
+    "screen",
+    "typescript",
+    "directive",
+    "angular",
+    "2",
+    "directive"
+  ],
+  "author": "Manu Cutillas",
+  "license": "MIT"
+}
