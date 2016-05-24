@@ -2,19 +2,19 @@
   "name": "devices-detect-angular2",
   "version": "1.0.1",
   "description": "Special directives to show or hide items according to the size of the device screen in Angular 2 ",
-  "main": "devicesdetect-directives.ts",
+  "main": "dist/devicesdetect-directives.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "npm install autodts",
+    "postinstall": "autodts link",
+    "prepublish": "tsc && autodts generate"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ManuCutillas/devices-detect-angular2.git"
   },
-  "files": [
-    "LICENSE",
-    "devicesdetect-directives.ts",
-    "README.md"
-  ],
+  "typescript": {
+    "definition": "index.d.ts"
+  },
   "keywords": [
     "angular",
     "angular2",
@@ -29,6 +29,13 @@
     "angular2",
     "directives"
   ],
+   "dependencies": {
+    "autodts": "~0.0.6"
+  },
+  "devDependencies": {
+    "@lib/autodts-generator": "~0.0.1",
+    "typescript": "~1.8.10"
+  },
   "author": "Manu Cutillas",
   "license": "MIT"
 }
