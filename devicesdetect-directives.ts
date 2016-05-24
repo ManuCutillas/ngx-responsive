@@ -1,10 +1,10 @@
 /**
- * Responsive Detect States Directives for Angular 2
+ * Responsive Devices Detect Directives for Angular 2
  *
  * @created_by Manu Cutillas
  * @created_at May 23, 2016
  * @updated_at May 24, 2016
- * @version_1.0
+ * @version_1.0.2
  * 
  * Dependencies:
  * @angular/core : "2.0.0-rc.1"

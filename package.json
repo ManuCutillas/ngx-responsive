@@ -1,24 +1,23 @@
 {
-  "name": "responsive-device-detect-angular2",
-  "version": "1.0.2",
+  "name": "devices-detect-angular2",
+  "version": "1.0.0",
   "description": "Special directives to show or hide items according to the size of the device screen in Angular 2 ",
-  "main": "a2-responsive-directives.ts",
+  "main": "devicesdetect-directives.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ManuCutillas/responsive-device-detect-angular2.git"
+    "url": "git+https://github.com/ManuCutillas/devices-detect-angular2.git"
   },
   "files": [
     "LICENSE",
-    "a2-responsive-directives.ts",
+    "devicesdetect-directives.ts",
     "README.md"
   ],
   "keywords": [
     "angular",
-    "angular",
-    "2",
+    "angular2",
     "responsive",
     "detect",
     "states",
@@ -27,9 +26,8 @@
     "screen",
     "typescript",
     "directive",
-    "angular",
-    "2",
-    "directive"
+    "angular2",
+    "directives"
   ],
   "author": "Manu Cutillas",
   "license": "MIT"
