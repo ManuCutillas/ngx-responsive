@@ -1,18 +1,14 @@
 {
   "name": "devices-detect-angular2",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Special directives to show or hide items according to the size of the device screen in Angular 2 ",
   "main": "devicesdetect-directives.js",
   "scripts": {
-    "build": "tsconfig && tsc -p ."
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ManuCutillas/devices-detect-angular2.git"
-  },
-  "peerDependencies": {
-    "@angular/core": "2.0.0-rc.1",
-    "rxjs": "5.0.0-beta.6"
   },
   "keywords": [
     "angular",
@@ -28,10 +24,12 @@
     "angular2",
     "directives"
   ],
-  "dependencies": {},
-  "devDependencies": {
-    "@angular/core": "2.0.0-rc.1",
-    "rxjs": "5.0.0-beta.6",
+  "dependencies": {
+     "@angular/core": "2.0.0-rc.1",
+     "rxjs": "5.0.0-beta.6",
+     "zone.js": "^0.6.12"
+  },
+  "devDependencies": {  
     "typescript": "~1.8.10"
   },
   "author": "Manu Cutillas",

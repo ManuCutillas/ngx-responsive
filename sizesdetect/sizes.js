@@ -39,7 +39,7 @@ var ResponsiveState = (function () {
     function ResponsiveState() {
         var _this = this;
         this.sizeOperations = function () {
-            _this.width = function () { return window.innerWidth; };
+            _this.width = _this.getWidth();
             try {
                 if (exports.RESPONSIVE_DEVICE_SIZES.lg.min < _this.width) {
                     return 'lg';
@@ -62,6 +62,9 @@ var ResponsiveState = (function () {
     ResponsiveState.prototype.getDeviceSizeInitial = function () {
         return this.sizeOperations();
     };
+    ResponsiveState.prototype.getWidth = function () {
+        return window.innerWidth;
+    };
     ResponsiveState = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
@@ -82,7 +85,7 @@ var IsDesktop = (function () {
         this.sizeLG = 'lg';
         this.sizeMD = 'md';
         this.noRepeat = 0;
-        if (this.initalDeviceSize()) {
+        if (this.initialDeviceSize()) {
             this.viewContainer.createEmbeddedView(this.templateRef);
             this.noRepeat = 1;
         }
@@ -106,7 +109,7 @@ var IsDesktop = (function () {
         enumerable: true,
         configurable: true
     });
-    IsDesktop.prototype.initalDeviceSize = function () {
+    IsDesktop.prototype.initialDeviceSize = function () {
         var initialDevice = this._responsiveState.getDeviceSizeInitial();
         if (initialDevice == 'lg' || initialDevice == 'md') {
             return true;
@@ -125,10 +128,9 @@ var IsDesktop = (function () {
             selector: '[isDesktop]',
             providers: [ResponsiveState]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, ResponsiveState])
+        __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsDesktop);
     return IsDesktop;
-    var _a, _b;
 }());
 exports.IsDesktop = IsDesktop;
 /*======== TABLETS STATES =========*/
@@ -182,10 +184,9 @@ var IsTablet = (function () {
             selector: '[isTablet]',
             providers: [ResponsiveState]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, ResponsiveState])
+        __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsTablet);
     return IsTablet;
-    var _a, _b;
 }());
 exports.IsTablet = IsTablet;
 /*======== MOBILE STATES =========*/
@@ -239,10 +240,9 @@ var IsMobile = (function () {
             selector: '[isMobile]',
             providers: [ResponsiveState]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, ResponsiveState])
+        __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsMobile);
     return IsMobile;
-    var _a, _b;
 }());
 exports.IsMobile = IsMobile;
 /*
@@ -301,10 +301,9 @@ var LG = (function () {
             selector: '[lg]',
             providers: [ResponsiveState]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, ResponsiveState])
+        __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], LG);
     return LG;
-    var _a, _b;
 }());
 exports.LG = LG;
 /*======== MD STATES =========*/
@@ -358,10 +357,9 @@ var MD = (function () {
             selector: '[md]',
             providers: [ResponsiveState]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, ResponsiveState])
+        __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], MD);
     return MD;
-    var _a, _b;
 }());
 exports.MD = MD;
 /*======== SM STATES =========*/
@@ -415,10 +413,9 @@ var SM = (function () {
             selector: '[sm]',
             providers: [ResponsiveState]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, ResponsiveState])
+        __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], SM);
     return SM;
-    var _a, _b;
 }());
 exports.SM = SM;
 /*======== XS STATES =========*/
@@ -472,10 +469,9 @@ var XS = (function () {
             selector: '[xs]',
             providers: [ResponsiveState]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, ResponsiveState])
+        __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], XS);
     return XS;
-    var _a, _b;
 }());
 exports.XS = XS;
 //# sourceMappingURL=sizes.js.map
