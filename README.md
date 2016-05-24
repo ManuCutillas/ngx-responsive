@@ -7,7 +7,7 @@ Special directives to show or hide items according to the size of the device scr
  - Directives that detect three states according to the type of device screens.
  - Written for the latest release of Angular 2 in typescript.
  
- # How to start
+# How to start
  
  ```
 # 1. installing the package via npm 
@@ -57,5 +57,4 @@ Will work in the following features:
 
 # License
 
-MIT 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
