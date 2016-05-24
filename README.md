@@ -15,19 +15,18 @@ npm i responsive-directives-angular2 --save
  ```
  
 2. import the responsive-directives-angular2 in your Angular 2 component
-
-⋅⋅* With Bootstrap Screen sizes  Directives
+* With Bootstrap Screen sizes  Directives
  ```
 import { LG,MD,SM,XS } from 'responsive-directives-angular2';
  ```
-⋅⋅* With Devices Screen sizes Directives
+* With Devices Screen sizes Directives
  ```
 import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
  ```
  
 3. Assign directives for use in a component
 
-⋅⋅* With Bootstrap Screen sizes
+* With Bootstrap Screen sizes
  ```
 @Component({
   selector: 'my-component',
@@ -40,7 +39,7 @@ import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
   directives: [LG,MD,SM,XS]
 })
  ```
-⋅⋅* With Devices Screen sizes
+* With Devices Screen sizes
  ```
 @Component({
   selector: 'my-component',
