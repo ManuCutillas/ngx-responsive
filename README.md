@@ -18,10 +18,10 @@ npm i responsive-device-detect-angular2 --save
 # 2. import the angular2-responsive-directives in your Angular 2 component
 
 # With Bootstrap Screen sizes  Directives
-import {LG,MD,SM,XS } from 'a2-responsive-directives';
+import {LG,MD,SM,XS } from 'a2-rdd/a2-responsive-directives';
 
 # With Devices Screen sizes Directives
-import {IsDesktop,IsMobile,IsTablet } from 'a2-responsive-directives';
+import {IsDesktop,IsMobile,IsTablet } from 'a2-rdd/a2-responsive-directives';
 
 # 3. Assign directives for use in a component
 
