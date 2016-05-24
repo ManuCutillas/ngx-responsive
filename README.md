@@ -9,8 +9,7 @@ Special directives to show or hide items according to the size of the device scr
  
  # How to start
  
- ```bash
-
+ ```
 # 1. installing the package via npm 
 npm i responsive-directives-angular2 --save
 
@@ -46,8 +45,7 @@ import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
   ',
   directives: [IsDesktop,IsMobile,IsTablet ]
 })
-
-```
+ ```
 
 
 
