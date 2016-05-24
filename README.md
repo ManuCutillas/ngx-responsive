@@ -3,7 +3,7 @@
 
 Special directives to show or hide items according to the size of the device screen in Angular 2 RC
 
-`angular2-responsive-directives` provides the following features:
+`responsive-device-detect-angular2` provides the following features:
  - Directives detecting states according to standard measures in bootstrap: lg / md / sm / xs
  - Directives that detect three states according to the type of device screens.
  - Written for the latest release of Angular 2 in typescript.
@@ -13,7 +13,7 @@ Special directives to show or hide items according to the size of the device scr
  ```bash
 
 # 1. installing the package via npm 
-npm install a2-responsive-directives --save
+npm i responsive-device-detect-angular2 --save
 
 # 2. import the angular2-responsive-directives in your Angular 2 component
 
@@ -57,8 +57,6 @@ Will work in the following features:
 
 - Detection device: browser type, operating system..etc
 - Detect portrait and landscape device status
-
-
 
 # License
 
