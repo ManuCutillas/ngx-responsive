@@ -1,6 +1,6 @@
 {
   "name": "devices-detect-angular2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Special directives to show or hide items according to the size of the device screen in Angular 2 ",
   "main": "devicesdetect-directives.js",
   "scripts": {
