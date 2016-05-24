@@ -1,8 +1,7 @@
 node_modules/
-devicesdetect-directives.ts
-sizesdetect/sizes.ts
+dist/
+*.d.ts
 *.log
 *.tgz
-*.ts
 !index.d.ts
 !index.ref.d.ts
