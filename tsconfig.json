@@ -10,7 +10,7 @@
     "declaration": true
   },
   "files": [
-    "devicesdetect-directives.ts",
+    "index.ts",
     "sizesdetect/sizes.ts"
   ]
 }
