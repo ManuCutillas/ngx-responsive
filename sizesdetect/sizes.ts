@@ -130,7 +130,7 @@ export class IsTablet {
           this.noRepeat = 1;   
         }
     }
-    @Input() set isDesktop(element: any) {
+    @Input() set isTablet(element: any) {
 
         this._responsiveState.elementoObservar.subscribe((valor:any) => {
             if (valor == this.sizeSM) {
@@ -174,7 +174,7 @@ export class IsMobile {
           this.noRepeat = 1;   
         }
     }
-    @Input() set isDesktop(element: any) {
+    @Input() set isMobile(element: any) {
 
         this._responsiveState.elementoObservar.subscribe((valor:any) => {
             if (valor == this.sizeXS) {

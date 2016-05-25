@@ -146,7 +146,7 @@ var IsTablet = (function () {
             this.noRepeat = 1;
         }
     }
-    Object.defineProperty(IsTablet.prototype, "isDesktop", {
+    Object.defineProperty(IsTablet.prototype, "isTablet", {
         set: function (element) {
             var _this = this;
             this._responsiveState.elementoObservar.subscribe(function (valor) {
@@ -178,7 +178,7 @@ var IsTablet = (function () {
         core_1.Input(), 
         __metadata('design:type', Object), 
         __metadata('design:paramtypes', [Object])
-    ], IsTablet.prototype, "isDesktop", null);
+    ], IsTablet.prototype, "isTablet", null);
     IsTablet = __decorate([
         core_1.Directive({
             selector: '[isTablet]',
@@ -202,7 +202,7 @@ var IsMobile = (function () {
             this.noRepeat = 1;
         }
     }
-    Object.defineProperty(IsMobile.prototype, "isDesktop", {
+    Object.defineProperty(IsMobile.prototype, "isMobile", {
         set: function (element) {
             var _this = this;
             this._responsiveState.elementoObservar.subscribe(function (valor) {
@@ -234,7 +234,7 @@ var IsMobile = (function () {
         core_1.Input(), 
         __metadata('design:type', Object), 
         __metadata('design:paramtypes', [Object])
-    ], IsMobile.prototype, "isDesktop", null);
+    ], IsMobile.prototype, "isMobile", null);
     IsMobile = __decorate([
         core_1.Directive({
             selector: '[isMobile]',
