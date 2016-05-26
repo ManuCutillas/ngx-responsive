@@ -27,16 +27,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var core_1 = require('@angular/core');
 require('rxjs/add/operator/share');
 var Rx_1 = require('rxjs/Rx');
-exports.RESPONSIVE_DEVICE_SIZES = {
-    lg: { min: 1200 },
-    md: { min: 992, max: 1199 },
-    sm: { min: 768, max: 991 },
-    xs: { max: 767 } };
+// Configuration class in order to allow to change breakpoints values
+var ResponsiveConfig = (function () {
+    function ResponsiveConfig(config) {
+        this.RESPONSIVE_DEVICE_SIZES = {
+            xs: { max: 767 },
+            sm: { min: 768, max: 991 },
+            md: { min: 992, max: 1199 },
+            lg: { min: 1200 }
+        };
+        if (!!config)
+            this.RESPONSIVE_DEVICE_SIZES = config;
+    }
+    ResponsiveConfig = __decorate([
+        __param(0, core_1.Optional()), 
+        __metadata('design:paramtypes', [Object])
+    ], ResponsiveConfig);
+    return ResponsiveConfig;
+}());
+exports.ResponsiveConfig = ResponsiveConfig;
 var ResponsiveState = (function () {
-    function ResponsiveState() {
+    function ResponsiveState(responsiveConfig) {
         var _this = this;
         this.sizeObserver = function () {
             _this.width = _this.getWidth();
@@ -49,22 +66,24 @@ var ResponsiveState = (function () {
         this.sizeOperations = function () {
             _this.width = _this.getWidth();
             try {
-                if (exports.RESPONSIVE_DEVICE_SIZES.lg.min <= _this.width) {
+                if (_this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.lg.min <= _this.width) {
                     return 'lg';
                 }
-                else if (exports.RESPONSIVE_DEVICE_SIZES.md.max >= _this.width && exports.RESPONSIVE_DEVICE_SIZES.md.min <= _this.width) {
+                else if (_this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.md.max >= _this.width && _this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.md.min <= _this.width) {
                     return 'md';
                 }
-                else if (exports.RESPONSIVE_DEVICE_SIZES.sm.max >= _this.width && exports.RESPONSIVE_DEVICE_SIZES.sm.min <= _this.width) {
+                else if (_this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.sm.max >= _this.width && _this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.sm.min <= _this.width) {
                     return 'sm';
                 }
-                else if (exports.RESPONSIVE_DEVICE_SIZES.xs.max >= _this.width) {
+                else if (_this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.xs.max >= _this.width) {
                     return 'xs';
                 }
             }
             catch (error) {
             }
         };
+        this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
+        // console.log("_responsiveConfig2:", this._responsiveConfig);
         this.elementoObservar = Rx_1.Observable.fromEvent(window, 'resize').map(this.sizeOperations).share();
         this.anchoObservar = Rx_1.Observable.fromEvent(window, 'resize').map(this.sizeObserver).share();
     }
@@ -75,8 +94,9 @@ var ResponsiveState = (function () {
         return window.innerWidth;
     };
     ResponsiveState = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        core_1.Injectable(),
+        __param(0, core_1.Optional()), 
+        __metadata('design:paramtypes', [ResponsiveConfig])
     ], ResponsiveState);
     return ResponsiveState;
 }());
@@ -135,7 +155,6 @@ var IsDesktop = (function () {
     IsDesktop = __decorate([
         core_1.Directive({
             selector: '[isDesktop]',
-            providers: [ResponsiveState]
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsDesktop);
@@ -191,7 +210,6 @@ var IsTablet = (function () {
     IsTablet = __decorate([
         core_1.Directive({
             selector: '[isTablet]',
-            providers: [ResponsiveState]
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsTablet);
@@ -247,7 +265,6 @@ var IsMobile = (function () {
     IsMobile = __decorate([
         core_1.Directive({
             selector: '[isMobile]',
-            providers: [ResponsiveState]
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsMobile);
@@ -308,7 +325,6 @@ var LG = (function () {
     LG = __decorate([
         core_1.Directive({
             selector: '[lg]',
-            providers: [ResponsiveState]
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], LG);
@@ -364,7 +380,6 @@ var MD = (function () {
     MD = __decorate([
         core_1.Directive({
             selector: '[md]',
-            providers: [ResponsiveState]
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], MD);
@@ -420,7 +435,6 @@ var SM = (function () {
     SM = __decorate([
         core_1.Directive({
             selector: '[sm]',
-            providers: [ResponsiveState]
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], SM);
@@ -476,7 +490,6 @@ var XS = (function () {
     XS = __decorate([
         core_1.Directive({
             selector: '[xs]',
-            providers: [ResponsiveState]
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], XS);
