@@ -55,13 +55,13 @@ export class ResponsiveState {
     sizeOperations = (): any => {
         this.width = this.getWidth();
         try {
-            if (RESPONSIVE_DEVICE_SIZES.lg.min < this.width) {
+            if (RESPONSIVE_DEVICE_SIZES.lg.min <= this.width) {
                 return 'lg';  
-            } else if (RESPONSIVE_DEVICE_SIZES.md.max > this.width && RESPONSIVE_DEVICE_SIZES.md.min < this.width) {
+            } else if (RESPONSIVE_DEVICE_SIZES.md.max >= this.width && RESPONSIVE_DEVICE_SIZES.md.min <= this.width) {
                 return 'md';   
-            } else if (RESPONSIVE_DEVICE_SIZES.sm.max > this.width && RESPONSIVE_DEVICE_SIZES.sm.min < this.width) {
+            } else if (RESPONSIVE_DEVICE_SIZES.sm.max >= this.width && RESPONSIVE_DEVICE_SIZES.sm.min <= this.width) {
                 return 'sm';   
-            } else if (RESPONSIVE_DEVICE_SIZES.xs.max > this.width) {
+            } else if (RESPONSIVE_DEVICE_SIZES.xs.max >= this.width) {
                 return 'xs';
             }
         } catch (error) {

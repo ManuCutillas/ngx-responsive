@@ -49,16 +49,16 @@ var ResponsiveState = (function () {
         this.sizeOperations = function () {
             _this.width = _this.getWidth();
             try {
-                if (exports.RESPONSIVE_DEVICE_SIZES.lg.min < _this.width) {
+                if (exports.RESPONSIVE_DEVICE_SIZES.lg.min <= _this.width) {
                     return 'lg';
                 }
-                else if (exports.RESPONSIVE_DEVICE_SIZES.md.max > _this.width && exports.RESPONSIVE_DEVICE_SIZES.md.min < _this.width) {
+                else if (exports.RESPONSIVE_DEVICE_SIZES.md.max >= _this.width && exports.RESPONSIVE_DEVICE_SIZES.md.min <= _this.width) {
                     return 'md';
                 }
-                else if (exports.RESPONSIVE_DEVICE_SIZES.sm.max > _this.width && exports.RESPONSIVE_DEVICE_SIZES.sm.min < _this.width) {
+                else if (exports.RESPONSIVE_DEVICE_SIZES.sm.max >= _this.width && exports.RESPONSIVE_DEVICE_SIZES.sm.min <= _this.width) {
                     return 'sm';
                 }
-                else if (exports.RESPONSIVE_DEVICE_SIZES.xs.max > _this.width) {
+                else if (exports.RESPONSIVE_DEVICE_SIZES.xs.max >= _this.width) {
                     return 'xs';
                 }
             }
