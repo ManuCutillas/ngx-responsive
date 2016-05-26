@@ -8,6 +8,7 @@ Special directives to show or hide items according to the size of the device scr
  - NEW: Multiple combinations of states bootstrap.
  - NEW: Custom sizes detector.
  - NEW: Show and hide options
+ - NEW: Custom breaking points
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -125,6 +126,10 @@ Will work in the following features:
 
 - Detection device: browser type, operating system..etc
 - Detect portrait and landscape device status
+
+# Contributors
+ * ManuCutillas 
+ * Christophe HOARAU
 
 # License
 
