@@ -60,6 +60,15 @@ import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
  ```
 import { ShowItSizes,HideItSizes } from 'responsive-directives-angular2';
  ```
+     * All directives globally
+  ```
+import {provide, PLATFORM_DIRECTIVES} from '@angular/core';
+import {ResponsiveState, ResponsiveConfig, DIRECTIVES as RESPONSIVE_DIRECTIVES} from 'responsive-directives-angular2';
+ ...
+ bootstrap(App, [
+       ResponsiveState,
+        {provide: PLATFORM_DIRECTIVES, multi: true, useValue: RESPONSIVE_DIRECTIVES}]);
+  ```
  
 4. Assign directives for use in a component
 
