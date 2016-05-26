@@ -5,6 +5,9 @@ Special directives to show or hide items according to the size of the device scr
 `responsive-directives-angular2` provides the following features:
  - Directives detecting states according to standard measures in bootstrap: lg / md / sm / xs
  - Directives that detect three states according to the type of device screens.
+ - NEW: Multiple combinations of states bootstrap.
+ - NEW: Custom sizes detector.
+ - NEW: Show and hide options
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -20,9 +23,17 @@ npm i responsive-directives-angular2 --save
  ```
 import { LG,MD,SM,XS } from 'responsive-directives-angular2';
  ```
+    * With multiple combinations screen sizes bootstrap and show / hide options
+ ```
+import { ShowItBootstrap,HideItBootstrap } from 'responsive-directives-angular2';
+ ```
    * With Devices Screen sizes Directives
  ```
 import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
+ ```
+    * With custom sizes and show / hide options
+ ```
+import { ShowItSizes,HideItSizes } from 'responsive-directives-angular2';
  ```
  
 3. Assign directives for use in a component
@@ -40,6 +51,17 @@ import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
   directives: [LG,MD,SM,XS]
 })
  ```
+    * With multiple combinations screen sizes bootstrap and show / hide options
+ ```
+@Component({
+  selector: 'my-component',
+  template: '
+    <p *showItBootstrap="['md','xs']">I'll show you only in md and xs screen sizes.</p>
+    <p *hideItBootstrap="['lg','sm']">I'll hide you only in lg and sm screen sizes.</p>
+  ',
+  directives: [ShowItBootstrap,HideItBootstrap]
+})
+ ```
    * With Devices Screen sizes
  ```
 @Component({
@@ -52,7 +74,17 @@ import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
   directives: [IsDesktop,IsMobile,IsTablet ]
 })
  ```
-
+  * With custom sizes and show / hide options
+ ```
+@Component({
+  selector: 'my-component',
+  template: '
+    <p *showItSizes="{min:955,max:1057}">I'll show you if I have a width between the min and max.</p>
+    <p *hideItSizes="{min:360,max:768}">It is hidden if I have a width between the min and max.</p>
+  ',
+  directives: [ ShowItSizes,HideItSizes ]
+})
+ ```
 
 # NEXT 
 Will work in the following features:

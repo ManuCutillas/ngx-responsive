@@ -3,8 +3,8 @@
  *
  * @created_by Manu Cutillas
  * @created_at May 23, 2016
- * @updated_at May 24, 2016
- * @version_1.0.2
+ * @updated_at May 26, 2016
+ * @version_0.1.1
  * 
  * Dependencies:
  * @angular/core : "2.0.0-rc.1"
@@ -14,11 +14,11 @@
  *            https://github.com/ManuCutillas
  *            https://www.npmjs.com/~manucutillas
  * 
- * @description : First version of Responsive Detect State for Angular 2
+ * @description : Responsive Detect Directives for Angular 2
  *
  */
 
-import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef} from '@angular/core';
+import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef,OnInit} from '@angular/core';
 import 'rxjs/add/operator/share';
 import {Observable, Observer} from  'rxjs/Rx';
 
@@ -31,14 +31,25 @@ export const RESPONSIVE_DEVICE_SIZES = {
 @Injectable()
 export class ResponsiveState {
     elementoObservar: Observable<any>;
+    anchoObservar:Observable<any>;
     width: any;
     
     constructor() {
        this.elementoObservar = Observable.fromEvent(window, 'resize').map(this.sizeOperations).share();
+       this.anchoObservar = Observable.fromEvent(window, 'resize').map(this.sizeObserver).share();
     }
 
     getDeviceSizeInitial(){
         return this.sizeOperations();
+    }
+    
+    sizeObserver = (): any => {
+        this.width = this.getWidth();
+        try {
+            return this.width;
+        } catch (error) {
+            //console.error('size operations error :', error);
+        }
     }
 
     sizeOperations = (): any => {
@@ -384,3 +395,198 @@ export class XS {
 }
 
 
+/*======== MULTIPLE SIZES STATES =========*/
+/* show */
+@Directive({
+    selector: '[showItBootstrap]',
+    providers: [ResponsiveState]
+})
+export class ShowItBootstrap {
+    private noRepeat: number = 0;
+    private callInit: number = 0;
+    
+    constructor(
+        private templateRef: TemplateRef<any>,
+        private viewContainer: ViewContainerRef,
+        private _responsiveState: ResponsiveState
+    ) {}
+   
+     
+   @Input() set showItBootstrap(_grid_state: string) {
+       if(this.callInit == 0){
+             this.init(_grid_state);  
+              this.callInit = 1;
+       }
+        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+            if (valor == _grid_state[0] || valor == _grid_state[1]) {
+                if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+                }
+            } else {
+                this.noRepeat = 0;
+                this.viewContainer.clear();
+            }
+
+        });
+    }
+    
+    init(_grid_state:string){
+         let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
+            if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
+                if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+                }
+            } else {
+                this.noRepeat = 0;
+                this.viewContainer.clear();
+            }
+    } 
+}
+
+/* hide */
+@Directive({
+    selector: '[hideItBootstrap]',
+    providers: [ResponsiveState]
+})
+export class HideItBootstrap {
+    private noRepeat: number = 0;
+    private callInit: number = 0;
+    
+    constructor(
+        private templateRef: TemplateRef<any>,
+        private viewContainer: ViewContainerRef,
+        private _responsiveState: ResponsiveState
+    ) {}
+   
+     
+   @Input() set hideItBootstrap(_grid_state: string) {
+       if(this.callInit == 0){
+             this.init(_grid_state);  
+              this.callInit = 1;
+       }
+        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+            if (valor == _grid_state[0] || valor == _grid_state[1]) {
+                   this.noRepeat = 0;
+                   this.viewContainer.clear();
+            } else {
+                if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+                }
+            }
+
+        });
+    }
+    
+    init(_grid_state:string){
+         let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
+            if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
+                 this.noRepeat = 0;
+                 this.viewContainer.clear();
+            } else {
+               
+                if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+                }
+            }
+    } 
+}
+
+/*======== CUSTOM SIZES =========*/
+/* show */
+@Directive({
+    selector: '[showItSizes]',
+    providers: [ResponsiveState]
+})
+export class ShowItSizes {
+    private noRepeat: number = 0;
+    private callInit: number = 0;
+    
+    constructor(
+        private templateRef: TemplateRef<any>,
+        private viewContainer: ViewContainerRef,
+        private _responsiveState: ResponsiveState
+    ) {}
+   
+     
+   @Input() set showItSizes(_grid_state: any) {
+       if(this.callInit == 0){
+             this.init(_grid_state);  
+              this.callInit = 1;
+       }
+        this._responsiveState.anchoObservar.subscribe((size:any) => {
+            if ( size >= _grid_state.min && size <= _grid_state.max) {
+               if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+               }
+            } else {
+                   this.noRepeat = 0;
+                   this.viewContainer.clear();
+            }
+        });
+    }
+    
+    init(_grid_state:any){
+         let width: any = this._responsiveState.getWidth();
+            if ( width >= _grid_state.min && width <= _grid_state.max) {
+               if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+               }
+            } else {
+                   this.noRepeat = 0;
+                   this.viewContainer.clear();
+            }
+    } 
+}
+
+/* hide */
+@Directive({
+    selector: '[hideItSizes]',
+    providers: [ResponsiveState]
+})
+export class HideItSizes {
+    private noRepeat: number = 0;
+    private callInit: number = 0;
+    
+    constructor(
+        private templateRef: TemplateRef<any>,
+        private viewContainer: ViewContainerRef,
+        private _responsiveState: ResponsiveState
+    ) {}
+   
+   @Input() set hideItSizes(_grid_state: any) {
+       if(this.callInit == 0){
+             this.init(_grid_state);  
+              this.callInit = 1;
+       }
+        this._responsiveState.anchoObservar.subscribe((size:any) => {
+            if ( size >= _grid_state.min && size <= _grid_state.max) {
+                   this.noRepeat = 0;
+                   this.viewContainer.clear();
+            } else {
+                   if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+               }
+            }
+        });
+    }
+    
+    init(_grid_state:any){
+         let width: any = this._responsiveState.getWidth();
+            if ( width >= _grid_state.min && width <= _grid_state.max) {
+                   this.noRepeat = 0;
+                   this.viewContainer.clear();
+            } else {
+                if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+               }
+            }
+    } 
+}
