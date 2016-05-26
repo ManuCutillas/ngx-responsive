@@ -18,11 +18,11 @@
  *
  */
 
-import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef,OnInit, Optional} from '@angular/core';
+import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, Optional} from '@angular/core';
 import 'rxjs/add/operator/share';
 import {Observable, Observer} from  'rxjs/Rx';
 
-export interface ResponsiveConfigInterface{
+export interface ResponsiveConfigInterface {
     xs: {max: number},
     sm: {min: number, max: number},
     md: {min: number, max: number},
@@ -31,13 +31,13 @@ export interface ResponsiveConfigInterface{
 // Configuration class in order to allow to change breakpoints values
 export class ResponsiveConfig {
     RESPONSIVE_DEVICE_SIZES: ResponsiveConfigInterface = {
-      lg: { min: 1200 },
-      md: { min: 992, max: 1199 },
-      sm: { min: 768, max: 991 },
-        xs: {max: 767}
+        xs: {max: 767},
+        sm: {min: 768, max: 991},
+        md: {min: 992, max: 1199},
+        lg: {min: 1200}
     };
 
-    constructor(@Optional() config: ResponsiveConfigInterface) {
+    constructor(@Optional() config?: ResponsiveConfigInterface) {
         if (!!config)
             this.RESPONSIVE_DEVICE_SIZES = config;
     }
@@ -45,20 +45,19 @@ export class ResponsiveConfig {
 
 @Injectable()
 export class ResponsiveState {
+    private _responsiveConfig: ResponsiveConfig;
     elementoObservar: Observable<any>;
-    anchoObservar:Observable<any>;
+    anchoObservar: Observable<any>;
     width: any;
 
-    constructor(@Optional() private _responsiveConfig: ResponsiveConfig) {
-        console.log("_responsiveConfig:", _responsiveConfig);
-        if(!_responsiveConfig){
-            this._responsiveConfig = new ResponsiveConfig();
-        }
-       this.elementoObservar = Observable.fromEvent(window, 'resize').map(this.sizeOperations).share();
-       this.anchoObservar = Observable.fromEvent(window, 'resize').map(this.sizeObserver).share();
+    constructor(@Optional() responsiveConfig: ResponsiveConfig) {
+        this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
+        // console.log("_responsiveConfig2:", this._responsiveConfig);
+        this.elementoObservar = Observable.fromEvent(window, 'resize').map(this.sizeOperations).share();
+        this.anchoObservar = Observable.fromEvent(window, 'resize').map(this.sizeObserver).share();
     }
 
-    getDeviceSizeInitial(){
+    getDeviceSizeInitial() {
         return this.sizeOperations();
     }
 
@@ -69,7 +68,7 @@ export class ResponsiveState {
         } catch (error) {
             //console.error('size operations error :', error);
         }
-    }
+    };
 
     sizeOperations = (): any => {
         this.width = this.getWidth();
@@ -86,9 +85,10 @@ export class ResponsiveState {
         } catch (error) {
             //console.error('size operations error :', error);
         }
-    }
-    getWidth(){
-       return window.innerWidth;
+    };
+
+    getWidth() {
+        return window.innerWidth;
     }
 }
 
@@ -106,19 +106,19 @@ export class IsDesktop {
     private sizeLG: string = 'lg';
     private sizeMD: string = 'md';
     private noRepeat: number = 0;
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {
-        if(this.initialDeviceSize()){
-          this.viewContainer.createEmbeddedView(this.templateRef);
-          this.noRepeat = 1;
+
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+        if (this.initialDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
         }
     }
+
     @Input() set isDesktop(element: any) {
 
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == this.sizeMD || valor == this.sizeLG) {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -150,19 +150,19 @@ export class IsDesktop {
 export class IsTablet {
     private sizeSM: string = 'sm';
     private noRepeat: number = 0;
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {
-        if(this.initalDeviceSize()){
-          this.viewContainer.createEmbeddedView(this.templateRef);
-          this.noRepeat = 1;
+
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+        if (this.initalDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
         }
     }
+
     @Input() set isTablet(element: any) {
 
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == this.sizeSM) {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -194,19 +194,19 @@ export class IsTablet {
 export class IsMobile {
     private sizeXS: string = 'xs';
     private noRepeat: number = 0;
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {
-        if(this.initalDeviceSize()){
-          this.viewContainer.createEmbeddedView(this.templateRef);
-          this.noRepeat = 1;
+
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+        if (this.initalDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
         }
     }
+
     @Input() set isMobile(element: any) {
 
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == this.sizeXS) {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -245,19 +245,19 @@ export class IsMobile {
 export class LG {
     private state: string = 'lg';
     private noRepeat: number = 0;
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {
-        if(this.initalDeviceSize()){
-          this.viewContainer.createEmbeddedView(this.templateRef);
-          this.noRepeat = 1;
+
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+        if (this.initalDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
         }
     }
+
     @Input() set lg(element: any) {
 
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == this.state) {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -290,19 +290,19 @@ export class LG {
 export class MD {
     private state: string = 'md';
     private noRepeat: number = 0;
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {
-        if(this.initalDeviceSize()){
-          this.viewContainer.createEmbeddedView(this.templateRef);
-          this.noRepeat = 1;
+
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+        if (this.initalDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
         }
     }
+
     @Input() set md(element: any) {
 
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == this.state) {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -314,6 +314,7 @@ export class MD {
             }
         });
     }
+
     initalDeviceSize() {
         let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
         if (initialDevice == 'md') {
@@ -335,19 +336,18 @@ export class SM {
     private state: string = 'sm';
     private noRepeat: number = 0;
 
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {
-        if(this.initalDeviceSize()){
-          this.viewContainer.createEmbeddedView(this.templateRef);
-          this.noRepeat = 1;
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+        if (this.initalDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
         }
-     }
+    }
+
     @Input() set sm(element: any) {
 
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == this.state) {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -360,6 +360,7 @@ export class SM {
 
         });
     }
+
     initalDeviceSize() {
         let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
         if (initialDevice == 'sm') {
@@ -379,18 +380,18 @@ export class SM {
 export class XS {
     private state: string = 'xs';
     private noRepeat: number = 0;
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {
-        if(this.initalDeviceSize()){
-          this.viewContainer.createEmbeddedView(this.templateRef);
-          this.noRepeat = 1;
+
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+        if (this.initalDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
         }
-     }
+    }
+
     @Input() set xs(element: any) {
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == this.state) {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -402,6 +403,7 @@ export class XS {
             }
         });
     }
+
     initalDeviceSize() {
         let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
         if (initialDevice == 'xs') {
@@ -424,19 +426,18 @@ export class ShowItBootstrap {
     private noRepeat: number = 0;
     private callInit: number = 0;
 
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {}
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+    }
 
 
-   @Input() set showItBootstrap(_grid_state: string) {
-       if(this.callInit == 0){
-             this.init(_grid_state);
-              this.callInit = 1;
-       }
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+    @Input() set showItBootstrap(_grid_state: string) {
+        if (this.callInit == 0) {
+            this.init(_grid_state);
+            this.callInit = 1;
+        }
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == _grid_state[0] || valor == _grid_state[1]) {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -450,17 +451,17 @@ export class ShowItBootstrap {
         });
     }
 
-    init(_grid_state:string){
-         let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
-            if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
-                if (this.noRepeat == 0) {
-                    this.noRepeat = 1;
-                    this.viewContainer.createEmbeddedView(this.templateRef);
-                }
-            } else {
-                this.noRepeat = 0;
-                this.viewContainer.clear();
+    init(_grid_state: string) {
+        let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
+        if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
+            if (this.noRepeat == 0) {
+                this.noRepeat = 1;
+                this.viewContainer.createEmbeddedView(this.templateRef);
             }
+        } else {
+            this.noRepeat = 0;
+            this.viewContainer.clear();
+        }
     }
 }
 
@@ -473,22 +474,21 @@ export class HideItBootstrap {
     private noRepeat: number = 0;
     private callInit: number = 0;
 
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {}
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+    }
 
 
-   @Input() set hideItBootstrap(_grid_state: string) {
-       if(this.callInit == 0){
-             this.init(_grid_state);
-              this.callInit = 1;
-       }
-        this._responsiveState.elementoObservar.subscribe((valor:any) => {
+    @Input() set hideItBootstrap(_grid_state: string) {
+        if (this.callInit == 0) {
+            this.init(_grid_state);
+            this.callInit = 1;
+        }
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
             if (valor == _grid_state[0] || valor == _grid_state[1]) {
-                   this.noRepeat = 0;
-                   this.viewContainer.clear();
+                this.noRepeat = 0;
+                this.viewContainer.clear();
             } else {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
@@ -499,18 +499,18 @@ export class HideItBootstrap {
         });
     }
 
-    init(_grid_state:string){
-         let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
-            if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
-                 this.noRepeat = 0;
-                 this.viewContainer.clear();
-            } else {
+    init(_grid_state: string) {
+        let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
+        if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
+            this.noRepeat = 0;
+            this.viewContainer.clear();
+        } else {
 
-                if (this.noRepeat == 0) {
-                    this.noRepeat = 1;
-                    this.viewContainer.createEmbeddedView(this.templateRef);
-                }
+            if (this.noRepeat == 0) {
+                this.noRepeat = 1;
+                this.viewContainer.createEmbeddedView(this.templateRef);
             }
+        }
     }
 }
 
@@ -524,42 +524,41 @@ export class ShowItSizes {
     private noRepeat: number = 0;
     private callInit: number = 0;
 
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {}
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+    }
 
 
-   @Input() set showItSizes(_grid_state: any) {
-       if(this.callInit == 0){
-             this.init(_grid_state);
-              this.callInit = 1;
-       }
-        this._responsiveState.anchoObservar.subscribe((size:any) => {
-            if ( size >= _grid_state.min && size <= _grid_state.max) {
-               if (this.noRepeat == 0) {
+    @Input() set showItSizes(_grid_state: any) {
+        if (this.callInit == 0) {
+            this.init(_grid_state);
+            this.callInit = 1;
+        }
+        this._responsiveState.anchoObservar.subscribe((size: any) => {
+            if (size >= _grid_state.min && size <= _grid_state.max) {
+                if (this.noRepeat == 0) {
                     this.noRepeat = 1;
                     this.viewContainer.createEmbeddedView(this.templateRef);
-               }
+                }
             } else {
-                   this.noRepeat = 0;
-                   this.viewContainer.clear();
+                this.noRepeat = 0;
+                this.viewContainer.clear();
             }
         });
     }
 
-    init(_grid_state:any){
-         let width: any = this._responsiveState.getWidth();
-            if ( width >= _grid_state.min && width <= _grid_state.max) {
-               if (this.noRepeat == 0) {
-                    this.noRepeat = 1;
-                    this.viewContainer.createEmbeddedView(this.templateRef);
-               }
-            } else {
-                   this.noRepeat = 0;
-                   this.viewContainer.clear();
+    init(_grid_state: any) {
+        let width: any = this._responsiveState.getWidth();
+        if (width >= _grid_state.min && width <= _grid_state.max) {
+            if (this.noRepeat == 0) {
+                this.noRepeat = 1;
+                this.viewContainer.createEmbeddedView(this.templateRef);
             }
+        } else {
+            this.noRepeat = 0;
+            this.viewContainer.clear();
+        }
     }
 }
 
@@ -572,40 +571,39 @@ export class HideItSizes {
     private noRepeat: number = 0;
     private callInit: number = 0;
 
-    constructor(
-        private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState
-    ) {}
-
-   @Input() set hideItSizes(_grid_state: any) {
-       if(this.callInit == 0){
-             this.init(_grid_state);
-              this.callInit = 1;
-       }
-        this._responsiveState.anchoObservar.subscribe((size:any) => {
-            if ( size >= _grid_state.min && size <= _grid_state.max) {
-                   this.noRepeat = 0;
-                   this.viewContainer.clear();
-            } else {
-                   if (this.noRepeat == 0) {
-                    this.noRepeat = 1;
-                    this.viewContainer.createEmbeddedView(this.templateRef);
-               }
-            }
-        });
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
     }
 
-    init(_grid_state:any){
-         let width: any = this._responsiveState.getWidth();
-            if ( width >= _grid_state.min && width <= _grid_state.max) {
-                   this.noRepeat = 0;
-                   this.viewContainer.clear();
+    @Input() set hideItSizes(_grid_state: any) {
+        if (this.callInit == 0) {
+            this.init(_grid_state);
+            this.callInit = 1;
+        }
+        this._responsiveState.anchoObservar.subscribe((size: any) => {
+            if (size >= _grid_state.min && size <= _grid_state.max) {
+                this.noRepeat = 0;
+                this.viewContainer.clear();
             } else {
                 if (this.noRepeat == 0) {
                     this.noRepeat = 1;
                     this.viewContainer.createEmbeddedView(this.templateRef);
-               }
+                }
             }
+        });
+    }
+
+    init(_grid_state: any) {
+        let width: any = this._responsiveState.getWidth();
+        if (width >= _grid_state.min && width <= _grid_state.max) {
+            this.noRepeat = 0;
+            this.viewContainer.clear();
+        } else {
+            if (this.noRepeat == 0) {
+                this.noRepeat = 1;
+                this.viewContainer.createEmbeddedView(this.templateRef);
+            }
+        }
     }
 }
