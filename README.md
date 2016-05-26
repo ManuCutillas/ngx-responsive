@@ -16,8 +16,33 @@ Special directives to show or hide items according to the size of the device scr
  ```
 npm i responsive-directives-angular2 --save
  ```
+
+2. bootstrap the service
+	* with default breaking points
+	```
+    import { ResponsiveState } from 'responsive-directives-angular2';
+    ...
+    bootstrap(App, [ResponsiveState]);
+     ```
+
+	* with custom breaking points
+	```
+
+    import {provide} from '@angular/core';
+    import { ResponsiveState, ResponsiveConfig } from 'responsive-directives-angular2';
+    ...
+    bootstrap(App, [
+    provide(ResponsiveConfig, {useFactory: () => new ResponsiveConfig({
+        xs: {max: 600},
+        sm: {min: 601, max: 700},
+        md: {min: 701, max: 800},
+        lg: {min: 801}
+      })}),
+      ResponsiveState]);
+     ```
+
  
-2. import the responsive-directives-angular2 in your Angular 2 component
+3. import the responsive-directives-angular2 in your Angular 2 component
 
    * With Bootstrap Screen sizes  Directives
  ```
@@ -36,7 +61,7 @@ import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
 import { ShowItSizes,HideItSizes } from 'responsive-directives-angular2';
  ```
  
-3. Assign directives for use in a component
+4. Assign directives for use in a component
 
    * With Bootstrap Screen sizes
  ```
