@@ -85,7 +85,9 @@ export class ResponsiveState {
     private sizeOperations = (): string => {
         this.width = this.getWidth();
         try {
-            if (this._responsiveConfig.config.breakPoints.lg.min <= this.width) {
+            if (this._responsiveConfig.config.breakPoints.xl.min <= this.width) {
+                return 'xl';
+            } else if (this._responsiveConfig.config.breakPoints.lg.max >= this.width && this._responsiveConfig.config.breakPoints.lg.min <= this.width) {
                 return 'lg';
             } else if (this._responsiveConfig.config.breakPoints.md.max >= this.width && this._responsiveConfig.config.breakPoints.md.min <= this.width) {
                 return 'md';
@@ -250,6 +252,50 @@ export class IsMobile {
  * Bootstrap standard screen sizes directives
  * LG / MD / SM / XS
  */
+
+/*======== XL STATES =========*/
+@Directive({
+    selector: '[xl]'
+})
+export class XL {
+    private state: string = 'xl';
+    private noRepeat: number = 0;
+
+    constructor(private templateRef: TemplateRef<any>,
+                private viewContainer: ViewContainerRef,
+                private _responsiveState: ResponsiveState) {
+        if (this.initalDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
+        }
+    }
+
+    @Input() set xl(element: any) {
+
+        this._responsiveState.elementoObservar.subscribe((valor: any) => {
+            if (valor == this.state) {
+                if (this.noRepeat == 0) {
+                    this.noRepeat = 1;
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+                }
+            } else {
+                this.noRepeat = 0;
+                this.viewContainer.clear();
+            }
+
+        });
+    }
+
+    initalDeviceSize() {
+        let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
+        if (initialDevice == 'xl') {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+}
 
 /*======== LG STATES =========*/
 @Directive({

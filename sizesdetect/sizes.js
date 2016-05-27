@@ -80,7 +80,10 @@ var ResponsiveState = (function () {
         this.sizeOperations = function () {
             _this.width = _this.getWidth();
             try {
-                if (_this._responsiveConfig.config.breakPoints.lg.min <= _this.width) {
+                if (_this._responsiveConfig.config.breakPoints.xl.min <= _this.width) {
+                    return 'xl';
+                }
+                else if (_this._responsiveConfig.config.breakPoints.lg.max >= _this.width && _this._responsiveConfig.config.breakPoints.lg.min <= _this.width) {
                     return 'lg';
                 }
                 else if (_this._responsiveConfig.config.breakPoints.md.max >= _this.width && _this._responsiveConfig.config.breakPoints.md.min <= _this.width) {
@@ -292,6 +295,61 @@ exports.IsMobile = IsMobile;
  * Bootstrap standard screen sizes directives
  * LG / MD / SM / XS
  */
+/*======== XL STATES =========*/
+var XL = (function () {
+    function XL(templateRef, viewContainer, _responsiveState) {
+        this.templateRef = templateRef;
+        this.viewContainer = viewContainer;
+        this._responsiveState = _responsiveState;
+        this.state = 'xl';
+        this.noRepeat = 0;
+        if (this.initalDeviceSize()) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+            this.noRepeat = 1;
+        }
+    }
+    Object.defineProperty(XL.prototype, "xl", {
+        set: function (element) {
+            var _this = this;
+            this._responsiveState.elementoObservar.subscribe(function (valor) {
+                if (valor == _this.state) {
+                    if (_this.noRepeat == 0) {
+                        _this.noRepeat = 1;
+                        _this.viewContainer.createEmbeddedView(_this.templateRef);
+                    }
+                }
+                else {
+                    _this.noRepeat = 0;
+                    _this.viewContainer.clear();
+                }
+            });
+        },
+        enumerable: true,
+        configurable: true
+    });
+    XL.prototype.initalDeviceSize = function () {
+        var initialDevice = this._responsiveState.getDeviceSizeInitial();
+        if (initialDevice == 'xl') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object), 
+        __metadata('design:paramtypes', [Object])
+    ], XL.prototype, "xl", null);
+    XL = __decorate([
+        core_1.Directive({
+            selector: '[xl]'
+        }), 
+        __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
+    ], XL);
+    return XL;
+}());
+exports.XL = XL;
 /*======== LG STATES =========*/
 var LG = (function () {
     function LG(templateRef, viewContainer, _responsiveState) {

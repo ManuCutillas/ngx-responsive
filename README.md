@@ -5,7 +5,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 **BREAKING CHANGE** in bootstrap process
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
- - Directives detecting states according to standard measures in BOOTSTRAP: lg / md / sm / xs
+ - Directives detecting states according to standard measures in BOOTSTRAP: xl / lg / md / sm / xs
  - Directives that detect three states according to the type of device screens.
  - **NEW:** Multiple combinations of states bootstrap.
  - **NEW:** Custom sizes detector.
@@ -13,6 +13,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - **NEW:** Custom breaking points.
  - **NEW:** Debounce checking interval (default 100ms).
  - **NEW:** Locally or Global use in your proyect.
+ - **NEW:** New XL size (default: 1600px)
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -23,7 +24,7 @@ npm i responsive-directives-angular2 --save
  ```
 
 2. bootstrap the service
-	
+    
    * with default breaking points
    
     ```
@@ -32,17 +33,18 @@ npm i responsive-directives-angular2 --save
     bootstrap(App, [ResponsiveState]);
     ```
 
-	* with custom Configuration
-	  
+    * with custom Configuration
+      
     ```
     import { ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface } from 'responsive-directives-angular2';
     ...
     let config: ResponsiveConfigInterface = {
         breakPoints: {
-            xs: {max: 600},
-            sm: {min: 601, max: 959},
-            md: {min: 960, max: 1279},
-            lg: {min: 1280}
+                xs: {max: 600},
+                sm: {min: 601, max: 959},
+                md: {min: 960, max: 1279},
+                lg: {min: 1280, max: 1919},
+                xl: {min: 1920}
         },
         debounceTime: 100 // allow to debounce checking timer
     };
@@ -112,6 +114,7 @@ npm i responsive-directives-angular2 --save
       @Component({
          selector: 'my-component',
          template: '
+              <p *xl>I'll show you if I'm a xl screen size.</p>
               <p *lg>I'll show you if I'm a lg screen size.</p>
               <p *md>I'll show you if I'm a md screen size.</p>
               <p *sm>I'll show you if I'm a sm screen size.</p>
@@ -129,6 +132,7 @@ npm i responsive-directives-angular2 --save
    @Component({
       selector: 'my-component',
       template: '
+        <p *xl>I'll show you if I'm a xl screen size.</p>
         <p *lg>I'll show you if I'm a lg screen size.</p>
         <p *md>I'll show you if I'm a md screen size.</p>
         <p *sm>I'll show you if I'm a sm screen size.</p>
