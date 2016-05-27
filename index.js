@@ -15,7 +15,7 @@ exports.ShowItSizes = sizes_2.ShowItSizes;
 exports.HideItSizes = sizes_2.HideItSizes;
 exports.ResponsiveConfig = sizes_2.ResponsiveConfig;
 exports.ResponsiveState = sizes_2.ResponsiveState;
-exports.DIRECTIVES = [
+exports.RESPONSIVE_DIRECTIVES = [
     sizes_1.LG, sizes_1.MD, sizes_1.SM, sizes_1.XS, sizes_1.IsDesktop, sizes_1.IsTablet, sizes_1.IsMobile, sizes_1.ShowItBootstrap, sizes_1.HideItBootstrap, sizes_1.ShowItSizes, sizes_1.HideItSizes
 ];
 //# sourceMappingURL=index.js.map

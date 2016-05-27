@@ -1,6 +1,6 @@
 {
   "name": "responsive-directives-angular2",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Special directives to show or hide items according to the size of the device screen in Angular 2 ",
   "main": "index.js",
   "scripts": {

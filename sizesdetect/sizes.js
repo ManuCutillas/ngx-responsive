@@ -2,9 +2,10 @@
  * Responsive Devices Detect Directives for Angular 2
  *
  * @created_by Manu Cutillas
+ * @Contributors Christophe HOARAU
  * @created_at May 23, 2016
- * @updated_at May 26, 2016
- * @version_0.1.1
+ * @updated_at May 26, 2016 - by Christophe HOARAU
+ * @version_0.1.3
  *
  * Dependencies:
  * @angular/core : "2.0.0-rc.1"
@@ -13,6 +14,7 @@
  * @more_info http://kalypso.agency
  *            https://github.com/ManuCutillas
  *            https://www.npmjs.com/~manucutillas
+ *            https://github.com/no-more
  *
  * @description : Responsive Detect Directives for Angular 2
  *
@@ -46,6 +48,7 @@ var ResponsiveConfig = (function () {
             this.RESPONSIVE_DEVICE_SIZES = config;
     }
     ResponsiveConfig = __decorate([
+        core_1.Injectable(),
         __param(0, core_1.Optional()), 
         __metadata('design:paramtypes', [Object])
     ], ResponsiveConfig);
@@ -154,7 +157,7 @@ var IsDesktop = (function () {
     ], IsDesktop.prototype, "isDesktop", null);
     IsDesktop = __decorate([
         core_1.Directive({
-            selector: '[isDesktop]',
+            selector: '[isDesktop]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsDesktop);
@@ -209,7 +212,7 @@ var IsTablet = (function () {
     ], IsTablet.prototype, "isTablet", null);
     IsTablet = __decorate([
         core_1.Directive({
-            selector: '[isTablet]',
+            selector: '[isTablet]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsTablet);
@@ -264,7 +267,7 @@ var IsMobile = (function () {
     ], IsMobile.prototype, "isMobile", null);
     IsMobile = __decorate([
         core_1.Directive({
-            selector: '[isMobile]',
+            selector: '[isMobile]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], IsMobile);
@@ -324,7 +327,7 @@ var LG = (function () {
     ], LG.prototype, "lg", null);
     LG = __decorate([
         core_1.Directive({
-            selector: '[lg]',
+            selector: '[lg]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], LG);
@@ -379,7 +382,7 @@ var MD = (function () {
     ], MD.prototype, "md", null);
     MD = __decorate([
         core_1.Directive({
-            selector: '[md]',
+            selector: '[md]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], MD);
@@ -434,7 +437,7 @@ var SM = (function () {
     ], SM.prototype, "sm", null);
     SM = __decorate([
         core_1.Directive({
-            selector: '[sm]',
+            selector: '[sm]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], SM);
@@ -489,7 +492,7 @@ var XS = (function () {
     ], XS.prototype, "xs", null);
     XS = __decorate([
         core_1.Directive({
-            selector: '[xs]',
+            selector: '[xs]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], XS);
@@ -549,8 +552,7 @@ var ShowItBootstrap = (function () {
     ], ShowItBootstrap.prototype, "showItBootstrap", null);
     ShowItBootstrap = __decorate([
         core_1.Directive({
-            selector: '[showItBootstrap]',
-            providers: [ResponsiveState]
+            selector: '[showItBootstrap]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], ShowItBootstrap);
@@ -609,8 +611,7 @@ var HideItBootstrap = (function () {
     ], HideItBootstrap.prototype, "hideItBootstrap", null);
     HideItBootstrap = __decorate([
         core_1.Directive({
-            selector: '[hideItBootstrap]',
-            providers: [ResponsiveState]
+            selector: '[hideItBootstrap]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], HideItBootstrap);
@@ -670,8 +671,7 @@ var ShowItSizes = (function () {
     ], ShowItSizes.prototype, "showItSizes", null);
     ShowItSizes = __decorate([
         core_1.Directive({
-            selector: '[showItSizes]',
-            providers: [ResponsiveState]
+            selector: '[showItSizes]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], ShowItSizes);
@@ -730,8 +730,7 @@ var HideItSizes = (function () {
     ], HideItSizes.prototype, "hideItSizes", null);
     HideItSizes = __decorate([
         core_1.Directive({
-            selector: '[hideItSizes]',
-            providers: [ResponsiveState]
+            selector: '[hideItSizes]'
         }), 
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], HideItSizes);

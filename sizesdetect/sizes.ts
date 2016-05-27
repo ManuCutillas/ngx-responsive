@@ -31,6 +31,7 @@ export interface ResponsiveConfigInterface {
     lg: {min: number}
 }
 // Configuration class in order to allow to change breakpoints values
+@Injectable()
 export class ResponsiveConfig {
     RESPONSIVE_DEVICE_SIZES: ResponsiveConfigInterface = {
         xs: {max: 767},
@@ -414,8 +415,7 @@ export class XS {
 /*======== MULTIPLE SIZES STATES =========*/
 /* show */
 @Directive({
-    selector: '[showItBootstrap]',
-    providers: [ResponsiveState]
+    selector: '[showItBootstrap]'
 })
 export class ShowItBootstrap {
     private noRepeat: number = 0;
@@ -462,8 +462,7 @@ export class ShowItBootstrap {
 
 /* hide */
 @Directive({
-    selector: '[hideItBootstrap]',
-    providers: [ResponsiveState]
+    selector: '[hideItBootstrap]'
 })
 export class HideItBootstrap {
     private noRepeat: number = 0;
@@ -512,8 +511,7 @@ export class HideItBootstrap {
 /*======== CUSTOM SIZES =========*/
 /* show */
 @Directive({
-    selector: '[showItSizes]',
-    providers: [ResponsiveState]
+    selector: '[showItSizes]'
 })
 export class ShowItSizes {
     private noRepeat: number = 0;
@@ -559,8 +557,7 @@ export class ShowItSizes {
 
 /* hide */
 @Directive({
-    selector: '[hideItSizes]',
-    providers: [ResponsiveState]
+    selector: '[hideItSizes]'
 })
 export class HideItSizes {
     private noRepeat: number = 0;
