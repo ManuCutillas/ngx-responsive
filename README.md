@@ -29,20 +29,29 @@ npm i responsive-directives-angular2 --save
     bootstrap(App, [ResponsiveState]);
     ```
 
-	* with custom breaking points
+	* with custom Configuration
 	  
     ```
-    import {provide} from '@angular/core';
-    import { ResponsiveState, ResponsiveConfig } from 'responsive-directives-angular2';
+    import { ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface } from 'responsive-directives-angular2';
     ...
-    bootstrap(App, [
-    provide(ResponsiveConfig, {useFactory: () => new ResponsiveConfig({
-        xs: {max: 600},
-        sm: {min: 601, max: 700},
-        md: {min: 701, max: 800},
-        lg: {min: 801}
-      })}),
-      ResponsiveState]);
+    let config: ResponsiveConfigInterface = {
+        breakPoints: {
+            xs: {max: 600},
+            sm: {min: 601, max: 959},
+            md: {min: 960, max: 1279},
+            lg: {min: 1280}
+        },
+        debounceTime: 100 // allow to debounce checking timer
+    };
+    ...
+    bootstrap(App,
+    [
+        {
+            provide: ResponsiveConfig,
+            useFactory: () => new ResponsiveConfig(config)
+        },
+        ResponsiveState
+    ]);
      ```
 
  
