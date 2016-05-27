@@ -26,10 +26,10 @@ import {Observable, Observer, Subscription} from  'rxjs/Rx';
 
 export interface ResponsiveConfigInterface {
     breakPoints: {
-    xs: {max: number},
-    sm: {min: number, max: number},
-    md: {min: number, max: number},
-    lg: {min: number}
+        xs: {max: number},
+        sm: {min: number, max: number},
+        md: {min: number, max: number},
+        lg: {min: number}
     },
     debounceTime: number
 }
@@ -38,10 +38,10 @@ export interface ResponsiveConfigInterface {
 export class ResponsiveConfig {
     config: ResponsiveConfigInterface = {
         breakPoints: {
-        xs: {max: 767},
-        sm: {min: 768, max: 991},
-        md: {min: 992, max: 1199},
-        lg: {min: 1200}
+            xs: {max: 767},
+            sm: {min: 768, max: 991},
+            md: {min: 992, max: 1199},
+            lg: {min: 1200}
         },
         debounceTime: 100
     };
@@ -68,20 +68,18 @@ export class ResponsiveState {
         this.anchoObservar = observer.map(this.sizeObserver).share();
     }
 
-    getDeviceSizeInitial() {
-        return this.sizeOperations();
-    }
 
-    private sizeObserver = (): any => {
+    private sizeObserver = (): number => {
         this.width = this.getWidth();
         try {
-            return this.width;
+            return this.width; // I don't see how there could be an error here
         } catch (error) {
             //console.error('size operations error :', error);
         }
+        return null;
     };
 
-    private sizeOperations = (): any => {
+    private sizeOperations = (): string => {
         this.width = this.getWidth();
         try {
             if (this._responsiveConfig.config.breakPoints.lg.min <= this.width) {
@@ -96,10 +94,15 @@ export class ResponsiveState {
         } catch (error) {
             //console.error('size operations error :', error);
         }
+        return null;
     };
 
-    getWidth() {
+    getWidth(): number {
         return window.innerWidth;
+    }
+
+    getDeviceSizeInitial(): string {
+        return this.sizeOperations();
     }
 }
 
@@ -437,15 +440,16 @@ export class ShowItBootstrap implements OnInit, OnDestroy {
 
 
     @Input() set showItBootstrap(grid_state: string[]|string) {
-        if (Array.isArray(grid_state))
-            this._grid_state = <string[]>grid_state;
-        else
-            this._grid_state = <string[]>[grid_state];
+        this._grid_state = <string[]>(Array.isArray(grid_state) ? grid_state : [grid_state]) ;
         this.updateView(this._responsiveState.getDeviceSizeInitial());
     }
 
     ngOnInit() {
         this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateView.bind(this));
+    }
+
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
     }
 
     updateView(valor: string) {
@@ -458,10 +462,6 @@ export class ShowItBootstrap implements OnInit, OnDestroy {
             this.noRepeat = 0;
             this.viewContainer.clear();
         }
-    }
-
-    ngOnDestroy() {
-        this._subscription.unsubscribe();
     }
 }
 

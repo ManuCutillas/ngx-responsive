@@ -64,10 +64,11 @@ var ResponsiveState = (function () {
         this.sizeObserver = function () {
             _this.width = _this.getWidth();
             try {
-                return _this.width;
+                return _this.width; // I don't see how there could be an error here
             }
             catch (error) {
             }
+            return null;
         };
         this.sizeOperations = function () {
             _this.width = _this.getWidth();
@@ -87,6 +88,7 @@ var ResponsiveState = (function () {
             }
             catch (error) {
             }
+            return null;
         };
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
         // console.log("_responsiveConfig2:", this._responsiveConfig);
@@ -94,11 +96,11 @@ var ResponsiveState = (function () {
         this.elementoObservar = observer.map(this.sizeOperations).share();
         this.anchoObservar = observer.map(this.sizeObserver).share();
     }
-    ResponsiveState.prototype.getDeviceSizeInitial = function () {
-        return this.sizeOperations();
-    };
     ResponsiveState.prototype.getWidth = function () {
         return window.innerWidth;
+    };
+    ResponsiveState.prototype.getDeviceSizeInitial = function () {
+        return this.sizeOperations();
     };
     ResponsiveState = __decorate([
         core_1.Injectable(),
@@ -514,10 +516,7 @@ var ShowItBootstrap = (function () {
     }
     Object.defineProperty(ShowItBootstrap.prototype, "showItBootstrap", {
         set: function (grid_state) {
-            if (Array.isArray(grid_state))
-                this._grid_state = grid_state;
-            else
-                this._grid_state = [grid_state];
+            this._grid_state = (Array.isArray(grid_state) ? grid_state : [grid_state]);
             this.updateView(this._responsiveState.getDeviceSizeInitial());
         },
         enumerable: true,
@@ -525,6 +524,9 @@ var ShowItBootstrap = (function () {
     });
     ShowItBootstrap.prototype.ngOnInit = function () {
         this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateView.bind(this));
+    };
+    ShowItBootstrap.prototype.ngOnDestroy = function () {
+        this._subscription.unsubscribe();
     };
     ShowItBootstrap.prototype.updateView = function (valor) {
         if (!!this._grid_state && this._grid_state.indexOf(valor) !== -1) {
@@ -537,9 +539,6 @@ var ShowItBootstrap = (function () {
             this.noRepeat = 0;
             this.viewContainer.clear();
         }
-    };
-    ShowItBootstrap.prototype.ngOnDestroy = function () {
-        this._subscription.unsubscribe();
     };
     __decorate([
         core_1.Input(), 
