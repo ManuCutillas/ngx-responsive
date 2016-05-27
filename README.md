@@ -1,6 +1,6 @@
 
 # Introduction
-Superset of **RESPONSIVE DETECT DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
+Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: lg / md / sm / xs
