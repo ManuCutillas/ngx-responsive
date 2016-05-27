@@ -1,15 +1,15 @@
 
 # Introduction
-Superset of RESPONSIVE DETECT DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 2
+Superset of **RESPONSIVE DETECT DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: lg / md / sm / xs
  - Directives that detect three states according to the type of device screens.
- - NEW: Multiple combinations of states bootstrap.
- - NEW: Custom sizes detector.
- - NEW: Show and hide options.
- - NEW: Custom breaking points.
- - NEW: Locally or Global use in your proyect.
+ - **NEW:** Multiple combinations of states bootstrap.
+ - **NEW:** Custom sizes detector.
+ - **NEW:** Show and hide options.
+ - **NEW:** Custom breaking points.
+ - **NEW:** Locally or Global use in your proyect.
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -51,25 +51,33 @@ npm i responsive-directives-angular2 --save
    1. import the Directives **Locally** in your Angular 2 component
       
       * With Bootstrap screen sizes.
-      ```
+      
+       ```
        import { LG,MD,SM,XS } from 'responsive-directives-angular2';
-      ```
-      * With multiple combinations bootstrap screen sizes and show / hide options
+       ```
+      
+      * With multiple combinations bootstrap screen sizes and show / hide options.
+      
       ```
       import { ShowItBootstrap,HideItBootstrap } from 'responsive-directives-angular2';
       ```
-      * With Devices screen sizes
+      
+      * With Devices screen sizes.
+      
       ```
       import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
       ```
-      * With custom sizes and show / hide options
+      
+      * With custom sizes and show / hide options.
+      
       ```
       import { ShowItSizes,HideItSizes } from 'responsive-directives-angular2';
       ```
       
    2. Add Directives to **Globally** Angular 2 Directives
       
-      - In your init App Class add All RESPONSIVE_DIRECTIVES to the global directives core of Angular 2
+      - In your init App Class add All **RESPONSIVE_DIRECTIVES** to the global directives core of Angular 2
+      
       ```
       import {provide, PLATFORM_DIRECTIVES} from '@angular/core';
       import {ResponsiveState, ResponsiveConfig, RESPONSIVE_DIRECTIVES} from 'responsive-directives-angular2';
@@ -79,11 +87,15 @@ npm i responsive-directives-angular2 --save
              provide(PLATFORM_DIRECTIVES, { useValue: [RESPONSIVE_DIRECTIVES], multi: true})
              ]);
       ```
+      
       * In your component to import the RESPONSIVE_DIRECTIVES only need import: 
+     
       ```
       import {CORE_DIRECTIVES} from '@angular/common';
       ```
+      
       And assign the CORE_DIRECTIVES:
+      
       ```
       @Component({
          selector: 'my-component',
@@ -100,6 +112,7 @@ npm i responsive-directives-angular2 --save
 4. If you import the RESPONSIVE_DIRECTIVES **Locally** in your Angular 2 component 
 
    * With Bootstrap Screen sizes
+   
    ```
    @Component({
       selector: 'my-component',
@@ -112,7 +125,9 @@ npm i responsive-directives-angular2 --save
       directives: [LG,MD,SM,XS]
    })
    ```
+   
    * With multiple combinations of bootstrap screen sizes and show / hide options
+  
    ```
    @Component({
       selector: 'my-component',
@@ -123,7 +138,9 @@ npm i responsive-directives-angular2 --save
       directives: [ShowItBootstrap,HideItBootstrap]
    })
    ```
+   
    * With Devices Screen sizes
+  
    ```
   @Component({
      selector: 'my-component',
@@ -135,7 +152,9 @@ npm i responsive-directives-angular2 --save
      directives: [IsDesktop,IsMobile,IsTablet ]
   })
   ```
+ 
   * With custom sizes and show / hide options
+ 
   ```
   @Component({
     selector: 'my-component',
