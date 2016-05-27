@@ -20,9 +20,9 @@
  *
  */
 
-import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, Optional} from '@angular/core';
+import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional} from '@angular/core';
 import 'rxjs/add/operator/share';
-import {Observable, Observer} from  'rxjs/Rx';
+import {Observable, Observer, Subscription} from  'rxjs/Rx';
 
 export interface ResponsiveConfigInterface {
     xs: {max: number},
@@ -56,15 +56,16 @@ export class ResponsiveState {
     constructor(@Optional() responsiveConfig: ResponsiveConfig) {
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
         // console.log("_responsiveConfig2:", this._responsiveConfig);
-        this.elementoObservar = Observable.fromEvent(window, 'resize').map(this.sizeOperations).share();
-        this.anchoObservar = Observable.fromEvent(window, 'resize').map(this.sizeObserver).share();
+        let observer = Observable.fromEvent(window, 'resize').debounceTime(100);
+        this.elementoObservar = observer.map(this.sizeOperations).share();
+        this.anchoObservar = observer.map(this.sizeObserver).share();
     }
 
     getDeviceSizeInitial() {
         return this.sizeOperations();
     }
 
-    sizeObserver = (): any => {
+    private sizeObserver = (): any => {
         this.width = this.getWidth();
         try {
             return this.width;
@@ -73,7 +74,7 @@ export class ResponsiveState {
         }
     };
 
-    sizeOperations = (): any => {
+    private sizeOperations = (): any => {
         this.width = this.getWidth();
         try {
             if (this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.lg.min <= this.width) {
@@ -417,9 +418,10 @@ export class XS {
 @Directive({
     selector: '[showItBootstrap]'
 })
-export class ShowItBootstrap {
+export class ShowItBootstrap implements OnInit, OnDestroy {
     private noRepeat: number = 0;
-    private callInit: number = 0;
+    private _grid_state: string[];
+    private _subscription: Subscription;
 
     constructor(private templateRef: TemplateRef<any>,
                 private viewContainer: ViewContainerRef,
@@ -427,28 +429,20 @@ export class ShowItBootstrap {
     }
 
 
-    @Input() set showItBootstrap(_grid_state: string) {
-        if (this.callInit == 0) {
-            this.init(_grid_state);
-            this.callInit = 1;
-        }
-        this._responsiveState.elementoObservar.subscribe((valor: any) => {
-            if (valor == _grid_state[0] || valor == _grid_state[1]) {
-                if (this.noRepeat == 0) {
-                    this.noRepeat = 1;
-                    this.viewContainer.createEmbeddedView(this.templateRef);
-                }
-            } else {
-                this.noRepeat = 0;
-                this.viewContainer.clear();
-            }
-
-        });
+    @Input() set showItBootstrap(grid_state: string[]|string) {
+        if (Array.isArray(grid_state))
+            this._grid_state = <string[]>grid_state;
+        else
+            this._grid_state = <string[]>[grid_state];
+        this.updateView(this._responsiveState.getDeviceSizeInitial());
     }
 
-    init(_grid_state: string) {
-        let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
-        if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
+    ngOnInit() {
+        this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateView.bind(this));
+    }
+
+    updateView(valor: string) {
+        if (!!this._grid_state && this._grid_state.indexOf(valor) !== -1) {
             if (this.noRepeat == 0) {
                 this.noRepeat = 1;
                 this.viewContainer.createEmbeddedView(this.templateRef);
@@ -457,6 +451,10 @@ export class ShowItBootstrap {
             this.noRepeat = 0;
             this.viewContainer.clear();
         }
+    }
+
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
     }
 }
 

@@ -87,8 +87,9 @@ var ResponsiveState = (function () {
         };
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
         // console.log("_responsiveConfig2:", this._responsiveConfig);
-        this.elementoObservar = Rx_1.Observable.fromEvent(window, 'resize').map(this.sizeOperations).share();
-        this.anchoObservar = Rx_1.Observable.fromEvent(window, 'resize').map(this.sizeObserver).share();
+        var observer = Rx_1.Observable.fromEvent(window, 'resize').debounceTime(100);
+        this.elementoObservar = observer.map(this.sizeOperations).share();
+        this.anchoObservar = observer.map(this.sizeObserver).share();
     }
     ResponsiveState.prototype.getDeviceSizeInitial = function () {
         return this.sizeOperations();
@@ -507,34 +508,23 @@ var ShowItBootstrap = (function () {
         this.viewContainer = viewContainer;
         this._responsiveState = _responsiveState;
         this.noRepeat = 0;
-        this.callInit = 0;
     }
     Object.defineProperty(ShowItBootstrap.prototype, "showItBootstrap", {
-        set: function (_grid_state) {
-            var _this = this;
-            if (this.callInit == 0) {
-                this.init(_grid_state);
-                this.callInit = 1;
-            }
-            this._responsiveState.elementoObservar.subscribe(function (valor) {
-                if (valor == _grid_state[0] || valor == _grid_state[1]) {
-                    if (_this.noRepeat == 0) {
-                        _this.noRepeat = 1;
-                        _this.viewContainer.createEmbeddedView(_this.templateRef);
-                    }
-                }
-                else {
-                    _this.noRepeat = 0;
-                    _this.viewContainer.clear();
-                }
-            });
+        set: function (grid_state) {
+            if (Array.isArray(grid_state))
+                this._grid_state = grid_state;
+            else
+                this._grid_state = [grid_state];
+            this.updateView(this._responsiveState.getDeviceSizeInitial());
         },
         enumerable: true,
         configurable: true
     });
-    ShowItBootstrap.prototype.init = function (_grid_state) {
-        var initialDevice = this._responsiveState.getDeviceSizeInitial();
-        if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
+    ShowItBootstrap.prototype.ngOnInit = function () {
+        this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateView.bind(this));
+    };
+    ShowItBootstrap.prototype.updateView = function (valor) {
+        if (!!this._grid_state && this._grid_state.indexOf(valor) !== -1) {
             if (this.noRepeat == 0) {
                 this.noRepeat = 1;
                 this.viewContainer.createEmbeddedView(this.templateRef);
@@ -545,10 +535,13 @@ var ShowItBootstrap = (function () {
             this.viewContainer.clear();
         }
     };
+    ShowItBootstrap.prototype.ngOnDestroy = function () {
+        this._subscription.unsubscribe();
+    };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', String), 
-        __metadata('design:paramtypes', [String])
+        __metadata('design:type', Object), 
+        __metadata('design:paramtypes', [Object])
     ], ShowItBootstrap.prototype, "showItBootstrap", null);
     ShowItBootstrap = __decorate([
         core_1.Directive({
