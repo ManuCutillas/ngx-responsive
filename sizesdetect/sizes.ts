@@ -25,24 +25,31 @@ import 'rxjs/add/operator/share';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
 
 export interface ResponsiveConfigInterface {
+    breakPoints: {
     xs: {max: number},
     sm: {min: number, max: number},
     md: {min: number, max: number},
     lg: {min: number}
+    },
+    debounceTime: number
 }
 // Configuration class in order to allow to change breakpoints values
 @Injectable()
 export class ResponsiveConfig {
-    RESPONSIVE_DEVICE_SIZES: ResponsiveConfigInterface = {
+    config: ResponsiveConfigInterface = {
+        breakPoints: {
         xs: {max: 767},
         sm: {min: 768, max: 991},
         md: {min: 992, max: 1199},
         lg: {min: 1200}
+        },
+        debounceTime: 100
     };
+
 
     constructor(@Optional() config?: ResponsiveConfigInterface) {
         if (!!config)
-            this.RESPONSIVE_DEVICE_SIZES = config;
+            this.config = config;
     }
 }
 
@@ -56,7 +63,7 @@ export class ResponsiveState {
     constructor(@Optional() responsiveConfig: ResponsiveConfig) {
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
         // console.log("_responsiveConfig2:", this._responsiveConfig);
-        let observer = Observable.fromEvent(window, 'resize').debounceTime(100);
+        let observer = Observable.fromEvent(window, 'resize').debounceTime(this._responsiveConfig.config.debounceTime);
         this.elementoObservar = observer.map(this.sizeOperations).share();
         this.anchoObservar = observer.map(this.sizeObserver).share();
     }
@@ -77,13 +84,13 @@ export class ResponsiveState {
     private sizeOperations = (): any => {
         this.width = this.getWidth();
         try {
-            if (this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.lg.min <= this.width) {
+            if (this._responsiveConfig.config.breakPoints.lg.min <= this.width) {
                 return 'lg';
-            } else if (this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.md.max >= this.width && this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.md.min <= this.width) {
+            } else if (this._responsiveConfig.config.breakPoints.md.max >= this.width && this._responsiveConfig.config.breakPoints.md.min <= this.width) {
                 return 'md';
-            } else if (this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.sm.max >= this.width && this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.sm.min <= this.width) {
+            } else if (this._responsiveConfig.config.breakPoints.sm.max >= this.width && this._responsiveConfig.config.breakPoints.sm.min <= this.width) {
                 return 'sm';
-            } else if (this._responsiveConfig.RESPONSIVE_DEVICE_SIZES.xs.max >= this.width) {
+            } else if (this._responsiveConfig.config.breakPoints.xs.max >= this.width) {
                 return 'xs';
             }
         } catch (error) {
