@@ -2,6 +2,8 @@
 # Introduction
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
 
+**BREAKING CHANGE** in bootstrap process
+
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: lg / md / sm / xs
  - Directives that detect three states according to the type of device screens.
@@ -9,6 +11,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - **NEW:** Custom sizes detector.
  - **NEW:** Show and hide options.
  - **NEW:** Custom breaking points.
+ - **NEW:** Debounce checking interval (default 100ms).
  - **NEW:** Locally or Global use in your proyect.
  - Written for the latest release of Angular 2 in typescript.
  
