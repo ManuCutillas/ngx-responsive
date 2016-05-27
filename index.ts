@@ -4,4 +4,4 @@ export {LG, MD, SM, XS, IsDesktop, IsTablet, IsMobile, ShowItBootstrap, HideItBo
 
 export const DIRECTIVES = [
     LG, MD, SM, XS, IsDesktop, IsTablet, IsMobile, ShowItBootstrap, HideItBootstrap, ShowItSizes, HideItSizes
-];
+]; 
