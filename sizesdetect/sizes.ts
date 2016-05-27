@@ -2,9 +2,10 @@
  * Responsive Devices Detect Directives for Angular 2
  *
  * @created_by Manu Cutillas
+ * @Contributors Christophe HOARAU
  * @created_at May 23, 2016
- * @updated_at May 26, 2016
- * @version_0.1.1
+ * @updated_at May 26, 2016 - by Christophe HOARAU
+ * @version_0.1.3
  *
  * Dependencies:
  * @angular/core : "2.0.0-rc.1"
@@ -13,6 +14,7 @@
  * @more_info http://kalypso.agency
  *            https://github.com/ManuCutillas
  *            https://www.npmjs.com/~manucutillas
+ *            https://github.com/no-more
  *
  * @description : Responsive Detect Directives for Angular 2
  *
@@ -29,6 +31,7 @@ export interface ResponsiveConfigInterface {
     lg: {min: number}
 }
 // Configuration class in order to allow to change breakpoints values
+@Injectable()
 export class ResponsiveConfig {
     RESPONSIVE_DEVICE_SIZES: ResponsiveConfigInterface = {
         xs: {max: 767},
@@ -99,8 +102,7 @@ export class ResponsiveState {
 
 /*======== DESKTOPS STATES =========*/
 @Directive({
-    selector: '[isDesktop]',
-    // providers: [ResponsiveState] // I prefer global providers
+    selector: '[isDesktop]'
 })
 export class IsDesktop {
     private sizeLG: string = 'lg';
@@ -144,8 +146,7 @@ export class IsDesktop {
 
 /*======== TABLETS STATES =========*/
 @Directive({
-    selector: '[isTablet]',
-    // providers: [ResponsiveState]
+    selector: '[isTablet]'
 })
 export class IsTablet {
     private sizeSM: string = 'sm';
@@ -188,8 +189,7 @@ export class IsTablet {
 
 /*======== MOBILE STATES =========*/
 @Directive({
-    selector: '[isMobile]',
-    // providers: [ResponsiveState]
+    selector: '[isMobile]'
 })
 export class IsMobile {
     private sizeXS: string = 'xs';
@@ -239,8 +239,7 @@ export class IsMobile {
 
 /*======== LG STATES =========*/
 @Directive({
-    selector: '[lg]',
-    // providers: [ResponsiveState]
+    selector: '[lg]'
 })
 export class LG {
     private state: string = 'lg';
@@ -284,8 +283,7 @@ export class LG {
 
 /*======== MD STATES =========*/
 @Directive({
-    selector: '[md]',
-    // providers: [ResponsiveState]
+    selector: '[md]'
 })
 export class MD {
     private state: string = 'md';
@@ -328,8 +326,7 @@ export class MD {
 
 /*======== SM STATES =========*/
 @Directive({
-    selector: '[sm]',
-    // providers: [ResponsiveState]
+    selector: '[sm]'
 })
 export class SM {
 
@@ -374,8 +371,7 @@ export class SM {
 
 /*======== XS STATES =========*/
 @Directive({
-    selector: '[xs]',
-    // providers: [ResponsiveState]
+    selector: '[xs]'
 })
 export class XS {
     private state: string = 'xs';
@@ -419,8 +415,7 @@ export class XS {
 /*======== MULTIPLE SIZES STATES =========*/
 /* show */
 @Directive({
-    selector: '[showItBootstrap]',
-    providers: [ResponsiveState]
+    selector: '[showItBootstrap]'
 })
 export class ShowItBootstrap {
     private noRepeat: number = 0;
@@ -467,8 +462,7 @@ export class ShowItBootstrap {
 
 /* hide */
 @Directive({
-    selector: '[hideItBootstrap]',
-    providers: [ResponsiveState]
+    selector: '[hideItBootstrap]'
 })
 export class HideItBootstrap {
     private noRepeat: number = 0;
@@ -517,8 +511,7 @@ export class HideItBootstrap {
 /*======== CUSTOM SIZES =========*/
 /* show */
 @Directive({
-    selector: '[showItSizes]',
-    providers: [ResponsiveState]
+    selector: '[showItSizes]'
 })
 export class ShowItSizes {
     private noRepeat: number = 0;
@@ -564,8 +557,7 @@ export class ShowItSizes {
 
 /* hide */
 @Directive({
-    selector: '[hideItSizes]',
-    providers: [ResponsiveState]
+    selector: '[hideItSizes]'
 })
 export class HideItSizes {
     private noRepeat: number = 0;

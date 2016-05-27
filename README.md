@@ -1,13 +1,15 @@
 
 # Introduction
-Special directives to show or hide items according to the size of the device screen in Angular 2
+Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
 
-`responsive-directives-angular2` provides the following features:
- - Directives detecting states according to standard measures in bootstrap: lg / md / sm / xs
+`RESPONSIVE_DIRECTIVES` provides the following features:
+ - Directives detecting states according to standard measures in BOOTSTRAP: lg / md / sm / xs
  - Directives that detect three states according to the type of device screens.
- - NEW: Multiple combinations of states bootstrap.
- - NEW: Custom sizes detector.
- - NEW: Show and hide options
+ - **NEW:** Multiple combinations of states bootstrap.
+ - **NEW:** Custom sizes detector.
+ - **NEW:** Show and hide options.
+ - **NEW:** Custom breaking points.
+ - **NEW:** Locally or Global use in your proyect.
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -18,16 +20,18 @@ npm i responsive-directives-angular2 --save
  ```
 
 2. bootstrap the service
-	* with default breaking points
-	```
+	
+   * with default breaking points
+   
+    ```
     import { ResponsiveState } from 'responsive-directives-angular2';
     ...
     bootstrap(App, [ResponsiveState]);
-     ```
+    ```
 
 	* with custom breaking points
-	```
-
+	  
+    ```
     import {provide} from '@angular/core';
     import { ResponsiveState, ResponsiveConfig } from 'responsive-directives-angular2';
     ...
@@ -42,89 +46,135 @@ npm i responsive-directives-angular2 --save
      ```
 
  
-3. import the responsive-directives-angular2 in your Angular 2 component
+3.Import Directives:
 
-   * With Bootstrap Screen sizes  Directives
- ```
-import { LG,MD,SM,XS } from 'responsive-directives-angular2';
- ```
-    * With multiple combinations screen sizes bootstrap and show / hide options
- ```
-import { ShowItBootstrap,HideItBootstrap } from 'responsive-directives-angular2';
- ```
-   * With Devices Screen sizes Directives
- ```
-import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
- ```
-    * With custom sizes and show / hide options
- ```
-import { ShowItSizes,HideItSizes } from 'responsive-directives-angular2';
- ```
-     * All directives globally
-  ```
-import {provide, PLATFORM_DIRECTIVES} from '@angular/core';
-import {ResponsiveState, ResponsiveConfig, DIRECTIVES as RESPONSIVE_DIRECTIVES} from 'responsive-directives-angular2';
- ...
- bootstrap(App, [
-       ResponsiveState,
-        {provide: PLATFORM_DIRECTIVES, multi: true, useValue: RESPONSIVE_DIRECTIVES}]);
-  ```
+   1. import the Directives **Locally** in your Angular 2 component
+      
+      * With Bootstrap screen sizes.
+      
+       ```
+       import { LG,MD,SM,XS } from 'responsive-directives-angular2';
+       ```
+      
+      * With multiple combinations bootstrap screen sizes and show / hide options.
+      
+      ```
+      import { ShowItBootstrap,HideItBootstrap } from 'responsive-directives-angular2';
+      ```
+      
+      * With Devices screen sizes.
+      
+      ```
+      import { IsDesktop,IsMobile,IsTablet } from 'responsive-directives-angular2';
+      ```
+      
+      * With custom sizes and show / hide options.
+      
+      ```
+      import { ShowItSizes,HideItSizes } from 'responsive-directives-angular2';
+      ```
+      
+   2. Add Directives to **Globally** Angular 2 Directives
+      
+      - In your init App Class add All **RESPONSIVE_DIRECTIVES** to the global directives core of Angular 2
+      
+      ```
+      import {provide, PLATFORM_DIRECTIVES} from '@angular/core';
+      import {ResponsiveState, ResponsiveConfig, RESPONSIVE_DIRECTIVES} from 'responsive-directives-angular2';
+      ...
+      bootstrap(App, [
+             ResponsiveState,
+             provide(PLATFORM_DIRECTIVES, { useValue: [RESPONSIVE_DIRECTIVES], multi: true})
+             ]);
+      ```
+      
+      * In your component to import the RESPONSIVE_DIRECTIVES only need import: 
+     
+      ```
+      import {CORE_DIRECTIVES} from '@angular/common';
+      ```
+      
+      And assign the CORE_DIRECTIVES:
+      
+      ```
+      @Component({
+         selector: 'my-component',
+         template: '
+              <p *lg>I'll show you if I'm a lg screen size.</p>
+              <p *md>I'll show you if I'm a md screen size.</p>
+              <p *sm>I'll show you if I'm a sm screen size.</p>
+              <p *xs>I'll show you if I'm a xs screen size.</p>
+         ',
+         directives: [CORE_DIRECTIVES]
+       })
+      ```
  
-4. Assign directives for use in a component
+4. If you import the RESPONSIVE_DIRECTIVES **Locally** in your Angular 2 component 
 
    * With Bootstrap Screen sizes
- ```
-@Component({
-  selector: 'my-component',
-  template: '
-    <p *lg>I'll show you if I'm a lg screen size.</p>
-    <p *md>I'll show you if I'm a md screen size.</p>
-    <p *sm>I'll show you if I'm a sm screen size.</p>
-    <p *xs>I'll show you if I'm a xs screen size.</p>
-  ',
-  directives: [LG,MD,SM,XS]
-})
- ```
-    * With multiple combinations screen sizes bootstrap and show / hide options
- ```
-@Component({
-  selector: 'my-component',
-  template: '
-    <p *showItBootstrap="['md','xs']">I'll show you only in md and xs screen sizes.</p>
-    <p *hideItBootstrap="['lg','sm']">I'll hide you only in lg and sm screen sizes.</p>
-  ',
-  directives: [ShowItBootstrap,HideItBootstrap]
-})
- ```
+   
+   ```
+   @Component({
+      selector: 'my-component',
+      template: '
+        <p *lg>I'll show you if I'm a lg screen size.</p>
+        <p *md>I'll show you if I'm a md screen size.</p>
+        <p *sm>I'll show you if I'm a sm screen size.</p>
+        <p *xs>I'll show you if I'm a xs screen size.</p>
+      ',
+      directives: [LG,MD,SM,XS]
+   })
+   ```
+   
+   * With multiple combinations of bootstrap screen sizes and show / hide options
+  
+   ```
+   @Component({
+      selector: 'my-component',
+      template: '
+        <p *showItBootstrap="['md','xs']">I'll show you only in md and xs screen sizes.</p>
+        <p *hideItBootstrap="['lg','sm']">I'll hide you only in lg and sm screen sizes.</p>
+      ',
+      directives: [ShowItBootstrap,HideItBootstrap]
+   })
+   ```
+   
    * With Devices Screen sizes
- ```
-@Component({
-  selector: 'my-component',
-  template: '
-    <p *isDesktop>I'll show you if I'm a desktop device.</p>
-    <p *isTablet>I'll show you if I'm a tablet device.</p>
-    <p *isMobile>I'll show you if I'm a mobile device.</p>
-  ',
-  directives: [IsDesktop,IsMobile,IsTablet ]
-})
- ```
+  
+   ```
+  @Component({
+     selector: 'my-component',
+     template: '
+       <p *isDesktop>I'll show you if I'm a desktop device.</p>
+       <p *isTablet>I'll show you if I'm a tablet device.</p>
+       <p *isMobile>I'll show you if I'm a mobile device.</p>
+     ',
+     directives: [IsDesktop,IsMobile,IsTablet ]
+  })
+  ```
+ 
   * With custom sizes and show / hide options
- ```
-@Component({
-  selector: 'my-component',
-  template: '
-    <p *showItSizes="{min:955,max:1057}">I'll show you if I have a width between the min and max.</p>
-    <p *hideItSizes="{min:360,max:768}">It is hidden if I have a width between the min and max.</p>
-  ',
-  directives: [ ShowItSizes,HideItSizes ]
-})
- ```
+ 
+  ```
+  @Component({
+    selector: 'my-component',
+    template: '
+      <p *showItSizes="{min:955,max:1057}">I'll show you if I have a width between the min and max.</p>
+      <p *hideItSizes="{min:360,max:768}">It is hidden if I have a width between the min and max.</p>
+    ',
+    directives: [ ShowItSizes,HideItSizes ]
+  })
+  ```
 
-# NEXT 
-Will work in the following features:
-
+# NEXT STEPS 
 - Detection device: browser type, operating system..etc
 - Detect portrait and landscape device status
+- Time Events Show/Hide Elements
+
+# Contributors
+
+ * ManuCutillas 
+ * Christophe HOARAU
 
 # License
 
