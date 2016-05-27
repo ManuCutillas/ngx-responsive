@@ -20,6 +20,11 @@
  *
  */
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -34,6 +39,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('@angular/core');
 require('rxjs/add/operator/share');
+require('rxjs/add/operator/debounce');
 var Rx_1 = require('rxjs/Rx');
 // Configuration class in order to allow to change breakpoints values
 var ResponsiveConfig = (function () {
@@ -43,7 +49,8 @@ var ResponsiveConfig = (function () {
                 xs: { max: 767 },
                 sm: { min: 768, max: 991 },
                 md: { min: 992, max: 1199 },
-                lg: { min: 1200 }
+                lg: { min: 1200, max: 1599 },
+                xl: { min: 1600 }
             },
             debounceTime: 100
         };
@@ -505,31 +512,25 @@ var XS = (function () {
     return XS;
 }());
 exports.XS = XS;
-/*======== MULTIPLE SIZES STATES =========*/
-/* show */
-var ShowItBootstrap = (function () {
-    function ShowItBootstrap(templateRef, viewContainer, _responsiveState) {
+var ShowHideItBootstrap = (function () {
+    function ShowHideItBootstrap(templateRef, viewContainer, _responsiveState) {
         this.templateRef = templateRef;
         this.viewContainer = viewContainer;
         this._responsiveState = _responsiveState;
         this.noRepeat = 0;
     }
-    Object.defineProperty(ShowItBootstrap.prototype, "showItBootstrap", {
-        set: function (grid_state) {
-            this._grid_state = (Array.isArray(grid_state) ? grid_state : [grid_state]);
-            this.updateView(this._responsiveState.getDeviceSizeInitial());
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ShowItBootstrap.prototype.ngOnInit = function () {
+    ShowHideItBootstrap.prototype.setGrid = function (grid_state) {
+        this._grid_state = (Array.isArray(grid_state) ? grid_state : [grid_state]);
+        this.updateView(this._responsiveState.getDeviceSizeInitial());
+    };
+    ShowHideItBootstrap.prototype.ngOnInit = function () {
         this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateView.bind(this));
     };
-    ShowItBootstrap.prototype.ngOnDestroy = function () {
+    ShowHideItBootstrap.prototype.ngOnDestroy = function () {
         this._subscription.unsubscribe();
     };
-    ShowItBootstrap.prototype.updateView = function (valor) {
-        if (!!this._grid_state && this._grid_state.indexOf(valor) !== -1) {
+    ShowHideItBootstrap.prototype.showHide = function (show) {
+        if (!!show) {
             if (this.noRepeat == 0) {
                 this.noRepeat = 1;
                 this.viewContainer.createEmbeddedView(this.templateRef);
@@ -540,6 +541,32 @@ var ShowItBootstrap = (function () {
             this.viewContainer.clear();
         }
     };
+    ShowHideItBootstrap.prototype.updateView = function (valor) {
+        if (!!this._showWhenTrue) {
+            this.showHide(!!this._grid_state && this._grid_state.indexOf(valor) !== -1);
+        }
+        else {
+            this.showHide(!(!!this._grid_state && this._grid_state.indexOf(valor) !== -1));
+        }
+    };
+    return ShowHideItBootstrap;
+}());
+/*======== MULTIPLE SIZES STATES =========*/
+/* show */
+var ShowItBootstrap = (function (_super) {
+    __extends(ShowItBootstrap, _super);
+    function ShowItBootstrap(templateRef, viewContainer, _responsiveState) {
+        _super.call(this, templateRef, viewContainer, _responsiveState);
+        this._showWhenTrue = true;
+        // this._showWhenTrue = true;
+    }
+    Object.defineProperty(ShowItBootstrap.prototype, "showItBootstrap", {
+        set: function (grid_state) {
+            this.setGrid(grid_state);
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object), 
@@ -552,57 +579,27 @@ var ShowItBootstrap = (function () {
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], ShowItBootstrap);
     return ShowItBootstrap;
-}());
+}(ShowHideItBootstrap));
 exports.ShowItBootstrap = ShowItBootstrap;
 /* hide */
-var HideItBootstrap = (function () {
+var HideItBootstrap = (function (_super) {
+    __extends(HideItBootstrap, _super);
     function HideItBootstrap(templateRef, viewContainer, _responsiveState) {
-        this.templateRef = templateRef;
-        this.viewContainer = viewContainer;
-        this._responsiveState = _responsiveState;
-        this.noRepeat = 0;
-        this.callInit = 0;
+        _super.call(this, templateRef, viewContainer, _responsiveState);
+        this._showWhenTrue = false;
+        // this._showWhenTrue = true;
     }
     Object.defineProperty(HideItBootstrap.prototype, "hideItBootstrap", {
-        set: function (_grid_state) {
-            var _this = this;
-            if (this.callInit == 0) {
-                this.init(_grid_state);
-                this.callInit = 1;
-            }
-            this._responsiveState.elementoObservar.subscribe(function (valor) {
-                if (valor == _grid_state[0] || valor == _grid_state[1]) {
-                    _this.noRepeat = 0;
-                    _this.viewContainer.clear();
-                }
-                else {
-                    if (_this.noRepeat == 0) {
-                        _this.noRepeat = 1;
-                        _this.viewContainer.createEmbeddedView(_this.templateRef);
-                    }
-                }
-            });
+        set: function (grid_state) {
+            this.setGrid(grid_state);
         },
         enumerable: true,
         configurable: true
     });
-    HideItBootstrap.prototype.init = function (_grid_state) {
-        var initialDevice = this._responsiveState.getDeviceSizeInitial();
-        if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
-            this.noRepeat = 0;
-            this.viewContainer.clear();
-        }
-        else {
-            if (this.noRepeat == 0) {
-                this.noRepeat = 1;
-                this.viewContainer.createEmbeddedView(this.templateRef);
-            }
-        }
-    };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', String), 
-        __metadata('design:paramtypes', [String])
+        __metadata('design:type', Object), 
+        __metadata('design:paramtypes', [Object])
     ], HideItBootstrap.prototype, "hideItBootstrap", null);
     HideItBootstrap = __decorate([
         core_1.Directive({
@@ -611,7 +608,7 @@ var HideItBootstrap = (function () {
         __metadata('design:paramtypes', [core_1.TemplateRef, core_1.ViewContainerRef, ResponsiveState])
     ], HideItBootstrap);
     return HideItBootstrap;
-}());
+}(ShowHideItBootstrap));
 exports.HideItBootstrap = HideItBootstrap;
 /*======== CUSTOM SIZES =========*/
 /* show */

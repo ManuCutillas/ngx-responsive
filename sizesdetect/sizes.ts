@@ -22,6 +22,7 @@
 
 import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional} from '@angular/core';
 import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/debounce';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
 
 export interface ResponsiveConfigInterface {
@@ -29,7 +30,8 @@ export interface ResponsiveConfigInterface {
         xs: {max: number},
         sm: {min: number, max: number},
         md: {min: number, max: number},
-        lg: {min: number}
+        lg: {min: number, max: number},
+        xl: {min: number}
     },
     debounceTime: number
 }
@@ -41,7 +43,8 @@ export class ResponsiveConfig {
             xs: {max: 767},
             sm: {min: 768, max: 991},
             md: {min: 992, max: 1199},
-            lg: {min: 1200}
+            lg: {min: 1200, max: 1599},
+            xl: {min: 1600}
         },
         debounceTime: 100
     };
@@ -422,16 +425,11 @@ export class XS {
     }
 }
 
-
-/*======== MULTIPLE SIZES STATES =========*/
-/* show */
-@Directive({
-    selector: '[showItBootstrap]'
-})
-export class ShowItBootstrap implements OnInit, OnDestroy {
+abstract class ShowHideItBootstrap implements OnInit, OnDestroy {
     private noRepeat: number = 0;
     private _grid_state: string[];
     private _subscription: Subscription;
+    protected _showWhenTrue: boolean;
 
     constructor(private templateRef: TemplateRef<any>,
                 private viewContainer: ViewContainerRef,
@@ -439,8 +437,8 @@ export class ShowItBootstrap implements OnInit, OnDestroy {
     }
 
 
-    @Input() set showItBootstrap(grid_state: string[]|string) {
-        this._grid_state = <string[]>(Array.isArray(grid_state) ? grid_state : [grid_state]) ;
+    protected setGrid(grid_state: string[]|string) {
+        this._grid_state = <string[]>(Array.isArray(grid_state) ? grid_state : [grid_state]);
         this.updateView(this._responsiveState.getDeviceSizeInitial());
     }
 
@@ -452,8 +450,8 @@ export class ShowItBootstrap implements OnInit, OnDestroy {
         this._subscription.unsubscribe();
     }
 
-    updateView(valor: string) {
-        if (!!this._grid_state && this._grid_state.indexOf(valor) !== -1) {
+    private showHide(show: boolean) {
+        if (!!show) {
             if (this.noRepeat == 0) {
                 this.noRepeat = 1;
                 this.viewContainer.createEmbeddedView(this.templateRef);
@@ -463,53 +461,53 @@ export class ShowItBootstrap implements OnInit, OnDestroy {
             this.viewContainer.clear();
         }
     }
+
+    updateView(valor: string) {
+        if (!!this._showWhenTrue) {
+            this.showHide(!!this._grid_state && this._grid_state.indexOf(valor) !== -1)
+        } else {
+            this.showHide(!(!!this._grid_state && this._grid_state.indexOf(valor) !== -1))
+        }
+    }
+}
+
+/*======== MULTIPLE SIZES STATES =========*/
+/* show */
+@Directive({
+    selector: '[showItBootstrap]'
+})
+export class ShowItBootstrap extends ShowHideItBootstrap {
+    protected _showWhenTrue: boolean = true;
+
+    @Input() set showItBootstrap(grid_state: string[]|string) {
+        this.setGrid(grid_state);
+    }
+
+    constructor(templateRef: TemplateRef<any>,
+                viewContainer: ViewContainerRef,
+                _responsiveState: ResponsiveState) {
+        super(templateRef, viewContainer, _responsiveState);
+        // this._showWhenTrue = true;
+    }
+
 }
 
 /* hide */
 @Directive({
     selector: '[hideItBootstrap]'
 })
-export class HideItBootstrap {
-    private noRepeat: number = 0;
-    private callInit: number = 0;
+export class HideItBootstrap extends ShowHideItBootstrap {
+    protected _showWhenTrue: boolean = false;
 
-    constructor(private templateRef: TemplateRef<any>,
-                private viewContainer: ViewContainerRef,
-                private _responsiveState: ResponsiveState) {
+    @Input() set hideItBootstrap(grid_state: string[]|string) {
+        this.setGrid(grid_state);
     }
 
-
-    @Input() set hideItBootstrap(_grid_state: string) {
-        if (this.callInit == 0) {
-            this.init(_grid_state);
-            this.callInit = 1;
-        }
-        this._responsiveState.elementoObservar.subscribe((valor: any) => {
-            if (valor == _grid_state[0] || valor == _grid_state[1]) {
-                this.noRepeat = 0;
-                this.viewContainer.clear();
-            } else {
-                if (this.noRepeat == 0) {
-                    this.noRepeat = 1;
-                    this.viewContainer.createEmbeddedView(this.templateRef);
-                }
-            }
-
-        });
-    }
-
-    init(_grid_state: string) {
-        let initialDevice: any = this._responsiveState.getDeviceSizeInitial();
-        if (initialDevice == _grid_state[0] || initialDevice == _grid_state[1]) {
-            this.noRepeat = 0;
-            this.viewContainer.clear();
-        } else {
-
-            if (this.noRepeat == 0) {
-                this.noRepeat = 1;
-                this.viewContainer.createEmbeddedView(this.templateRef);
-            }
-        }
+    constructor(templateRef: TemplateRef<any>,
+                viewContainer: ViewContainerRef,
+                _responsiveState: ResponsiveState) {
+        super(templateRef, viewContainer, _responsiveState);
+        // this._showWhenTrue = true;
     }
 }
 
