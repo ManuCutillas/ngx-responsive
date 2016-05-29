@@ -191,6 +191,7 @@ npm i responsive-directives-angular2 --save
 
  * ManuCutillas 
  * Christophe HOARAU
+ * Kamil Breguła
 
 # License
 

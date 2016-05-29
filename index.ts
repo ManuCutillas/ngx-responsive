@@ -2,9 +2,9 @@
  * Responsive Devices Detect Directives for Angular 2
  *
  * @Created_by Manu Cutillas
- * @Contributors Christophe HOARAU
+ * @Contributors Christophe HOARAU, Kamil Breguła
  * @created_at May 23, 2016
- * @updated_at May 28, 2016 - by Manu Cutillas & Christophe HOARAU
+ * @updated_at May 28, 2016 - by Kamil Breguła
  * @version_0.1.7
  *
  * Dependencies:

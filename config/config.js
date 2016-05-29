@@ -49,19 +49,20 @@ var ResponsiveState = (function () {
         this.sizeOperations = function () {
             _this.width = _this.getWidth();
             try {
-                if (_this._responsiveConfig.config.breakPoints.xl.min <= _this.width) {
+                var breakpoints = _this._responsiveConfig.config.breakPoints;
+                if (breakpoints.xl.min <= _this.width) {
                     return 'xl';
                 }
-                else if (_this._responsiveConfig.config.breakPoints.lg.max >= _this.width && _this._responsiveConfig.config.breakPoints.lg.min <= _this.width) {
+                else if (breakpoints.lg.max >= _this.width && breakpoints.lg.min <= _this.width) {
                     return 'lg';
                 }
-                else if (_this._responsiveConfig.config.breakPoints.md.max >= _this.width && _this._responsiveConfig.config.breakPoints.md.min <= _this.width) {
+                else if (breakpoints.md.max >= _this.width && breakpoints.md.min <= _this.width) {
                     return 'md';
                 }
-                else if (_this._responsiveConfig.config.breakPoints.sm.max >= _this.width && _this._responsiveConfig.config.breakPoints.sm.min <= _this.width) {
+                else if (breakpoints.sm.max >= _this.width && breakpoints.sm.min <= _this.width) {
                     return 'sm';
                 }
-                else if (_this._responsiveConfig.config.breakPoints.xs.max >= _this.width) {
+                else if (breakpoints.xs.max >= _this.width) {
                     return 'xs';
                 }
             }
