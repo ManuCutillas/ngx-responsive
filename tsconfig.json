@@ -11,6 +11,9 @@
   },
   "files": [
     "index.ts",
-    "sizesdetect/sizes.ts"
+    "config/config.ts",
+    "bootstrap/bootstrap-directives.ts",
+    "custom-sizes/custom-sizes-directives.ts",
+    "devices/devices-directives.ts"
   ]
 }
