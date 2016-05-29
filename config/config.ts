@@ -62,15 +62,16 @@ export class ResponsiveState {
     private sizeOperations = (): string => {
         this.width = this.getWidth();
         try {
-            if (this._responsiveConfig.config.breakPoints.xl.min <= this.width) {
+            let breakpoints = this._responsiveConfig.config.breakPoints;
+            if (breakpoints.xl.min <= this.width) {
                 return 'xl';
-            } else if (this._responsiveConfig.config.breakPoints.lg.max >= this.width && this._responsiveConfig.config.breakPoints.lg.min <= this.width) {
+            } else if (breakpoints.lg.max >= this.width && breakpoints.lg.min <= this.width) {
                 return 'lg';
-            } else if (this._responsiveConfig.config.breakPoints.md.max >= this.width && this._responsiveConfig.config.breakPoints.md.min <= this.width) {
+            } else if (breakpoints.md.max >= this.width && breakpoints.md.min <= this.width) {
                 return 'md';
-            } else if (this._responsiveConfig.config.breakPoints.sm.max >= this.width && this._responsiveConfig.config.breakPoints.sm.min <= this.width) {
+            } else if (breakpoints.sm.max >= this.width && breakpoints.sm.min <= this.width) {
                 return 'sm';
-            } else if (this._responsiveConfig.config.breakPoints.xs.max >= this.width) {
+            } else if (breakpoints.xs.max >= this.width) {
                 return 'xs';
             }
         } catch (error) {
