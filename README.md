@@ -7,12 +7,12 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: xl / lg / md / sm / xs
  - Directives that detect three states according to the type of device screens.
- - **NEW:** Multiple combinations of states bootstrap.
- - **NEW:** Custom sizes detector.
- - **NEW:** Show and hide options.
- - **NEW:** Custom breaking points.
- - **NEW:** Debounce checking interval (default 100ms).
- - **NEW:** Locally or Global use in your proyect.
+ - Multiple combinations of states bootstrap.
+ - Custom sizes detector.
+ - Show and hide options.
+ - Custom breaking points.
+ - Debounce checking interval (default 100ms).
+ - Locally or Global use in your proyect.
  - **NEW:** New XL size (default: 1600px)
  - Written for the latest release of Angular 2 in typescript.
  

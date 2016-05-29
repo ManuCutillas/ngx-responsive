@@ -4,8 +4,8 @@
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU
  * @created_at May 23, 2016
- * @updated_at May 28, 2016 - by Christophe HOARAU & Manu Cutillas
- * @version_0.1.6
+ * @updated_at May 28, 2016 - by Manu Cutillas
+ * @version_0.1.7
  *
  * Dependencies:
  * @angular/core : "2.0.0-rc.1"
@@ -20,7 +20,6 @@
  *
  */
 
-// index.ts
 /* IMPORTS => MODULES */
 
 //PACKAGE CONFIG
