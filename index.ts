@@ -4,7 +4,7 @@
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU
  * @created_at May 23, 2016
- * @updated_at May 28, 2016 - by Manu Cutillas
+ * @updated_at May 28, 2016 - by Manu Cutillas & Christophe HOARAU
  * @version_0.1.7
  *
  * Dependencies:
