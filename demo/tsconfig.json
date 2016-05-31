@@ -1,0 +1,16 @@
+{
+  "version": "1.8.10",
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "declaration": true
+  },
+  "files": [
+    "main.ts",
+    "components/app.component.ts"
+  ]
+}

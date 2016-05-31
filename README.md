@@ -355,18 +355,12 @@ npm i responsive-directives-angular2 --save
 - Pixel ratio detect
 - Time Events Show/Hide Elements
 - Desktop OS
-- Multiple combinations : Example *miDirective=['iphone','chrome'];
-- Best documentation with demo examples
+- Demo examples
 
 # Contributors
  * ManuCutillas 
  * Christophe HOARAU
  * Kamil Breguła
-
-### Version
-0.1.8
-### Dev Version
-0.1.9
 
 # License
 
