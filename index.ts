@@ -4,8 +4,8 @@
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU, Kamil Breguła
  * @created_at May 23, 2016
- * @updated_at May 28, 2016 - by Kamil Breguła
- * @version_0.1.7
+ * @updated_at May 31, 2016 - by ManuCutillas
+ * @version_0.1.8
  *
  * Dependencies:
  * @angular/core : "2.0.0-rc.1"
@@ -23,22 +23,32 @@
 /* IMPORTS => MODULES */
 
 //PACKAGE CONFIG
+import {ResponsiveConfigInterface} from './config/interfaces';
 import {ResponsiveSizeInfo} from './config/config';
 
 //Import Bootstrap Directives
 import {XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap} from './bootstrap/bootstrap-directives';
 //Import Devices Directives
-import {IsDesktop, IsTablet, IsMobile} from './devices/devices-directives';
+import {IsDesktop, IsTablet, IsMobile,IsSmartTv,ShowItDevice,HideItDevice, IsIphone, IsIpad, 
+       IsAndroidMobile,IsAndroidTablet,IsWindowsPhone,ShowItStandard,HideItStandard,IsPortrait,IsLandscape } from './devices/devices-directives';
 //Import Custom Sizes Directives
 import {ShowItSizes, HideItSizes} from './custom-sizes/custom-sizes-directives';
+//Import Pixel Ratio Directives
+import {Is1xPixel, IsRetina,Is4k} from './pixelratio/pixelratio-directives';
+//Import Browsers Directives
+import {IsChrome, IsFirefox,IsSafari,IsOpera,IsIE,IsIE9,IsIE10,IsIE11,IsIE12,ShowItBrowser,HideItBrowser,ShowIEVersion,HideIEVersion} from './browsers/browsers-directives';
 
 /* EXPORT => MODULES */
+export * from './config/interfaces';
 export * from './config/config';
 export * from './bootstrap/bootstrap-directives';
 export * from './devices/devices-directives';
 export * from './custom-sizes/custom-sizes-directives';
-
+export * from './pixelratio/pixelratio-directives';
+export * from './browsers/browsers-directives';
 
 export const RESPONSIVE_DIRECTIVES = [
-    XL, LG, MD, SM, XS, IsDesktop, IsTablet, IsMobile, ShowItBootstrap, HideItBootstrap, ShowItSizes, HideItSizes
+    XL, LG, MD, SM, XS,ShowItBootstrap, HideItBootstrap,IsSmartTv, IsDesktop, IsTablet, IsMobile,ShowItDevice,HideItDevice, IsIphone, IsIpad, 
+    IsAndroidMobile,IsAndroidTablet,IsWindowsPhone,ShowItStandard,HideItStandard,IsPortrait,IsLandscape,ShowItSizes, HideItSizes,
+    Is1xPixel, IsRetina,Is4k,IsChrome, IsFirefox,IsSafari,IsOpera,IsIE,IsIE9,IsIE10,IsIE11,IsIE12,ShowItBrowser,HideItBrowser,ShowIEVersion,HideIEVersion
 ]; 

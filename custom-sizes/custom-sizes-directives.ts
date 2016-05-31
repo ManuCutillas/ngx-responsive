@@ -2,13 +2,8 @@ import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef,
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/debounce';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
-import {ResponsiveConfigInterface,ResponsiveState} from '../config/config';
-
-interface JsonGrid
-{
-    min : number;
-    max: number
-}
+import {ResponsiveState} from '../config/config';
+import {ResponsiveConfigInterface,JsonGrid} from '../config/interfaces';
 
 
 abstract class CustomSizes implements OnInit, OnDestroy {

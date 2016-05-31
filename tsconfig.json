@@ -11,9 +11,13 @@
   },
   "files": [
     "index.ts",
+    "config/const.ts",
+    "config/interfaces.ts",
     "config/config.ts",
     "bootstrap/bootstrap-directives.ts",
     "custom-sizes/custom-sizes-directives.ts",
-    "devices/devices-directives.ts"
+    "devices/devices-directives.ts",
+    "browsers/browsers-directives.ts",
+    "pixelratio/pixelratio-directives.ts"
   ]
 }

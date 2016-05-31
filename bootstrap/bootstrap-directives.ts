@@ -2,7 +2,8 @@ import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef,
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/debounce';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
-import {ResponsiveConfigInterface,ResponsiveState} from '../config/config';
+import {ResponsiveState} from '../config/config';
+import {ResponsiveConfigInterface} from '../config/interfaces';
 /*
  *
  * Bootstrap standard screen sizes directives

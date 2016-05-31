@@ -5,13 +5,13 @@ import {Observable, Observer, Subscription} from  'rxjs/Rx';
 import {ResponsiveState} from '../config/config';
 import {ResponsiveConfigInterface} from '../config/interfaces';
 import { REG_TABLETS, REG_MOBILES } from '../config/const';
+
 /*
- * DEVICES DIRECTIVES
- * @Desktops / @Tablets / @Mobile
- *  Work in : Detect device by navigator and refactor the code with abstract class
+ * BROWSERS DIRECTIVES
+ * @CHROME @FIREFOX @IE @OPERA
+ *  on work;
  */
-
-abstract class DEVICE_DETECT implements OnInit, OnDestroy {
+abstract class BROWSERS implements OnInit, OnDestroy {
     
     private noRepeat: number = 0;
     private _grid_state: string[];
@@ -29,7 +29,7 @@ abstract class DEVICE_DETECT implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this._subscription = this._responsiveState.deviceObserver.subscribe(this.updateView.bind(this));
+        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateView.bind(this));
     }
 
     ngOnDestroy() {
@@ -57,56 +57,17 @@ abstract class DEVICE_DETECT implements OnInit, OnDestroy {
     }
 }
 
-/*======== SMART TV STATES =========*/
+/*======== CHROME =========*/
 @Directive({
-    selector: '[isSmartTv]',
+    selector: '[isChrome]',
     providers:[ResponsiveState]
 })
-export class IsSmartTv extends DEVICE_DETECT{
-    protected state: string = 'smarttv';
-    protected _showWhenTrue: boolean = true;
-    
-    @Input() set isSmartTv(grid_state: string[]|string) {
-        this.setGrid(this.state);
-    }
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
-    }
-    
-}
-    
-/*======== DESKTOPS STATES =========*/
-@Directive({
-    selector: '[isDesktop]',
-    providers:[ResponsiveState]
-})
-export class IsDesktop extends DEVICE_DETECT{
-    protected state: string = 'desktop';
-    protected _showWhenTrue: boolean = true;
-    
-    @Input() set isDesktop(grid_state: string[]|string) {
-        this.setGrid(this.state);
-    }
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
-    }
-    
-}
 
-/*======== TABLETS STATES =========*/
-@Directive({
-    selector: '[isTablet]',
-    providers:[ResponsiveState]
-})
-export class IsTablet extends DEVICE_DETECT {
-     protected state: string = 'tablet';
+export class IsChrome extends BROWSERS{
+    protected state: string = 'chrome';
     protected _showWhenTrue: boolean = true;
     
-    @Input() set isTablet(grid_state: string[]|string) {
+    @Input() set isChrome(grid_state: string[]|string) {
         this.setGrid(this.state);
     }
     constructor(templateRef: TemplateRef<any>,
@@ -116,68 +77,123 @@ export class IsTablet extends DEVICE_DETECT {
     }
 }
 
-/*======== MOBILE STATES =========*/
+/*======== FIREFOX =========*/
 @Directive({
-    selector: '[isMobile]',
+    selector: '[isFirefox]',
     providers:[ResponsiveState]
 })
 
-export class IsMobile extends DEVICE_DETECT {
-    protected state: string = 'mobile';
+export class IsFirefox extends BROWSERS{
+    protected state: string = 'firefox';
     protected _showWhenTrue: boolean = true;
-
-    @Input() set isMobile(grid_state: string[]|string) {
+    
+    @Input() set isFirefox(grid_state: string[]|string) {
         this.setGrid(this.state);
     }
-    
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
     }
+    
 }
 
-/*======== DEVICE STATES =========*/
+/*======== SAFARI =========*/
 @Directive({
-    selector: '[showItDevice]',
+    selector: '[isSafari]',
     providers:[ResponsiveState]
 })
-
-export class ShowItDevice extends DEVICE_DETECT {
+export class IsSafari extends BROWSERS{
+    protected state: string = 'safari';
     protected _showWhenTrue: boolean = true;
+    
+    @Input() set isSafari(grid_state: string[]|string) {
+        this.setGrid(this.state);
+    }
+    constructor(templateRef: TemplateRef<any>,
+                viewContainer: ViewContainerRef,
+                _responsiveState: ResponsiveState) {
+        super(templateRef, viewContainer, _responsiveState);
+    }
+    
+}
 
-    @Input() set showItDevice(grid_state: string[]|string) {
+/*======== OPERA =========*/
+@Directive({
+    selector: '[isOpera]',
+    providers:[ResponsiveState]
+})
+export class IsOpera extends BROWSERS{
+    protected state: string = 'opera';
+    protected _showWhenTrue: boolean = true;
+    
+    @Input() set isOpera(grid_state: string[]|string) {
+        this.setGrid(this.state);
+    }
+    constructor(templateRef: TemplateRef<any>,
+                viewContainer: ViewContainerRef,
+                _responsiveState: ResponsiveState) {
+        super(templateRef, viewContainer, _responsiveState);
+    }
+    
+}
+
+/*======== IE =========*/
+@Directive({
+    selector: '[isIE]',
+    providers:[ResponsiveState]
+})
+export class IsIE extends BROWSERS{
+    protected state: string = 'ie';
+    protected _showWhenTrue: boolean = true;
+    
+    @Input() set isIE(grid_state: string[]|string) {
+        this.setGrid(this.state);
+    }
+    constructor(templateRef: TemplateRef<any>,
+                viewContainer: ViewContainerRef,
+                _responsiveState: ResponsiveState) {
+        super(templateRef, viewContainer, _responsiveState);
+    }
+    
+}
+
+@Directive({
+    selector: '[showItBrowser]',
+    providers:[ResponsiveState]
+})
+export class ShowItBrowser extends BROWSERS{
+    protected _showWhenTrue: boolean = true;
+    
+    @Input() set showItBrowser(grid_state: string[]|string) {
         this.setGrid(grid_state);
     }
-    
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
-    }
+    } 
 }
 
 @Directive({
-    selector: '[hideItDevice]',
+    selector: '[hideItBrowser]',
     providers:[ResponsiveState]
 })
-
-export class HideItDevice extends DEVICE_DETECT {
+export class HideItBrowser extends BROWSERS{
     protected _showWhenTrue: boolean = false;
-
-    @Input() set hideItDevice(grid_state: string[]|string) {
+    
+    @Input() set hideItBrowser(grid_state: string[]|string) {
         this.setGrid(grid_state);
     }
-    
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
-    }
+    } 
 }
 
 
-abstract class STANDARD_DEVICES implements OnInit, OnDestroy {
+abstract class IE_VERSION implements OnInit, OnDestroy {
     
     private noRepeat: number = 0;
     private _grid_state: string[];
@@ -195,7 +211,7 @@ abstract class STANDARD_DEVICES implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this._subscription = this._responsiveState.standardObserver.subscribe(this.updateView.bind(this));
+        this._subscription = this._responsiveState.ieVersionObserver.subscribe(this.updateView.bind(this));
     }
 
     ngOnDestroy() {
@@ -223,234 +239,108 @@ abstract class STANDARD_DEVICES implements OnInit, OnDestroy {
     }
 }
 
-/*======== IPHONE =========*/
 @Directive({
-    selector: '[isIphone]',
+    selector: '[isIE9]',
     providers:[ResponsiveState]
 })
-
-export class IsIphone extends STANDARD_DEVICES  {
-       protected state: string = 'iphone';
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set isIphone(grid_state: string[]|string) {
-        this.setGrid(this.state);
-    }
-
+export class IsIE9 extends BROWSERS{
+    protected state: string = 'ie 9';
+    protected _showWhenTrue: boolean = true;
     
+    @Input() set isIE9(grid_state: string[]|string) {
+        this.setGrid(this.state);
+    }
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
-    }           
+    } 
 }
 
 @Directive({
-    selector: '[isIpad]',
+    selector: '[isIE10]',
     providers:[ResponsiveState]
 })
-
-export class IsIpad extends STANDARD_DEVICES  {
-       protected state: string = 'iphone';
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set isIphone(grid_state: string[]|string) {
-        this.setGrid(this.state);
-    }
-
+export class IsIE10 extends BROWSERS{
+    protected state: string = 'ie 10';
+    protected _showWhenTrue: boolean = true;
     
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
-    }           
-}
-
-@Directive({
-    selector: '[isAndroidMobile]',
-    providers:[ResponsiveState]
-})
-
-export class IsAndroidMobile extends STANDARD_DEVICES  {
-       protected state: string = 'android mobile';
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set isAndroidMobile(grid_state: string[]|string) {
+    @Input() set isIE10(grid_state: string[]|string) {
         this.setGrid(this.state);
     }
-
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
-    }           
+    } 
 }
 
 @Directive({
-    selector: '[isAndroidTablet]',
+    selector: '[isIE11]',
     providers:[ResponsiveState]
 })
-
-export class IsAndroidTablet extends STANDARD_DEVICES  {
-       protected state: string = 'android tablet';
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set isAndroidTablet(grid_state: string[]|string) {
+export class IsIE11 extends BROWSERS{
+    protected state: string = 'ie 11';
+    protected _showWhenTrue: boolean = true;
+    
+    @Input() set isIE11(grid_state: string[]|string) {
         this.setGrid(this.state);
     }
-
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
-    }           
+    } 
 }
 
-
 @Directive({
-    selector: '[isWindowsPhone]',
+    selector: '[isIE12]',
     providers:[ResponsiveState]
 })
-
-export class IsWindowsPhone extends STANDARD_DEVICES {
-       protected state: string = 'windows phone';
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set isWindowsPhone(grid_state: string[]|string) {
+export class IsIE12 extends BROWSERS{
+    protected state: string = 'ie 12';
+    protected _showWhenTrue: boolean = true;
+    
+    @Input() set isIE12(grid_state: string[]|string) {
         this.setGrid(this.state);
     }
-
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
-    }           
+    } 
 }
 
-
 @Directive({
-    selector: '[showItStandard]',
+    selector: '[showIEVersion]',
     providers:[ResponsiveState]
 })
-
-export class ShowItStandard extends STANDARD_DEVICES  {
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set showItStandard(grid_state: string[]|string) {
+export class ShowIEVersion extends BROWSERS{
+    protected _showWhenTrue: boolean = true;
+    
+    @Input() set showIEVersion(grid_state: string[]|string) {
         this.setGrid(grid_state);
     }
-
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
-    }           
+    } 
 }
 
 @Directive({
-    selector: '[hideItStandard]',
+    selector: '[hideIEVersion]',
     providers:[ResponsiveState]
 })
-
-export class HideItStandard extends STANDARD_DEVICES  {
-       protected _showWhenTrue: boolean = false;
-
-    @Input() set hideItStandard(grid_state: string[]|string) {
+export class HideIEVersion extends BROWSERS{
+    protected _showWhenTrue: boolean = false;
+    
+    @Input() set hideIEVersion(grid_state: string[]|string) {
         this.setGrid(grid_state);
     }
-
     constructor(templateRef: TemplateRef<any>,
                 viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
-    }           
-}
-
-
-
-abstract class ORIENTATION implements OnInit, OnDestroy {
-    
-    private noRepeat: number = 0;
-    private _grid_state: string;
-    private _subscription: Subscription;
-    protected _showWhenTrue: boolean;
-
-    constructor(private templateRef: TemplateRef<any>,
-                private viewContainer: ViewContainerRef,
-                private _responsiveState: ResponsiveState) {
-    }
-
-
-    protected setGrid(grid_state: string) {
-     return this._grid_state = grid_state;
-    }
-
-    ngOnInit() {
-        this._subscription = this._responsiveState.orientationObserver.subscribe(this.updateView.bind(this));
-    }
-
-    ngOnDestroy() {
-        this._subscription.unsubscribe();
-    }
-
-    private showHide(show: boolean) {
-        if (!!show) {
-            if (this.noRepeat == 0) {
-                this.noRepeat = 1;
-                this.viewContainer.createEmbeddedView(this.templateRef);
-            }
-        } else {
-            this.noRepeat = 0;
-            this.viewContainer.clear();
-        }
-    }
-
-    updateView(device: string) {
-        if(!!this._showWhenTrue){
-            this.showHide(!!(this._grid_state == device));
-        }else{
-            this.showHide(!(!!(this._grid_state == device)));
-        } 
-    }
-}
-
-
-@Directive({
-    selector: '[isPortrait]',
-    providers:[ResponsiveState]
-})
-
-export class IsPortrait extends STANDARD_DEVICES  {
-       protected state: string = 'portrait';
-       protected _showWhenTrue: boolean = false;
-
-    @Input() set isPortrait(grid_state:string) {
-        this.setGrid(this.state);
-    }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
-    }           
-}
-
-@Directive({
-    selector: '[isLandscape]',
-    providers:[ResponsiveState]
-})
-
-export class IsLandscape extends STANDARD_DEVICES  {
-       protected state: string = 'landscape';
-       protected _showWhenTrue: boolean = false;
-
-    @Input() set isLandscape(grid_state:string) {
-        this.setGrid(this.state);
-    }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
-    }           
+    } 
 }
