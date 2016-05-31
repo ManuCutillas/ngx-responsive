@@ -2,9 +2,10 @@
   "name": "responsive-directives-angular2",
   "version": "0.1.8",
   "description": "Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 2",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -p ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -16,23 +17,82 @@
     "responsive",
     "bootstrap",
     "detect",
-    "states",
+    "mobile",
+    "tablet",
     "device",
     "devices",
     "screen",
     "typescript",
     "directive",
-    "sizes",
+    "retina",
+    "browsers",
+    "os",
     "directives"
   ],
-  "dependencies": {
-     "@angular/core": "2.0.0-rc.1",
-     "rxjs": "5.0.0-beta.6",
-     "zone.js": "^0.6.12"
+  "author": "Manu Cutillas <manucutillas@outlook.com> (http://kalypso.agency/)",
+  "contributors": [
+    "Christophe HOARAU (https://github.com/no-more)",
+    "Kamil Breguła (https://github.com/mik-laj)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ManuCutillas/responsive-directives-angular2/issues"
   },
-  "devDependencies": {  
-    "typescript": "~1.8.10"
+  "files": [
+    "src/index.ts",
+    "src/config/const.ts",
+    "src/config/interfaces.ts",
+    "src/config/config.ts",
+    "src/bootstrap/bootstrap-directives.ts",
+    "src/browsers/browsers-directives.ts",
+    "src/custom-sizes/custom-sizes-directives.ts",
+    "src/devices/devices-directives.ts",
+    "src/pixelratio/pixelratio-directives.ts",
+    "dist/index*",
+    "dist/config/const*",
+    "dist/config/interfaces*",
+    "dist/config/config*",
+    "dist/bootstrap/bootstrap-directives*",
+    "dist/browsers/browsers-directives*",
+    "dist/custom-sizes/custom-sizes-directives*",
+    "dist/devices/devices-directives*",
+    "dist/pixelratio/pixelratio-directives*",
+    "CHANGELOG.md"
+  ],
+  "homepage": "https://github.com/ManuCutillas/responsive-directives-angular2",
+  "peerDependencies": {
+    "@angular/core": "^2.0.0-rc.1",
+    "rxjs": "^5.0.0-beta.8"
   },
-  "author": "Manu Cutillas",
-  "license": "MIT"
+  "devDependencies": {
+    "del": "^2.2.0",
+    "es6-promise": "^3.2.1",
+    "es6-shim": "^0.35.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rollup": "^1.9.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-symlink": "^2.1.4",
+    "gulp-typescript": "^2.13.5",
+    "gulp-uglify": "^1.5.3",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-coverage": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "merge2": "^1.0.2",
+    "phantomjs": "^2.1.7",
+    "reflect-metadata": "0.1.3",
+    "run-sequence": "^1.2.1",
+    "rxjs": "^5.0.0-beta.8",
+    "systemjs": "^0.19.29",
+    "typescript": "^1.8.10",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "zone.js": "^0.6.12",
+    "browserify": "^13.0.1"
+  },
+  "dependencies": {}
 }

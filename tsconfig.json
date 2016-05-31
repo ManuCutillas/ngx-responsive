@@ -1,23 +1,18 @@
 {
-  "version": "1.8.10",
-  "compilerOptions": {
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es5",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
-    "declaration": true
-  },
-  "files": [
-    "index.ts",
-    "config/const.ts",
-    "config/interfaces.ts",
-    "config/config.ts",
-    "bootstrap/bootstrap-directives.ts",
-    "custom-sizes/custom-sizes-directives.ts",
-    "devices/devices-directives.ts",
-    "browsers/browsers-directives.ts",
-    "pixelratio/pixelratio-directives.ts"
-  ]
+	"compilerOptions": {
+		"target": "ES5",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"noImplicitAny": false,
+		"declarationFiles": true,
+		"rootDir": "./src"
+	},
+	"exclude": [
+		"node_modules",
+		"typings/main",
+		"typings/main.d.ts"
+	]
 }
