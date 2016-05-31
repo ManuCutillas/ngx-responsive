@@ -13,11 +13,11 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - Custom breaking points.
  - Debounce checking interval (default 100ms).
  - Locally or Global use in your proyect.
- - **NEW:** New Browsers Detect: Chrome / Safari / Firefox / IE / Opera
- - **NEW:** New Browser Internet Explorer Versions Detect : IE 9 / IE 10 / IE 11 / IE +12
- - **NEW:** New device detect: SmartTV.
- - **NEW:** New standard devices detect: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
- - **NEW:** New device orientation detect: portrait, landscape.
+ - **NEW:** Browsers Detect: Chrome / Safari / Firefox / IE / Opera
+ - **NEW:** Internet Explorer Versions Detect : IE 9 / IE 10 / IE 11 / IE +12
+ - **NEW:** New device: SmartTV.
+ - **NEW:** New standard devices: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
+ - **NEW:** Device orientation detect: portrait, landscape.
  - Written for the latest release of Angular 2 in typescript.
  - **ON DEV:** Pixel ratio detect : 1x / Retina / 4k.
  
@@ -92,38 +92,51 @@ npm i responsive-directives-angular2 --save
       ```
       import { ShowItDevice,HideItDevice } from 'responsive-directives-angular2';
       ```
-       * With Standard Devices detect
+      
+      * With Standard Devices detect
        
        ```
       import { IsIphone, IsIpad, IsAndroidMobile,IsAndroidTablet,IsWindowsPhone } from 'responsive-directives-angular2';
       ```
-       * With multiple Standard Devices combinations: show / hide options.
+      
+      * With multiple Standard Devices combinations: show / hide options.
+      
       ```
       import { ShowItStandard,HideItStandard } from 'responsive-directives-angular2';
       ```
-       * With orientation detect : portrait / landscape.
+      
+      * With orientation detect : portrait / landscape.
+      
       ```
       import { IsPortrait, IsLandscape } from 'responsive-directives-angular2';
       ```
+      
       * With custom sizes and show / hide options.
       
       ```
       import { ShowItSizes,HideItSizes } from 'responsive-directives-angular2';
       ```
       * With browser detection.
-       ```
+      
+      ```
       import { IsChrome, IsFirefox,IsSafari,IsOpera,IsIE } from 'responsive-directives-angular2';
       ```
+      
       * With multiple browser combinations: show / hide options.
-       ```
+      
+      ```
       import { ShowItBrowser, HideItBrowser } from 'responsive-directives-angular2';
       ```
-       * With Internet Explorer version detect.
-       ```
+      
+      * With Internet Explorer version detect.
+      
+      ```
       import { IsIE9, IsIE10, IsIE11, IsIE12 } from 'responsive-directives-angular2';
       ```
+      
       * With multiple IE version combinations: show / hide options.
-       ```
+      
+      ```
       import { ShowIEVersion, HideIEVersion } from 'responsive-directives-angular2';
       ```
       
@@ -227,7 +240,8 @@ npm i responsive-directives-angular2 --save
       })
       ```
       
-    * With Standard Devices detect
+   * With Standard Devices detect
+    
       ```
        @Component({
         selector: 'my-component',
@@ -242,7 +256,7 @@ npm i responsive-directives-angular2 --save
       })
       ```
      
-     * With multiple devices detect combinations: show / hide options.
+    * With multiple devices detect combinations: show / hide options.
        - Strings Multiple combinations = "['iphone','ipad','android mobile','android tablet','windows phone']"
       
         ```
