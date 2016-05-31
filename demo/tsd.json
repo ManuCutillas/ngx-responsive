@@ -1,0 +1,24 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "es6-promise/es6-promise.d.ts": {
+      "commit": "b332be4e133ae75c915c8dd2f4b1fe9ac4a45aa4"
+    },
+    "rx/rx.d.ts": {
+      "commit": "b332be4e133ae75c915c8dd2f4b1fe9ac4a45aa4"
+    },
+    "rx/rx-lite.d.ts": {
+      "commit": "b332be4e133ae75c915c8dd2f4b1fe9ac4a45aa4"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "b332be4e133ae75c915c8dd2f4b1fe9ac4a45aa4"
+    },
+    "underscore/underscore.d.ts": {
+      "commit": "b332be4e133ae75c915c8dd2f4b1fe9ac4a45aa4"
+    }
+  }
+}
