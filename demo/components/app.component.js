@@ -29,7 +29,7 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
                         selector: 'app',
                         templateUrl: 'components/app.component.html',
                         styleUrls: ['components/app.component.css'],
-                        directives: [common_1.FORM_DIRECTIVES, common_1.CORE_DIRECTIVES]
+                        directives: [common_1.CORE_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
