@@ -1,3 +1,4 @@
+///<reference path="./typings/index.d.ts" />
 import { Component,enableProdMode, provide,PLATFORM_DIRECTIVES } from '@angular/core';
 import {bootstrap}    from '@angular/platform-browser-dynamic';
 import {AppComponent} from './components/app.component';
