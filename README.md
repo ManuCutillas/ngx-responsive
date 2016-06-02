@@ -13,13 +13,14 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - Custom breaking points.
  - Debounce checking interval (default 100ms).
  - Locally or Global use in your proyect.
- - **NEW:** Browsers Detect: Chrome / Safari / Firefox / IE / Opera
- - **NEW:** Internet Explorer Versions Detect : IE 9 / IE 10 / IE 11 / IE +12
- - **NEW:** New device: SmartTV.
- - **NEW:** New standard devices: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
- - **NEW:** Device orientation detect: portrait, landscape.
+ - Browsers Detect: Chrome / Safari / Firefox / IE / Opera
+ - Internet Explorer Versions Detect : IE 9 / IE 10 / IE 11 / IE +12
+ - New device: SmartTV.
+ - New standard devices: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
+ - Device orientation detect: portrait, landscape.
+ - **NEW:** Pixel ratio detect : 1x / Retina / 4k.
+ - **NEW: Directives ** DeviceInfo, OrientationInfo,ResponsiveSizeInfo,PixelRatioInfo.
  - Written for the latest release of Angular 2 in typescript.
- - **ON DEV:** Pixel ratio detect : 1x / Retina / 4k.
  
 # How to start
  
@@ -65,14 +66,14 @@ npm i responsive-directives-angular2 --save
      ```
 
  
-3.Import Directives:
+3.DIRECTIVES:
 
-   1. import the Directives **Locally** in your Angular 2 component
+   1. import Directives for **Locally** use in your Angular 2 proyect
       
       * With Bootstrap screen sizes.
       
        ```
-       import { LG,MD,SM,XS } from 'responsive-directives-angular2';
+       import { LG,MD,SM,XS,ResponsiveSizeInfo } from 'responsive-directives-angular2';
        ```
       
       * With multiple combinations bootstrap screen sizes and show / hide options.
@@ -84,7 +85,7 @@ npm i responsive-directives-angular2 --save
       * With Devices real detect
       
       ```
-      import { IsDesktop,IsMobile,IsTablet,IsSmartTv } from 'responsive-directives-angular2';
+      import { IsDesktop,IsMobile,IsTablet,IsSmartTv,DeviceInfo} from 'responsive-directives-angular2';
       ```
       
       * With multiple devices detect combinations: show / hide options.
@@ -108,7 +109,7 @@ npm i responsive-directives-angular2 --save
       * With orientation detect : portrait / landscape.
       
       ```
-      import { IsPortrait, IsLandscape } from 'responsive-directives-angular2';
+      import { IsPortrait, IsLandscape,OrientationInfo } from 'responsive-directives-angular2';
       ```
       
       * With custom sizes and show / hide options.
@@ -139,8 +140,13 @@ npm i responsive-directives-angular2 --save
       ```
       import { ShowIEVersion, HideIEVersion } from 'responsive-directives-angular2';
       ```
+      * With Pixel Ratio detect.
       
-   2. Add Directives to **Globally** Angular 2 Directives
+      ```
+      import { Is1xPixel, IsRetina, Is4k, PixelRatioInfo } from 'responsive-directives-angular2';
+      ```
+      
+   2. Add all Directives to **Globally** use by a service
       
       - In your init App Class add All **RESPONSIVE_DIRECTIVES** to the global directives core of Angular 2
       
@@ -352,10 +358,10 @@ npm i responsive-directives-angular2 --save
       
       
 # NEXT STEPS 
-- Pixel ratio detect
+- Refactor to more simple code and easy to maintain. Less specific directives.
 - Time Events Show/Hide Elements
 - Desktop OS
-- Demo examples
+- Work in demo page
 
 # Contributors
  * ManuCutillas 

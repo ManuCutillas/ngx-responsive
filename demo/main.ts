@@ -3,6 +3,9 @@ import {bootstrap}    from '@angular/platform-browser-dynamic';
 import {AppComponent} from './components/app.component';
 import {ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface,RESPONSIVE_DIRECTIVES} from 'responsive-directives-angular2';
 
+//REMOVE
+//import {ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface,RESPONSIVE_DIRECTIVES} from './dev/index';
+
 
 let config: ResponsiveConfigInterface = {
     breakPoints: {

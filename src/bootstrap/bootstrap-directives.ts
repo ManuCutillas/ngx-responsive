@@ -1,9 +1,10 @@
-import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional} from '@angular/core';
+import {Injectable, Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional} from '@angular/core';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/debounce';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
 import {ResponsiveState} from '../config/config';
 import {ResponsiveConfigInterface} from '../config/interfaces';
+
 /*
  *
  * Bootstrap standard screen sizes directives
@@ -16,14 +17,12 @@ export abstract class Bootstrap implements OnInit, OnDestroy {
     protected _showWhenTrue: boolean;
 
     constructor(private templateRef: TemplateRef<any>,
-                private viewContainer: ViewContainerRef,
-                private _responsiveState: ResponsiveState) {
+        private viewContainer: ViewContainerRef,
+        private _responsiveState: ResponsiveState) {
     }
 
-    protected setGrid(grid_state: string[]|string) {
+    protected setGrid(grid_state: string[] | string) {
         this._grid_state = <string[]>(Array.isArray(grid_state) ? grid_state : [grid_state]);
-        // this.updateView(this._responsiveState.getDeviceSizeInitial());
-
     }
 
     ngOnInit() {
@@ -58,18 +57,18 @@ export abstract class Bootstrap implements OnInit, OnDestroy {
 /*======== XL STATES =========*/
 @Directive({
     selector: '[xl]',
-    providers:[ResponsiveState]
+    providers: [ResponsiveState]
 })
 export class XL extends Bootstrap {
     protected state: string = 'xl';
     protected _showWhenTrue: boolean = true;
-    
-     @Input() set xl(grid_state: string[]|string) {
+
+    @Input() set xl(grid_state: string[] | string) {
         this.setGrid(this.state);
     }
-     constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
+    constructor(templateRef: TemplateRef<any>,
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
     }
 }
@@ -77,19 +76,19 @@ export class XL extends Bootstrap {
 /*======== LG STATES =========*/
 @Directive({
     selector: '[lg]',
-    providers:[ResponsiveState]
+    providers: [ResponsiveState]
 })
-export class LG extends Bootstrap{
+export class LG extends Bootstrap {
     protected state: string = 'lg';
     protected _showWhenTrue: boolean = true;
-    
-     @Input() set lg(grid_state: string[]|string) {
+
+    @Input() set lg(grid_state: string[] | string) {
         this.setGrid(this.state);
     }
-    
-     constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
+
+    constructor(templateRef: TemplateRef<any>,
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
     }
 }
@@ -99,36 +98,37 @@ export class LG extends Bootstrap{
     selector: '[md]'
 })
 export class MD extends Bootstrap {
-   protected state: string = 'md';
+    protected state: string = 'md';
     protected _showWhenTrue: boolean = true;
-    
-     @Input() set md(grid_state: string[]|string) {
+
+    @Input() set md(grid_state: string[] | string) {
         this.setGrid(this.state);
     }
-    
-     constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
+
+    constructor(templateRef: TemplateRef<any>,
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
+
     }
 }
 
 /*======== SM STATES =========*/
 @Directive({
     selector: '[sm]',
-    providers:[ResponsiveState]
+    providers: [ResponsiveState]
 })
-export class SM extends Bootstrap{
+export class SM extends Bootstrap {
     protected state: string = 'sm';
     protected _showWhenTrue: boolean = true;
-    
-     @Input() set sm(grid_state: string[]|string) {
+
+    @Input() set sm(grid_state: string[] | string) {
         this.setGrid(this.state);
     }
-    
-     constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
+
+    constructor(templateRef: TemplateRef<any>,
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
     }
 }
@@ -136,19 +136,19 @@ export class SM extends Bootstrap{
 /*======== XS STATES =========*/
 @Directive({
     selector: '[xs]',
-    providers:[ResponsiveState]
+    providers: [ResponsiveState]
 })
 export class XS extends Bootstrap {
     protected state: string = 'xs';
     protected _showWhenTrue: boolean = true;
-    
-     @Input() set xs(grid_state: string[]|string) {
+
+    @Input() set xs(grid_state: string[] | string) {
         this.setGrid(this.state);
     }
-    
-     constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
+
+    constructor(templateRef: TemplateRef<any>,
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
     }
 }
@@ -157,18 +157,18 @@ export class XS extends Bootstrap {
 /* show */
 @Directive({
     selector: '[showItBootstrap]',
-    providers:[ResponsiveState]
+    providers: [ResponsiveState]
 })
 export class ShowItBootstrap extends Bootstrap {
     protected _showWhenTrue: boolean = true;
 
-    @Input() set showItBootstrap(grid_state: string[]|string) {
+    @Input() set showItBootstrap(grid_state: string[] | string) {
         this.setGrid(grid_state);
     }
 
     constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
     }
 
@@ -177,18 +177,66 @@ export class ShowItBootstrap extends Bootstrap {
 /* hide */
 @Directive({
     selector: '[hideItBootstrap]',
-    providers:[ResponsiveState]
+    providers: [ResponsiveState]
 })
 export class HideItBootstrap extends Bootstrap {
     protected _showWhenTrue: boolean = false;
 
-    @Input() set hideItBootstrap(grid_state: string[]|string) {
+    @Input() set hideItBootstrap(grid_state: string[] | string) {
         this.setGrid(grid_state);
     }
 
     constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
+    }
+}
+
+
+/*======== responsiveSizeInfo =========*/
+/* responsiveSizeInfo */
+@Directive({
+    selector: "responsiveSizeInfo",
+    inputs: ['responsiveSizeInfo']
+})
+export class ResponsiveSizeInfo implements OnInit, OnDestroy {
+    public currentstate: string;
+    private _subscription: Subscription;
+    private noRepeat: string;
+
+    set responsiveSizeInfo(grid_state: string[] | string) {
+        this.updateData(this.currentstate);
+    }
+
+    @Output() statechanges: EventEmitter<any> = new EventEmitter();
+    constructor(private _responsiveState: ResponsiveState,
+        private viewContainer: ViewContainerRef) { }
+
+    ngOnInit() {
+        this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateData.bind(this),
+            value => {
+                this.currentstate = value
+            });
+    }
+
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
+    }
+
+    updateData(value: any) {
+        let update = this._ifValueChanged(this.noRepeat, value);
+        if (update) {
+            this.statechanges.emit(value);
+        }
+    }
+
+    _ifValueChanged(oldValue: any, newValue: any): boolean {
+        if (oldValue === newValue) {
+            return false;
+        } else {
+            this.noRepeat = newValue;
+            return true;
+        }
     }
 }

@@ -1,35 +1,37 @@
- <img class="background-image" src="../assets/img/background-responsive-directives.jpg">
- <div class="site-wrapper">
+<img class="background-image" src="../assets/img/background-responsive-directives.jpg">
+<div class="site-wrapper">
 
-      <div class="site-wrapper-inner">
+  <div class="site-wrapper-inner">
 
-        <div class="cover-container">
+    <div class="cover-container">
 
-         <div class="masthead clearfix">
-            <div class="inner">
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li><a href="https://github.com/ManuCutillas/responsive-directives-angular2">Github</a></li>
-                  <li><a href="https://www.npmjs.com/package/responsive-directives-angular2">NPM</a></li>
-                  <li><a href="https://github.com/ManuCutillas/responsive-directives-angular2/issues">issues</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div class="inner cover">
-             <img class="rd-logo" src="../assets/img/logo-responsive.png">
-            <p class="lead introduction">Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 2</p>
-          </div>
-          <p class="lead text-inf">*Writing the documentation of this demo.</p>
-          <div class="mastfoot">
-            <div class="inner follow">
-              <p>Please give me a star on <a href="https://github.com/ManuCutillas/responsive-directives-angular2">Github</a>, Follow me on <a href="https://twitter.com/ManuCutillas">@ManuCutillas</a>.</p>
-            </div>
-          </div>
-
+      <div class="masthead clearfix">
+        <div class="inner">
+          <nav>
+            <ul class="nav masthead-nav">
+              <li><a href="https://github.com/ManuCutillas/responsive-directives-angular2">Github</a></li>
+              <li><a href="https://www.npmjs.com/package/responsive-directives-angular2">NPM</a></li>
+              <li><a href="https://github.com/ManuCutillas/responsive-directives-angular2/issues">issues</a></li>
+            </ul>
+          </nav>
         </div>
-
       </div>
 
+      <div class="inner cover">
+        <img class="rd-logo" src="../assets/img/logo-responsive.png">
+        <p class="lead introduction">Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 2</p>
+      </div>
+      <p class="lead text-inf">*Writing the documentation of this demo.</p>
+      <div class="mastfoot">
+        <div class="inner follow">
+          <p>Please give me a star on <a href="https://github.com/ManuCutillas/responsive-directives-angular2">Github</a>, Follow me on <a href="https://twitter.com/ManuCutillas">@ManuCutillas</a>.</p>
+        </div>
+      </div>
+        <responsiveSizeInfo (statechanges)="mystates($event)" ></responsiveSizeInfo>
+        <deviceInfo (device)="thisdevice($event)" ></deviceInfo>
+        <orientationInfo (orientation)="thisorientation($event)" ></orientationInfo>
+        
+        <pixelratioInfo (pixelratio)="thispixelratio($event)"></pixelratioInfo>
     </div>
+  </div>
+</div>

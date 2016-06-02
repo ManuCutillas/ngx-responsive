@@ -1,7 +1,7 @@
 node_modules
 demo/node_modules/
+demo/dev/
 dist/
-dist/node_modules/
 *.log
 *.tgz
 npm-debug.log.*
