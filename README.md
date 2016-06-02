@@ -19,7 +19,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - New standard devices: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
  - Device orientation detect: portrait, landscape.
  - **NEW:** Pixel ratio detect : 1x / Retina / 4k.
- - **NEW: Directives ** DeviceInfo, OrientationInfo,ResponsiveSizeInfo,PixelRatioInfo.
+ - **NEW:** Directives: DeviceInfo, OrientationInfo,ResponsiveSizeInfo,PixelRatioInfo. 
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
