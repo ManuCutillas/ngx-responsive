@@ -358,10 +358,23 @@ npm i responsive-directives-angular2 --save
         ```
 
 5. Use css classes
-    ```
-        .hide.show-xx will hide element if xx is not matched, xx takes values in xs,sm,md,lg,xl
-        .hide-xx will hide element if xx is matched, xx takes values in xs,sm,md,lg,xl
+In some case you may prefer to use css classes to achieve show/hide of an element.
 
+    .hide.show-xx will **hide** element if xx **is not matched**, xx takes values in xs,sm,md,lg,xl
+
+    .hide-xx will **hide** element if xx **is matched**, xx takes values in xs,sm,md,lg,xl
+
+    ```
+    <resonsiveCss></resonsiveCss>
+    <div class="hide show-xs">show when xs</div>
+    <div class="hide show-sm">show when sm</div>
+    <div class="hide show-md">show when md</div>
+    <div class="hide show-lg">show when lg</div>
+    <div class="hide-xs">hide when xs</div>
+    <div class="hide-sm">hide when sm</div>
+    <div class="hide-md">hide when md</div>
+    <div class="hide-lg">hide when lg</div>
+    <div class="hide-xl">hide when xl</div>
     ```
       
 # NEXT STEPS 
