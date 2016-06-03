@@ -18,8 +18,9 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - New device: SmartTV.
  - New standard devices: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
  - Device orientation detect: portrait, landscape.
- - **NEW:** Pixel ratio detect : 1x / Retina / 4k.
- - **NEW:** Directives: DeviceInfo, OrientationInfo,ResponsiveSizeInfo,PixelRatioInfo. 
+ - Pixel ratio detect : 1x / Retina / 4k.
+ - Directives: DeviceInfo, OrientationInfo,ResponsiveSizeInfo,PixelRatioInfo.
+ - **NEW:** css classes to show/hide according to bootstrap sizes
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -355,7 +356,13 @@ npm i responsive-directives-angular2 --save
             directives: [ ShowIEVersion,HideIEVersion ]
         })
         ```
-      
+
+5. Use css classes
+    ```
+        .hide.show-xx will **hide** element if xx is **not matched**, xx takes values in xs,sm,md,lg,xl
+        .hide-xx will **hide** element if xx is **matched**, xx takes values in xs,sm,md,lg,xl
+
+    ```
       
 # NEXT STEPS 
 - Refactor to more simple code and easy to maintain. Less specific directives.
