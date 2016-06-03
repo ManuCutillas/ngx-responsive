@@ -86,6 +86,9 @@ export class ResponsiveState {
         this.ieVersionObserver = device_observer.map(this.ie_version_detect);
     }
 
+    public getBreakpoints(): {}{
+        return this._responsiveConfig.config.breakPoints;
+    }
 
     private sizeObserver = (): number => {
         return this.width = this.getWidth();
