@@ -359,8 +359,8 @@ npm i responsive-directives-angular2 --save
 
 5. Use css classes
     ```
-        .hide.show-xx will **hide** element if xx is **not matched**, xx takes values in xs,sm,md,lg,xl
-        .hide-xx will **hide** element if xx is **matched**, xx takes values in xs,sm,md,lg,xl
+        .hide.show-xx will hide element if xx is not matched, xx takes values in xs,sm,md,lg,xl
+        .hide-xx will hide element if xx is matched, xx takes values in xs,sm,md,lg,xl
 
     ```
       
