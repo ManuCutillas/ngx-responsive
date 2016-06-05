@@ -15,6 +15,7 @@ export class ResponsiveCss implements OnInit, OnDestroy {
 
     constructor(private elementRef: ElementRef,
                 private _responsiveState: ResponsiveState) {
+        //TODO use absurdjs to generate css classes?
     }
 
 
