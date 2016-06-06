@@ -105,6 +105,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  
 4. ALL RESPONSIVE DIRECTIVES OPTIONS 
     1. * New Detection of multiple functions at once.
+    
            ```
            All combinations = *responsive="{
                               bootstrap: ['xl,lg,md,sm,xs'],
@@ -115,9 +116,11 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
                               orientation:['landscape','portrait'],
                               device: ['mobile','tablet','smarttv','desktop'],
                               sizes:{min:900,max:1400}
-                             }
+          }
           ```
+          
           *Example in component
+          
           ```
           @Component({
            selector: 'my-component',
