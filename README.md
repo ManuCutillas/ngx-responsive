@@ -21,9 +21,9 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 # How to start
  
 1. installing the package via npm 
- ```
-npm i responsive-directives-angular2 --save
- ```
+     ```
+     npm i responsive-directives-angular2 --save
+     ```
 
 2. bootstrap the service
     
@@ -84,7 +84,7 @@ npm i responsive-directives-angular2 --save
       import {CORE_DIRECTIVES} from '@angular/common';
       ```
       
-      And assign the CORE_DIRECTIVES:
+      And use RESPONSIVE DIRECTIVES:
       
       ```
       @Component({
@@ -103,166 +103,189 @@ npm i responsive-directives-angular2 --save
        })
       ```
  
-4. RESPONSIVE_DIRECTIVES in your Angular 2 component 
-
-   * With Bootstrap Screen sizes
+4. ALL RESPONSIVE DIRECTIVES OPTIONS 
+    1. * New Detection of multiple functions at once.
+           ```
+           All combinations = *responsive="{
+                              bootstrap: ['xl,lg,md,sm,xs'],
+                              browser: ['chrome','firefox','ie','safari', 'opera'],
+                              ie:['ie 9','ie 10','ie 11','ie +12'],
+                              pixelratio:['1x','retina','4k'],
+                              standard:['iphone','ipad','android mobile','android tablet','windows phone'],
+                              orientation:['landscape','portrait'],
+                              device: ['mobile','tablet','smarttv','desktop'],
+                              sizes:{min:900,max:1400}
+                             }
+          ```
+          *Example in component
+          ```
+          @Component({
+           selector: 'my-component',
+           template: '
+                 <p  *responsive="{
+                                 bootstrap: 'lg',
+                                 browser: ['chrome','firefox'],
+                                 pixelratio:'1x',
+                                 orientation:'landscape',
+                                 device: 'desktop',
+                                 sizes:{min:900,max:1400}
+                   }">I'll show you if all the options are true.</p>
+            ',
+            directives: [CORE_DIRECTIVES]
+         })
+         ```
+    2. One function detect
+       * With Bootstrap Screen sizes
    
-   ```
-   @Component({
-      selector: 'my-component',
-      template: '
-        <p *xl>I'll show you if I'm a xl screen size.</p>
-        <p *lg>I'll show you if I'm a lg screen size.</p>
-        <p *md>I'll show you if I'm a md screen size.</p>
-        <p *sm>I'll show you if I'm a sm screen size.</p>
-        <p *xs>I'll show you if I'm a xs screen size.</p>
-      ',
-      directives: [CORE_DIRECTIVES]
-   })
-   ```
-   
-   * With multiple combinations of bootstrap screen sizes and show / hide options
-     - Strings Multiple combinations = "['xs','sm','md','lg','xl']"
-
-
-   ```
-   @Component({
-      selector: 'my-component',
-      template: '
-        <p *showItBootstrap="['md','xs']">I'll show you only in md and xs screen sizes.</p>
-        <p *hideItBootstrap="['lg','sm']">I'll hide you only in lg and sm screen sizes.</p>
-      ',
-      directives: [CORE_DIRECTIVES]
-   })
-   ```
-   
-   * With Devices Screen sizes
-  
-      ```
-      @Component({
-        selector: 'my-component',
-        template: '
-        <p *isSmartTv>I'll show you if I'm a smartTv device.</p>
-        <p *isDesktop>I'll show you if I'm a desktop device.</p>
-        <p *isTablet>I'll show you if I'm a tablet device.</p>
-        <p *isMobile>I'll show you if I'm a mobile device.</p>
-        ',
-        directives: [CORE_DIRECTIVES]
-     })
-     ```
-     
-    * With multiple devices detect combinations: show / hide options.
-      - Strings Multiple combinations = "['mobile','tablet','smarttv','desktop']"
-      ```
-      @Component({
-        selector: 'my-component',
-        template: '
-        <p *showItDevice="['mobile','tablet']">I'll show you if I'm a tablet or a mobile device.</p>
-        <p *hideItDevice="['mobile','tablet','desktop']">I'll hide you if I'm a desktop / tablet or mobile device.</p>
-        ',
-        directives: [CORE_DIRECTIVES]
-      })
-      ```
-      
-   * With Standard Devices detect
-    
-      ```
-       @Component({
-        selector: 'my-component',
-        template: '
-        <p *isIphone>I'll show you if I'm a iPhone device.</p>
-        <p *isIpad>I'll show you if I'm a iPad device.</p>
-        <p *isAndroidMobile>I'll show you if I'm a android mobile device.</p>
-        <p *isAndroidTablet>I'll show you if I'm a android tablet device.</p>
-        <p *isWindowsPhone>I'll show you if I'm a windows phone mobile device.</p>
-        ',
-        directives: [CORE_DIRECTIVES]
-      })
-      ```
-     
-    * With multiple devices detect combinations: show / hide options.
-       - Strings Multiple combinations = "['iphone','ipad','android mobile','android tablet','windows phone']"
-      
         ```
-       @Component({
-        selector: 'my-component',
-        template: '
-        <p *showItStandard="['android mobile','windows phone']">I'll show you if I'm a android mobile or a windows phone device.</p>
-        <p *hideItStandard="['iphone','ipad']">I'll hide you if I'm a iPad or a iPhone device.</p>
-        ',
-        directives: [CORE_DIRECTIVES]
+        @Component({
+            selector: 'my-component',
+            template: '
+                <p *xl>I'll show you if I'm a xl screen size.</p>
+                <p *lg>I'll show you if I'm a lg screen size.</p>
+                <p *md>I'll show you if I'm a md screen size.</p>
+                <p *sm>I'll show you if I'm a sm screen size.</p>
+                <p *xs>I'll show you if I'm a xs screen size.</p>
+                ',
+            directives: [CORE_DIRECTIVES]
+            })
+        ```
+   
+        * With multiple combinations of bootstrap screen sizes and show / hide options
+          - Strings Multiple combinations = "['xs','sm','md','lg','xl']"
+
+        ```
+        @Component({
+            selector: 'my-component',
+            template: '
+                <p *showItBootstrap="['md','xs']">I'll show you only in md and xs screen sizes.</p>
+                <p *hideItBootstrap="['lg','sm']">I'll hide you only in lg and sm screen sizes.</p>',
+            directives: [CORE_DIRECTIVES]
+        })
+        ```
+   
+        * With Devices Screen sizes
+  
+        ```
+        @Component({
+               selector: 'my-component',
+               template: '
+               <p *isSmartTv>I'll show you if I'm a smartTv device.</p>
+               <p *isDesktop>I'll show you if I'm a desktop device.</p>
+               <p *isTablet>I'll show you if I'm a tablet device.</p>
+               <p *isMobile>I'll show you if I'm a mobile device.</p>
+               ',
+              directives: [CORE_DIRECTIVES]
+            })
+        ```
+     
+        * With multiple devices detect combinations: show / hide options.
+          - Strings Multiple combinations = "['mobile','tablet','smarttv','desktop']"
+        ```
+        @Component({
+             selector: 'my-component',
+             template: '
+               <p *showItDevice="['mobile','tablet']">I'll show you if I'm a tablet or a mobile device.</p>
+               <p *hideItDevice="['mobile','tablet','desktop']">I'll hide you if I'm a desktop / tablet or mobile device.</p>',
+             directives: [CORE_DIRECTIVES]
         })
         ```
       
-   * With orientation device
-      ```
-       @Component({
-        selector: 'my-component',
-        template: '
-        <p *isPortrait>I'll show you if I'm a portrait state.</p>
-        <p *isLandscape>I'll show you if I'm a landscape state.</p>
-        ',
-        directives: [CORE_DIRECTIVES]
-      })
-      ```
-      
-  * With custom sizes and show / hide options
- 
-     ```
-     @Component({
-         selector: 'my-component',
-         template: '
-             <p *showItSizes="{min:955,max:1057}">I'll show you if I have a width between the min and max.</p>
-             <p *hideItSizes="{min:360,max:768}">It is hidden if I have a width between the min and max.</p>
-         ',
-         directives: [CORE_DIRECTIVES]
-     })
-     ```
+        * With Standard Devices detect
+    
+        ```
+           @Component({
+              selector: 'my-component',
+              template: '
+                  <p *isIphone>I'll show you if I'm a iPhone device.</p>
+                  <p *isIpad>I'll show you if I'm a iPad device.</p>
+                  <p *isAndroidMobile>I'll show you if I'm a android mobile device.</p>
+                  <p *isAndroidTablet>I'll show you if I'm a android tablet device.</p>
+                  <p *isWindowsPhone>I'll show you if I'm a windows phone mobile device.</p>',
+              directives: [CORE_DIRECTIVES]
+            })
+        ```
      
-      * With browser detection.
+        * With multiple devices detect combinations: show / hide options.
+          - Strings Multiple combinations = "['iphone','ipad','android mobile','android tablet','windows phone']"
       
-       ```
-       @Component({
-        selector: 'my-component',
-        template: '
-            <p *isChrome>I'll show you if I'm a Chrome Browser.</p>
-            <p *isFirefox>I'll show you if I'm a Firefox Browser.</p>
-            <p *isSafari>I'll show you if I'm a Safari Browser.</p>
-            <p *isOpera>I'll show you if I'm a Opera Browser.</p>
-            <p *isIE>I'll show you if I'm a Internet Explorer Browser.</p>
-        ',
-        directives: [CORE_DIRECTIVES]
-      })
-      ```
-    * With multiple browsers detect combinations: show / hide options.
-       - Strings Multiple combinations = "['chrome','firefox','ie','safari', 'opera']"
+        ```
+        @Component({
+             selector: 'my-component',
+             template: '
+                <p *showItStandard="['android mobile','windows phone']">I'll show you if I'm a android mobile or a windows phone device.</p>
+                <p *hideItStandard="['iphone','ipad']">I'll hide you if I'm a iPad or a iPhone device.</p>',
+             directives: [CORE_DIRECTIVES]
+        })
+        ```
+      
+        * With orientation device
+        ```
+        @Component({
+            selector: 'my-component',
+            template: '
+               <p *isPortrait>I'll show you if I'm a portrait state.</p>
+               <p *isLandscape>I'll show you if I'm a landscape state.</p>
+            ',
+            directives: [CORE_DIRECTIVES]
+        })
+        ```
+      
+        * With custom sizes and show / hide options
+ 
+        ```
+        @Component({
+             selector: 'my-component',
+             template: '
+                <p *showItSizes="{min:955,max:1057}">I'll show you if I have a width between the min and max.</p>
+                <p *hideItSizes="{min:360,max:768}">It is hidden if I have a width between the min and max.</p>
+             ',
+             directives: [CORE_DIRECTIVES]
+        })
+        ```
+     
+        * With browser detection.
+      
+        ```
+        @Component({
+            selector: 'my-component',
+            template: '
+               <p *isChrome>I'll show you if I'm a Chrome Browser.</p>
+               <p *isFirefox>I'll show you if I'm a Firefox Browser.</p>
+               <p *isSafari>I'll show you if I'm a Safari Browser.</p>
+               <p *isOpera>I'll show you if I'm a Opera Browser.</p>
+               <p *isIE>I'll show you if I'm a Internet Explorer Browser.</p>
+            ',
+            directives: [CORE_DIRECTIVES]
+        })
+        ```
+        * With multiple browsers detect combinations: show / hide options.
+          - Strings Multiple combinations = "['chrome','firefox','ie','safari', 'opera']"
         ```
         @Component({
            selector: 'my-component',
            template: '
              <p *showItBrowser="['ie','opera']">I'll show you if I'm a IE or Opera Browser.</p>
-             <p *hideItBrowser="['chrome','firefox','safari']">I'll hide you if I'm a Chrome, Firefox or Safari Browser.</p>
-            ',
+             <p *hideItBrowser="['chrome','firefox','safari']">I'll hide you if I'm a Chrome, Firefox or Safari Browser.</p>',
             directives: [CORE_DIRECTIVES]
         })
         ```
-    * With Internet Explorer Version detection.
+        * With Internet Explorer Version detection.
       
-       ```
-       @Component({
-        selector: 'my-component',
-        template: '
-            <p *isIE9>I'll show you if I'm a Internet Explorer 9.</p>
-            <p *isIE10>I'll show you if I'm a Internet Explorer 10.</p>
-            <p *isIE11>I'll show you if I'm a Internet Explorer 11.</p>
-            <p *isIE12>I'll show you if I'm a Internet Explorer 12.</p>
-        ',
-        directives: [CORE_DIRECTIVES]
-      })
-      ```
+        ```
+        @Component({
+           selector: 'my-component',
+           template: '
+              <p *isIE9>I'll show you if I'm a Internet Explorer 9.</p>
+              <p *isIE10>I'll show you if I'm a Internet Explorer 10.</p>
+              <p *isIE11>I'll show you if I'm a Internet Explorer 11.</p>
+              <p *isIE12>I'll show you if I'm a Internet Explorer 12.</p>',
+            directives: [CORE_DIRECTIVES]
+        })
+        ```
       
-      * With multiple Internet Explorer version detect: show / hide options.
-       - Strings Multiple combinations = "['ie 9','ie 10','ie 11','ie +12']"
+        * With multiple Internet Explorer version detect: show / hide options.
+          - Strings Multiple combinations = "['ie 9','ie 10','ie 11','ie +12']"
         ```
         @Component({
            selector: 'my-component',
@@ -282,46 +305,16 @@ npm i responsive-directives-angular2 --save
                 <p *isRetina>I'll show you if I'm a retina screen.</p>
                 <p *is4k>I'll show you if I'm a 4k screen.</p>
             ',
-          directives: [CORE_DIRECTIVES]
-          })
-        ```
-        
-       * Detection of multiple functions at once.
-        ```
-         All combinations = *responsive="{
-                              bootstrap: ['xl,lg,md,sm,xs'],
-                              browser: ['chrome','firefox','ie','safari', 'opera'],
-                              ie:['ie 9','ie 10','ie 11','ie +12'],
-                              pixelratio:['1x','retina','4k'],
-                              standard:['iphone','ipad','android mobile','android tablet','windows phone'],
-                              orientation:['landscape','portrait'],
-                              device: ['mobile','tablet','smarttv','desktop'],
-                              sizes:{min:900,max:1400}
-                             }
-        ```
-        *Example in component
-        ```
-        @Component({
-           selector: 'my-component',
-           template: '
-             <p  *responsive="{
-             bootstrap: 'lg',
-             browser: ['chrome','firefox'],
-             pixelratio:'1x',
-             orientation:'landscape',
-             device: 'desktop',
-             sizes:{min:900,max:1400}
-             }">I'll show you if I'm a IE 11 browser or IE 12</p>
-            ',
             directives: [CORE_DIRECTIVES]
-        })
+          })
         ```
       
       
 # NEXT STEPS 
 - Refactor to more simple code and easy to maintain. Less specific directives.
 - Time Events Show/Hide Elements
-- Detect if a element its visible on device screen
+- Detect if a element its visible on device screen.
+- scroll show / hide elements
 - Desktop OS
 - Work in demo page
 
