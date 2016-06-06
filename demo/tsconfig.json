@@ -11,8 +11,6 @@
   },
   "exclude": [
     "node_modules",
-    "typings/main",
-    "typings/main.d.ts",
     "typings/index",
     "typings/index.d.ts"
   ]

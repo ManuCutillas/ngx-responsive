@@ -1,70 +1,24 @@
-import {Injectable, Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional} from '@angular/core';
-import 'rxjs/add/operator/share';
-import 'rxjs/add/operator/debounce';
+import {Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
 import {ResponsiveState} from '../config/config';
-import {ResponsiveConfigInterface} from '../config/interfaces';
+import {RESPONSIVE_BASE} from '../config/responsive-base';
 
 /*
  *
  * Bootstrap standard screen sizes directives
  * XL / LG / MD / SM / XS
  */
-export abstract class Bootstrap implements OnInit, OnDestroy {
-    private noRepeat: number = 0;
-    private _grid_state: string[];
-    private _subscription: Subscription;
-    protected _showWhenTrue: boolean;
-
-    constructor(private templateRef: TemplateRef<any>,
-        private viewContainer: ViewContainerRef,
-        private _responsiveState: ResponsiveState) {
-    }
-
-    protected setGrid(grid_state: string[] | string) {
-        this._grid_state = <string[]>(Array.isArray(grid_state) ? grid_state : [grid_state]);
-    }
-
-    ngOnInit() {
-        this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateView.bind(this));
-    }
-
-    ngOnDestroy() {
-        this._subscription.unsubscribe();
-    }
-
-    private showHide(show: boolean) {
-        if (!!show) {
-            if (this.noRepeat == 0) {
-                this.noRepeat = 1;
-                this.viewContainer.createEmbeddedView(this.templateRef);
-            }
-        } else {
-            this.noRepeat = 0;
-            this.viewContainer.clear();
-        }
-    }
-
-    updateView(valor: string) {
-        if (!!this._showWhenTrue) {
-            this.showHide(!!this._grid_state && this._grid_state.indexOf(valor) !== -1)
-        } else {
-            this.showHide(!(!!this._grid_state && this._grid_state.indexOf(valor) !== -1))
-        }
-    }
-}
 
 /*======== XL STATES =========*/
 @Directive({
-    selector: '[xl]',
-    providers: [ResponsiveState]
+    selector: '[xl]'
 })
-export class XL extends Bootstrap {
-    protected state: string = 'xl';
+export class XL extends RESPONSIVE_BASE {
+    protected _state: string = 'xl';
     protected _showWhenTrue: boolean = true;
 
     @Input() set xl(grid_state: string[] | string) {
-        this.setGrid(this.state);
+        this.setGrid(this._state,'bootstrap');
     }
     constructor(templateRef: TemplateRef<any>,
         viewContainer: ViewContainerRef,
@@ -75,15 +29,14 @@ export class XL extends Bootstrap {
 
 /*======== LG STATES =========*/
 @Directive({
-    selector: '[lg]',
-    providers: [ResponsiveState]
+    selector: '[lg]'
 })
-export class LG extends Bootstrap {
-    protected state: string = 'lg';
+export class LG extends RESPONSIVE_BASE {
+    protected _state: string = 'lg';
     protected _showWhenTrue: boolean = true;
 
     @Input() set lg(grid_state: string[] | string) {
-        this.setGrid(this.state);
+        this.setGrid(this._state,'bootstrap');
     }
 
     constructor(templateRef: TemplateRef<any>,
@@ -97,12 +50,12 @@ export class LG extends Bootstrap {
 @Directive({
     selector: '[md]'
 })
-export class MD extends Bootstrap {
-    protected state: string = 'md';
+export class MD extends RESPONSIVE_BASE {
+    protected _state: string = 'md';
     protected _showWhenTrue: boolean = true;
 
     @Input() set md(grid_state: string[] | string) {
-        this.setGrid(this.state);
+        this.setGrid(this._state,'bootstrap');
     }
 
     constructor(templateRef: TemplateRef<any>,
@@ -115,15 +68,14 @@ export class MD extends Bootstrap {
 
 /*======== SM STATES =========*/
 @Directive({
-    selector: '[sm]',
-    providers: [ResponsiveState]
+    selector: '[sm]'
 })
-export class SM extends Bootstrap {
-    protected state: string = 'sm';
+export class SM extends RESPONSIVE_BASE {
+    protected _state: string = 'sm';
     protected _showWhenTrue: boolean = true;
 
     @Input() set sm(grid_state: string[] | string) {
-        this.setGrid(this.state);
+        this.setGrid(this._state,'bootstrap');
     }
 
     constructor(templateRef: TemplateRef<any>,
@@ -135,15 +87,14 @@ export class SM extends Bootstrap {
 
 /*======== XS STATES =========*/
 @Directive({
-    selector: '[xs]',
-    providers: [ResponsiveState]
+    selector: '[xs]'
 })
-export class XS extends Bootstrap {
-    protected state: string = 'xs';
+export class XS extends RESPONSIVE_BASE {
+    protected _state: string = 'xs';
     protected _showWhenTrue: boolean = true;
 
     @Input() set xs(grid_state: string[] | string) {
-        this.setGrid(this.state);
+        this.setGrid(this._state,'bootstrap');
     }
 
     constructor(templateRef: TemplateRef<any>,
@@ -156,14 +107,13 @@ export class XS extends Bootstrap {
 /*======== MULTIPLE SIZES STATES =========*/
 /* show */
 @Directive({
-    selector: '[showItBootstrap]',
-    providers: [ResponsiveState]
+    selector: '[showItBootstrap]'
 })
-export class ShowItBootstrap extends Bootstrap {
+export class ShowItBootstrap extends RESPONSIVE_BASE {
     protected _showWhenTrue: boolean = true;
 
     @Input() set showItBootstrap(grid_state: string[] | string) {
-        this.setGrid(grid_state);
+        this.setGrid(grid_state,'bootstrap');
     }
 
     constructor(templateRef: TemplateRef<any>,
@@ -176,14 +126,14 @@ export class ShowItBootstrap extends Bootstrap {
 
 /* hide */
 @Directive({
-    selector: '[hideItBootstrap]',
-    providers: [ResponsiveState]
+    selector: '[hideItBootstrap]'
 })
-export class HideItBootstrap extends Bootstrap {
+
+export class HideItBootstrap extends RESPONSIVE_BASE {
     protected _showWhenTrue: boolean = false;
 
     @Input() set hideItBootstrap(grid_state: string[] | string) {
-        this.setGrid(grid_state);
+        this.setGrid(grid_state,'bootstrap');
     }
 
     constructor(templateRef: TemplateRef<any>,
@@ -195,7 +145,6 @@ export class HideItBootstrap extends Bootstrap {
 
 
 /*======== responsiveSizeInfo =========*/
-/* responsiveSizeInfo */
 @Directive({
     selector: "responsiveSizeInfo",
     inputs: ['responsiveSizeInfo']
@@ -203,9 +152,9 @@ export class HideItBootstrap extends Bootstrap {
 export class ResponsiveSizeInfo implements OnInit, OnDestroy {
     public currentstate: string;
     private _subscription: Subscription;
-    private noRepeat: string;
+    private _noRepeat: string;
 
-    set responsiveSizeInfo(grid_state: string[] | string) {
+    public set responsiveSizeInfo(grid_state: string[] | string) {
         this.updateData(this.currentstate);
     }
 
@@ -213,29 +162,29 @@ export class ResponsiveSizeInfo implements OnInit, OnDestroy {
     constructor(private _responsiveState: ResponsiveState,
         private viewContainer: ViewContainerRef) { }
 
-    ngOnInit() {
+    public ngOnInit() {
         this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateData.bind(this),
             value => {
                 this.currentstate = value
             });
     }
 
-    ngOnDestroy() {
+    public ngOnDestroy() {
         this._subscription.unsubscribe();
     }
 
-    updateData(value: any) {
-        let update = this._ifValueChanged(this.noRepeat, value);
+    private updateData(value: any): void {
+        let update = this._ifValueChanged(this._noRepeat, value);
         if (update) {
             this.statechanges.emit(value);
         }
     }
 
-    _ifValueChanged(oldValue: any, newValue: any): boolean {
+    private _ifValueChanged(oldValue: any, newValue: any): boolean {
         if (oldValue === newValue) {
             return false;
         } else {
-            this.noRepeat = newValue;
+            this._noRepeat = newValue;
             return true;
         }
     }

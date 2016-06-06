@@ -2,24 +2,20 @@
 # Introduction
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
 
-**BREAKING CHANGE** in bootstrap process
-
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: xs / sm / md / lg / xl
  - Directives that detect four states according to the real type of device: mobile / tablet / desktop / smartTv
- - Multiple combinations of states bootstrap / devices / standard devices / browsers / IE
  - Custom sizes detector.
  - Show and hide options.
  - Custom breaking points.
  - Debounce checking interval (default 100ms).
- - Locally or Global use in your proyect.
  - Browsers Detect: Chrome / Safari / Firefox / IE / Opera
  - Internet Explorer Versions Detect : IE 9 / IE 10 / IE 11 / IE +12
- - New device: SmartTV.
  - New standard devices: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
  - Device orientation detect: portrait, landscape.
- - **NEW:** Pixel ratio detect : 1x / Retina / 4k.
+ - Pixel ratio detect : 1x / Retina / 4k.
  - **NEW:** Directives: DeviceInfo, OrientationInfo,ResponsiveSizeInfo,PixelRatioInfo. 
+ - **NEW:** Directive: responsive - Detection of multiple functions at once.
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -68,85 +64,7 @@ npm i responsive-directives-angular2 --save
  
 3.DIRECTIVES:
 
-   1. import Directives for **Locally** use in your Angular 2 proyect
-      
-      * With Bootstrap screen sizes.
-      
-       ```
-       import { LG,MD,SM,XS,ResponsiveSizeInfo } from 'responsive-directives-angular2';
-       ```
-      
-      * With multiple combinations bootstrap screen sizes and show / hide options.
-      
-      ```
-      import { ShowItBootstrap,HideItBootstrap } from 'responsive-directives-angular2';
-      ```
-      
-      * With Devices real detect
-      
-      ```
-      import { IsDesktop,IsMobile,IsTablet,IsSmartTv,DeviceInfo} from 'responsive-directives-angular2';
-      ```
-      
-      * With multiple devices detect combinations: show / hide options.
-      
-      ```
-      import { ShowItDevice,HideItDevice } from 'responsive-directives-angular2';
-      ```
-      
-      * With Standard Devices detect
-       
-       ```
-      import { IsIphone, IsIpad, IsAndroidMobile,IsAndroidTablet,IsWindowsPhone } from 'responsive-directives-angular2';
-      ```
-      
-      * With multiple Standard Devices combinations: show / hide options.
-      
-      ```
-      import { ShowItStandard,HideItStandard } from 'responsive-directives-angular2';
-      ```
-      
-      * With orientation detect : portrait / landscape.
-      
-      ```
-      import { IsPortrait, IsLandscape,OrientationInfo } from 'responsive-directives-angular2';
-      ```
-      
-      * With custom sizes and show / hide options.
-      
-      ```
-      import { ShowItSizes,HideItSizes } from 'responsive-directives-angular2';
-      ```
-      * With browser detection.
-      
-      ```
-      import { IsChrome, IsFirefox,IsSafari,IsOpera,IsIE } from 'responsive-directives-angular2';
-      ```
-      
-      * With multiple browser combinations: show / hide options.
-      
-      ```
-      import { ShowItBrowser, HideItBrowser } from 'responsive-directives-angular2';
-      ```
-      
-      * With Internet Explorer version detect.
-      
-      ```
-      import { IsIE9, IsIE10, IsIE11, IsIE12 } from 'responsive-directives-angular2';
-      ```
-      
-      * With multiple IE version combinations: show / hide options.
-      
-      ```
-      import { ShowIEVersion, HideIEVersion } from 'responsive-directives-angular2';
-      ```
-      * With Pixel Ratio detect.
-      
-      ```
-      import { Is1xPixel, IsRetina, Is4k, PixelRatioInfo } from 'responsive-directives-angular2';
-      ```
-      
-   2. Add all Directives to **Globally** use by a service
+   1. Add all Directives to **Globally** use
       
       - In your init App Class add All **RESPONSIVE_DIRECTIVES** to the global directives core of Angular 2
       
@@ -185,7 +103,7 @@ npm i responsive-directives-angular2 --save
        })
       ```
  
-4. If you import the RESPONSIVE_DIRECTIVES **Locally** in your Angular 2 component 
+4. RESPONSIVE_DIRECTIVES in your Angular 2 component 
 
    * With Bootstrap Screen sizes
    
@@ -199,7 +117,7 @@ npm i responsive-directives-angular2 --save
         <p *sm>I'll show you if I'm a sm screen size.</p>
         <p *xs>I'll show you if I'm a xs screen size.</p>
       ',
-      directives: [LG,MD,SM,XS]
+      directives: [CORE_DIRECTIVES]
    })
    ```
    
@@ -214,7 +132,7 @@ npm i responsive-directives-angular2 --save
         <p *showItBootstrap="['md','xs']">I'll show you only in md and xs screen sizes.</p>
         <p *hideItBootstrap="['lg','sm']">I'll hide you only in lg and sm screen sizes.</p>
       ',
-      directives: [ShowItBootstrap,HideItBootstrap]
+      directives: [CORE_DIRECTIVES]
    })
    ```
    
@@ -229,7 +147,7 @@ npm i responsive-directives-angular2 --save
         <p *isTablet>I'll show you if I'm a tablet device.</p>
         <p *isMobile>I'll show you if I'm a mobile device.</p>
         ',
-        directives: [IsSmartTv,IsDesktop,IsMobile,IsTablet ]
+        directives: [CORE_DIRECTIVES]
      })
      ```
      
@@ -242,7 +160,7 @@ npm i responsive-directives-angular2 --save
         <p *showItDevice="['mobile','tablet']">I'll show you if I'm a tablet or a mobile device.</p>
         <p *hideItDevice="['mobile','tablet','desktop']">I'll hide you if I'm a desktop / tablet or mobile device.</p>
         ',
-        directives: [ HideItDevice, ShowItDevice ]
+        directives: [CORE_DIRECTIVES]
       })
       ```
       
@@ -258,7 +176,7 @@ npm i responsive-directives-angular2 --save
         <p *isAndroidTablet>I'll show you if I'm a android tablet device.</p>
         <p *isWindowsPhone>I'll show you if I'm a windows phone mobile device.</p>
         ',
-        directives: [IsIphone, IsIpad, IsAndroidMobile,IsAndroidTablet,IsWindowsPhone ]
+        directives: [CORE_DIRECTIVES]
       })
       ```
      
@@ -272,7 +190,7 @@ npm i responsive-directives-angular2 --save
         <p *showItStandard="['android mobile','windows phone']">I'll show you if I'm a android mobile or a windows phone device.</p>
         <p *hideItStandard="['iphone','ipad']">I'll hide you if I'm a iPad or a iPhone device.</p>
         ',
-        directives: [ShowItStandard, HideItStandard]
+        directives: [CORE_DIRECTIVES]
         })
         ```
       
@@ -284,7 +202,7 @@ npm i responsive-directives-angular2 --save
         <p *isPortrait>I'll show you if I'm a portrait state.</p>
         <p *isLandscape>I'll show you if I'm a landscape state.</p>
         ',
-        directives: [IsPortrait,IsLandscape ]
+        directives: [CORE_DIRECTIVES]
       })
       ```
       
@@ -297,7 +215,7 @@ npm i responsive-directives-angular2 --save
              <p *showItSizes="{min:955,max:1057}">I'll show you if I have a width between the min and max.</p>
              <p *hideItSizes="{min:360,max:768}">It is hidden if I have a width between the min and max.</p>
          ',
-         directives: [ ShowItSizes,HideItSizes ]
+         directives: [CORE_DIRECTIVES]
      })
      ```
      
@@ -313,7 +231,7 @@ npm i responsive-directives-angular2 --save
             <p *isOpera>I'll show you if I'm a Opera Browser.</p>
             <p *isIE>I'll show you if I'm a Internet Explorer Browser.</p>
         ',
-        directives: [IsChrome, IsFirefox,IsSafari,IsOpera,IsIE ]
+        directives: [CORE_DIRECTIVES]
       })
       ```
     * With multiple browsers detect combinations: show / hide options.
@@ -325,7 +243,7 @@ npm i responsive-directives-angular2 --save
              <p *showItBrowser="['ie','opera']">I'll show you if I'm a IE or Opera Browser.</p>
              <p *hideItBrowser="['chrome','firefox','safari']">I'll hide you if I'm a Chrome, Firefox or Safari Browser.</p>
             ',
-            directives: [ ShowItBrowser,HideItBrowser ]
+            directives: [CORE_DIRECTIVES]
         })
         ```
     * With Internet Explorer Version detection.
@@ -339,7 +257,7 @@ npm i responsive-directives-angular2 --save
             <p *isIE11>I'll show you if I'm a Internet Explorer 11.</p>
             <p *isIE12>I'll show you if I'm a Internet Explorer 12.</p>
         ',
-        directives: [IsIE9,IsIE10,IsIE11,IsIE12 ]
+        directives: [CORE_DIRECTIVES]
       })
       ```
       
@@ -352,7 +270,50 @@ npm i responsive-directives-angular2 --save
              <p *showIEVersion="['ie 11','ie +12']">I'll show you if I'm a IE 11 browser or IE 12</p>
              <p *hideIEVersion="['ie 9','ie 10']">I'll hide you if I'm IE 9 browser or IE 10.</p>
             ',
-            directives: [ ShowIEVersion,HideIEVersion ]
+            directives: [CORE_DIRECTIVES]
+        })
+        ```
+        * With pixel ratio detect:
+        ```
+          @Component({
+            selector: 'my-component',
+            template: '
+                <p *is1xPixel>I'll show you if I'm a 1x screen.</p>
+                <p *isRetina>I'll show you if I'm a retina screen.</p>
+                <p *is4k>I'll show you if I'm a 4k screen.</p>
+            ',
+          directives: [CORE_DIRECTIVES]
+          })
+        ```
+        
+       * Detection of multiple functions at once.
+        ```
+         All combinations = *responsive="{
+                              bootstrap: ['xl,lg,md,sm,xs'],
+                              browser: ['chrome','firefox','ie','safari', 'opera'],
+                              ie:['ie 9','ie 10','ie 11','ie +12'],
+                              pixelratio:['1x','retina','4k'],
+                              standard:['iphone','ipad','android mobile','android tablet','windows phone'],
+                              orientation:['landscape','portrait'],
+                              device: ['mobile','tablet','smarttv','desktop'],
+                              sizes:{min:900,max:1400}
+                             }
+        ```
+        *Example in component
+        ```
+        @Component({
+           selector: 'my-component',
+           template: '
+             <p  *responsive="{
+             bootstrap: 'lg',
+             browser: ['chrome','firefox'],
+             pixelratio:'1x',
+             orientation:'landscape',
+             device: 'desktop',
+             sizes:{min:900,max:1400}
+             }">I'll show you if I'm a IE 11 browser or IE 12</p>
+            ',
+            directives: [CORE_DIRECTIVES]
         })
         ```
       
@@ -360,6 +321,7 @@ npm i responsive-directives-angular2 --save
 # NEXT STEPS 
 - Refactor to more simple code and easy to maintain. Less specific directives.
 - Time Events Show/Hide Elements
+- Detect if a element its visible on device screen
 - Desktop OS
 - Work in demo page
 
