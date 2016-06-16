@@ -47,15 +47,6 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
                             this.smarttv, this.desktop, this.tablet, this.mobile = false;
                     }
                 };
-                AppComponent.prototype.thisState = function (value) {
-                    console.info(value);
-                    if (value) {
-                        console.info('bien esta en true');
-                    }
-                    else if (value) {
-                        console.info('ohh esta en false');
-                    }
-                };
                 AppComponent.prototype.thispixelratio = function (value) {
                     switch (value) {
                         case "4k":

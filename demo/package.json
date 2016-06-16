@@ -35,7 +35,7 @@
     "systemjs": "0.19.27",
     "zone.js": "^0.6.12",
     "symbol-observable": "^0.2.4",
-    "responsive-directives-angular2": "^0.2.6"
+    "responsive-directives-angular2": "^0.2.8"
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
