@@ -335,13 +335,21 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 - Work in demo page
 - Directive css classes:
 ```
-<h1 *responsiveclass [xl]="micssclassxl" [lg]="micssclasslg"></h1>
+<h1 *responsive-css="{
+         bootstrap: {xl: "micssclassxl", lg:"micssclasslg"},
+         orientation:{landscape:"micssclasslandscape"}
+        }"></h1>
 
 ```
 - Webp images browser compatibility: 
 ```
-<img *webp="{webp:image.webp,notwebp:image.jpg" alt="awesome directive">
+<img *webp="{webp:image.webp, not:image.jpg", lazyload:true}  alt="awesome directive">
 ```
+- Directive user agent: 
+```
+<user-agent  (data)="myMethod($event)><user-agent>
+```
+
 - animations show/hide in directives
 - Desktop OS
 
