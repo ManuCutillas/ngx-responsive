@@ -140,7 +140,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
                                  device: 'desktop',
                                  sizes:{min:900,max:1400}
                    }">I'll show you if all the options are true.</p>
-                   
+
                     <template  [responsive]="{
                                  bootstrap: 'lg',
                                  browser: ['chrome','firefox'],
@@ -333,8 +333,15 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 # NEXT STEPS 
 - Refactor to more simple code and easy to maintain. Less specific directives.
 - Work in demo page
-- Directive css classes -> <h1 *responsiveclass [xl]="micssclassxl" [lg]="micssclasslg"></h1>
-- Webp images browser compatibility --> <img *webp="{webp:image.webp,notwebp:image.jpg" alt="awesome directive">
+- Directive css classes:
+```
+<h1 *responsiveclass [xl]="micssclassxl" [lg]="micssclasslg"></h1>
+
+```
+- Webp images browser compatibility: 
+```
+<img *webp="{webp:image.webp,notwebp:image.jpg" alt="awesome directive">
+```
 - animations show/hide in directives
 - Desktop OS
 
