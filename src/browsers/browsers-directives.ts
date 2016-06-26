@@ -243,4 +243,96 @@ export class HideIEVersion extends RESPONSIVE_BASE {
 }
 
 
+/*======== BrowserInfo =========*/
+@Directive({
+    selector: "browserInfo",inputs:['browserInfo'], outputs:['browser']
+})
+export class BrowserInfo implements OnInit,OnDestroy {
+    public currentstate: string;
+    private _subscription: Subscription;
+    private noRepeat:string;
+
+    set browserInfo(grid_state: string[]|string) {
+        this.updateData(this.currentstate);
+    }
+    
+    public browser:EventEmitter<any> = new EventEmitter();
+    constructor(private _responsiveState: ResponsiveState,
+                private viewContainer: ViewContainerRef) {}
+
+    ngOnInit() {
+        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind(this),
+            value => {
+                this.currentstate = value
+            });
+    }
+
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
+    }
+   
+    updateData(value: any) {
+        let update = this._ifValueChanged(this.noRepeat, value);
+        if (update) {
+            this.browser.emit(value);
+        }
+    }
+    
+    _ifValueChanged(oldValue: any, newValue: any): boolean {
+        if (oldValue === newValue) {
+            return false;
+        } else {
+            this.noRepeat = newValue;
+            return true;
+        }
+    }
+}
+
+
+/*======== ieInfo =========*/
+@Directive({
+    selector: "ieInfo",inputs:['ieInfo'], outputs:['ieVersion']
+})
+export class ieInfo implements OnInit,OnDestroy {
+    public currentstate: string;
+    private _subscription: Subscription;
+    private noRepeat:string;
+
+    set ieInfo(grid_state: string[]|string) {
+        this.updateData(this.currentstate);
+    }
+    
+    public ieVersion:EventEmitter<any> = new EventEmitter();
+    constructor(private _responsiveState: ResponsiveState,
+                private viewContainer: ViewContainerRef) {}
+
+    ngOnInit() {
+        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind(this),
+            value => {
+                this.currentstate = value
+            });
+    }
+
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
+    }
+   
+    updateData(value: any) {
+        let update = this._ifValueChanged(this.noRepeat, value);
+        if (update) {
+            this.ieVersion.emit(value);
+        }
+    }
+    
+    _ifValueChanged(oldValue: any, newValue: any): boolean {
+        if (oldValue === newValue) {
+            return false;
+        } else {
+            this.noRepeat = newValue;
+            return true;
+        }
+    }
+}
+
+
 

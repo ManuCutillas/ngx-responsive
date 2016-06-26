@@ -4,8 +4,8 @@
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU, Kamil Breguła
  * @created_at May 23, 2016
- * @updated_at JUN 6, 2016 - by ManuCutillas
- * @version_0.2.6
+ * @updated_at JUN 26, 2016 - by ManuCutillas
+ * @version_0.3.0
  *
  * Dependencies:
  * @angular/core : "2.0.0-rc.1"
@@ -25,12 +25,12 @@ import {ResponsiveConfigInterface} from './config/interfaces';
 import {XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap, ResponsiveSizeInfo} from './bootstrap/bootstrap-directives';
 import {IsDesktop, IsTablet, IsMobile, IsSmartTv, ShowItDevice, HideItDevice, IsIphone, IsIpad,
     IsAndroidMobile, IsAndroidTablet, IsWindowsPhone, ShowItStandard, HideItStandard,
-    IsPortrait, IsLandscape, DeviceInfo, OrientationInfo } from './devices/devices-directives';
+    IsPortrait, IsLandscape, DeviceInfo, DeviceStandardInfo, OrientationInfo } from './devices/devices-directives';
 import {ShowItSizes, HideItSizes} from './custom-sizes/custom-sizes-directives';
 import {Is1xPixel, IsRetina, Is4k, PixelRatioInfo} from './pixelratio/pixelratio-directives';
-import {IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion} from './browsers/browsers-directives';
+import {IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion, IeInfo, BrowserInfo} from './browsers/browsers-directives';
 import {Responsive} from './responsive/responsive';
-
+import {ResponsiveClass} from './responsive-css/responsive-css';
 /* EXPORT => MODULES */
 export * from './config/interfaces';
 export * from './config/config';
@@ -40,11 +40,12 @@ export * from './custom-sizes/custom-sizes-directives';
 export * from './pixelratio/pixelratio-directives';
 export * from './browsers/browsers-directives';
 export * from './responsive/responsive';
+export * from './responsive-css/responsive-css';
 
 /* RESPONSIVE DIRECTIVES */
 export const RESPONSIVE_DIRECTIVES = [
     Responsive, XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap, IsSmartTv, IsDesktop, IsTablet, IsMobile, ShowItDevice, HideItDevice, IsIphone, IsIpad,
     IsAndroidMobile, IsAndroidTablet, IsWindowsPhone, ShowItStandard, HideItStandard, IsPortrait, IsLandscape, ShowItSizes, HideItSizes,
     Is1xPixel, IsRetina, Is4k, PixelRatioInfo, IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion,
-    ResponsiveSizeInfo, DeviceInfo, OrientationInfo
+    ResponsiveSizeInfo, DeviceInfo, OrientationInfo, ResponsiveClass
 ]; 

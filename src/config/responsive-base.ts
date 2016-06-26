@@ -37,7 +37,8 @@ export abstract class RESPONSIVE_BASE implements OnInit, OnDestroy {
         private templateRef: TemplateRef<any>,
         private viewContainer: ViewContainerRef,
         private _responsiveState: ResponsiveState) {}
-
+    //Input - Output
+    protected eventChanges: EventEmitter<any> = new EventEmitter();
     protected setGrid(grid_state: any, directive: string): void {
         
             switch (directive) {
@@ -120,10 +121,12 @@ export abstract class RESPONSIVE_BASE implements OnInit, OnDestroy {
         if (!!show) {
             if (this._noRepeat == 0) {
                 this._noRepeat = 1;
+                this.eventChanges.emit(true);
                 this.viewContainer.createEmbeddedView(this.templateRef);
             }
         } else {
             this._noRepeat = 0;
+            this.eventChanges.emit(false);
             this.viewContainer.clear();
         }
     }

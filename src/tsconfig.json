@@ -21,5 +21,7 @@
     "browsers/browsers-directives.ts",
     "pixelratio/pixelratio-directives.ts",
     "responsive/responsive.ts",
+    "responsive-css/responsive-css.ts",
+    "webp/webp.ts"
   ]
 }

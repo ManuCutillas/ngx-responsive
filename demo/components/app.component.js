@@ -25,6 +25,9 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
                 function AppComponent() {
                 }
                 AppComponent.prototype.ngOnInit = function () { };
+                AppComponent.prototype.listenchanges = function (value) {
+                    console.info(value);
+                };
                 AppComponent.prototype.thisdevice = function (value) {
                     switch (value) {
                         case "smarttv":
@@ -112,6 +115,7 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
                 };
                 AppComponent = __decorate([
                     core_1.Component({
+                        moduleId: module.id,
                         selector: 'app',
                         templateUrl: 'components/app.component.html',
                         styleUrls: ['components/app.component.css'],

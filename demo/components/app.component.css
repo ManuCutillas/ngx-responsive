@@ -230,3 +230,24 @@ nav {
     width: 700px;
   }
 }
+
+.mixlclass{
+  color:red;
+  font-size: 40px;
+}
+.milgclass{
+  color:blue;
+  font-size: 30px;
+}
+.mimdclass{
+  color:pink;
+  font-size: 20px;
+}
+.mismclass{
+  color:green;
+  font-size: 10px;
+}
+.mixsclass{
+  color:yellow;
+  font-size: 5px;
+}

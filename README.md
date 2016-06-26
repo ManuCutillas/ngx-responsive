@@ -14,8 +14,15 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - New standard devices: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
  - Device orientation detect: portrait, landscape.
  - Pixel ratio detect : 1x / Retina / 4k.
- - **NEW:** Directives: DeviceInfo, OrientationInfo,ResponsiveSizeInfo,PixelRatioInfo. 
- - **NEW:** Directive: responsive - Detection of multiple functions at once.
+ - Directives Info: DeviceInfo, OrientationInfo, ResponsiveSizeInfo, PixelRatioInfo. 
+ - Directive: responsive - Detection of multiple functions at once.
+ - *New* Directives: DeviceStandardInfo, BrowserInfo, IeInfo.
+ - *New* Feature Responsive Directive - Boolean Events Emitter on change state:
+   ```
+   
+    <template [responsive]="{ 'bootstrap': ['xs','lg']}" (changes)="miMethod($event)"><div>Element show or hide</div></template>
+  
+   ```
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -315,11 +322,11 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
       
 # NEXT STEPS 
 - Refactor to more simple code and easy to maintain. Less specific directives.
-- Time Events Show/Hide Elements
-- Detect if a element its visible on device screen.
-- scroll show / hide elements
-- Desktop OS
 - Work in demo page
+- Directive css classes -> <h1 *responsiveclass [xl]="micssclassxl" [lg]="micssclasslg"></h1>
+- Webp images browser compatibility --> <img *webp="{webp:image.webp,notwebp:image.jpg" alt="awesome directive">
+- animations show/hide in directives
+- Desktop OS
 
 # Contributors
  * ManuCutillas 

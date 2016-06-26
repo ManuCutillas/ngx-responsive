@@ -1,16 +1,19 @@
-import {Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
+import { Output, EventEmitter, Directive, Input, TemplateRef, ElementRef, ViewContainerRef, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from  'rxjs/Rx';
 import {ResponsiveState} from '../config/config';
 import {responsivePattern, responsiveSubscriptions} from '../config/interfaces';
 
 /*======== RESPONSIVE MULTIPLE =========*/
-@Directive({ selector: '[responsive]' })
+@Directive({
+    selector: '[responsive]', inputs: ['responsive']
+})
 export class Responsive implements OnInit, OnDestroy {
 
     @Input() set responsive(config: string | string[]) {
+        console.info(config);
         this.init_responsive(config);
     };
-    @Output('booleanChanges') public _booleanChanges: EventEmitter<any> = new EventEmitter();
+    @Output() changes: EventEmitter<any> = new EventEmitter();
 
     //Init the interface var
     public set_values: responsivePattern = {
@@ -88,9 +91,12 @@ export class Responsive implements OnInit, OnDestroy {
     //User parameters
     protected _actives: string[] = [];
 
-    constructor(private templateRef: TemplateRef<any>,
+    /*** CONSTRUCTOR ***/
+    constructor(
+        public templateRef: TemplateRef<Object>,
         private _responsiveState: ResponsiveState,
-        private viewContainer: ViewContainerRef) { }
+        private viewContainer: ViewContainerRef
+    ) { }
 
 
     //Init method    
@@ -183,7 +189,6 @@ export class Responsive implements OnInit, OnDestroy {
         if (this.set_active_subscriptions.sizes == true) this._subscription_custom_sizes = this._responsiveState.anchoObservar.subscribe(this.updateSizes.bind(this));
 
     }
-
     public ngOnInit(): void { }
 
     //Subscriptions changes
@@ -287,22 +292,20 @@ export class Responsive implements OnInit, OnDestroy {
             }
         }
     }
-
     //Show / Hide element
-    private showHideOperations(show: boolean, type_directive: string) {
-
+    private showHideOperations(show: boolean, type_directive: string): void {
         let global_state = this.matchValues(show, type_directive);
-
-        if (global_state && this._globalNoRepeat == 0) {
-            this.viewContainer.createEmbeddedView(this.templateRef);
-            this._globalNoRepeat = 1;
-            this._booleanChanges.emit(true);
-
-            //Else hide element
+        if (!!global_state) {
+            if (this._globalNoRepeat == 0) {
+                this._globalNoRepeat = 1;
+                this.viewContainer.createEmbeddedView(this.templateRef);
+                this.changes.emit(true);
+            }
+        //Else hide element
         } else {
-            this.viewContainer.clear();
             this._globalNoRepeat = 0;
-            this._booleanChanges.emit(false);
+            this.changes.emit(false);
+            this.viewContainer.clear();
         }
     }
 

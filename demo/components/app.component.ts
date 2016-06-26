@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,ViewEncapsulation} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common';
 @Component({
+  moduleId: module.id,
   selector: 'app',
   templateUrl: 'components/app.component.html',
   styleUrls: ['components/app.component.css'],
@@ -19,12 +20,15 @@ export class AppComponent implements OnInit {
   private mobile: boolean;
   private portrait: boolean;
   private landscape: boolean;
-  private pixel4k:boolean;
-  private retina:boolean;
-  private pixel1x:boolean;
+  private pixel4k: boolean;
+  private retina: boolean;
+  private pixel1x: boolean;
   constructor() { }
   ngOnInit() { }
 
+ listenchanges(value){
+   console.info(value);
+ }
   thisdevice(value: string) {
     switch (value) {
       case "smarttv":
@@ -46,13 +50,13 @@ export class AppComponent implements OnInit {
       default:
         this.smarttv, this.desktop, this.tablet, this.mobile = false;
     }
-      
+
   }
-  
-  thispixelratio(value:string){
-     switch (value) {
+
+  thispixelratio(value: string) {
+    switch (value) {
       case "4k":
-        console.info('pixel ratio ==>',value);
+        console.info('pixel ratio ==>', value);
         this.pixel4k = true;
         break;
       case "retina":
@@ -62,12 +66,12 @@ export class AppComponent implements OnInit {
       case "1x":
         console.info('pixel ratio ==>', value);
         this.pixel1x = true;
-        break;  
+        break;
       default:
-        this.pixel4k, this.retina,this.pixel1x = false;
+        this.pixel4k, this.retina, this.pixel1x = false;
     }
   }
-  
+
 
   thisorientation(value: string) {
     switch (value) {

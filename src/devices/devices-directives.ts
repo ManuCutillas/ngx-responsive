@@ -309,19 +309,18 @@ export class IsLandscape extends RESPONSIVE_BASE{
 /*======== DeviceInfo =========*/
 /* DeviceInfo */
 @Directive({
-    selector: "deviceInfo",
-    inputs:['deviceInfo']
+    selector: "deviceInfo", inputs:['deviceInfo'], outputs:['device']
 })
 export class DeviceInfo implements OnInit,OnDestroy {
     public currentstate: string;
     private _subscription: Subscription;
     private noRepeat:string;
 
-    set responsiveSizeInfo(grid_state: string[]|string) {
+    public set responsiveSizeInfo(grid_state: string[]|string) {
         this.updateData(this.currentstate);
     }
     
-    @Output()device:EventEmitter<any> = new EventEmitter();
+    public device:EventEmitter<any> = new EventEmitter();
     constructor(private _responsiveState: ResponsiveState,
                 private viewContainer: ViewContainerRef) {}
 
@@ -353,11 +352,56 @@ export class DeviceInfo implements OnInit,OnDestroy {
     }
 }
 
-/*======== DeviceInfo =========*/
-/* DeviceInfo */
+
+
+/*======== deviceStandardInfo =========*/
 @Directive({
-    selector: "orientationInfo",
-    inputs:['orientationInfo']
+    selector: "deviceStandardInfo",inputs:['deviceStandardInfo'], outputs:['standard']
+})
+export class DeviceStandardInfo implements OnInit,OnDestroy {
+    public currentstate: string;
+    private _subscription: Subscription;
+    private noRepeat:string;
+
+    set deviceStandardInfo(grid_state: string[]|string) {
+        this.updateData(this.currentstate);
+    }
+    
+    public standard:EventEmitter<any> = new EventEmitter();
+    constructor(private _responsiveState: ResponsiveState,
+                private viewContainer: ViewContainerRef) {}
+
+    ngOnInit() {
+        this._subscription = this._responsiveState.standardObserver.subscribe(this.updateData.bind(this),
+            value => {
+                this.currentstate = value
+            });
+    }
+
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
+    }
+   
+    updateData(value: any) {
+        let update = this._ifValueChanged(this.noRepeat, value);
+        if (update) {
+            this.standard.emit(value);
+        }
+    }
+    
+    _ifValueChanged(oldValue: any, newValue: any): boolean {
+        if (oldValue === newValue) {
+            return false;
+        } else {
+            this.noRepeat = newValue;
+            return true;
+        }
+    }
+}
+
+/*======== OrientationInfo =========*/
+@Directive({
+    selector: "orientationInfo",inputs:['orientationInfo'], outputs:['orientation']
 })
 export class OrientationInfo implements OnInit,OnDestroy {
     public currentstate: string;
@@ -368,7 +412,7 @@ export class OrientationInfo implements OnInit,OnDestroy {
         this.updateData(this.currentstate);
     }
     
-    @Output()orientation:EventEmitter<any> = new EventEmitter();
+    public orientation:EventEmitter<any> = new EventEmitter();
     constructor(private _responsiveState: ResponsiveState,
                 private viewContainer: ViewContainerRef) {}
 

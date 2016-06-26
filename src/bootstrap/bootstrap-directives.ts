@@ -34,17 +34,16 @@ export class XL extends RESPONSIVE_BASE {
 export class LG extends RESPONSIVE_BASE {
     protected _state: string = 'lg';
     protected _showWhenTrue: boolean = true;
-
     @Input() set lg(grid_state: string[] | string) {
         this.setGrid(this._state,'bootstrap');
     }
-
+    
     constructor(templateRef: TemplateRef<any>,
         viewContainer: ViewContainerRef,
         _responsiveState: ResponsiveState) {
         super(templateRef, viewContainer, _responsiveState);
     }
-}
+}  
 
 /*======== MD STATES =========*/
 @Directive({
@@ -147,7 +146,8 @@ export class HideItBootstrap extends RESPONSIVE_BASE {
 /*======== responsiveSizeInfo =========*/
 @Directive({
     selector: "responsiveSizeInfo",
-    inputs: ['responsiveSizeInfo']
+    inputs: ['responsiveSizeInfo'],
+    outputs:['statechanges']
 })
 export class ResponsiveSizeInfo implements OnInit, OnDestroy {
     public currentstate: string;
@@ -157,8 +157,7 @@ export class ResponsiveSizeInfo implements OnInit, OnDestroy {
     public set responsiveSizeInfo(grid_state: string[] | string) {
         this.updateData(this.currentstate);
     }
-
-    @Output() statechanges: EventEmitter<any> = new EventEmitter();
+    public  statechanges: EventEmitter<any> = new EventEmitter();
     constructor(private _responsiveState: ResponsiveState,
         private viewContainer: ViewContainerRef) { }
 
