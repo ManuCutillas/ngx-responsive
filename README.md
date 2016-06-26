@@ -140,6 +140,16 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
                                  device: 'desktop',
                                  sizes:{min:900,max:1400}
                    }">I'll show you if all the options are true.</p>
+                   
+                    <template  [responsive]="{
+                                 bootstrap: 'lg',
+                                 browser: ['chrome','firefox'],
+                                 pixelratio:'1x',
+                                 orientation:'landscape',
+                                 device: 'desktop',
+                                 sizes:{min:900,max:1400}
+                   }" (changes)="miMethod($event)">I'll show you if all the options are true & listen events changes.</template>
+                   
             ',
             directives: [CORE_DIRECTIVES]
          })
