@@ -1,12 +1,14 @@
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/debounce';
 import { Observable } from 'rxjs/Rx';
+import { ResponsiveWindow } from '../responsive-window/responsive-window';
 import { ResponsiveConfigInterface } from './interfaces';
 export declare class ResponsiveConfig {
     config: ResponsiveConfigInterface;
     constructor(config?: ResponsiveConfigInterface);
 }
 export declare class ResponsiveState {
+    private _windows;
     private _responsiveConfig;
     elementoObservar: Observable<string>;
     anchoObservar: Observable<number>;
@@ -26,6 +28,9 @@ export declare class ResponsiveState {
     private _window;
     private _vendor;
     constructor(responsiveConfig: ResponsiveConfig);
+    getWidth(windowName: string): number;
+    registerWindow: (rw: ResponsiveWindow) => void;
+    unregisterWindow: (rw: ResponsiveWindow) => void;
     private sizeObserver;
     private sizeOperations;
     private browserName;
@@ -40,7 +45,6 @@ export declare class ResponsiveState {
     private isTablet();
     private isSMART();
     private isDesktop();
-    private getWidth();
     private getUserAgent();
     private getOrientation();
 }
