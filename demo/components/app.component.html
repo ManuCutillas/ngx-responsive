@@ -21,9 +21,14 @@
         <img class="rd-logo" src="../assets/img/logo-responsive.png">
         <p class="lead introduction">Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 2</p>
       </div>
-        <div *responsive="{ 'bootstrap': ['xs','lg']}" ><div class="lead text-inf">*Writing the documentation of this demo.</div></div>
+        <div *responsive="{ 'bootstrap': ['xs','lg']}" ><div class="lead text-inf">*Writing the documentation of this demo.</div>
+        </div>
         <template [responsive]="{ 'bootstrap': ['xs','lg']}" (changes)="listenchanges($event)"></template>
-      
+        <!-- Example for responsive-window -->
+        <div style="position:absolute; width:100%;" [responsive-window]="'parent'">
+              <p class="fill" style="color:white;font-size:20px;" *responsive="{ sizes:{  window: 'parent', min:900, max:1400} }"></p>
+        </div>
+
       <div class="mastfoot">
         <div class="inner follow">
           <p>Please give me a star on <a href="https://github.com/ManuCutillas/responsive-directives-angular2">Github</a>, Follow me on <a href="https://twitter.com/ManuCutillas">@ManuCutillas</a>.</p>

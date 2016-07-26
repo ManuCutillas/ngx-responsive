@@ -16,13 +16,23 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - Pixel ratio detect : 1x / Retina / 4k.
  - Directives Info: DeviceInfo, OrientationInfo, ResponsiveSizeInfo, PixelRatioInfo. 
  - Directive: responsive - Detection of multiple functions at once.
- - *New* Directives: DeviceStandardInfo, BrowserInfo, IeInfo.
- - *New* Feature Responsive Directive - Boolean Events Emitter on change state:
+ - Directives: DeviceStandardInfo, BrowserInfo, IeInfo.
+ - Feature Responsive Directive - Boolean Events Emitter on change state:
+
    ```
-   
     <template [responsive]="{ 'bootstrap': ['xs','lg']}" (changes)="miMethod($event)"><div>Element show or hide</div></template>
-  
    ```
+
+ - *New* Directive: responsive-window : Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
+ 
+ Example: 
+   ```
+    <div style="position:absolute; width:100%;" [responsive-window]="'parent'">
+          <p class="fill" style="color:white;font-size:20px;" 
+          *responsive="{ sizes:{  window: 'parent', min:900, max:1400} }"></p>
+    </div>
+   ```
+
  - Written for the latest release of Angular 2 in typescript.
  
 # How to start
@@ -357,6 +367,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  * ManuCutillas 
  * Christophe HOARAU
  * Kamil Breguła
+ * Janne Julkunen
 
 # License
 

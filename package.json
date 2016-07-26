@@ -1,6 +1,6 @@
 {
   "name": "responsive-directives-angular2",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 2",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -29,10 +29,11 @@
     "os",
     "directives"
   ],
-  "author": "Manu Cutillas <manucutillas@outlook.com> (http://kalypso.agency/)",
+  "author": "Manu Cutillas <manucutillas@outlook.com> (https://kalypso.agency/)",
   "contributors": [
     "Christophe HOARAU (https://github.com/no-more)",
-    "Kamil Breguła (https://github.com/mik-laj)"
+    "Kamil Breguła (https://github.com/mik-laj)",
+    "Janne Julkunen (https://github.com/sconix)"
   ],
   "license": "MIT",
   "bugs": {

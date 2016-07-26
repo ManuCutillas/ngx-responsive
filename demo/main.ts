@@ -2,10 +2,10 @@
 import { Component,enableProdMode, provide,PLATFORM_DIRECTIVES } from '@angular/core';
 import { bootstrap }    from '@angular/platform-browser-dynamic';
 import {AppComponent} from './components/app.component';
-import {ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface,RESPONSIVE_DIRECTIVES} from 'responsive-directives-angular2';
+//import {ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface,RESPONSIVE_DIRECTIVES} from 'responsive-directives-angular2';
 
 //REMOVE
-//import {ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface,RESPONSIVE_DIRECTIVES} from './dev/index';
+import {ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface,RESPONSIVE_DIRECTIVES} from './dev/index';
 
 
 let config: ResponsiveConfigInterface = {
