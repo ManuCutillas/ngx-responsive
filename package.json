@@ -51,6 +51,7 @@
     "src/pixelratio/pixelratio-directives.ts",
     "src/responsive/responsive.ts",
     "src/responsive-css/responsive-css.ts",
+    "src/responsive-window/responsive-window.ts",
     "src/webp/webp.ts",
     "dist/index*",
     "dist/config/const*",
@@ -64,6 +65,7 @@
     "dist/pixelratio/pixelratio-directives*",
     "dist/responsive/responsive*",
     "dist/responsive-css/responsive-css*",
+    "dist/responsive-window/responsive-window*",
     "dist/webp/webp*",
     "CHANGELOG.md"
   ],
