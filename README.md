@@ -27,9 +27,8 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  
  Example: 
    ```
-    <div style="position:absolute; width:100%;" [responsive-window]="'parent'">
-          <p class="fill" style="color:white;font-size:20px;" 
-          *responsive="{ sizes:{  window: 'parent', min:900, max:1400} }"></p>
+    <div [responsive-window]="'parent'">
+        <p *responsive="{ sizes:{  window: 'parent', min:900, max:1400} }"></p>
     </div>
    ```
 
