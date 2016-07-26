@@ -87,6 +87,7 @@ export class Responsive implements OnInit, OnDestroy {
     private _pixelratio_user_param: string[] = [];
     private _ie_user_param: string[] = [];
     private _sizes_user_param: string[] = [];
+    private _sizes_window: string = "window";
 
     //User parameters
     protected _actives: string[] = [];
@@ -99,7 +100,7 @@ export class Responsive implements OnInit, OnDestroy {
     ) { }
 
 
-    //Init method    
+    //Init method
     public init_responsive(value: any): void {
         if (this.isJSON(value)) {
             //If bootstrap object exists
@@ -149,6 +150,10 @@ export class Responsive implements OnInit, OnDestroy {
             if (!!value.sizes && this._sizesNoRepeat == 0) {
                 let min = value.sizes.min;
                 let max = value.sizes.max;
+                let win = value.sizes.window;
+                if (win !== undefined) {
+                  this._sizes_window = win;
+                }
                 this._sizes_user_param = [min, max];
                 this._sizesNoRepeat = 1;
                 this.set_active_subscriptions.sizes = true;
@@ -224,7 +229,11 @@ export class Responsive implements OnInit, OnDestroy {
         this.updateEvent(this.set_values.ie, 'ie');
     }
     private updateSizes(value: number): void {
-        this.set_values.sizes = value;
+        if (!this._sizes_window) {
+          this.set_values.sizes = value;
+        } else {
+          this.set_values.sizes = this._responsiveState.getWidth(this._sizes_window);
+        }
         this.updateEvent(this.set_values.sizes, 'sizes');
     }
 
@@ -260,7 +269,7 @@ export class Responsive implements OnInit, OnDestroy {
                 default:
                     null;
             }
-            //WHEN FALSE   
+            //WHEN FALSE
         } else {
             switch (type_directive) {
                 case "bootstrap":
