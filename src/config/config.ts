@@ -98,10 +98,9 @@ export class ResponsiveState {
     }
 
     public registerWindow = (rw: ResponsiveWindow) => {
-      console.log("REGISTER");
         if (rw.name && !this._windows[rw.name]) {
             this._windows[rw.name] = rw;
-            console.log("REGISTER " + rw.name);
+
             window.dispatchEvent(new Event('resize'));
         }
     }

@@ -52,10 +52,8 @@ var ResponsiveState = (function () {
         this._window = window;
         this._vendor = window.navigator.vendor;
         this.registerWindow = function (rw) {
-            console.log("REGISTER");
             if (rw.name && !_this._windows[rw.name]) {
                 _this._windows[rw.name] = rw;
-                console.log("REGISTER " + rw.name);
                 window.dispatchEvent(new Event('resize'));
             }
         };

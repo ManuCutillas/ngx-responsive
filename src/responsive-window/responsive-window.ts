@@ -19,7 +19,6 @@ export class ResponsiveWindow implements OnInit, OnDestroy, DoCheck {
         }
 
     public ngOnInit():void {
-      console.log("INIT");
         this._responsiveState.registerWindow(this);
     }
 

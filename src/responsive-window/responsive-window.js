@@ -17,7 +17,6 @@ var ResponsiveWindow = (function () {
         this.element = el.nativeElement;
     }
     ResponsiveWindow.prototype.ngOnInit = function () {
-        console.log("INIT");
         this._responsiveState.registerWindow(this);
     };
     ResponsiveWindow.prototype.ngDoCheck = function () {
