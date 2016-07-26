@@ -2,6 +2,7 @@ import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef,
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/debounce';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
+import {ResponsiveWindow} from '../responsive-window/responsive-window';
 import {GLOBAL_INPUTS, REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES } from './const';
 import {ResponsiveConfigInterface, responsiveSubscriptions} from './interfaces';
 
@@ -26,6 +27,8 @@ export class ResponsiveConfig {
 
 @Injectable()
 export class ResponsiveState {
+    private _windows: Object = {};
+
     //Bootstrap Configuration
     private _responsiveConfig: ResponsiveConfig;
 
@@ -54,23 +57,23 @@ export class ResponsiveState {
     constructor( @Optional() responsiveConfig: ResponsiveConfig) {
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
 
-        //window resize observer
+        //Window resize observer
         let resize_observer = Observable
             .fromEvent(window, 'resize')
             .debounceTime(this._responsiveConfig.config.debounceTime)
             .defaultIfEmpty()
-            .startWith(this.getWidth());
-        //Get pixel ratio    
+            .startWith(this.getWidth('window'));
+        //Get pixel ratio
         let pixel_ratio_observer = Observable
             .fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.getDevicePixelRatio());
-        //Get user agent    
+        //Get user agent
         let device_observer = Observable
             .fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.getUserAgent());
-        //Window orientation changes observer    
+        //Window orientation changes observer
         let orientation_observer = Observable
             .fromEvent(window, 'orientationchange')
             .defaultIfEmpty()
@@ -87,17 +90,42 @@ export class ResponsiveState {
         this.ieVersionObserver = device_observer.map(this.ie_version_detect);
     }
 
+    public getWidth(windowName: string): number {
+        if (windowName && this._windows[windowName])
+            return this._windows[windowName].getWidth();
+        else
+            return window.innerWidth;
+    }
+
+    public registerWindow = (rw: ResponsiveWindow) => {
+        if (rw.name && !this._windows[rw.name]) {
+            this._windows[rw.name] = rw;
+
+            window.dispatchEvent(new Event('resize'));
+        }
+    }
+
+    public unregisterWindow = (rw: ResponsiveWindow) => {
+      for (let rwn in this._windows) {
+          if (this._windows[rwn] === rw) {
+              delete (this._windows[rwn]);
+          }
+      }
+
+      window.dispatchEvent(new Event('resize'));
+    }
+
     /*
      *  Bootstrap states
      *  xl / lg / md / sm / xs
      *  @Custom breackpoints
      */
     private sizeObserver = (): number => {
-        return this._width = this.getWidth();
+        return this._width = this.getWidth('window');
     };
 
     private sizeOperations = (): string => {
-        this._width = this.getWidth();
+        this._width = this.getWidth('window');
         try {
             let breakpoints = this._responsiveConfig.config.breakPoints;
             if (breakpoints.xl.min <= this._width) {
@@ -304,10 +332,6 @@ export class ResponsiveState {
         }
     }
 
-    private getWidth(): number {
-        return window.innerWidth;
-    }
-
     private getUserAgent(): any {
         return window.navigator.userAgent.toLowerCase();
     }
@@ -317,4 +341,3 @@ export class ResponsiveState {
     }
 
 }
-

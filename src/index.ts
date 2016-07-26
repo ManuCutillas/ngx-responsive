@@ -31,6 +31,7 @@ import {Is1xPixel, IsRetina, Is4k, PixelRatioInfo} from './pixelratio/pixelratio
 import {IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion, IeInfo, BrowserInfo} from './browsers/browsers-directives';
 import {Responsive} from './responsive/responsive';
 import {ResponsiveClass} from './responsive-css/responsive-css';
+import {ResponsiveWindow} from './responsive-window/responsive-window';
 /* EXPORT => MODULES */
 export * from './config/interfaces';
 export * from './config/config';
@@ -41,11 +42,12 @@ export * from './pixelratio/pixelratio-directives';
 export * from './browsers/browsers-directives';
 export * from './responsive/responsive';
 export * from './responsive-css/responsive-css';
+export * from './responsive-window/responsive-window';
 
 /* RESPONSIVE DIRECTIVES */
 export const RESPONSIVE_DIRECTIVES = [
     Responsive, XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap, IsSmartTv, IsDesktop, IsTablet, IsMobile, ShowItDevice, HideItDevice, IsIphone, IsIpad,
     IsAndroidMobile, IsAndroidTablet, IsWindowsPhone, ShowItStandard, HideItStandard, IsPortrait, IsLandscape, ShowItSizes, HideItSizes,
     Is1xPixel, IsRetina, Is4k, PixelRatioInfo, IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion,
-    ResponsiveSizeInfo, DeviceInfo, OrientationInfo, ResponsiveClass
+    ResponsiveSizeInfo, DeviceInfo, OrientationInfo, ResponsiveClass, ResponsiveWindow
 ]; 
