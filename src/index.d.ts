@@ -5,7 +5,7 @@ import { Is1xPixel, IsRetina, Is4k, PixelRatioInfo } from './pixelratio/pixelrat
 import { IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion } from './browsers/browsers-directives';
 import { Responsive } from './responsive/responsive';
 import { ResponsiveClass } from './responsive-css/responsive-css';
-import { ResponsiveWindow } from './responsive-css/responsive-window';
+import { ResponsiveWindow } from './responsive-window/responsive-window';
 export * from './config/interfaces';
 export * from './config/config';
 export * from './bootstrap/bootstrap-directives';
