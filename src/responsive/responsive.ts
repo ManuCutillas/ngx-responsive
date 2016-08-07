@@ -10,9 +10,9 @@ import {responsivePattern, responsiveSubscriptions} from '../config/interfaces';
 export class Responsive implements OnInit, OnDestroy {
 
     @Input() set responsive(config: string | string[]) {
-        console.info(config);
         this.init_responsive(config);
     };
+
     @Output() changes: EventEmitter<any> = new EventEmitter();
 
     //Init the interface var
@@ -376,7 +376,7 @@ export class Responsive implements OnInit, OnDestroy {
     }
 
     //IsJSON OBJECT solution
-    private isJSON(value): boolean {
+    private isJSON(value:any): boolean {
         try {
             JSON.stringify(value);
             return true;

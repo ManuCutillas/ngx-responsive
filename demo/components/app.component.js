@@ -23,6 +23,9 @@ System.register(['@angular/core', '@angular/common'], function(exports_1, contex
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.thisUserAgent = function (value) {
+                        console.info('useragent ==>', value);
+                    };
                 }
                 AppComponent.prototype.ngOnInit = function () { };
                 AppComponent.prototype.listenchanges = function (value) {

@@ -89,7 +89,7 @@ export declare class BrowserInfo implements OnInit, OnDestroy {
     updateData(value: any): void;
     _ifValueChanged(oldValue: any, newValue: any): boolean;
 }
-export declare class ieInfo implements OnInit, OnDestroy {
+export declare class IeInfo implements OnInit, OnDestroy {
     private _responsiveState;
     private viewContainer;
     currentstate: string;

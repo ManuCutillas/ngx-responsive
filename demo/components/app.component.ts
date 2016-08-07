@@ -83,9 +83,14 @@ export class AppComponent implements OnInit {
         console.info('orientation ==>', value);
         this.landscape = true;
         break;
+        
       default:
         this.portrait, this.landscape = false;
     }
+  }
+
+  public thisUserAgent = (value:any) =>{
+    console.info('useragent ==>', value);
   }
 
   mystates(value: string) {

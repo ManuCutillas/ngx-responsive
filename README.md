@@ -18,19 +18,14 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - Directive: responsive - Detection of multiple functions at once.
  - Directives: DeviceStandardInfo, BrowserInfo, IeInfo.
  - Feature Responsive Directive - Boolean Events Emitter on change state:
-
-   ```
-    <template [responsive]="{ 'bootstrap': ['xs','lg']}" (changes)="miMethod($event)"><div>Element show or hide</div></template>
-   ```
-
- - *New* Directive: responsive-window : Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
- 
- Example: 
-   ```
-    <div [responsive-window]="'parent'">
-        <p *responsive="{ sizes:{  window: 'parent', min:900, max:1400} }"></p>
-    </div>
-   ```
+ - Feature responsive-window : Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
+ - ** NEW ** FEATURE : UserAgent information directive: Get te device, browser, os version and more from the user agent navigator in one event object. 
+   
+   Example: 
+   
+    ```
+    <userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>
+    ```
 
  - Written for the latest release of Angular 2 in typescript.
  
@@ -120,6 +115,15 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
       ```
  
 4. ALL RESPONSIVE DIRECTIVES OPTIONS 
+
+      * Responsive Window directive: Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
+        
+          ```
+          <div [responsive-window]="'parent'">
+               <p *responsive="{ sizes:{  window: 'parent', min:900, max:1400} }"></p>
+          </div>
+          ```
+    
     1. * New Detection of multiple functions at once.
     
            ```
@@ -353,10 +357,6 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 - Webp images browser compatibility: 
 ```
 <img *webp="{webp:image.webp, not:image.jpg", lazyload:true}  alt="awesome directive">
-```
-- Directive user agent: 
-```
-<user-agent  (data)="myMethod($event)><user-agent>
 ```
 
 - animations show/hide in directives

@@ -293,7 +293,7 @@ export class BrowserInfo implements OnInit,OnDestroy {
 @Directive({
     selector: "ieInfo",inputs:['ieInfo'], outputs:['ieVersion']
 })
-export class ieInfo implements OnInit,OnDestroy {
+export class IeInfo implements OnInit,OnDestroy {
     public currentstate: string;
     private _subscription: Subscription;
     private noRepeat:string;

@@ -6,6 +6,8 @@
 		"sourceMap": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
+		 "suppressImplicitAnyIndexErrors":true,
+		 "declaration": true,
 		"noImplicitAny": false,
 		"declarationFiles": true,
 		"rootDir": "./src"
@@ -14,5 +16,6 @@
 		"node_modules",
 		"demo/typings/index",
 		"demo/typings/index.d.ts"
-	]
+	],
+	 "compileOnSave": true
 }

@@ -22,6 +22,7 @@
     "pixelratio/pixelratio-directives.ts",
     "responsive/responsive.ts",
     "responsive-css/responsive-css.ts",
+    "useragent/useragent.ts",
     "webp/webp.ts"
   ]
 }

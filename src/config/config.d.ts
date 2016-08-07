@@ -19,6 +19,7 @@ export declare class ResponsiveState {
     orientationObserver: Observable<any>;
     standardObserver: Observable<any>;
     ieVersionObserver: Observable<any>;
+    userAgentObserver: Observable<any>;
     private _width;
     private _height;
     private _screenWidth;
@@ -41,10 +42,22 @@ export declare class ResponsiveState {
     private device_detection;
     private orientation_device;
     private standard_devices;
+    private game_devices;
+    private smart_tv;
+    private desktop;
+    private tablet;
+    private mobile;
+    private windows;
+    private linux;
     private isMobile();
     private isTablet();
     private isSMART();
     private isDesktop();
+    private isGameDevice();
+    private isWindows();
+    private isLinux();
+    private isBot();
+    userAgent_data: () => any;
     private getUserAgent();
     private getOrientation();
 }

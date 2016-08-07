@@ -39,7 +39,6 @@ export declare class Responsive implements OnInit, OnDestroy {
     private _sizes_user_param;
     private _sizes_window;
     protected _actives: string[];
-    /*** CONSTRUCTOR ***/
     constructor(templateRef: TemplateRef<Object>, _responsiveState: ResponsiveState, viewContainer: ViewContainerRef);
     init_responsive(value: any): void;
     ngOnInit(): void;
