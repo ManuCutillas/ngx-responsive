@@ -592,7 +592,7 @@ export class ResponsiveState {
             linux_name = this.linux();
         }
 
-        return [{
+        return {
             device: this.device_detection(),
             browser: this.browserName(),
             pixelratio: this.pixel_ratio(),
@@ -629,7 +629,7 @@ export class ResponsiveState {
                 state: this.isLinux()
             },
             bot: this.isBot()
-        }];
+        };
 
     }
 
