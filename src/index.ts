@@ -1,29 +1,26 @@
 /**
- * NG2 - RESPONSIVE FOR ANGULAR 2
+ * Responsive Devices Detect Directives for Angular 2
  *
  * @Created_by Manu Cutillas
- * @Contributors Christophe HOARAU, Kamil Breguła, Janne Julkunen
+ * @Contributors Christophe HOARAU, Kamil Breguła
  * @created_at May 23, 2016
- * @updated_at AUG 26, 2016 - by ManuCutillas
- * @version_0.3.3
+ * @updated_at JUN 26, 2016 - by ManuCutillas
+ * @version_0.3.0
  *
  * Dependencies:
- * @angular/core : "2.0.0-rc.4"
- * rxjs: "5.0.0-beta.10"
+ * @angular/core : "2.0.0-rc.1"
+ * rxjs: "5.0.0-beta.6"
  *
- * @more_info https://kalypso.agency
+ * @more_info http://kalypso.agency
  *            https://github.com/ManuCutillas
  *            https://www.npmjs.com/~manucutillas
  *            https://github.com/no-more
- *            https://github.com/sconix
- * 
  *
- * @description : Superset of RESPONSIVE DIRECTIVES for Angular 2
+ * @description : Responsive Detect Directives for Angular 2
  *
  */
-
 /* IMPORTS => MODULES */
-import {ResponsiveConfigInterface} from './config/interfaces';
+import {ResponsiveConfigInterface } from './config/interfaces';
 import {XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap, ResponsiveSizeInfo} from './bootstrap/bootstrap-directives';
 import {IsDesktop, IsTablet, IsMobile, IsSmartTv, ShowItDevice, HideItDevice, IsIphone, IsIpad,
     IsAndroidMobile, IsAndroidTablet, IsWindowsPhone, ShowItStandard, HideItStandard,
