@@ -1,6 +1,8 @@
 node_modules
 demo/node_modules/
-demo/dev/
+demo/src/app/responsive
+demo/public/
+demo/typings/
 dist/
 *.log
 *.tgz
@@ -26,3 +28,5 @@ _temp
 demo/!**/*e2e-spec.js
 demo/!karma*.js
 demo/!protractor*.js
+
+

@@ -1,13 +1,11 @@
-import {Component, OnInit,ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common';
 @Component({
-  moduleId: module.id,
-  selector: 'app',
-  templateUrl: 'components/app.component.html',
-  styleUrls: ['components/app.component.css'],
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
   directives: [CORE_DIRECTIVES]
 })
-
 export class AppComponent implements OnInit {
   private xl: boolean;
   private lg: boolean;
@@ -26,9 +24,9 @@ export class AppComponent implements OnInit {
   constructor() { }
   ngOnInit() { }
 
- listenchanges(value){
-   console.info(value);
- }
+  listenchanges(value: Object) {
+    console.info(value);
+  }
   thisdevice(value: string) {
     switch (value) {
       case "smarttv":
@@ -83,13 +81,13 @@ export class AppComponent implements OnInit {
         console.info('orientation ==>', value);
         this.landscape = true;
         break;
-        
+
       default:
         this.portrait, this.landscape = false;
     }
   }
 
-  public thisUserAgent = (value:any) =>{
+  public thisUserAgent = (value: any) => {
     console.info('useragent ==>', value);
   }
 
@@ -124,4 +122,5 @@ export class AppComponent implements OnInit {
         this.xs, this.lg, this.md, this.sm, this.xs = false;
     }
   }
+
 }

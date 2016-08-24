@@ -1,4 +1,5 @@
-<img class="background-image" src="../assets/img/background-responsive-directives.jpg">
+<main>
+<img class="background-image" src="../assets/images/background-responsive-directives.jpg">
 <div class="site-wrapper" style="min-height:700px;">
 
   <div class="site-wrapper-inner">
@@ -18,11 +19,10 @@
       </div>
 
       <div class="inner cover">
-        <img class="rd-logo" src="../assets/img/logo-responsive.png">
+        <img class="rd-logo" src="../assets/images/logo-responsive.png">
         <p class="lead introduction">Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 2</p>
       </div>
-        <div *responsive="{ 'bootstrap': ['xs','lg']}" ><div class="lead text-inf">*Writing the documentation of this demo.</div>
-        </div>
+        <div *responsive="{ 'bootstrap': ['xs','lg']}"><div class="lead text-inf">*Writing the documentation of this demo.</div></div>
         <template [responsive]="{ 'bootstrap': ['xs','lg']}" (changes)="listenchanges($event)"></template>
         <!-- Example for responsive-window -->
         <div style="position:absolute; width:100%;" [responsive-window]="'parent'">
@@ -42,3 +42,4 @@
     </div>
   </div>
 </div>
+</main>

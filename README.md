@@ -1,6 +1,9 @@
-
 # Introduction
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
+
+### NOTICE: FOR RC.4 / RC.3
+- [npm package responsive-directives-angular2](https://www.npmjs.com/package/responsive-directives-angular2)
+- [github branch rc.3 - rc.4](https://github.com/ManuCutillas/ng2-responsive/tree/ng2-responsive-v3)
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: xs / sm / md / lg / xl
@@ -20,8 +23,9 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - Feature Responsive Directive - Boolean Events Emitter on change state:
  - Feature responsive-window : Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
  - ** NEW ** FEATURE : UserAgent information directive: Get te device, browser, os version and more from the user agent navigator in one event object. 
+ - ** NEW ** Webpack Angular 2 Demo : Initial Angular 2 / Webpack / bootstrap + sass.
    
-   Example: 
+  Example: 
    
     ```
     <userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>
@@ -33,7 +37,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  
 1. installing the package via npm 
      ```
-     npm i responsive-directives-angular2 --save
+     npm i ng2-responsive --save
      ```
 
 2. bootstrap the service
@@ -41,17 +45,26 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
    * with default breaking points
    
     ```
-    import { ResponsiveState } from 'responsive-directives-angular2';
+    import { ResponsiveModule } from './ng2-responsive';
     ...
-    bootstrap(App, [ResponsiveState]);
+    @NgModule({
+          imports: [
+               BrowserModule,
+               ResponsiveModule
+    ],
+    declarations: [],
+    providers:[],
+    bootstrap: [App]
+})
+export class AppModule { }
     ```
 
     * with custom Configuration
       
     ```
-    import { ResponsiveState, ResponsiveConfig, ResponsiveConfigInterface } from 'responsive-directives-angular2';
-    ...
-    let config: ResponsiveConfigInterface = {
+     import { ResponsiveModule, ResponsiveConfig, ResponsiveConfigInterface } from './ng2-responsive';
+     ...
+     let config: ResponsiveConfigInterface = {
         breakPoints: {
                 xs: {max: 600},
                 sm: {min: 601, max: 959},
@@ -60,35 +73,22 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
                 xl: {min: 1920}
         },
         debounceTime: 100 // allow to debounce checking timer
-    };
-    ...
-    bootstrap(App,
-    [
-        {
-            provide: ResponsiveConfig,
-            useFactory: () => new ResponsiveConfig(config)
-        },
-        ResponsiveState
-    ]);
-     ```
+     };
+     ...
+     @NgModule({
+        imports: [
+            BrowserModule,
+            ResponsiveModule
+     ],
+     declarations: [],
+     providers:[{provide: ResponsiveConfig, useFactory: () => new ResponsiveConfig(config) }],
+     bootstrap: [App]
+     })
+     export class AppModule { }
+    ```
 
- 
 3.DIRECTIVES:
 
-   1. Add all Directives to **Globally** use
-      
-      - In your init App Class add All **RESPONSIVE_DIRECTIVES** to the global directives core of Angular 2
-      
-      ```
-      import {provide, PLATFORM_DIRECTIVES} from '@angular/core';
-      import {ResponsiveState, ResponsiveConfig, RESPONSIVE_DIRECTIVES} from 'responsive-directives-angular2';
-      ...
-      bootstrap(App, [
-             ResponsiveState,
-             provide(PLATFORM_DIRECTIVES, { useValue: [RESPONSIVE_DIRECTIVES], multi: true})
-             ]);
-      ```
-      
       * In your component to import the RESPONSIVE_DIRECTIVES only need import: 
      
       ```
@@ -126,7 +126,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
     
     1. * New Detection of multiple functions at once.
     
-           ```
+        ```
            All combinations = *responsive="{
                               bootstrap: ['xl,lg,md,sm,xs'],
                               browser: ['chrome','firefox','ie','safari', 'opera'],
@@ -137,11 +137,11 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
                               device: ['mobile','tablet','smarttv','desktop'],
                               sizes:{min:900,max:1400}
           }
-          ```
+        ```
           
-          *Example in component
+      *Example in component
           
-          ```
+         ```
           @Component({
            selector: 'my-component',
            template: '
@@ -165,13 +165,13 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
                    
             ',
             directives: [CORE_DIRECTIVES]
-         })
-         ```
-    2. One function detect
+           })
+        ```
+   2. One function detect
        * With Bootstrap Screen sizes
    
         ```
-        @Component({
+          @Component({
             selector: 'my-component',
             template: '
                 <p *xl>I'll show you if I'm a xl screen size.</p>
@@ -184,7 +184,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
             })
         ```
    
-        * With multiple combinations of bootstrap screen sizes and show / hide options
+      * With multiple combinations of bootstrap screen sizes and show / hide options
           - Strings Multiple combinations = "['xs','sm','md','lg','xl']"
 
         ```
@@ -367,6 +367,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  * Christophe HOARAU
  * Kamil Breguła
  * Janne Julkunen
+ * phransyz
 
 # License
 

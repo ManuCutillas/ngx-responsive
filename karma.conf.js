@@ -1,41 +1,61 @@
-module.exports = function(config) {
-  config.set({
-    
-    basePath: '',
-    frameworks: ['jasmine'],
-    files: [
-            'node_modules/core-js/client/shim.min.js',
-            'dist/lib/es6-shim.min.js',
-            'dist/lib/system.js',
-            'node_modules/reflect-metadata/Reflect.js',
-            'test-main.js',
-            { pattern: 'node_modules/@angular/*.js', included: false, serve: true, watch: false },
-            { pattern: 'node_modules/@angular/src/**/*.js', included: false, serve: true, watch: false },
-            { pattern: 'dist/**/*.js', included: false, serve: true, watch: true },
-            { pattern: 'rxjs/**/*.js', included: false, serve: true, watch: false },
-            {
-                pattern: 'test/**/*spec.js',
-                included: false,
-                serve: true,
-                watch: true
-            }
-        ],
-        exclude: [
-        ],
-        preprocessors: {
-    	    'dist/index.js': 'coverage'
-        },
-        reporters: ['progress', 'coverage'],
+'use strict';
+
+var webpackConfig = require('./webpack/webpack.test.js');
+require('phantomjs-polyfill')
+webpackConfig.entry = {};
+
+module.exports = function (config) {
+    config.set({
+        basePath: '',
+        frameworks: ['jasmine'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
-        autoWatch: true,
+        autoWatch: false,
         browsers: ['PhantomJS'],
-        singleRun: false,
-        plugins: [
-           'karma-jasmine',
-           'karma-coverage',
-           'karma-phantomjs-launcher'
-        ]
-  })
-}
+        singleRun: true,
+        autoWatchBatchDelay: 300,
+        files: [
+            './node_modules/phantomjs-polyfill/bind-polyfill.js',
+            './src/test.ts'
+        ],
+        babelPreprocessor: {
+            options: {
+                presets: ['es2015']
+            }
+        },
+        preprocessors: {
+            'src/test.ts': ['webpack'],
+            'src/**/!(*.spec)+(.js)': ['coverage']
+        },
+        webpackMiddleware: {
+            stats: {
+                chunkModules: false,
+                colors: true
+            }
+        },
+        webpack: webpackConfig,
+        reporters: [
+            'dots',
+            'spec',
+            'coverage'
+        ],
+        coverageReporter: {
+            reporters: [
+                {
+                    dir: 'reports/coverage/',
+                    subdir: '.',
+                    type: 'html'
+                },{
+                    dir: 'reports/coverage/',
+                    subdir: '.',
+                    type: 'cobertura'
+                }, {
+                    dir: 'reports/coverage/',
+                    subdir: '.',
+                    type: 'json'
+                }
+            ]
+        }
+    });
+};

@@ -5,7 +5,7 @@ import {responsivePattern, responsiveSubscriptions} from '../config/interfaces';
 
 /*======== RESPONSIVE MULTIPLE =========*/
 @Directive({
-    selector: '[responsive]', inputs: ['responsive']
+    selector: '[responsive]'
 })
 export class Responsive implements OnInit, OnDestroy {
 

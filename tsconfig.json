@@ -13,9 +13,11 @@
 		"rootDir": "./src"
 	},
 	"exclude": [
-		"node_modules",
-		"demo/typings/index",
-		"demo/typings/index.d.ts"
+	"node_modules",
+    "demo/node_modules",
+    "demo/public",
+    "demo/typings",
+    "demo/typings/index.d.ts"
 	],
 	 "compileOnSave": true
 }
