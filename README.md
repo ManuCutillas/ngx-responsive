@@ -3,7 +3,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 
 ### NOTICE: FOR RC.4 / RC.3
 - [npm package responsive-directives-angular2](https://www.npmjs.com/package/responsive-directives-angular2)
-- [github branch rc.3 - rc.4](https://github.com/ManuCutillas/ng2-responsive/tree/ng2-responsive-v3)
+- [github branch rc.3 - rc.4](https://github.com/ManuCutillas/ng2-responsive/tree/n2-responsive-v3)
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: xs / sm / md / lg / xl
