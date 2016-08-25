@@ -1,3 +1,5 @@
+![n2-responsive](/demo/src/assets/images/ng2-responsive-0-4-0-thin.jpg?raw=true)
+
 # Introduction
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
 
@@ -22,14 +24,8 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - Directives: DeviceStandardInfo, BrowserInfo, IeInfo.
  - Feature Responsive Directive - Boolean Events Emitter on change state:
  - Feature responsive-window : Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
- - ** NEW ** FEATURE : UserAgent information directive: Get te device, browser, os version and more from the user agent navigator in one event object. 
+ - UserAgent information directive: Get te device, browser, os version and more from the user agent navigator in one event object. 
  - ** NEW ** Webpack Angular 2 Demo : Initial Angular 2 / Webpack / bootstrap + sass.
-   
-  Example: 
-   
-    ```
-    <userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>
-    ```
 
  - Written for the latest release of Angular 2 in typescript.
  
@@ -341,6 +337,13 @@ export class AppModule { }
             directives: [CORE_DIRECTIVES]
           })
         ```
+
+        * Get the userAgent info directive:
+        - Get the device, browser, os version and more from the user agent navigator in one event object. 
+
+         ```
+           <userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>
+         ```
       
       
 # NEXT STEPS 
