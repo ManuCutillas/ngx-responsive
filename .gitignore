@@ -14,10 +14,6 @@ demo/jspm_packages
 link-checker-results.txt
 demo/link-checker-results.txt
 **/*npm-debug.log.*
-demo/*.js
-demo/*.js.map
-demo/_test-output
-demo/_temp
 _test-output
 _temp
 !**/*e2e-spec.js
