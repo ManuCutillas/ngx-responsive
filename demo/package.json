@@ -27,9 +27,8 @@
     "ionicons-npm": "^2.0.1",
     "jquery": "^3.1.0",
     "lodash": "^4.14.2",
-    "ng2-responsive": "^0.4.0",
+    "ng2-responsive": "^0.4.2",
     "reflect-metadata": "0.1.2",
-    "responsive-directives-angular2": "^0.3.7",
     "rxjs": "5.0.0-beta.6",
     "rxjs-es": "5.0.0-beta.11",
     "zone.js": "0.6.12"
