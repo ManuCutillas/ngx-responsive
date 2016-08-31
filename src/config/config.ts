@@ -49,6 +49,8 @@ export class ResponsiveState {
     private _height: number;
     private _screenWidth: number = window.screen.width;
     private _screenHeight: number = window.screen.height;
+    private _orientationWidth:number = window.innerWidth;
+    private _orientationHeight:number = window.innerHeight;
     private _orientation: string | number = window.orientation;
     private _userAgent: any = window.navigator.userAgent.toLowerCase();
     private _window: any = window;
@@ -268,9 +270,9 @@ export class ResponsiveState {
     private orientation_device = (): string => {
         try {
             if (this.isMobile() || this.isTablet()) {
-                if (this._screenHeight > this._screenWidth) {
+                if (window.innerHeight > window.innerWidth) {
                     return 'portrait';
-                } else if (this._orientation === 90 || this._orientation === -90) {
+                } else {
                     return 'landscape';
                 }
             } else if (this.isSMART() || this.isDesktop()) {

@@ -47,6 +47,8 @@ var ResponsiveState = (function () {
         this._windows = {};
         this._screenWidth = window.screen.width;
         this._screenHeight = window.screen.height;
+        this._orientationWidth = window.innerWidth;
+        this._orientationHeight = window.innerHeight;
         this._orientation = window.orientation;
         this._userAgent = window.navigator.userAgent.toLowerCase();
         this._window = window;
@@ -211,10 +213,10 @@ var ResponsiveState = (function () {
         this.orientation_device = function () {
             try {
                 if (_this.isMobile() || _this.isTablet()) {
-                    if (_this._screenHeight > _this._screenWidth) {
+                    if (window.innerHeight > window.innerWidth) {
                         return 'portrait';
                     }
-                    else if (_this._orientation === 90 || _this._orientation === -90) {
+                    else {
                         return 'landscape';
                     }
                 }
