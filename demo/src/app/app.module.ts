@@ -1,5 +1,6 @@
-import { NgModule, provide, PLATFORM_DIRECTIVES } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import {ResponsiveModule, ResponsiveConfig, ResponsiveConfigInterface} from 'ng2-responsive';
 //REMOVE
@@ -16,10 +17,10 @@ let config: ResponsiveConfigInterface = {
     debounceTime: 100 // allow to debounce checking timer
 };
 
-
 @NgModule({
   imports: [
     BrowserModule,
+    CommonModule,
     ResponsiveModule
   ],
   declarations: [

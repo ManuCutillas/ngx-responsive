@@ -24,8 +24,6 @@ export declare class ResponsiveState {
     private _height;
     private _screenWidth;
     private _screenHeight;
-    private _orientationWidth;
-    private _orientationHeight;
     private _orientation;
     private _userAgent;
     private _window;

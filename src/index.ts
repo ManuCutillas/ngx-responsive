@@ -4,12 +4,12 @@
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU, Kamil Breguła
  * @created_at May 23, 2016
- * @updated_at Aug 23, 2016 - by ManuCutillas
- * @version_0.4.0
+ * @updated_at Sept 2, 2016 - by ManuCutillas
+ * @version_0.4.5
  *
  * Dependencies:
- * @angular/core : "2.0.0-rc.5"
- * rxjs: "5.0.0-beta.10"
+ * @angular/core : "2.0.0-rc.6"
+ * rxjs: "5.0.0-beta.11"
  *
  * @more_info http://kalypso.agency
  *            https://github.com/ManuCutillas
@@ -22,7 +22,7 @@
 
 
 /* IMPORTS => MODULES */
-import { NgModule, provide, PLATFORM_DIRECTIVES } from '@angular/core';
+import { NgModule } from '@angular/core';
 import {ResponsiveConfigInterface } from './config/interfaces';
 import {ResponsiveState} from './config/config';
 import {XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap, ResponsiveSizeInfo} from './bootstrap/bootstrap-directives';
@@ -56,8 +56,6 @@ export const RESPONSIVE_DIRECTIVES = [
     IsAndroidMobile, IsAndroidTablet, IsWindowsPhone, ShowItStandard, HideItStandard, IsPortrait, IsLandscape, ShowItSizes, HideItSizes,
     Is1xPixel, IsRetina, Is4k, PixelRatioInfo, IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, IeInfo, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion,
     ResponsiveSizeInfo, DeviceInfo, OrientationInfo, ResponsiveWindow, UserAgentInfo],
-  providers: [
-      {provide: ResponsiveState, useClass: ResponsiveState},
-      provide(PLATFORM_DIRECTIVES, { useValue: [RESPONSIVE_DIRECTIVES], multi: true})]
+  providers: [ResponsiveState]
 })
 export class ResponsiveModule { }   

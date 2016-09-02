@@ -4,12 +4,12 @@
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU, Kamil Breguła
  * @created_at May 23, 2016
- * @updated_at Aug 23, 2016 - by ManuCutillas
- * @version_0.4.0
+ * @updated_at Sept 2, 2016 - by ManuCutillas
+ * @version_0.4.5
  *
  * Dependencies:
- * @angular/core : "2.0.0-rc.5"
- * rxjs: "5.0.0-beta.10"
+ * @angular/core : "2.0.0-rc.6"
+ * rxjs: "5.0.0-beta.11"
  *
  * @more_info http://kalypso.agency
  *            https://github.com/ManuCutillas
@@ -62,9 +62,7 @@ var ResponsiveModule = (function () {
                 devices_directives_1.IsAndroidMobile, devices_directives_1.IsAndroidTablet, devices_directives_1.IsWindowsPhone, devices_directives_1.ShowItStandard, devices_directives_1.HideItStandard, devices_directives_1.IsPortrait, devices_directives_1.IsLandscape, custom_sizes_directives_1.ShowItSizes, custom_sizes_directives_1.HideItSizes,
                 pixelratio_directives_1.Is1xPixel, pixelratio_directives_1.IsRetina, pixelratio_directives_1.Is4k, pixelratio_directives_1.PixelRatioInfo, browsers_directives_1.IsChrome, browsers_directives_1.IsFirefox, browsers_directives_1.IsSafari, browsers_directives_1.IsOpera, browsers_directives_1.IsIE, browsers_directives_1.IsIE9, browsers_directives_1.IsIE10, browsers_directives_1.IsIE11, browsers_directives_1.IsIE12, browsers_directives_1.IeInfo, browsers_directives_1.ShowItBrowser, browsers_directives_1.HideItBrowser, browsers_directives_1.ShowIEVersion, browsers_directives_1.HideIEVersion,
                 bootstrap_directives_1.ResponsiveSizeInfo, devices_directives_1.DeviceInfo, devices_directives_1.OrientationInfo, responsive_window_1.ResponsiveWindow, useragent_1.UserAgentInfo],
-            providers: [
-                { provide: config_1.ResponsiveState, useClass: config_1.ResponsiveState },
-                core_1.provide(core_1.PLATFORM_DIRECTIVES, { useValue: [exports.RESPONSIVE_DIRECTIVES], multi: true })]
+            providers: [config_1.ResponsiveState]
         }), 
         __metadata('design:paramtypes', [])
     ], ResponsiveModule);

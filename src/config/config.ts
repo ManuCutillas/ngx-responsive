@@ -49,8 +49,6 @@ export class ResponsiveState {
     private _height: number;
     private _screenWidth: number = window.screen.width;
     private _screenHeight: number = window.screen.height;
-    private _orientationWidth:number = window.innerWidth;
-    private _orientationHeight:number = window.innerHeight;
     private _orientation: string | number = window.orientation;
     private _userAgent: any = window.navigator.userAgent.toLowerCase();
     private _window: any = window;

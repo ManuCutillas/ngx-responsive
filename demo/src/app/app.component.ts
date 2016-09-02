@@ -1,10 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  directives: [CORE_DIRECTIVES]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   private xl: boolean;

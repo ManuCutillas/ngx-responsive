@@ -3,9 +3,19 @@
 # Introduction
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
 
-### NOTICE: FOR RC.4 / RC.3
+### BREAKING CHANGES 
+
+FOR ANGULAR PROYECTS WITH RC.4 / RC.3 VERSIONS
 - [npm package responsive-directives-angular2](https://www.npmjs.com/package/responsive-directives-angular2)
 - [github branch rc.3 - rc.4](https://github.com/ManuCutillas/ng2-responsive/tree/n2-responsive-v3)
+
+FOR ANGULAR PROYECTS WITH RC.5
+```
+ npm i ng2-responsive@0.4.4 --save
+
+```
+### NOTICE - RC.6 => CORE_DIRECTIVES deprecated. 
+- ng2-responsive upgraded to rc.6
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: xs / sm / md / lg / xl
@@ -41,11 +51,13 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
    * with default breaking points
    
     ```
+    import { CommonModule } from '@angular/common';
     import { ResponsiveModule } from './ng2-responsive';
     ...
     @NgModule({
           imports: [
                BrowserModule,
+               CommonModule,
                ResponsiveModule
     ],
     declarations: [],
@@ -58,6 +70,7 @@ export class AppModule { }
     * with custom Configuration
       
     ```
+     import { CommonModule } from '@angular/common';
      import { ResponsiveModule, ResponsiveConfig, ResponsiveConfigInterface } from './ng2-responsive';
      ...
      let config: ResponsiveConfigInterface = {
@@ -74,6 +87,7 @@ export class AppModule { }
      @NgModule({
         imports: [
             BrowserModule,
+            CommonModule,
             ResponsiveModule
      ],
      declarations: [],
@@ -86,12 +100,6 @@ export class AppModule { }
 3.DIRECTIVES:
 
       * In your component to import the RESPONSIVE_DIRECTIVES only need import: 
-     
-      ```
-      import {CORE_DIRECTIVES} from '@angular/common';
-      ```
-      
-      And use RESPONSIVE DIRECTIVES:
       
       ```
       @Component({
@@ -105,8 +113,7 @@ export class AppModule { }
               <p *md>I'll show you if I'm a md screen size.</p>
               <p *sm>I'll show you if I'm a sm screen size.</p>
               <p *xs>I'll show you if I'm a xs screen size.</p>
-         ',
-         directives: [CORE_DIRECTIVES]
+         '
        })
       ```
  
@@ -159,8 +166,7 @@ export class AppModule { }
                                  sizes:{min:900,max:1400}
                    }" (changes)="miMethod($event)">I'll show you if all the options are true & listen events changes.</template>
                    
-            ',
-            directives: [CORE_DIRECTIVES]
+            '
            })
         ```
    2. One function detect
@@ -175,8 +181,7 @@ export class AppModule { }
                 <p *md>I'll show you if I'm a md screen size.</p>
                 <p *sm>I'll show you if I'm a sm screen size.</p>
                 <p *xs>I'll show you if I'm a xs screen size.</p>
-                ',
-            directives: [CORE_DIRECTIVES]
+                '
             })
         ```
    
@@ -188,8 +193,7 @@ export class AppModule { }
             selector: 'my-component',
             template: '
                 <p *showItBootstrap="['md','xs']">I'll show you only in md and xs screen sizes.</p>
-                <p *hideItBootstrap="['lg','sm']">I'll hide you only in lg and sm screen sizes.</p>',
-            directives: [CORE_DIRECTIVES]
+                <p *hideItBootstrap="['lg','sm']">I'll hide you only in lg and sm screen sizes.</p>'
         })
         ```
    
@@ -203,8 +207,7 @@ export class AppModule { }
                <p *isDesktop>I'll show you if I'm a desktop device.</p>
                <p *isTablet>I'll show you if I'm a tablet device.</p>
                <p *isMobile>I'll show you if I'm a mobile device.</p>
-               ',
-              directives: [CORE_DIRECTIVES]
+               '
             })
         ```
      
@@ -215,8 +218,7 @@ export class AppModule { }
              selector: 'my-component',
              template: '
                <p *showItDevice="['mobile','tablet']">I'll show you if I'm a tablet or a mobile device.</p>
-               <p *hideItDevice="['mobile','tablet','desktop']">I'll hide you if I'm a desktop / tablet or mobile device.</p>',
-             directives: [CORE_DIRECTIVES]
+               <p *hideItDevice="['mobile','tablet','desktop']">I'll hide you if I'm a desktop / tablet or mobile device.</p>'
         })
         ```
       
@@ -230,8 +232,7 @@ export class AppModule { }
                   <p *isIpad>I'll show you if I'm a iPad device.</p>
                   <p *isAndroidMobile>I'll show you if I'm a android mobile device.</p>
                   <p *isAndroidTablet>I'll show you if I'm a android tablet device.</p>
-                  <p *isWindowsPhone>I'll show you if I'm a windows phone mobile device.</p>',
-              directives: [CORE_DIRECTIVES]
+                  <p *isWindowsPhone>I'll show you if I'm a windows phone mobile device.</p>'
             })
         ```
      
@@ -243,8 +244,7 @@ export class AppModule { }
              selector: 'my-component',
              template: '
                 <p *showItStandard="['android mobile','windows phone']">I'll show you if I'm a android mobile or a windows phone device.</p>
-                <p *hideItStandard="['iphone','ipad']">I'll hide you if I'm a iPad or a iPhone device.</p>',
-             directives: [CORE_DIRECTIVES]
+                <p *hideItStandard="['iphone','ipad']">I'll hide you if I'm a iPad or a iPhone device.</p>'
         })
         ```
       
@@ -255,8 +255,7 @@ export class AppModule { }
             template: '
                <p *isPortrait>I'll show you if I'm a portrait state.</p>
                <p *isLandscape>I'll show you if I'm a landscape state.</p>
-            ',
-            directives: [CORE_DIRECTIVES]
+            '
         })
         ```
       
@@ -268,8 +267,7 @@ export class AppModule { }
              template: '
                 <p *showItSizes="{min:955,max:1057}">I'll show you if I have a width between the min and max.</p>
                 <p *hideItSizes="{min:360,max:768}">It is hidden if I have a width between the min and max.</p>
-             ',
-             directives: [CORE_DIRECTIVES]
+             '
         })
         ```
      
@@ -284,8 +282,7 @@ export class AppModule { }
                <p *isSafari>I'll show you if I'm a Safari Browser.</p>
                <p *isOpera>I'll show you if I'm a Opera Browser.</p>
                <p *isIE>I'll show you if I'm a Internet Explorer Browser.</p>
-            ',
-            directives: [CORE_DIRECTIVES]
+            '
         })
         ```
         * With multiple browsers detect combinations: show / hide options.
@@ -295,8 +292,7 @@ export class AppModule { }
            selector: 'my-component',
            template: '
              <p *showItBrowser="['ie','opera']">I'll show you if I'm a IE or Opera Browser.</p>
-             <p *hideItBrowser="['chrome','firefox','safari']">I'll hide you if I'm a Chrome, Firefox or Safari Browser.</p>',
-            directives: [CORE_DIRECTIVES]
+             <p *hideItBrowser="['chrome','firefox','safari']">I'll hide you if I'm a Chrome, Firefox or Safari Browser.</p>'
         })
         ```
         * With Internet Explorer Version detection.
@@ -308,8 +304,7 @@ export class AppModule { }
               <p *isIE9>I'll show you if I'm a Internet Explorer 9.</p>
               <p *isIE10>I'll show you if I'm a Internet Explorer 10.</p>
               <p *isIE11>I'll show you if I'm a Internet Explorer 11.</p>
-              <p *isIE12>I'll show you if I'm a Internet Explorer 12.</p>',
-            directives: [CORE_DIRECTIVES]
+              <p *isIE12>I'll show you if I'm a Internet Explorer 12.</p>'
         })
         ```
       
@@ -321,8 +316,7 @@ export class AppModule { }
            template: '
              <p *showIEVersion="['ie 11','ie +12']">I'll show you if I'm a IE 11 browser or IE 12</p>
              <p *hideIEVersion="['ie 9','ie 10']">I'll hide you if I'm IE 9 browser or IE 10.</p>
-            ',
-            directives: [CORE_DIRECTIVES]
+            '
         })
         ```
         * With pixel ratio detect:
@@ -333,8 +327,7 @@ export class AppModule { }
                 <p *is1xPixel>I'll show you if I'm a 1x screen.</p>
                 <p *isRetina>I'll show you if I'm a retina screen.</p>
                 <p *is4k>I'll show you if I'm a 4k screen.</p>
-            ',
-            directives: [CORE_DIRECTIVES]
+            '
           })
         ```
 
