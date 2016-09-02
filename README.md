@@ -10,12 +10,12 @@ FOR ANGULAR PROYECTS WITH RC.4 / RC.3 VERSIONS
 - [github branch rc.3 - rc.4](https://github.com/ManuCutillas/ng2-responsive/tree/n2-responsive-v3)
 
 FOR ANGULAR PROYECTS WITH RC.5
-```
- npm i ng2-responsive@0.4.4 --save
 
 ```
-### NOTICE - RC.6 => CORE_DIRECTIVES deprecated. 
-- ng2-responsive upgraded to rc.6
+  npm i ng2-responsive@0.4.4 --save
+```
+
+- In Angular 2 RC.6 => CORE_DIRECTIVES are deprecated. Use new `CommonModule`
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: xs / sm / md / lg / xl
@@ -45,9 +45,8 @@ FOR ANGULAR PROYECTS WITH RC.5
      ```
      npm i ng2-responsive --save
      ```
-
 2. bootstrap the service
-    
+
    * with default breaking points
    
     ```
