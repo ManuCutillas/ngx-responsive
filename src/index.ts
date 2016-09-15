@@ -4,14 +4,14 @@
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU, Kamil Breguła
  * @created_at May 23, 2016
- * @updated_at Sept 2, 2016 - by ManuCutillas
- * @version_0.4.5
+ * @updated_at Sept 15, 2016 - by ManuCutillas
+ * @version_0.4.6
  *
  * Dependencies:
- * @angular/core : "2.0.0-rc.6"
- * rxjs: "5.0.0-beta.11"
+ * @angular/core : "2.0.0"
+ * rxjs: "5.0.0-beta.13"
  *
- * @more_info http://kalypso.agency
+ * @more_info https://kalypso.agency
  *            https://github.com/ManuCutillas
  *            https://www.npmjs.com/~manucutillas
  *            https://github.com/no-more

@@ -5,17 +5,21 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 
 ### BREAKING CHANGES 
 
-FOR ANGULAR PROYECTS WITH RC.4 / RC.3 VERSIONS
+FOR ANGULAR 2 PROYECTS WITH RC.3 / RC.4 VERSIONS
 - [npm package responsive-directives-angular2](https://www.npmjs.com/package/responsive-directives-angular2)
 - [github branch rc.3 - rc.4](https://github.com/ManuCutillas/ng2-responsive/tree/n2-responsive-v3)
 
-FOR ANGULAR PROYECTS WITH RC.5
+FOR ANGULAR 2 PROYECTS WITH RC.5
 
 ```
   npm i ng2-responsive@0.4.4 --save
 ```
 
-- In Angular 2 RC.6 => CORE_DIRECTIVES are deprecated. Use new `CommonModule`
+FOR ANGULAR RC.6 / RC.7 / 2.0.0 FINAL RELEASE
+
+```
+  npm i ng2-responsive --save
+```
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: xs / sm / md / lg / xl
