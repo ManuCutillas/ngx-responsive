@@ -269,7 +269,7 @@ export class AppModule { }
              selector: 'my-component',
              template: '
                 <p *showItSizes="{min:955,max:1057}">I'll show you if responsive-window width is between the min and max.</p>
-                <p *showItSizes="{min:750}">I'll show you if responsive-window width is between the min and max.</p>
+                <p *showItSizes="{min:750}">I'll show you if responsive-window width is greater than or equal to min.</p>
                 <p *hideItSizes="{min:360,max:768}">It is hidden if responsive-window width between the min and max.</p>
              '
         })
