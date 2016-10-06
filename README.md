@@ -275,7 +275,7 @@ export class AppModule { }
         })
         ```
 
-        responsive-window is set using the Responsive Window directive or window by default.
+        responsive-window being window by default or any element set using the Responsive Window directive.
      
         * With browser detection.
       
