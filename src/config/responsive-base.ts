@@ -132,18 +132,13 @@ export abstract class RESPONSIVE_BASE implements OnInit, OnDestroy {
     }
 
     private updateView(value: any): void {
-        if (!!this._showWhenTrue) {
-            if(this._directive == 'sizes'){
-               this.showHide(!!(value >= this._sizes_grid_state.min && value <= this._sizes_grid_state.max));
-            }else{
-              this.showHide(!!this._others_grid_state && this._others_grid_state.indexOf(value) !== -1);  
-            }
-        } else {
-            if(this._directive == 'sizes'){
-              this.showHide(!(value >= this._sizes_grid_state.min && value <= this._sizes_grid_state.max));
-            }else{
-              this.showHide(!(!!this._others_grid_state && this._others_grid_state.indexOf(value) !== -1));
-            }
-        }
+       let showBoolean = this._directive == 'sizes' ?
+            !!(
+                (this._sizes_grid_state.min === undefined || value >= this._sizes_grid_state.min ) &&
+                (this._sizes_grid_state.max === undefined || value <= this._sizes_grid_state.max )
+            ) :
+            !!this._others_grid_state && this._others_grid_state.indexOf(value) !== -1;
+
+        this.showHide( !!this._showWhenTrue ? showBoolean : !showBoolean );
     }
 }

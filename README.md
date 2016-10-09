@@ -268,11 +268,14 @@ export class AppModule { }
         @Component({
              selector: 'my-component',
              template: '
-                <p *showItSizes="{min:955,max:1057}">I'll show you if I have a width between the min and max.</p>
-                <p *hideItSizes="{min:360,max:768}">It is hidden if I have a width between the min and max.</p>
+                <p *showItSizes="{min:955,max:1057}">I'll show you if responsive-window width is between the min and max.</p>
+                <p *showItSizes="{min:750}">I'll show you if responsive-window width is greater than or equal to min.</p>
+                <p *hideItSizes="{min:360,max:768}">It is hidden if responsive-window width between the min and max.</p>
              '
         })
         ```
+
+        responsive-window being window by default or any element set using the Responsive Window directive.
      
         * With browser detection.
       
