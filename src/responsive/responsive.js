@@ -318,7 +318,8 @@ var Responsive = (function () {
                 var active = _a[_i];
                 if (all_key == active && this.match_multiple[all_key] == false) {
                     //If the match multiple actives values have one in false; return false
-                    return match = false;
+                    match = false;
+                    return match;
                 }
             }
         }

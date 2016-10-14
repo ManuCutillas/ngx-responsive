@@ -319,7 +319,7 @@ export class Responsive implements OnInit, OnDestroy {
     }
 
     //Multiple match boolean values
-    private matchValues(show: boolean, type_directive: string) {
+    private matchValues(show: boolean, type_directive: string):Boolean {
 
         let match: boolean = true;
 
@@ -335,7 +335,8 @@ export class Responsive implements OnInit, OnDestroy {
             for (let active of this._actives) {
                 if (all_key == active && this.match_multiple[all_key] == false) {
                     //If the match multiple actives values have one in false; return false
-                    return match = false;
+                    match = false;
+                    return match;
                 }
             }
         }
