@@ -3,6 +3,9 @@
 # Introduction
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
 
+### AOT - Support ( Working on it )
+- [AOT DEV BRANCH](https://github.com/ManuCutillas/ng2-responsive/tree/ng2-responsive-aot)
+
 ### BREAKING CHANGES 
 
 FOR ANGULAR 2 PROYECTS WITH RC.3 / RC.4 VERSIONS
