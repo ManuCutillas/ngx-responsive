@@ -1,10 +1,9 @@
 import {Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from  'rxjs/Rx';
-import {ResponsiveState} from '../config/config';
-import {responsivePattern, responsiveSubscriptions} from '../config/interfaces';
+import {ResponsiveState, responsivePattern, responsiveSubscriptions} from '../config';
 
 /*======== RESPONSIVE BASE CLASS =========*/
-export abstract class RESPONSIVE_BASE implements OnInit, OnDestroy {
+export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
 
     private _noRepeat: number = 0;
     private _sizes_grid_state: any;
@@ -141,4 +140,5 @@ export abstract class RESPONSIVE_BASE implements OnInit, OnDestroy {
 
         this.showHide( !!this._showWhenTrue ? showBoolean : !showBoolean );
     }
+
 }

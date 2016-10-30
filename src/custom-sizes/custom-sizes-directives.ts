@@ -1,15 +1,13 @@
 import {Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from  'rxjs/Rx';
-import {ResponsiveState} from '../config/config';
-import {JsonGrid} from '../config/interfaces';
-import {RESPONSIVE_BASE} from '../config/responsive-base';
+import {ResponsiveState, JsonGrid, RESPONSIVE_BASE,} from '../config';
 
 /*======== CUSTOM SIZES =========*/
 /* show */
 @Directive({
     selector: '[showItSizes]'
 })
-export class ShowItSizes extends RESPONSIVE_BASE {
+export class ShowItSizes extends RESPONSIVE_BASE<any> {
     protected _showWhenTrue: boolean = true;
 
     constructor( templateRef: TemplateRef<any>,
@@ -28,7 +26,7 @@ export class ShowItSizes extends RESPONSIVE_BASE {
 @Directive({
     selector: '[hideItSizes]'
 })
-export class HideItSizes extends RESPONSIVE_BASE {
+export class HideItSizes extends RESPONSIVE_BASE<any> {
    protected _showWhenTrue: boolean = false;
 
     constructor( templateRef: TemplateRef<any>,

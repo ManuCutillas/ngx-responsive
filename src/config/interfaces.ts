@@ -1,5 +1,5 @@
 //Breakpoints interface
-export interface ResponsiveConfigInterface {
+/*export interface ResponsiveConfigInterface {
     breakPoints: {
         xs: {max: number},
         sm: {min: number, max: number},
@@ -8,7 +8,7 @@ export interface ResponsiveConfigInterface {
         xl: {min: number}
     },
     debounceTime: number
-}
+} */
 
 //Custom sizes directives interface
 export interface JsonGrid {

@@ -1,8 +1,30 @@
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/debounce';
 import { Observable } from 'rxjs/Rx';
-import { ResponsiveWindow } from '../responsive-window/responsive-window';
-import { ResponsiveConfigInterface } from './interfaces';
+import { ResponsiveWindow } from '../responsive-window';
+export declare class ResponsiveConfigInterface {
+    breakPoints: {
+        xs: {
+            max: number;
+        };
+        sm: {
+            min: number;
+            max: number;
+        };
+        md: {
+            min: number;
+            max: number;
+        };
+        lg: {
+            min: number;
+            max: number;
+        };
+        xl: {
+            min: number;
+        };
+    };
+    debounceTime: number;
+}
 export declare class ResponsiveConfig {
     config: ResponsiveConfigInterface;
     constructor(config?: ResponsiveConfigInterface);

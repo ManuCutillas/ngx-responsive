@@ -4,18 +4,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var core_1 = require('@angular/core');
-var config_1 = require('../config/config');
-var responsive_base_1 = require('../config/responsive-base');
+var config_1 = require('../config');
 /*
  * PIXEL RATIO DIRECTIVES
  * @4k @RETINA @1X
@@ -35,20 +25,22 @@ var Is1xPixel = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String), 
-        __metadata('design:paramtypes', [String])
-    ], Is1xPixel.prototype, "is1xPixel", null);
-    Is1xPixel = __decorate([
-        core_1.Directive({
-            selector: '[is1xPixel]'
-        }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, config_1.ResponsiveState])
-    ], Is1xPixel);
+    Is1xPixel.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[is1xPixel]'
+                },] },
+    ];
+    /** @nocollapse */
+    Is1xPixel.ctorParameters = [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: config_1.ResponsiveState, },
+    ];
+    Is1xPixel.propDecorators = {
+        'is1xPixel': [{ type: core_1.Input },],
+    };
     return Is1xPixel;
-    var _a, _b;
-}(responsive_base_1.RESPONSIVE_BASE));
+}(config_1.RESPONSIVE_BASE));
 exports.Is1xPixel = Is1xPixel;
 /*======== RETINA =========*/
 var IsRetina = (function (_super) {
@@ -65,20 +57,22 @@ var IsRetina = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String), 
-        __metadata('design:paramtypes', [String])
-    ], IsRetina.prototype, "isRetina", null);
-    IsRetina = __decorate([
-        core_1.Directive({
-            selector: '[isRetina]'
-        }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, config_1.ResponsiveState])
-    ], IsRetina);
+    IsRetina.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isRetina]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsRetina.ctorParameters = [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: config_1.ResponsiveState, },
+    ];
+    IsRetina.propDecorators = {
+        'isRetina': [{ type: core_1.Input },],
+    };
     return IsRetina;
-    var _a, _b;
-}(responsive_base_1.RESPONSIVE_BASE));
+}(config_1.RESPONSIVE_BASE));
 exports.IsRetina = IsRetina;
 /*======== 4K =========*/
 var Is4k = (function (_super) {
@@ -95,20 +89,22 @@ var Is4k = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String), 
-        __metadata('design:paramtypes', [String])
-    ], Is4k.prototype, "isRetina", null);
-    Is4k = __decorate([
-        core_1.Directive({
-            selector: '[is4k]'
-        }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _a) || Object, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object, config_1.ResponsiveState])
-    ], Is4k);
+    Is4k.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[is4k]'
+                },] },
+    ];
+    /** @nocollapse */
+    Is4k.ctorParameters = [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: config_1.ResponsiveState, },
+    ];
+    Is4k.propDecorators = {
+        'isRetina': [{ type: core_1.Input },],
+    };
     return Is4k;
-    var _a, _b;
-}(responsive_base_1.RESPONSIVE_BASE));
+}(config_1.RESPONSIVE_BASE));
 exports.Is4k = Is4k;
 //Next to refactor
 /*======== DeviceInfo =========*/
@@ -150,19 +146,21 @@ var PixelRatioInfo = (function () {
             return true;
         }
     };
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-    ], PixelRatioInfo.prototype, "pixelratio", void 0);
-    PixelRatioInfo = __decorate([
-        core_1.Directive({
-            selector: "pixelratioInfo",
-            inputs: ['pixelratioInfo']
-        }), 
-        __metadata('design:paramtypes', [config_1.ResponsiveState, (typeof (_b = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _b) || Object])
-    ], PixelRatioInfo);
+    PixelRatioInfo.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: "pixelratioInfo",
+                    inputs: ['pixelratioInfo']
+                },] },
+    ];
+    /** @nocollapse */
+    PixelRatioInfo.ctorParameters = [
+        { type: config_1.ResponsiveState, },
+        { type: core_1.ViewContainerRef, },
+    ];
+    PixelRatioInfo.propDecorators = {
+        'pixelratio': [{ type: core_1.Output },],
+    };
     return PixelRatioInfo;
-    var _a, _b;
 }());
 exports.PixelRatioInfo = PixelRatioInfo;
 //# sourceMappingURL=pixelratio-directives.js.map

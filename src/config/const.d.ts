@@ -1,3 +1,4 @@
+/// <reference types="es6-shim" />
 export declare const GLOBAL_INPUTS: {
     BOOTSTRAP: string[];
     DEVICES: string[];

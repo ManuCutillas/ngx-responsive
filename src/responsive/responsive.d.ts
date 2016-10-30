@@ -1,6 +1,5 @@
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
-import { ResponsiveState } from '../config/config';
-import { responsivePattern } from '../config/interfaces';
+import { ResponsiveState, responsivePattern } from '../config';
 export declare class Responsive implements OnInit, OnDestroy {
     templateRef: TemplateRef<Object>;
     private _responsiveState;

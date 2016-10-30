@@ -1,6 +1,6 @@
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
-import { ResponsiveState } from '../config/config';
-export declare abstract class RESPONSIVE_BASE implements OnInit, OnDestroy {
+import { ResponsiveState } from '../config';
+export declare abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     private templateRef;
     private viewContainer;
     private _responsiveState;

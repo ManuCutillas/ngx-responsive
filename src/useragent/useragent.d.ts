@@ -1,5 +1,5 @@
 import { EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { ResponsiveState } from '../config/config';
+import { ResponsiveState } from '../config';
 export declare class UserAgentInfo implements OnInit, OnDestroy {
     private _responsiveState;
     private _subscription_UserAgent;

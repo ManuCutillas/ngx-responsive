@@ -1,7 +1,6 @@
 import {Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from  'rxjs/Rx';
-import {ResponsiveState} from '../config/config';
-import {RESPONSIVE_BASE} from '../config/responsive-base';
+import {ResponsiveState, RESPONSIVE_BASE } from '../config';
 
 /*
  * DEVICES DIRECTIVES
@@ -12,7 +11,7 @@ import {RESPONSIVE_BASE} from '../config/responsive-base';
 @Directive({
     selector: '[isSmartTv]'
 })
-export class IsSmartTv extends RESPONSIVE_BASE{
+export class IsSmartTv extends RESPONSIVE_BASE<any>{
     protected _state: string = 'smarttv';
     protected _showWhenTrue: boolean = true;
     
@@ -31,7 +30,7 @@ export class IsSmartTv extends RESPONSIVE_BASE{
 @Directive({
     selector: '[isDesktop]'
 })
-export class IsDesktop extends RESPONSIVE_BASE{
+export class IsDesktop extends RESPONSIVE_BASE<any>{
     protected _state: string = 'desktop';
     protected _showWhenTrue: boolean = true;
     
@@ -50,7 +49,7 @@ export class IsDesktop extends RESPONSIVE_BASE{
 @Directive({
     selector: '[isTablet]'
 })
-export class IsTablet extends RESPONSIVE_BASE{
+export class IsTablet extends RESPONSIVE_BASE<any>{
      protected _state: string = 'tablet';
     protected _showWhenTrue: boolean = true;
     
@@ -69,7 +68,7 @@ export class IsTablet extends RESPONSIVE_BASE{
     selector: '[isMobile]'
 })
 
-export class IsMobile extends RESPONSIVE_BASE{
+export class IsMobile extends RESPONSIVE_BASE<any>{
     protected _state: string = 'mobile';
     protected _showWhenTrue: boolean = true;
 
@@ -89,7 +88,7 @@ export class IsMobile extends RESPONSIVE_BASE{
     selector: '[showItDevice]'
 })
 
-export class ShowItDevice extends RESPONSIVE_BASE{
+export class ShowItDevice extends RESPONSIVE_BASE<any>{
     protected _showWhenTrue: boolean = true;
 
     @Input() set showItDevice(grid_state: string[]|string) {
@@ -107,7 +106,7 @@ export class ShowItDevice extends RESPONSIVE_BASE{
     selector: '[hideItDevice]'
 })
 
-export class HideItDevice extends RESPONSIVE_BASE{
+export class HideItDevice extends RESPONSIVE_BASE<any>{
     protected _showWhenTrue: boolean = false;
 
     @Input() set hideItDevice(grid_state: string[]|string) {
@@ -132,7 +131,7 @@ export class HideItDevice extends RESPONSIVE_BASE{
 @Directive({
     selector: '[isIphone]'
 })
-export class IsIphone extends RESPONSIVE_BASE{
+export class IsIphone extends RESPONSIVE_BASE<any>{
        protected _state: string = 'iphone';
        protected _showWhenTrue: boolean = true;
 
@@ -150,7 +149,7 @@ export class IsIphone extends RESPONSIVE_BASE{
     selector: '[isIpad]'
 })
 
-export class IsIpad extends RESPONSIVE_BASE{
+export class IsIpad extends RESPONSIVE_BASE<any>{
        protected _state: string = 'iphone';
        protected _showWhenTrue: boolean = true;
 
@@ -169,7 +168,7 @@ export class IsIpad extends RESPONSIVE_BASE{
     selector: '[isAndroidMobile]'
 })
 
-export class IsAndroidMobile extends RESPONSIVE_BASE{
+export class IsAndroidMobile extends RESPONSIVE_BASE<any>{
        protected _state: string = 'android mobile';
        protected _showWhenTrue: boolean = true;
 
@@ -188,7 +187,7 @@ export class IsAndroidMobile extends RESPONSIVE_BASE{
     selector: '[isAndroidTablet]'
 })
 
-export class IsAndroidTablet extends RESPONSIVE_BASE{
+export class IsAndroidTablet extends RESPONSIVE_BASE<any>{
        protected _state: string = 'android tablet';
        protected _showWhenTrue: boolean = true;
 
@@ -208,7 +207,7 @@ export class IsAndroidTablet extends RESPONSIVE_BASE{
     selector: '[isWindowsPhone]'
 })
 
-export class IsWindowsPhone extends RESPONSIVE_BASE{
+export class IsWindowsPhone extends RESPONSIVE_BASE<any>{
        protected _state: string = 'windows phone';
        protected _showWhenTrue: boolean = true;
 
@@ -228,7 +227,7 @@ export class IsWindowsPhone extends RESPONSIVE_BASE{
     selector: '[showItStandard]'
 })
 
-export class ShowItStandard extends RESPONSIVE_BASE{
+export class ShowItStandard extends RESPONSIVE_BASE<any>{
        protected _showWhenTrue: boolean = true;
 
     @Input() set showItStandard(grid_state: string[]|string) {
@@ -246,7 +245,7 @@ export class ShowItStandard extends RESPONSIVE_BASE{
     selector: '[hideItStandard]'
 })
 
-export class HideItStandard extends RESPONSIVE_BASE{
+export class HideItStandard extends RESPONSIVE_BASE<any>{
        protected _showWhenTrue: boolean = false;
 
     @Input() set hideItStandard(grid_state: string[]|string) {
@@ -271,7 +270,7 @@ export class HideItStandard extends RESPONSIVE_BASE{
     selector: '[isPortrait]'
 })
 
-export class IsPortrait extends RESPONSIVE_BASE{
+export class IsPortrait extends RESPONSIVE_BASE<any>{
        protected _state: string = 'portrait';
        protected _showWhenTrue: boolean = false;
 
@@ -290,7 +289,7 @@ export class IsPortrait extends RESPONSIVE_BASE{
     selector: '[isLandscape]'
 })
 
-export class IsLandscape extends RESPONSIVE_BASE{
+export class IsLandscape extends RESPONSIVE_BASE<any>{
        protected _state: string = 'landscape';
        protected _showWhenTrue: boolean = false;
 
@@ -309,7 +308,7 @@ export class IsLandscape extends RESPONSIVE_BASE{
 /*======== DeviceInfo =========*/
 /* DeviceInfo */
 @Directive({
-    selector: "deviceInfo", inputs:['deviceInfo'], outputs:['device']
+    selector: "deviceInfo"
 })
 export class DeviceInfo implements OnInit,OnDestroy {
     public currentstate: string;
@@ -319,8 +318,7 @@ export class DeviceInfo implements OnInit,OnDestroy {
     public set responsiveSizeInfo(grid_state: string[]|string) {
         this.updateData(this.currentstate);
     }
-    
-    public device:EventEmitter<any> = new EventEmitter();
+    @Output() device:EventEmitter<any> = new EventEmitter();
     constructor(private _responsiveState: ResponsiveState,
                 private viewContainer: ViewContainerRef) {}
 
@@ -401,7 +399,8 @@ export class DeviceStandardInfo implements OnInit,OnDestroy {
 
 /*======== OrientationInfo =========*/
 @Directive({
-    selector: "orientationInfo",inputs:['orientationInfo'], outputs:['orientation']
+    selector: "orientationInfo",
+    outputs:['orientation']
 })
 export class OrientationInfo implements OnInit,OnDestroy {
     public currentstate: string;

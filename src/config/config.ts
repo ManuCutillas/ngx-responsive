@@ -2,14 +2,26 @@ import {Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef,
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/debounce';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
-import {ResponsiveWindow} from '../responsive-window/responsive-window';
+import {ResponsiveWindow} from '../responsive-window';
 import {GLOBAL_INPUTS, REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES, REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION,LINUX_OS} from './const';
-import {ResponsiveConfigInterface, responsiveSubscriptions} from './interfaces';
+import { responsiveSubscriptions } from './interfaces';
+
+export class ResponsiveConfigInterface {
+    breakPoints: {
+        xs: {max: number},
+        sm: {min: number, max: number},
+        md: {min: number, max: number},
+        lg: {min: number, max: number},
+        xl: {min: number}
+    };
+    debounceTime: number
+};
 
 // Configuration class in order to allow to change breakpoints values
 @Injectable()
 export class ResponsiveConfig {
-    config: ResponsiveConfigInterface = {
+
+     public config:ResponsiveConfigInterface = {
         breakPoints: {
             xs: { max: 767 },
             sm: { min: 768, max: 991 },
@@ -20,8 +32,10 @@ export class ResponsiveConfig {
         debounceTime: 100
     };
 
-    constructor( @Optional() config?: ResponsiveConfigInterface) {
-        if (!!config) this.config = config;
+    constructor(@Optional() config?: ResponsiveConfigInterface  ) {
+        if (!!config){
+            this.config = config;
+        }
     }
 }
 

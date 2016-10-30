@@ -1,5 +1,5 @@
 import { DoCheck, Directive, Input, ElementRef, OnInit, OnDestroy} from '@angular/core';
-import {ResponsiveState} from '../config/config';
+import {ResponsiveState} from '../config';
 
 @Directive({
     selector: "[responsive-window]"

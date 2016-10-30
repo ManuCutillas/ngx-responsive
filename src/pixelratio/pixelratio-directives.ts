@@ -1,7 +1,6 @@
 import {Directive, Input, Output, EventEmitter, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from  'rxjs/Rx';
-import {ResponsiveState} from '../config/config';
-import {RESPONSIVE_BASE} from '../config/responsive-base';
+import { ResponsiveState, RESPONSIVE_BASE } from '../config';
 /*
  * PIXEL RATIO DIRECTIVES
  * @4k @RETINA @1X
@@ -11,7 +10,7 @@ import {RESPONSIVE_BASE} from '../config/responsive-base';
 @Directive({
     selector: '[is1xPixel]'
 })
-export class Is1xPixel extends RESPONSIVE_BASE {
+export class Is1xPixel extends RESPONSIVE_BASE<any> {
     protected _state: string = '1x';
     protected _showWhenTrue: boolean = true;
 
@@ -31,7 +30,7 @@ export class Is1xPixel extends RESPONSIVE_BASE {
     selector: '[isRetina]'
 })
 
-export class IsRetina extends RESPONSIVE_BASE {
+export class IsRetina extends RESPONSIVE_BASE<any> {
     protected _state: string = 'retina';
     protected _showWhenTrue: boolean = true;
 
@@ -49,7 +48,7 @@ export class IsRetina extends RESPONSIVE_BASE {
 @Directive({
     selector: '[is4k]'
 })
-export class Is4k extends RESPONSIVE_BASE {
+export class Is4k extends RESPONSIVE_BASE<any> {
     protected _state: string = '4k';
     protected _showWhenTrue: boolean = true;
 

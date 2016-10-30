@@ -1,7 +1,6 @@
 import { Output,EventEmitter, Directive, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from  'rxjs/Rx';
-import {ResponsiveState} from '../config/config';
-import {responsivePattern, responsiveSubscriptions} from '../config/interfaces';
+import { ResponsiveState, responsivePattern, responsiveSubscriptions } from '../config';
 
 /*======== RESPONSIVE MULTIPLE =========*/
 @Directive({

@@ -1,7 +1,6 @@
 import {Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
-import {ResponsiveState} from '../config/config';
-import {RESPONSIVE_BASE} from '../config/responsive-base';
+import {RESPONSIVE_BASE, ResponsiveState} from '../config';
 
 /*
  *
@@ -13,7 +12,7 @@ import {RESPONSIVE_BASE} from '../config/responsive-base';
 @Directive({
     selector: '[xl]'
 })
-export class XL extends RESPONSIVE_BASE {
+export class XL extends RESPONSIVE_BASE<any> {
     protected _state: string = 'xl';
     protected _showWhenTrue: boolean = true;
 
@@ -31,7 +30,7 @@ export class XL extends RESPONSIVE_BASE {
 @Directive({
     selector: '[lg]'
 })
-export class LG extends RESPONSIVE_BASE {
+export class LG extends RESPONSIVE_BASE<any> {
     protected _state: string = 'lg';
     protected _showWhenTrue: boolean = true;
     @Input() set lg(grid_state: string[] | string) {
@@ -49,7 +48,7 @@ export class LG extends RESPONSIVE_BASE {
 @Directive({
     selector: '[md]'
 })
-export class MD extends RESPONSIVE_BASE {
+export class MD extends RESPONSIVE_BASE<any> {
     protected _state: string = 'md';
     protected _showWhenTrue: boolean = true;
 
@@ -69,7 +68,7 @@ export class MD extends RESPONSIVE_BASE {
 @Directive({
     selector: '[sm]'
 })
-export class SM extends RESPONSIVE_BASE {
+export class SM extends RESPONSIVE_BASE<any> {
     protected _state: string = 'sm';
     protected _showWhenTrue: boolean = true;
 
@@ -88,7 +87,7 @@ export class SM extends RESPONSIVE_BASE {
 @Directive({
     selector: '[xs]'
 })
-export class XS extends RESPONSIVE_BASE {
+export class XS extends RESPONSIVE_BASE<any> {
     protected _state: string = 'xs';
     protected _showWhenTrue: boolean = true;
 
@@ -108,7 +107,7 @@ export class XS extends RESPONSIVE_BASE {
 @Directive({
     selector: '[showItBootstrap]'
 })
-export class ShowItBootstrap extends RESPONSIVE_BASE {
+export class ShowItBootstrap extends RESPONSIVE_BASE<any> {
     protected _showWhenTrue: boolean = true;
 
     @Input() set showItBootstrap(grid_state: string[] | string) {
@@ -128,7 +127,7 @@ export class ShowItBootstrap extends RESPONSIVE_BASE {
     selector: '[hideItBootstrap]'
 })
 
-export class HideItBootstrap extends RESPONSIVE_BASE {
+export class HideItBootstrap extends RESPONSIVE_BASE<any> {
     protected _showWhenTrue: boolean = false;
 
     @Input() set hideItBootstrap(grid_state: string[] | string) {

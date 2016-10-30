@@ -4,12 +4,12 @@
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU, Kamil Breguła
  * @created_at May 23, 2016
- * @updated_at Sept 15, 2016 - by ManuCutillas
- * @version_0.4.6
+ * @updated_at Oct 30, 2016 - by ManuCutillas
+ * @version_0.6.1
  *
  * Dependencies:
- * @angular/core : "2.0.0"
- * rxjs: "5.0.0-beta.13"
+ * @angular/core : "2.1.1"
+ * rxjs: "5.0.0-rc.1"
  *
  * @more_info https://kalypso.agency
  *            https://github.com/ManuCutillas
@@ -23,31 +23,43 @@
 
 /* IMPORTS => MODULES */
 import { NgModule } from '@angular/core';
-import {ResponsiveConfigInterface } from './config/interfaces';
-import {ResponsiveState} from './config/config';
-import {XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap, ResponsiveSizeInfo} from './bootstrap/bootstrap-directives';
-import {IsDesktop, IsTablet, IsMobile, IsSmartTv, ShowItDevice, HideItDevice, IsIphone, IsIpad,
-    IsAndroidMobile, IsAndroidTablet, IsWindowsPhone, ShowItStandard, HideItStandard,
-    IsPortrait, IsLandscape, DeviceInfo, DeviceStandardInfo, OrientationInfo } from './devices/devices-directives';
-import {ShowItSizes, HideItSizes} from './custom-sizes/custom-sizes-directives';
-import {Is1xPixel, IsRetina, Is4k, PixelRatioInfo} from './pixelratio/pixelratio-directives';
-import {IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion, IeInfo, BrowserInfo} from './browsers/browsers-directives';
-import {Responsive} from './responsive/responsive';
-import {ResponsiveWindow} from './responsive-window/responsive-window';
-import { UserAgentInfo } from './useragent/useragent';
+import { CommonModule } from '@angular/common';
+import { ResponsiveConfig,ResponsiveState } from './config';
+import { BOOTSTRAP_DIRECTIVES } from './bootstrap';
+import { BROWSER_DIRECTIVES } from './browsers';
+import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes';
+import { DEVICES_DIRECTIVES } from './devices';
+import { PIXELRATIO_DIRECTIVES } from './pixelratio';
+import { RESPONSIVE_DIRECTIVE } from './responsive';
+import { RESPONSIVEWINDOW_DIRECTIVE } from './responsive-window';
+import { USERAGENT_DIRECTIVE } from './useragent';
 
-export { ResponsiveConfigInterface} from './config/interfaces';
-export { ResponsiveState, ResponsiveConfig } from './config/config';
+export { 
+  ResponsiveConfig, 
+  ResponsiveState
+ };
 
 @NgModule({
- declarations: [Responsive, XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap, IsSmartTv, IsDesktop, IsTablet, IsMobile, ShowItDevice, HideItDevice, IsIphone, IsIpad,
-    IsAndroidMobile, IsAndroidTablet, IsWindowsPhone, ShowItStandard, HideItStandard, IsPortrait, IsLandscape, ShowItSizes, HideItSizes,
-    Is1xPixel, IsRetina, Is4k, PixelRatioInfo, IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, IeInfo, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion,
-    ResponsiveSizeInfo, DeviceInfo, OrientationInfo, ResponsiveWindow, UserAgentInfo],
- exports: [Responsive, XL, LG, MD, SM, XS, ShowItBootstrap, HideItBootstrap, IsSmartTv, IsDesktop, IsTablet, IsMobile, ShowItDevice, HideItDevice, IsIphone, IsIpad,
-    IsAndroidMobile, IsAndroidTablet, IsWindowsPhone, ShowItStandard, HideItStandard, IsPortrait, IsLandscape, ShowItSizes, HideItSizes,
-    Is1xPixel, IsRetina, Is4k, PixelRatioInfo, IsChrome, IsFirefox, IsSafari, IsOpera, IsIE, IsIE9, IsIE10, IsIE11, IsIE12, IeInfo, ShowItBrowser, HideItBrowser, ShowIEVersion, HideIEVersion,
-    ResponsiveSizeInfo, DeviceInfo, OrientationInfo, ResponsiveWindow, UserAgentInfo],
-  providers: [ResponsiveState]
+declarations:[
+  BOOTSTRAP_DIRECTIVES,
+  BROWSER_DIRECTIVES,
+  CUSTOMSIZES_DIRECTIVES,
+  DEVICES_DIRECTIVES,
+  PIXELRATIO_DIRECTIVES,
+  RESPONSIVE_DIRECTIVE,
+  RESPONSIVEWINDOW_DIRECTIVE,
+  USERAGENT_DIRECTIVE
+  ],
+exports:[
+  BOOTSTRAP_DIRECTIVES,
+  BROWSER_DIRECTIVES,
+  CUSTOMSIZES_DIRECTIVES,
+  DEVICES_DIRECTIVES,
+  PIXELRATIO_DIRECTIVES,
+  RESPONSIVE_DIRECTIVE,
+  RESPONSIVEWINDOW_DIRECTIVE,
+  USERAGENT_DIRECTIVE,
+  ],
+providers: [ResponsiveState,ResponsiveConfig]
 })
-export class ResponsiveModule { }   
+export class ResponsiveModule { }  
