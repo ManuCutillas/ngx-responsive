@@ -24,7 +24,7 @@
 /* IMPORTS => MODULES */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResponsiveConfig,ResponsiveState } from './config';
+import { ResponsiveConfig,ResponsiveState } from './config/config';
 import { BOOTSTRAP_DIRECTIVES } from './bootstrap';
 import { BROWSER_DIRECTIVES } from './browsers';
 import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes';
@@ -36,8 +36,9 @@ import { USERAGENT_DIRECTIVE } from './useragent';
 
 export { 
   ResponsiveConfig, 
-  ResponsiveState
- };
+  ResponsiveState,
+  ResponsiveConfigInterface
+ } from './config/config';
 
 @NgModule({
 declarations:[

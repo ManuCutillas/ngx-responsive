@@ -1,4 +1,3 @@
-import { ResponsiveConfig, ResponsiveState } from './config';
-export { ResponsiveConfig, ResponsiveState };
+export { ResponsiveConfig, ResponsiveState, ResponsiveConfigInterface } from './config/config';
 export declare class ResponsiveModule {
 }
