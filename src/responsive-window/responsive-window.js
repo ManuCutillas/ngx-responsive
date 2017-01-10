@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var config_1 = require('../config');
+var core_1 = require("@angular/core");
+var index_1 = require("../config/index");
 var ResponsiveWindow = (function () {
     ////CONSTRUCTOR
     function ResponsiveWindow(_responsiveState, el) {
@@ -39,18 +39,18 @@ var ResponsiveWindow = (function () {
             return true;
         }
     };
-    __decorate([
-        core_1.Input('responsive-window'), 
-        __metadata('design:type', String)
-    ], ResponsiveWindow.prototype, "name", void 0);
-    ResponsiveWindow = __decorate([
-        core_1.Directive({
-            selector: "[responsive-window]"
-        }), 
-        __metadata('design:paramtypes', [config_1.ResponsiveState, (typeof (_a = typeof core_1.ElementRef !== 'undefined' && core_1.ElementRef) === 'function' && _a) || Object])
-    ], ResponsiveWindow);
     return ResponsiveWindow;
-    var _a;
 }());
+__decorate([
+    core_1.Input('responsive-window'),
+    __metadata("design:type", String)
+], ResponsiveWindow.prototype, "name", void 0);
+ResponsiveWindow = __decorate([
+    core_1.Directive({
+        selector: "[responsive-window]"
+    }),
+    __metadata("design:paramtypes", [index_1.ResponsiveState,
+        core_1.ElementRef])
+], ResponsiveWindow);
 exports.ResponsiveWindow = ResponsiveWindow;
 //# sourceMappingURL=responsive-window.js.map

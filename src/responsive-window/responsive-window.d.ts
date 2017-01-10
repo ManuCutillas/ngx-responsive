@@ -1,5 +1,5 @@
 import { DoCheck, ElementRef, OnInit, OnDestroy } from '@angular/core';
-import { ResponsiveState } from '../config';
+import { ResponsiveState } from '../config/index';
 export declare class ResponsiveWindow implements OnInit, OnDestroy, DoCheck {
     private _responsiveState;
     private el;

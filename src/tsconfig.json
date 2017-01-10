@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "declaration": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "types": [
+            "es6-shim",
+            "node"
+        ]
+    },
+    "exclude": [
+        "../../../node_modules",
+        "node_modules"
+    ],
+    "compileOnSave": true
+}

@@ -4,9 +4,9 @@
  */
 /* tslint:disable */
 "use strict";
-var import0 = require('./pixelratio-directives');
-var import1 = require('@angular/core/src/change_detection/change_detection');
-var import2 = require('@angular/core/src/linker/view_utils');
+var import0 = require("./pixelratio-directives");
+var import1 = require("@angular/core/src/change_detection/change_detection");
+var import2 = require("@angular/core/src/linker/view_utils");
 var Wrapper_Is1xPixel = (function () {
     function Wrapper_Is1xPixel(p0, p1, p2) {
         this.changed = false;

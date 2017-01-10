@@ -1,6 +1,6 @@
 import {Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {Observable, Observer, Subscription} from  'rxjs/Rx';
-import {RESPONSIVE_BASE, ResponsiveState} from '../config';
+import {RESPONSIVE_BASE, ResponsiveState} from '../config/index';
 
 /*
  *

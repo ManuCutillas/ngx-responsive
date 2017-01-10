@@ -1,6 +1,6 @@
 import {Injectable, Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from  'rxjs/Rx';
-import {ResponsiveState, RESPONSIVE_BASE } from '../config';
+import {ResponsiveState, RESPONSIVE_BASE } from '../config/index';
 
 /*
 * BROWSERS DIRECTIVES

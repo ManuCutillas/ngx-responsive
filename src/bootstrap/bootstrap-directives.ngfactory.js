@@ -4,9 +4,9 @@
  */
 /* tslint:disable */
 "use strict";
-var import0 = require('./bootstrap-directives');
-var import1 = require('@angular/core/src/change_detection/change_detection');
-var import2 = require('@angular/core/src/linker/view_utils');
+var import0 = require("./bootstrap-directives");
+var import1 = require("@angular/core/src/change_detection/change_detection");
+var import2 = require("@angular/core/src/linker/view_utils");
 var Wrapper_XL = (function () {
     function Wrapper_XL(p0, p1, p2) {
         this.changed = false;

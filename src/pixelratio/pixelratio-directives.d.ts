@@ -1,5 +1,5 @@
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
-import { ResponsiveState, RESPONSIVE_BASE } from '../config';
+import { ResponsiveState, RESPONSIVE_BASE } from '../config/index';
 export declare class Is1xPixel extends RESPONSIVE_BASE<any> {
     protected _state: string;
     protected _showWhenTrue: boolean;

@@ -9,13 +9,13 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var import0 = require('@angular/core/src/linker/ng_module_factory');
-var import1 = require('./index');
-var import2 = require('./config/config');
+var import0 = require("@angular/core/src/linker/ng_module_factory");
+var import1 = require("./index");
+var import2 = require("./config/index");
 var ResponsiveModuleInjector = (function (_super) {
     __extends(ResponsiveModuleInjector, _super);
     function ResponsiveModuleInjector(parent) {
-        _super.call(this, parent, [], []);
+        return _super.call(this, parent, [], []) || this;
     }
     Object.defineProperty(ResponsiveModuleInjector.prototype, "_ResponsiveConfig_1", {
         get: function () {

@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var config_1 = require('../config');
+var core_1 = require("@angular/core");
+var index_1 = require("../config/index");
 /*======== RESPONSIVE MULTIPLE =========*/
 var UserAgentInfo = (function () {
     ////CONSTRUCTOR
@@ -22,13 +22,13 @@ var UserAgentInfo = (function () {
     UserAgentInfo.prototype.ngOnDestroy = function () { this._subscription_UserAgent.unsubscribe(); };
     ////EMIT EVENT
     UserAgentInfo.prototype.emitUserAgent = function (value) { this.info.emit(value); };
-    UserAgentInfo = __decorate([
-        core_1.Directive({
-            selector: 'userAgentInfo', outputs: ['info']
-        }), 
-        __metadata('design:paramtypes', [config_1.ResponsiveState])
-    ], UserAgentInfo);
     return UserAgentInfo;
 }());
+UserAgentInfo = __decorate([
+    core_1.Directive({
+        selector: 'userAgentInfo', outputs: ['info']
+    }),
+    __metadata("design:paramtypes", [index_1.ResponsiveState])
+], UserAgentInfo);
 exports.UserAgentInfo = UserAgentInfo;
 //# sourceMappingURL=useragent.js.map

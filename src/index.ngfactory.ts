@@ -6,7 +6,7 @@
 
 import * as import0 from '@angular/core/src/linker/ng_module_factory';
 import * as import1 from './index';
-import * as import2 from './config/config';
+import * as import2 from './config/index';
 import * as import3 from '@angular/core/src/di/injector';
 class ResponsiveModuleInjector extends import0.NgModuleInjector<import1.ResponsiveModule> {
   _ResponsiveModule_0:import1.ResponsiveModule;

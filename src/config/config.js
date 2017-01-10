@@ -11,11 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var core_1 = require('@angular/core');
-require('rxjs/add/operator/share');
-require('rxjs/add/operator/debounce');
-var Rx_1 = require('rxjs/Rx');
-var const_1 = require('./const');
+var core_1 = require("@angular/core");
+require("rxjs/add/operator/share");
+require("rxjs/add/operator/debounce");
+var Rx_1 = require("rxjs/Rx");
+var const_1 = require("./const");
 var ResponsiveConfigInterface = (function () {
     function ResponsiveConfigInterface() {
     }
@@ -40,13 +40,13 @@ var ResponsiveConfig = (function () {
             this.config = config;
         }
     }
-    ResponsiveConfig = __decorate([
-        core_1.Injectable(),
-        __param(0, core_1.Optional()), 
-        __metadata('design:paramtypes', [ResponsiveConfigInterface])
-    ], ResponsiveConfig);
     return ResponsiveConfig;
 }());
+ResponsiveConfig = __decorate([
+    core_1.Injectable(),
+    __param(0, core_1.Optional()),
+    __metadata("design:paramtypes", [ResponsiveConfigInterface])
+], ResponsiveConfig);
 exports.ResponsiveConfig = ResponsiveConfig;
 var ResponsiveState = (function () {
     //Optional config
@@ -673,12 +673,12 @@ var ResponsiveState = (function () {
     ResponsiveState.prototype.getOrientation = function () {
         return window.orientation;
     };
-    ResponsiveState = __decorate([
-        core_1.Injectable(),
-        __param(0, core_1.Optional()), 
-        __metadata('design:paramtypes', [ResponsiveConfig])
-    ], ResponsiveState);
     return ResponsiveState;
 }());
+ResponsiveState = __decorate([
+    core_1.Injectable(),
+    __param(0, core_1.Optional()),
+    __metadata("design:paramtypes", [ResponsiveConfig])
+], ResponsiveState);
 exports.ResponsiveState = ResponsiveState;
 //# sourceMappingURL=config.js.map

@@ -1,5 +1,5 @@
 "use strict";
-var pixelratio_directives_1 = require('./pixelratio-directives');
+var pixelratio_directives_1 = require("./pixelratio-directives");
 exports.Is1xPixel = pixelratio_directives_1.Is1xPixel;
 exports.IsRetina = pixelratio_directives_1.IsRetina;
 exports.Is4k = pixelratio_directives_1.Is4k;

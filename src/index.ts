@@ -24,21 +24,21 @@
 /* IMPORTS => MODULES */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResponsiveConfig,ResponsiveState } from './config/config';
-import { BOOTSTRAP_DIRECTIVES } from './bootstrap';
-import { BROWSER_DIRECTIVES } from './browsers';
-import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes';
-import { DEVICES_DIRECTIVES } from './devices';
-import { PIXELRATIO_DIRECTIVES } from './pixelratio';
-import { RESPONSIVE_DIRECTIVE } from './responsive';
-import { RESPONSIVEWINDOW_DIRECTIVE } from './responsive-window';
-import { USERAGENT_DIRECTIVE } from './useragent';
+import { ResponsiveConfig,ResponsiveState } from './config/index';
+import { BOOTSTRAP_DIRECTIVES } from './bootstrap/index';
+import { BROWSER_DIRECTIVES } from './browsers/index';
+import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes/index';
+import { DEVICES_DIRECTIVES } from './devices/index';
+import { PIXELRATIO_DIRECTIVES } from './pixelratio/index';
+import { RESPONSIVE_DIRECTIVE } from './responsive/index';
+import { RESPONSIVEWINDOW_DIRECTIVE } from './responsive-window/index';
+import { USERAGENT_DIRECTIVE } from './useragent/index';
 
 export { 
   ResponsiveConfig, 
   ResponsiveState,
   ResponsiveConfigInterface
- } from './config/config';
+ } from './config/index';
 
 @NgModule({
 declarations:[

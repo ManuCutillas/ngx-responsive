@@ -4,9 +4,9 @@
  */
 /* tslint:disable */
 "use strict";
-var import0 = require('./devices-directives');
-var import1 = require('@angular/core/src/change_detection/change_detection');
-var import2 = require('@angular/core/src/linker/view_utils');
+var import0 = require("./devices-directives");
+var import1 = require("@angular/core/src/change_detection/change_detection");
+var import2 = require("@angular/core/src/linker/view_utils");
 var Wrapper_IsSmartTv = (function () {
     function Wrapper_IsSmartTv(p0, p1, p2) {
         this.changed = false;

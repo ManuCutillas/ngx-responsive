@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var config_1 = require('../config');
+var core_1 = require("@angular/core");
+var index_1 = require("../config/index");
 /*======== RESPONSIVE MULTIPLE =========*/
 var Responsive = (function () {
     /*** CONSTRUCTOR ***/
@@ -366,23 +366,24 @@ var Responsive = (function () {
             return false;
         }
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object), 
-        __metadata('design:paramtypes', [Object])
-    ], Responsive.prototype, "responsive", null);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', (typeof (_a = typeof core_1.EventEmitter !== 'undefined' && core_1.EventEmitter) === 'function' && _a) || Object)
-    ], Responsive.prototype, "changes", void 0);
-    Responsive = __decorate([
-        core_1.Directive({
-            selector: '[responsive]'
-        }), 
-        __metadata('design:paramtypes', [(typeof (_b = typeof core_1.TemplateRef !== 'undefined' && core_1.TemplateRef) === 'function' && _b) || Object, config_1.ResponsiveState, (typeof (_c = typeof core_1.ViewContainerRef !== 'undefined' && core_1.ViewContainerRef) === 'function' && _c) || Object])
-    ], Responsive);
     return Responsive;
-    var _a, _b, _c;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [Object])
+], Responsive.prototype, "responsive", null);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], Responsive.prototype, "changes", void 0);
+Responsive = __decorate([
+    core_1.Directive({
+        selector: '[responsive]'
+    }),
+    __metadata("design:paramtypes", [core_1.TemplateRef,
+        index_1.ResponsiveState,
+        core_1.ViewContainerRef])
+], Responsive);
 exports.Responsive = Responsive;
 //# sourceMappingURL=responsive.js.map

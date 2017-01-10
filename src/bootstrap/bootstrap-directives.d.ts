@@ -1,5 +1,5 @@
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
-import { RESPONSIVE_BASE, ResponsiveState } from '../config';
+import { RESPONSIVE_BASE, ResponsiveState } from '../config/index';
 export declare class XL extends RESPONSIVE_BASE<any> {
     protected _state: string;
     protected _showWhenTrue: boolean;

@@ -30,50 +30,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 /* IMPORTS => MODULES */
-var core_1 = require('@angular/core');
-var config_1 = require('./config/config');
-var bootstrap_1 = require('./bootstrap');
-var browsers_1 = require('./browsers');
-var custom_sizes_1 = require('./custom-sizes');
-var devices_1 = require('./devices');
-var pixelratio_1 = require('./pixelratio');
-var responsive_1 = require('./responsive');
-var responsive_window_1 = require('./responsive-window');
-var useragent_1 = require('./useragent');
-var config_2 = require('./config/config');
-exports.ResponsiveConfig = config_2.ResponsiveConfig;
-exports.ResponsiveState = config_2.ResponsiveState;
-exports.ResponsiveConfigInterface = config_2.ResponsiveConfigInterface;
+var core_1 = require("@angular/core");
+var index_1 = require("./config/index");
+var index_2 = require("./bootstrap/index");
+var index_3 = require("./browsers/index");
+var index_4 = require("./custom-sizes/index");
+var index_5 = require("./devices/index");
+var index_6 = require("./pixelratio/index");
+var index_7 = require("./responsive/index");
+var index_8 = require("./responsive-window/index");
+var index_9 = require("./useragent/index");
+var index_10 = require("./config/index");
+exports.ResponsiveConfig = index_10.ResponsiveConfig;
+exports.ResponsiveState = index_10.ResponsiveState;
+exports.ResponsiveConfigInterface = index_10.ResponsiveConfigInterface;
 var ResponsiveModule = (function () {
     function ResponsiveModule() {
     }
-    ResponsiveModule = __decorate([
-        core_1.NgModule({
-            declarations: [
-                bootstrap_1.BOOTSTRAP_DIRECTIVES,
-                browsers_1.BROWSER_DIRECTIVES,
-                custom_sizes_1.CUSTOMSIZES_DIRECTIVES,
-                devices_1.DEVICES_DIRECTIVES,
-                pixelratio_1.PIXELRATIO_DIRECTIVES,
-                responsive_1.RESPONSIVE_DIRECTIVE,
-                responsive_window_1.RESPONSIVEWINDOW_DIRECTIVE,
-                useragent_1.USERAGENT_DIRECTIVE
-            ],
-            exports: [
-                bootstrap_1.BOOTSTRAP_DIRECTIVES,
-                browsers_1.BROWSER_DIRECTIVES,
-                custom_sizes_1.CUSTOMSIZES_DIRECTIVES,
-                devices_1.DEVICES_DIRECTIVES,
-                pixelratio_1.PIXELRATIO_DIRECTIVES,
-                responsive_1.RESPONSIVE_DIRECTIVE,
-                responsive_window_1.RESPONSIVEWINDOW_DIRECTIVE,
-                useragent_1.USERAGENT_DIRECTIVE,
-            ],
-            providers: [config_1.ResponsiveState, config_1.ResponsiveConfig]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], ResponsiveModule);
     return ResponsiveModule;
 }());
+ResponsiveModule = __decorate([
+    core_1.NgModule({
+        declarations: [
+            index_2.BOOTSTRAP_DIRECTIVES,
+            index_3.BROWSER_DIRECTIVES,
+            index_4.CUSTOMSIZES_DIRECTIVES,
+            index_5.DEVICES_DIRECTIVES,
+            index_6.PIXELRATIO_DIRECTIVES,
+            index_7.RESPONSIVE_DIRECTIVE,
+            index_8.RESPONSIVEWINDOW_DIRECTIVE,
+            index_9.USERAGENT_DIRECTIVE
+        ],
+        exports: [
+            index_2.BOOTSTRAP_DIRECTIVES,
+            index_3.BROWSER_DIRECTIVES,
+            index_4.CUSTOMSIZES_DIRECTIVES,
+            index_5.DEVICES_DIRECTIVES,
+            index_6.PIXELRATIO_DIRECTIVES,
+            index_7.RESPONSIVE_DIRECTIVE,
+            index_8.RESPONSIVEWINDOW_DIRECTIVE,
+            index_9.USERAGENT_DIRECTIVE,
+        ],
+        providers: [index_1.ResponsiveState, index_1.ResponsiveConfig]
+    }),
+    __metadata("design:paramtypes", [])
+], ResponsiveModule);
 exports.ResponsiveModule = ResponsiveModule;
 //# sourceMappingURL=index.js.map

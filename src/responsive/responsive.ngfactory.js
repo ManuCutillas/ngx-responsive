@@ -4,9 +4,9 @@
  */
 /* tslint:disable */
 "use strict";
-var import0 = require('./responsive');
-var import1 = require('@angular/core/src/change_detection/change_detection');
-var import2 = require('@angular/core/src/linker/view_utils');
+var import0 = require("./responsive");
+var import1 = require("@angular/core/src/change_detection/change_detection");
+var import2 = require("@angular/core/src/linker/view_utils");
 var Wrapper_Responsive = (function () {
     function Wrapper_Responsive(p0, p1, p2) {
         this.changed = false;

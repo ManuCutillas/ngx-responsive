@@ -1,5 +1,5 @@
 "use strict";
-var bootstrap_directives_1 = require('./bootstrap-directives');
+var bootstrap_directives_1 = require("./bootstrap-directives");
 exports.XL = bootstrap_directives_1.XL;
 exports.LG = bootstrap_directives_1.LG;
 exports.MD = bootstrap_directives_1.MD;

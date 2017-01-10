@@ -4,7 +4,7 @@
  */
 /* tslint:disable */
 "use strict";
-var import0 = require('./useragent');
+var import0 = require("./useragent");
 var Wrapper_UserAgentInfo = (function () {
     function Wrapper_UserAgentInfo(p0) {
         this.changed = false;
