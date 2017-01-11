@@ -1,6 +1,6 @@
 {
   "name": "angular2-webpack",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Starter application of NG2-RESPONSIVE on Express and Webpack",
   "engines": {
     "node": ">= 5.4.1"
@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "2.4.2",
     "@angular/router": "3.4.2",
     "@angular/upgrade": "2.4.2",
-    "ng2-responsive": "^0.6.6",
+    "ng2-responsive": "^0.6.9",
     "bootstrap-sass": "^3.3.7",
     "core-js": "^2.4.1",
     "ionicons-npm": "^2.0.1",
@@ -76,7 +76,7 @@
     "mongoose": "^4.6.3",
     "morgan": "^1.7.0",
     "multer": "^1.2.0",
-    "node-sass": "^3.10.1",
+    "node-sass": "^3.4.2",
     "null-loader": "^0.1.1",
     "passport": "^0.3.2",
     "passport-http-bearer": "^1.0.1",

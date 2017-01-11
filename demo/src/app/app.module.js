@@ -12,7 +12,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var common_1 = require("@angular/common");
 var app_component_1 = require("./app.component");
-var ng2_responsive_1 = require("ng2-responsive");
+var responsive_1 = require("./responsive");
 //REMOVE
 //import { ResponsiveModule, ResponsiveConfig, ResponsiveConfigInterface } from './responsive';
 var config = {
@@ -35,13 +35,13 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             common_1.CommonModule,
-            ng2_responsive_1.ResponsiveModule
+            responsive_1.ResponsiveModule
         ],
         declarations: [
             app_component_1.AppComponent
         ],
         providers: [
-            { provide: ng2_responsive_1.ResponsiveConfig, useFactory: function () { return new ng2_responsive_1.ResponsiveConfig(config); } }
+            { provide: responsive_1.ResponsiveConfig, useFactory: function () { return new responsive_1.ResponsiveConfig(config); } }
         ],
         bootstrap: [app_component_1.AppComponent]
     }),
