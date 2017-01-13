@@ -1,5 +1,5 @@
 import {Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from  'rxjs/rx';
+import {Subscription} from  'rxjs';
 import {ResponsiveState, responsivePattern, responsiveSubscriptions} from '../config/index';
 
 /*======== RESPONSIVE BASE CLASS =========*/

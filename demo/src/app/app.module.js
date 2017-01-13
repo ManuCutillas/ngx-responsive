@@ -12,9 +12,9 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var common_1 = require("@angular/common");
 var app_component_1 = require("./app.component");
-var responsive_1 = require("./responsive");
+//import {ResponsiveModule, ResponsiveConfig, ResponsiveConfigInterface} from 'ng2-responsive';
 //REMOVE
-//import { ResponsiveModule, ResponsiveConfig, ResponsiveConfigInterface } from './responsive';
+var responsive_1 = require("./responsive");
 var config = {
     breakPoints: {
         xs: { max: 600 },
