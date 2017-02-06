@@ -4,12 +4,6 @@
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2 ( aot & jit )
 
 ```
-  npm i ng2-responsive@0.4.4 --save
-```
-
-FOR ANGULAR RC.6 / RC.7 / 2.0.0 FINAL RELEASE
-
-```
   npm i ng2-responsive --save
 ```
 
