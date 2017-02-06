@@ -1,9 +1,10 @@
-import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
+import { EventEmitter, TemplateRef, ViewContainerRef, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ResponsiveState, responsivePattern } from '../config/index';
-export declare class Responsive implements OnInit, OnDestroy {
+export declare class Responsive implements OnDestroy {
     templateRef: TemplateRef<Object>;
     private _responsiveState;
     private viewContainer;
+    private cd;
     responsive: string | string[];
     changes: EventEmitter<any>;
     set_values: responsivePattern;
@@ -38,10 +39,8 @@ export declare class Responsive implements OnInit, OnDestroy {
     private _sizes_user_param;
     private _sizes_window;
     protected _actives: string[];
-    /*** CONSTRUCTOR ***/
-    constructor(templateRef: TemplateRef<Object>, _responsiveState: ResponsiveState, viewContainer: ViewContainerRef);
+    constructor(templateRef: TemplateRef<Object>, _responsiveState: ResponsiveState, viewContainer: ViewContainerRef, cd: ChangeDetectorRef);
     init_responsive(value: any): void;
-    ngOnInit(): void;
     private updateBootstrap(value);
     private updateBrowser(value);
     private updateDevice(value);

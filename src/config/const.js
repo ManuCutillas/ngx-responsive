@@ -8,7 +8,6 @@ exports.GLOBAL_INPUTS = {
     PIXEL_RATIO: ['1x', 'retina', '4k'],
     IE_VERSIONS: ['ie 9', 'ie 10', 'ie 11', 'ie +12']
 };
-//WEARABLES :: USER AGENTS
 exports.REG_WEARABLES = {
     IWATCH: ''
 };
@@ -47,7 +46,7 @@ exports.REG_GAME_DEVICES = {
     WII: /nintendo wii/i,
     PS_VITA: /playstation vita/i,
     NINTENDO_3DS: /nintendo 3ds/i,
-    PSP: /psp/i,
+    PSP: /psp/i
 };
 exports.REG_BROWSERS = {
     CHROME: [/chrome\/([\d.]+)/, /crios\/([\d.]+)/],
@@ -95,9 +94,8 @@ exports.WINDOWS_OS_VERSION = {
     WINDOWS_PHONE_10: /(windows phone 10)/,
     WINDOWS_NT_4_0: /(windows nt 4.0|winnt4.0|winnt|windows nt)/
 };
-//MAC OS VERSION :: USER AGENTS
 exports.MAC_OS_VERSION = {
-    MAC_OS: '',
+    MAC_OS: ''
 };
 exports.LINUX_OS = {
     DEBIAN: /Debian/i,

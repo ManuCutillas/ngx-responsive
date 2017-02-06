@@ -15,16 +15,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var index_1 = require("../config/index");
-/*
-* BROWSERS DIRECTIVES
-* @CHROME @FIREFOX @IE @OPERA
-*
-*/
-/*======== CHROME =========*/
 var IsChrome = (function (_super) {
     __extends(IsChrome, _super);
-    function IsChrome(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsChrome(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'chrome';
         _this._showWhenTrue = true;
         return _this;
@@ -49,14 +43,14 @@ IsChrome = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsChrome);
 exports.IsChrome = IsChrome;
-/*======== FIREFOX =========*/
 var IsFirefox = (function (_super) {
     __extends(IsFirefox, _super);
-    function IsFirefox(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsFirefox(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'firefox';
         _this._showWhenTrue = true;
         return _this;
@@ -81,14 +75,14 @@ IsFirefox = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsFirefox);
 exports.IsFirefox = IsFirefox;
-/*======== SAFARI =========*/
 var IsSafari = (function (_super) {
     __extends(IsSafari, _super);
-    function IsSafari(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsSafari(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'safari';
         _this._showWhenTrue = true;
         return _this;
@@ -113,14 +107,14 @@ IsSafari = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsSafari);
 exports.IsSafari = IsSafari;
-/*======== OPERA =========*/
 var IsOpera = (function (_super) {
     __extends(IsOpera, _super);
-    function IsOpera(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsOpera(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'opera';
         _this._showWhenTrue = true;
         return _this;
@@ -145,14 +139,14 @@ IsOpera = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsOpera);
 exports.IsOpera = IsOpera;
-/*======== IE =========*/
 var IsIE = (function (_super) {
     __extends(IsIE, _super);
-    function IsIE(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsIE(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'ie';
         _this._showWhenTrue = true;
         return _this;
@@ -177,13 +171,14 @@ IsIE = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsIE);
 exports.IsIE = IsIE;
 var ShowItBrowser = (function (_super) {
     __extends(ShowItBrowser, _super);
-    function ShowItBrowser(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function ShowItBrowser(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = true;
         return _this;
     }
@@ -207,13 +202,14 @@ ShowItBrowser = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], ShowItBrowser);
 exports.ShowItBrowser = ShowItBrowser;
 var HideItBrowser = (function (_super) {
     __extends(HideItBrowser, _super);
-    function HideItBrowser(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function HideItBrowser(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = false;
         return _this;
     }
@@ -238,18 +234,14 @@ HideItBrowser = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], HideItBrowser);
 exports.HideItBrowser = HideItBrowser;
-/*
-* IE VERSIONS DIRECTIVES
-* @IE9 @IE10 @IE11 @IE12
-*
-*/
 var IsIE9 = (function (_super) {
     __extends(IsIE9, _super);
-    function IsIE9(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsIE9(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'ie 9';
         _this._showWhenTrue = true;
         return _this;
@@ -274,13 +266,14 @@ IsIE9 = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsIE9);
 exports.IsIE9 = IsIE9;
 var IsIE10 = (function (_super) {
     __extends(IsIE10, _super);
-    function IsIE10(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsIE10(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'ie 10';
         _this._showWhenTrue = true;
         return _this;
@@ -305,13 +298,14 @@ IsIE10 = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsIE10);
 exports.IsIE10 = IsIE10;
 var IsIE11 = (function (_super) {
     __extends(IsIE11, _super);
-    function IsIE11(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsIE11(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'ie 11';
         _this._showWhenTrue = true;
         return _this;
@@ -336,13 +330,14 @@ IsIE11 = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsIE11);
 exports.IsIE11 = IsIE11;
 var IsIE12 = (function (_super) {
     __extends(IsIE12, _super);
-    function IsIE12(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsIE12(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'ie 12';
         _this._showWhenTrue = true;
         return _this;
@@ -367,13 +362,14 @@ IsIE12 = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsIE12);
 exports.IsIE12 = IsIE12;
 var ShowIEVersion = (function (_super) {
     __extends(ShowIEVersion, _super);
-    function ShowIEVersion(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function ShowIEVersion(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = true;
         return _this;
     }
@@ -397,13 +393,14 @@ ShowIEVersion = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], ShowIEVersion);
 exports.ShowIEVersion = ShowIEVersion;
 var HideIEVersion = (function (_super) {
     __extends(HideIEVersion, _super);
-    function HideIEVersion(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function HideIEVersion(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = false;
         return _this;
     }
@@ -427,14 +424,15 @@ HideIEVersion = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], HideIEVersion);
 exports.HideIEVersion = HideIEVersion;
-/*======== BrowserInfo =========*/
 var BrowserInfo = (function () {
-    function BrowserInfo(_responsiveState, viewContainer) {
+    function BrowserInfo(_responsiveState, viewContainer, cd) {
         this._responsiveState = _responsiveState;
         this.viewContainer = viewContainer;
+        this.cd = cd;
         this.browser = new core_1.EventEmitter();
     }
     Object.defineProperty(BrowserInfo.prototype, "browserInfo", {
@@ -445,10 +443,7 @@ var BrowserInfo = (function () {
         configurable: true
     });
     BrowserInfo.prototype.ngOnInit = function () {
-        var _this = this;
-        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind(this), function (value) {
-            _this.currentstate = value;
-        });
+        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind(this));
     };
     BrowserInfo.prototype.ngOnDestroy = function () {
         this._subscription.unsubscribe();
@@ -457,12 +452,12 @@ var BrowserInfo = (function () {
         var update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.browser.emit(value);
+            this.cd.markForCheck();
         }
     };
     BrowserInfo.prototype._ifValueChanged = function (oldValue, newValue) {
-        if (oldValue === newValue) {
+        if (oldValue === newValue)
             return false;
-        }
         else {
             this.noRepeat = newValue;
             return true;
@@ -475,14 +470,15 @@ BrowserInfo = __decorate([
         selector: "browserInfo", inputs: ['browserInfo'], outputs: ['browser']
     }),
     __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef])
+        core_1.ViewContainerRef,
+        core_1.ChangeDetectorRef])
 ], BrowserInfo);
 exports.BrowserInfo = BrowserInfo;
-/*======== ieInfo =========*/
 var IeInfo = (function () {
-    function IeInfo(_responsiveState, viewContainer) {
+    function IeInfo(_responsiveState, viewContainer, cd) {
         this._responsiveState = _responsiveState;
         this.viewContainer = viewContainer;
+        this.cd = cd;
         this.ieVersion = new core_1.EventEmitter();
     }
     Object.defineProperty(IeInfo.prototype, "ieInfo", {
@@ -493,10 +489,7 @@ var IeInfo = (function () {
         configurable: true
     });
     IeInfo.prototype.ngOnInit = function () {
-        var _this = this;
-        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind(this), function (value) {
-            _this.currentstate = value;
-        });
+        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind(this));
     };
     IeInfo.prototype.ngOnDestroy = function () {
         this._subscription.unsubscribe();
@@ -505,12 +498,12 @@ var IeInfo = (function () {
         var update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.ieVersion.emit(value);
+            this.cd.markForCheck();
         }
     };
     IeInfo.prototype._ifValueChanged = function (oldValue, newValue) {
-        if (oldValue === newValue) {
+        if (oldValue === newValue)
             return false;
-        }
         else {
             this.noRepeat = newValue;
             return true;
@@ -523,7 +516,8 @@ IeInfo = __decorate([
         selector: "ieInfo", inputs: ['ieInfo'], outputs: ['ieVersion']
     }),
     __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef])
+        core_1.ViewContainerRef,
+        core_1.ChangeDetectorRef])
 ], IeInfo);
 exports.IeInfo = IeInfo;
 //# sourceMappingURL=browsers-directives.js.map

@@ -1,444 +1,487 @@
-import {Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from  'rxjs';
-import {ResponsiveState, RESPONSIVE_BASE } from '../config/index';
+import { Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
+import { Subscription } from  'rxjs/Subscription'
+import { ResponsiveState, RESPONSIVE_BASE } from '../config/index'
 
-/*
- * DEVICES DIRECTIVES
- * @Desktops / @Tablets / @Mobile
- */
-
-/*======== SMART TV STATES =========*/
-@Directive({
+@Directive(
+{
     selector: '[isSmartTv]'
 })
-export class IsSmartTv extends RESPONSIVE_BASE<any>{
-    protected _state: string = 'smarttv';
-    protected _showWhenTrue: boolean = true;
+export class IsSmartTv extends RESPONSIVE_BASE<any> {
     
-    @Input() set isSmartTv(grid_state: string[]|string) {
-        this.setGrid(this._state,'device');
-    }
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
-    }
+    protected _state: string= 'smarttv'
+    protected _showWhenTrue: boolean= true
     
+    @Input() set isSmartTv( grid_state: string[]|string ) 
+    {
+        this.setGrid( this._state, 'device' )
+    }
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef
+               ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
+    }
 }
-    
-/*======== DESKTOPS STATES =========*/
-@Directive({
+
+@Directive(
+{
     selector: '[isDesktop]'
 })
-export class IsDesktop extends RESPONSIVE_BASE<any>{
-    protected _state: string = 'desktop';
-    protected _showWhenTrue: boolean = true;
+export class IsDesktop extends RESPONSIVE_BASE<any> {
     
-    @Input() set isDesktop(grid_state: string[]|string) {
-        this.setGrid(this._state,'device');
-    }
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
-    }
+    protected _state: string= 'desktop'
+    protected _showWhenTrue: boolean= true
     
+    @Input() set isDesktop( grid_state: string[] | string ) 
+    {
+        this.setGrid( this._state, 'device' )
+    }
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
+    }
 }
 
-/*======== TABLETS STATES =========*/
-@Directive({
+@Directive(
+{
     selector: '[isTablet]'
 })
-export class IsTablet extends RESPONSIVE_BASE<any>{
-     protected _state: string = 'tablet';
-    protected _showWhenTrue: boolean = true;
+export class IsTablet extends RESPONSIVE_BASE<any> {
     
-    @Input() set isTablet(grid_state: string[]|string) {
-        this.setGrid(this._state,'device');
+    protected _state: string= 'tablet'
+    protected _showWhenTrue: boolean= true
+    
+    @Input() set isTablet( grid_state: string[] | string ) 
+    {
+        this.setGrid( this._state, 'device' )
     }
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }
 }
 
-/*======== MOBILE STATES =========*/
-@Directive({
+@Directive(
+{
     selector: '[isMobile]'
 })
-
-export class IsMobile extends RESPONSIVE_BASE<any>{
-    protected _state: string = 'mobile';
-    protected _showWhenTrue: boolean = true;
-
-    @Input() set isMobile(grid_state: string[]|string) {
-        this.setGrid(this._state,'device');
-    }
+export class IsMobile extends RESPONSIVE_BASE<any> {
     
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    protected _state: string= 'mobile'
+    protected _showWhenTrue: boolean= true 
+
+    @Input() set isMobile( grid_state: string[] | string ) 
+    {
+        this.setGrid( this._state, 'device' )
+    }
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }
 }
 
-/*======== DEVICE STATES =========*/
-@Directive({
+@Directive(
+{
     selector: '[showItDevice]'
 })
-
-export class ShowItDevice extends RESPONSIVE_BASE<any>{
-    protected _showWhenTrue: boolean = true;
-
-    @Input() set showItDevice(grid_state: string[]|string) {
-        this.setGrid(grid_state,'device');
-    }
+export class ShowItDevice extends RESPONSIVE_BASE<any> {
     
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    protected _showWhenTrue: boolean= true
+
+    @Input() set showItDevice( grid_state: string[] | string ) 
+    {
+        this.setGrid( grid_state, 'device' )
+    }
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }
 }
 
-@Directive({
+@Directive(
+{
     selector: '[hideItDevice]'
 })
-
-export class HideItDevice extends RESPONSIVE_BASE<any>{
-    protected _showWhenTrue: boolean = false;
-
-    @Input() set hideItDevice(grid_state: string[]|string) {
-        this.setGrid(grid_state,'device');
-    }
+export class HideItDevice extends RESPONSIVE_BASE<any> {
     
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    protected _showWhenTrue: boolean= false
+
+    @Input() set hideItDevice( grid_state: string[] | string ) 
+    {
+        this.setGrid( grid_state, 'device' )
+    }
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState, 
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }
 }
 
-
-
-/*
- * STANDARD DEVICES DIRECTIVES
- * @isIphone / @isIpad / @isAndroidMobile / @isAndroidTablet / @IsWindowsPhone
- */
-
-/*======== IPHONE =========*/
-@Directive({
+@Directive(
+{
     selector: '[isIphone]'
 })
-export class IsIphone extends RESPONSIVE_BASE<any>{
-       protected _state: string = 'iphone';
-       protected _showWhenTrue: boolean = true;
+export class IsIphone extends RESPONSIVE_BASE<any> {
+       
+    protected _state: string = 'iphone'
+    protected _showWhenTrue: boolean= true
 
-    @Input() set isIphone(grid_state: string[]|string) {
-        this.setGrid(this._state,'standard');
+    @Input() set isIphone( grid_state: string[]|string ) 
+    {
+        this.setGrid(this._state,'standard')
     }
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
-@Directive({
+@Directive(
+{
     selector: '[isIpad]'
 })
+export class IsIpad extends RESPONSIVE_BASE<any> {
+    
+    protected _state: string= 'iphone'
+    protected _showWhenTrue: boolean= true
 
-export class IsIpad extends RESPONSIVE_BASE<any>{
-       protected _state: string = 'iphone';
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set isIphone(grid_state: string[]|string) {
-        this.setGrid(this._state,'standard');
+    @Input() set isIphone(grid_state: string[] | string ) 
+    {
+        this.setGrid( this._state, 'standard' )
     }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
-@Directive({
+@Directive(
+{
     selector: '[isAndroidMobile]'
 })
+export class IsAndroidMobile extends RESPONSIVE_BASE<any> {
+       
+    protected _state: string = 'android mobile'
+    protected _showWhenTrue: boolean = true
 
-export class IsAndroidMobile extends RESPONSIVE_BASE<any>{
-       protected _state: string = 'android mobile';
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set isAndroidMobile(grid_state: string[]|string) {
-        this.setGrid(this._state,'standard');
+    @Input() set isAndroidMobile( grid_state: string[] | string ) 
+    {
+        this.setGrid(this._state,'standard')
     }
 
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState, 
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
-@Directive({
+@Directive(
+{
     selector: '[isAndroidTablet]'
 })
+export class IsAndroidTablet extends RESPONSIVE_BASE<any> {
+    
+    protected _state: string = 'android tablet'
+    protected _showWhenTrue: boolean = true
 
-export class IsAndroidTablet extends RESPONSIVE_BASE<any>{
-       protected _state: string = 'android tablet';
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set isAndroidTablet(grid_state: string[]|string) {
-        this.setGrid(this._state,'standard');
+    @Input() set isAndroidTablet( grid_state: string[] | string ) 
+    {
+        this.setGrid( this._state, 'standard' )
     }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState, 
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
 
-@Directive({
+@Directive(
+{
     selector: '[isWindowsPhone]'
 })
+export class IsWindowsPhone extends RESPONSIVE_BASE<any> {
 
-export class IsWindowsPhone extends RESPONSIVE_BASE<any>{
-       protected _state: string = 'windows phone';
-       protected _showWhenTrue: boolean = true;
+    protected _state: string= 'windows phone'
+    protected _showWhenTrue: boolean= true
 
-    @Input() set isWindowsPhone(grid_state: string[]|string) {
-        this.setGrid(this._state,'standard');
+    @Input() set isWindowsPhone(grid_state: string[]|string) 
+    {
+        this.setGrid( this._state, 'standard' )
     }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
 
-@Directive({
+@Directive(
+{
     selector: '[showItStandard]'
 })
+export class ShowItStandard extends RESPONSIVE_BASE<any> {
+    
+    protected _showWhenTrue: boolean= true
 
-export class ShowItStandard extends RESPONSIVE_BASE<any>{
-       protected _showWhenTrue: boolean = true;
-
-    @Input() set showItStandard(grid_state: string[]|string) {
-        this.setGrid(grid_state,'standard');
+    @Input() set showItStandard( grid_state: string[] | string ) 
+    {
+        this.setGrid( grid_state, 'standard' )
     }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
-@Directive({
+@Directive(
+{
     selector: '[hideItStandard]'
 })
+export class HideItStandard extends RESPONSIVE_BASE<any> {
+    
+    protected _showWhenTrue: boolean= false
 
-export class HideItStandard extends RESPONSIVE_BASE<any>{
-       protected _showWhenTrue: boolean = false;
-
-    @Input() set hideItStandard(grid_state: string[]|string) {
-        this.setGrid(grid_state,'standard');
+    @Input() set hideItStandard( grid_state: string[] | string ) 
+    {
+        this.setGrid( grid_state, 'standard' )
     }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState, 
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
-
-
-/*
- * ORIENTATION DEVICES DIRECTIVES
- * @isIphone / @isPortrait / @isLandscape
- */
-
-@Directive({
+@Directive(
+{
     selector: '[isPortrait]'
 })
+export class IsPortrait extends RESPONSIVE_BASE<any> {
+   
+    protected _state: string= 'portrait'
+    protected _showWhenTrue: boolean= false
 
-export class IsPortrait extends RESPONSIVE_BASE<any>{
-       protected _state: string = 'portrait';
-       protected _showWhenTrue: boolean = false;
-
-    @Input() set isPortrait(grid_state:string) {
-        this.setGrid(this._state,"orientation");
+    @Input() set isPortrait( grid_state:string ) 
+    {
+        this.setGrid( this._state, 'orientation' )
     }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
-@Directive({
+@Directive(
+{
     selector: '[isLandscape]'
 })
+export class IsLandscape extends RESPONSIVE_BASE<any> {
+    
+    protected _state: string= 'landscape'
+    protected _showWhenTrue: boolean= false
 
-export class IsLandscape extends RESPONSIVE_BASE<any>{
-       protected _state: string = 'landscape';
-       protected _showWhenTrue: boolean = false;
-
-    @Input() set isLandscape(grid_state:string) {
-        this.setGrid(this._state,"orientation");
+    @Input() set isLandscape( grid_state:string ) 
+    {
+        this.setGrid( this._state, 'orientation' )
     }
-
-    constructor(templateRef: TemplateRef<any>,
-                viewContainer: ViewContainerRef,
-                _responsiveState: ResponsiveState) {
-        super(templateRef, viewContainer, _responsiveState);
+    constructor( templateRef: TemplateRef<any>,
+                 viewContainer: ViewContainerRef,
+                 _responsiveState: ResponsiveState,
+                 cd: ChangeDetectorRef ) 
+    {
+        super( templateRef, viewContainer, _responsiveState, cd )
     }           
 }
 
-//NEXT TO REFACTOR
-/*======== DeviceInfo =========*/
-/* DeviceInfo */
-@Directive({
-    selector: "deviceInfo"
+@Directive(
+{
+    selector: 'deviceInfo'
 })
 export class DeviceInfo implements OnInit,OnDestroy {
-    public currentstate: string;
-    private _subscription: Subscription;
-    private noRepeat:string;
+    
+    public currentstate: string
+    private _subscription: Subscription
+    private noRepeat:string
 
-    public set responsiveSizeInfo(grid_state: string[]|string) {
-        this.updateData(this.currentstate);
+    public set responsiveSizeInfo( grid_state: string[] | string ) 
+    {
+        this.updateData( this.currentstate )
     }
-    @Output() device:EventEmitter<any> = new EventEmitter();
-    constructor(private _responsiveState: ResponsiveState,
-                private viewContainer: ViewContainerRef) {}
+    
+    @Output() device:EventEmitter<any>= new EventEmitter()
 
-    ngOnInit() {
-        this._subscription = this._responsiveState.deviceObserver.subscribe(this.updateData.bind(this),
-            value => {
-                this.currentstate = value
-            });
+    constructor( private _responsiveState: ResponsiveState,
+                 private viewContainer: ViewContainerRef,
+                 private cd: ChangeDetectorRef ) 
+    {}
+
+    ngOnInit() 
+    {
+        this._subscription= this._responsiveState.deviceObserver.subscribe(this.updateData.bind( this ))
     }
 
-    ngOnDestroy() {
-        this._subscription.unsubscribe();
+    ngOnDestroy() 
+    {
+        this._subscription.unsubscribe()
     }
    
-    updateData(value: any) {
-        let update = this._ifValueChanged(this.noRepeat, value);
-        if (update) {
-            this.device.emit(value);
+    updateData( value: any ) 
+    {
+        let update= this._ifValueChanged( this.noRepeat, value )
+        if ( update )
+        {
+            this.device.emit( value )
+            this.cd.markForCheck() 
         }
     }
     
-    _ifValueChanged(oldValue: any, newValue: any): boolean {
-        if (oldValue === newValue) {
-            return false;
-        } else {
+    _ifValueChanged( oldValue: any, newValue: any ): boolean 
+    {
+        if ( oldValue === newValue ) return false;
+        else {
             this.noRepeat = newValue;
             return true;
         }
     }
 }
 
-
-
-/*======== deviceStandardInfo =========*/
-@Directive({
-    selector: "deviceStandardInfo",inputs:['deviceStandardInfo'], outputs:['standard']
+@Directive(
+{
+    selector: "deviceStandardInfo", inputs:[ 'deviceStandardInfo' ], outputs:[ 'standard' ]
 })
 export class DeviceStandardInfo implements OnInit,OnDestroy {
-    public currentstate: string;
-    private _subscription: Subscription;
-    private noRepeat:string;
 
-    set deviceStandardInfo(grid_state: string[]|string) {
-        this.updateData(this.currentstate);
-    }
-    
-    public standard:EventEmitter<any> = new EventEmitter();
-    constructor(private _responsiveState: ResponsiveState,
-                private viewContainer: ViewContainerRef) {}
+    public currentstate: string
+    private _subscription: Subscription
+    private noRepeat:string
 
-    ngOnInit() {
-        this._subscription = this._responsiveState.standardObserver.subscribe(this.updateData.bind(this),
-            value => {
-                this.currentstate = value
-            });
+    set deviceStandardInfo( grid_state: string[] | string ) 
+    {
+        this.updateData( this.currentstate )
     }
 
-    ngOnDestroy() {
-        this._subscription.unsubscribe();
+    public standard:EventEmitter<any>= new EventEmitter()
+    constructor( private _responsiveState: ResponsiveState,
+                 private viewContainer: ViewContainerRef,
+                 private cd: ChangeDetectorRef ) 
+    {}
+
+    ngOnInit() 
+    {
+        this._subscription = this._responsiveState.standardObserver.subscribe(this.updateData.bind( this ))
+    }
+
+    ngOnDestroy() 
+    {
+        this._subscription.unsubscribe()
     }
    
-    updateData(value: any) {
-        let update = this._ifValueChanged(this.noRepeat, value);
-        if (update) {
-            this.standard.emit(value);
+    updateData( value: any ) 
+    {
+        let update = this._ifValueChanged( this.noRepeat, value )
+        if ( update ){
+            this.standard.emit( value )
+            this.cd.markForCheck() 
         }
     }
     
-    _ifValueChanged(oldValue: any, newValue: any): boolean {
-        if (oldValue === newValue) {
-            return false;
-        } else {
-            this.noRepeat = newValue;
-            return true;
+    _ifValueChanged( oldValue: any, newValue: any ): boolean 
+    {
+        if ( oldValue === newValue ) return false
+        else {
+            this.noRepeat= newValue
+            return true
         }
     }
 }
 
-/*======== OrientationInfo =========*/
-@Directive({
-    selector: "orientationInfo",
-    outputs:['orientation']
+@Directive(
+{
+    selector: 'orientationInfo',
+    outputs:[ 'orientation' ]
 })
 export class OrientationInfo implements OnInit,OnDestroy {
-    public currentstate: string;
-    private _subscription: Subscription;
-    private noRepeat:string;
+    
+    public currentstate: string
+    private _subscription: Subscription
+    private noRepeat:string
 
-    set responsiveSizeInfo(grid_state: string[]|string) {
-        this.updateData(this.currentstate);
+    set responsiveSizeInfo( grid_state: string[] | string ) 
+    {
+        this.updateData( this.currentstate )
     }
     
-    public orientation:EventEmitter<any> = new EventEmitter();
-    constructor(private _responsiveState: ResponsiveState,
-                private viewContainer: ViewContainerRef) {}
+    public orientation:EventEmitter<any>= new EventEmitter()
+    
+    constructor( private _responsiveState: ResponsiveState,
+                 private viewContainer: ViewContainerRef,
+                 private cd: ChangeDetectorRef ) 
+    {}
 
-    ngOnInit() {
-        this._subscription = this._responsiveState.orientationObserver.subscribe(this.updateData.bind(this),
-            value => {
-                this.currentstate = value
-            });
+    ngOnInit() 
+    {
+        this._subscription= this._responsiveState.orientationObserver.subscribe(this.updateData.bind( this ))
     }
 
-    ngOnDestroy() {
-        this._subscription.unsubscribe();
+    ngOnDestroy() 
+    {
+        this._subscription.unsubscribe()
     }
    
-    updateData(value: any) {
-        let update = this._ifValueChanged(this.noRepeat, value);
-        if (update) {
-            this.orientation.emit(value);
+    updateData( value: any ) 
+    {
+        let update= this._ifValueChanged( this.noRepeat, value )
+        if (update){
+            this.orientation.emit( value )
+            this.cd.markForCheck() 
         }
     }
     
-    _ifValueChanged(oldValue: any, newValue: any): boolean {
-        if (oldValue === newValue) {
-            return false;
-        } else {
-            this.noRepeat = newValue;
-            return true;
+    _ifValueChanged( oldValue: any, newValue: any ): boolean 
+    {
+        if ( oldValue === newValue ) return false;
+        else {
+            this.noRepeat = newValue
+            return true
         }
     }
 }

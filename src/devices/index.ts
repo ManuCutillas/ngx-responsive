@@ -1,5 +1,6 @@
-import { Provider } from '@angular/core';
+import { Provider } from '@angular/core'
 import { 
+
   IsDesktop, 
   IsTablet, 
   IsMobile, 
@@ -18,30 +19,11 @@ import {
   DeviceInfo, 
   DeviceStandardInfo, 
   OrientationInfo 
-} from './devices-directives';
+
+} from './devices-directives'
 
 export {
-  IsDesktop, 
-  IsTablet, 
-  IsMobile, 
-  IsSmartTv, 
-  ShowItDevice, 
-  HideItDevice, 
-  IsIphone, 
-  IsIpad,
-  IsAndroidMobile, 
-  IsAndroidTablet, 
-  IsWindowsPhone, 
-  ShowItStandard, 
-  HideItStandard,
-  IsPortrait, 
-  IsLandscape, 
-  DeviceInfo, 
-  DeviceStandardInfo, 
-  OrientationInfo 
-};
 
-export const DEVICES_DIRECTIVES: Provider[] = [
   IsDesktop, 
   IsTablet, 
   IsMobile, 
@@ -60,4 +42,27 @@ export const DEVICES_DIRECTIVES: Provider[] = [
   DeviceInfo, 
   DeviceStandardInfo, 
   OrientationInfo 
-];
+
+}
+
+export const DEVICES_DIRECTIVES: Provider[]= 
+[
+  IsDesktop, 
+  IsTablet, 
+  IsMobile, 
+  IsSmartTv, 
+  ShowItDevice, 
+  HideItDevice, 
+  IsIphone, 
+  IsIpad,
+  IsAndroidMobile, 
+  IsAndroidTablet, 
+  IsWindowsPhone, 
+  ShowItStandard, 
+  HideItStandard,
+  IsPortrait, 
+  IsLandscape, 
+  DeviceInfo, 
+  DeviceStandardInfo, 
+  OrientationInfo 
+]

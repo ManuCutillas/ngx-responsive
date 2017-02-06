@@ -1,9 +1,10 @@
-import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
+import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ResponsiveState } from '../config/index';
 export declare abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     private templateRef;
     private viewContainer;
     private _responsiveState;
+    private cd;
     private _noRepeat;
     private _sizes_grid_state;
     private _others_grid_state;
@@ -18,7 +19,7 @@ export declare abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     private _subscription_custom_sizes;
     protected _showWhenTrue: boolean;
     private set_active_subscriptions;
-    constructor(templateRef: TemplateRef<any>, viewContainer: ViewContainerRef, _responsiveState: ResponsiveState);
+    constructor(templateRef: TemplateRef<any>, viewContainer: ViewContainerRef, _responsiveState: ResponsiveState, cd: ChangeDetectorRef);
     protected eventChanges: EventEmitter<any>;
     protected setGrid(grid_state: any, directive: string): void;
     ngOnInit(): void;

@@ -8,7 +8,6 @@ export const GLOBAL_INPUTS = {
     IE_VERSIONS: ['ie 9', 'ie 10', 'ie 11', 'ie +12']
 }
 
-//WEARABLES :: USER AGENTS
 export const REG_WEARABLES = {
     IWATCH: ''
 }
@@ -51,7 +50,7 @@ export const REG_GAME_DEVICES = {
     WII: /nintendo wii/i,
     PS_VITA: /playstation vita/i,
     NINTENDO_3DS: /nintendo 3ds/i,
-    PSP: /psp/i,
+    PSP: /psp/i
 }
 
 export const REG_BROWSERS = {
@@ -104,9 +103,10 @@ export const WINDOWS_OS_VERSION = {
     WINDOWS_NT_4_0: /(windows nt 4.0|winnt4.0|winnt|windows nt)/
 }
 
-//MAC OS VERSION :: USER AGENTS
 export const MAC_OS_VERSION = {
-    MAC_OS: '',
+
+    MAC_OS: ''
+
 }
 
 export const LINUX_OS = {

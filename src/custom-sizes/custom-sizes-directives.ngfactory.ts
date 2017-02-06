@@ -11,44 +11,48 @@ import * as import3 from '@angular/core/src/linker/view';
 export class Wrapper_ShowItSizes {
   context:import0.ShowItSizes;
   changed:boolean;
-  /*private*/ _showItSizes:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._showItSizes = import1.UNINITIALIZED;
-    this.context = new import0.ShowItSizes(p0,p1,p2);
+    this.context = new import0.ShowItSizes(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_showItSizes(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._showItSizes,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.showItSizes = currValue;
-      this._showItSizes = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_HideItSizes {
   context:import0.HideItSizes;
   changed:boolean;
-  /*private*/ _hideItSizes:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._hideItSizes = import1.UNINITIALIZED;
-    this.context = new import0.HideItSizes(p0,p1,p2);
+    this.context = new import0.HideItSizes(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_hideItSizes(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._hideItSizes,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.hideItSizes = currValue;
-      this._hideItSizes = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }

@@ -1,4 +1,4 @@
-import { Provider } from '@angular/core';
+import { Provider } from '@angular/core'
 import { 
   IsChrome, 
   IsFirefox, 
@@ -15,7 +15,7 @@ import {
   HideIEVersion, 
   IeInfo, 
   BrowserInfo 
-} from './browsers-directives';
+} from './browsers-directives'
 
 export {
   IsChrome, 
@@ -51,4 +51,4 @@ export const BROWSER_DIRECTIVES: Provider[] = [
   HideIEVersion, 
   IeInfo, 
   BrowserInfo 
-];
+]

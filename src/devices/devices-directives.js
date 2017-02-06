@@ -15,15 +15,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var index_1 = require("../config/index");
-/*
- * DEVICES DIRECTIVES
- * @Desktops / @Tablets / @Mobile
- */
-/*======== SMART TV STATES =========*/
 var IsSmartTv = (function (_super) {
     __extends(IsSmartTv, _super);
-    function IsSmartTv(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsSmartTv(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'smarttv';
         _this._showWhenTrue = true;
         return _this;
@@ -48,14 +43,14 @@ IsSmartTv = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsSmartTv);
 exports.IsSmartTv = IsSmartTv;
-/*======== DESKTOPS STATES =========*/
 var IsDesktop = (function (_super) {
     __extends(IsDesktop, _super);
-    function IsDesktop(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsDesktop(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'desktop';
         _this._showWhenTrue = true;
         return _this;
@@ -80,14 +75,14 @@ IsDesktop = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsDesktop);
 exports.IsDesktop = IsDesktop;
-/*======== TABLETS STATES =========*/
 var IsTablet = (function (_super) {
     __extends(IsTablet, _super);
-    function IsTablet(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsTablet(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'tablet';
         _this._showWhenTrue = true;
         return _this;
@@ -112,14 +107,14 @@ IsTablet = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsTablet);
 exports.IsTablet = IsTablet;
-/*======== MOBILE STATES =========*/
 var IsMobile = (function (_super) {
     __extends(IsMobile, _super);
-    function IsMobile(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsMobile(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'mobile';
         _this._showWhenTrue = true;
         return _this;
@@ -144,14 +139,14 @@ IsMobile = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsMobile);
 exports.IsMobile = IsMobile;
-/*======== DEVICE STATES =========*/
 var ShowItDevice = (function (_super) {
     __extends(ShowItDevice, _super);
-    function ShowItDevice(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function ShowItDevice(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = true;
         return _this;
     }
@@ -175,13 +170,14 @@ ShowItDevice = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], ShowItDevice);
 exports.ShowItDevice = ShowItDevice;
 var HideItDevice = (function (_super) {
     __extends(HideItDevice, _super);
-    function HideItDevice(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function HideItDevice(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = false;
         return _this;
     }
@@ -205,18 +201,14 @@ HideItDevice = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], HideItDevice);
 exports.HideItDevice = HideItDevice;
-/*
- * STANDARD DEVICES DIRECTIVES
- * @isIphone / @isIpad / @isAndroidMobile / @isAndroidTablet / @IsWindowsPhone
- */
-/*======== IPHONE =========*/
 var IsIphone = (function (_super) {
     __extends(IsIphone, _super);
-    function IsIphone(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsIphone(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'iphone';
         _this._showWhenTrue = true;
         return _this;
@@ -241,13 +233,14 @@ IsIphone = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsIphone);
 exports.IsIphone = IsIphone;
 var IsIpad = (function (_super) {
     __extends(IsIpad, _super);
-    function IsIpad(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsIpad(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'iphone';
         _this._showWhenTrue = true;
         return _this;
@@ -272,13 +265,14 @@ IsIpad = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsIpad);
 exports.IsIpad = IsIpad;
 var IsAndroidMobile = (function (_super) {
     __extends(IsAndroidMobile, _super);
-    function IsAndroidMobile(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsAndroidMobile(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'android mobile';
         _this._showWhenTrue = true;
         return _this;
@@ -303,13 +297,14 @@ IsAndroidMobile = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsAndroidMobile);
 exports.IsAndroidMobile = IsAndroidMobile;
 var IsAndroidTablet = (function (_super) {
     __extends(IsAndroidTablet, _super);
-    function IsAndroidTablet(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsAndroidTablet(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'android tablet';
         _this._showWhenTrue = true;
         return _this;
@@ -334,13 +329,14 @@ IsAndroidTablet = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsAndroidTablet);
 exports.IsAndroidTablet = IsAndroidTablet;
 var IsWindowsPhone = (function (_super) {
     __extends(IsWindowsPhone, _super);
-    function IsWindowsPhone(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsWindowsPhone(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'windows phone';
         _this._showWhenTrue = true;
         return _this;
@@ -365,13 +361,14 @@ IsWindowsPhone = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsWindowsPhone);
 exports.IsWindowsPhone = IsWindowsPhone;
 var ShowItStandard = (function (_super) {
     __extends(ShowItStandard, _super);
-    function ShowItStandard(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function ShowItStandard(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = true;
         return _this;
     }
@@ -395,13 +392,14 @@ ShowItStandard = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], ShowItStandard);
 exports.ShowItStandard = ShowItStandard;
 var HideItStandard = (function (_super) {
     __extends(HideItStandard, _super);
-    function HideItStandard(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function HideItStandard(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = false;
         return _this;
     }
@@ -425,24 +423,21 @@ HideItStandard = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], HideItStandard);
 exports.HideItStandard = HideItStandard;
-/*
- * ORIENTATION DEVICES DIRECTIVES
- * @isIphone / @isPortrait / @isLandscape
- */
 var IsPortrait = (function (_super) {
     __extends(IsPortrait, _super);
-    function IsPortrait(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsPortrait(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'portrait';
         _this._showWhenTrue = false;
         return _this;
     }
     Object.defineProperty(IsPortrait.prototype, "isPortrait", {
         set: function (grid_state) {
-            this.setGrid(this._state, "orientation");
+            this.setGrid(this._state, 'orientation');
         },
         enumerable: true,
         configurable: true
@@ -460,20 +455,21 @@ IsPortrait = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsPortrait);
 exports.IsPortrait = IsPortrait;
 var IsLandscape = (function (_super) {
     __extends(IsLandscape, _super);
-    function IsLandscape(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsLandscape(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'landscape';
         _this._showWhenTrue = false;
         return _this;
     }
     Object.defineProperty(IsLandscape.prototype, "isLandscape", {
         set: function (grid_state) {
-            this.setGrid(this._state, "orientation");
+            this.setGrid(this._state, 'orientation');
         },
         enumerable: true,
         configurable: true
@@ -491,16 +487,15 @@ IsLandscape = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsLandscape);
 exports.IsLandscape = IsLandscape;
-//NEXT TO REFACTOR
-/*======== DeviceInfo =========*/
-/* DeviceInfo */
 var DeviceInfo = (function () {
-    function DeviceInfo(_responsiveState, viewContainer) {
+    function DeviceInfo(_responsiveState, viewContainer, cd) {
         this._responsiveState = _responsiveState;
         this.viewContainer = viewContainer;
+        this.cd = cd;
         this.device = new core_1.EventEmitter();
     }
     Object.defineProperty(DeviceInfo.prototype, "responsiveSizeInfo", {
@@ -511,10 +506,7 @@ var DeviceInfo = (function () {
         configurable: true
     });
     DeviceInfo.prototype.ngOnInit = function () {
-        var _this = this;
-        this._subscription = this._responsiveState.deviceObserver.subscribe(this.updateData.bind(this), function (value) {
-            _this.currentstate = value;
-        });
+        this._subscription = this._responsiveState.deviceObserver.subscribe(this.updateData.bind(this));
     };
     DeviceInfo.prototype.ngOnDestroy = function () {
         this._subscription.unsubscribe();
@@ -523,12 +515,12 @@ var DeviceInfo = (function () {
         var update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.device.emit(value);
+            this.cd.markForCheck();
         }
     };
     DeviceInfo.prototype._ifValueChanged = function (oldValue, newValue) {
-        if (oldValue === newValue) {
+        if (oldValue === newValue)
             return false;
-        }
         else {
             this.noRepeat = newValue;
             return true;
@@ -542,17 +534,18 @@ __decorate([
 ], DeviceInfo.prototype, "device", void 0);
 DeviceInfo = __decorate([
     core_1.Directive({
-        selector: "deviceInfo"
+        selector: 'deviceInfo'
     }),
     __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef])
+        core_1.ViewContainerRef,
+        core_1.ChangeDetectorRef])
 ], DeviceInfo);
 exports.DeviceInfo = DeviceInfo;
-/*======== deviceStandardInfo =========*/
 var DeviceStandardInfo = (function () {
-    function DeviceStandardInfo(_responsiveState, viewContainer) {
+    function DeviceStandardInfo(_responsiveState, viewContainer, cd) {
         this._responsiveState = _responsiveState;
         this.viewContainer = viewContainer;
+        this.cd = cd;
         this.standard = new core_1.EventEmitter();
     }
     Object.defineProperty(DeviceStandardInfo.prototype, "deviceStandardInfo", {
@@ -563,10 +556,7 @@ var DeviceStandardInfo = (function () {
         configurable: true
     });
     DeviceStandardInfo.prototype.ngOnInit = function () {
-        var _this = this;
-        this._subscription = this._responsiveState.standardObserver.subscribe(this.updateData.bind(this), function (value) {
-            _this.currentstate = value;
-        });
+        this._subscription = this._responsiveState.standardObserver.subscribe(this.updateData.bind(this));
     };
     DeviceStandardInfo.prototype.ngOnDestroy = function () {
         this._subscription.unsubscribe();
@@ -575,12 +565,12 @@ var DeviceStandardInfo = (function () {
         var update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.standard.emit(value);
+            this.cd.markForCheck();
         }
     };
     DeviceStandardInfo.prototype._ifValueChanged = function (oldValue, newValue) {
-        if (oldValue === newValue) {
+        if (oldValue === newValue)
             return false;
-        }
         else {
             this.noRepeat = newValue;
             return true;
@@ -593,14 +583,15 @@ DeviceStandardInfo = __decorate([
         selector: "deviceStandardInfo", inputs: ['deviceStandardInfo'], outputs: ['standard']
     }),
     __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef])
+        core_1.ViewContainerRef,
+        core_1.ChangeDetectorRef])
 ], DeviceStandardInfo);
 exports.DeviceStandardInfo = DeviceStandardInfo;
-/*======== OrientationInfo =========*/
 var OrientationInfo = (function () {
-    function OrientationInfo(_responsiveState, viewContainer) {
+    function OrientationInfo(_responsiveState, viewContainer, cd) {
         this._responsiveState = _responsiveState;
         this.viewContainer = viewContainer;
+        this.cd = cd;
         this.orientation = new core_1.EventEmitter();
     }
     Object.defineProperty(OrientationInfo.prototype, "responsiveSizeInfo", {
@@ -611,10 +602,7 @@ var OrientationInfo = (function () {
         configurable: true
     });
     OrientationInfo.prototype.ngOnInit = function () {
-        var _this = this;
-        this._subscription = this._responsiveState.orientationObserver.subscribe(this.updateData.bind(this), function (value) {
-            _this.currentstate = value;
-        });
+        this._subscription = this._responsiveState.orientationObserver.subscribe(this.updateData.bind(this));
     };
     OrientationInfo.prototype.ngOnDestroy = function () {
         this._subscription.unsubscribe();
@@ -623,12 +611,12 @@ var OrientationInfo = (function () {
         var update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.orientation.emit(value);
+            this.cd.markForCheck();
         }
     };
     OrientationInfo.prototype._ifValueChanged = function (oldValue, newValue) {
-        if (oldValue === newValue) {
+        if (oldValue === newValue)
             return false;
-        }
         else {
             this.noRepeat = newValue;
             return true;
@@ -638,11 +626,12 @@ var OrientationInfo = (function () {
 }());
 OrientationInfo = __decorate([
     core_1.Directive({
-        selector: "orientationInfo",
+        selector: 'orientationInfo',
         outputs: ['orientation']
     }),
     __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef])
+        core_1.ViewContainerRef,
+        core_1.ChangeDetectorRef])
 ], OrientationInfo);
 exports.OrientationInfo = OrientationInfo;
 //# sourceMappingURL=devices-directives.js.map

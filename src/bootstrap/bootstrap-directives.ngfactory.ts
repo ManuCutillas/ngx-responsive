@@ -11,177 +11,193 @@ import * as import3 from '@angular/core/src/linker/view';
 export class Wrapper_XL {
   context:import0.XL;
   changed:boolean;
-  /*private*/ _xl:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._xl = import1.UNINITIALIZED;
-    this.context = new import0.XL(p0,p1,p2);
+    this.context = new import0.XL(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_xl(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._xl,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.xl = currValue;
-      this._xl = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_LG {
   context:import0.LG;
   changed:boolean;
-  /*private*/ _lg:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._lg = import1.UNINITIALIZED;
-    this.context = new import0.LG(p0,p1,p2);
+    this.context = new import0.LG(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_lg(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._lg,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.lg = currValue;
-      this._lg = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_MD {
   context:import0.MD;
   changed:boolean;
-  /*private*/ _md:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._md = import1.UNINITIALIZED;
-    this.context = new import0.MD(p0,p1,p2);
+    this.context = new import0.MD(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_md(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._md,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.md = currValue;
-      this._md = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_SM {
   context:import0.SM;
   changed:boolean;
-  /*private*/ _sm:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._sm = import1.UNINITIALIZED;
-    this.context = new import0.SM(p0,p1,p2);
+    this.context = new import0.SM(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_sm(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._sm,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.sm = currValue;
-      this._sm = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_XS {
   context:import0.XS;
   changed:boolean;
-  /*private*/ _xs:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._xs = import1.UNINITIALIZED;
-    this.context = new import0.XS(p0,p1,p2);
+    this.context = new import0.XS(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_xs(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._xs,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.xs = currValue;
-      this._xs = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_ShowItBootstrap {
   context:import0.ShowItBootstrap;
   changed:boolean;
-  /*private*/ _showItBootstrap:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._showItBootstrap = import1.UNINITIALIZED;
-    this.context = new import0.ShowItBootstrap(p0,p1,p2);
+    this.context = new import0.ShowItBootstrap(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_showItBootstrap(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._showItBootstrap,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.showItBootstrap = currValue;
-      this._showItBootstrap = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_HideItBootstrap {
   context:import0.HideItBootstrap;
   changed:boolean;
-  /*private*/ _hideItBootstrap:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._hideItBootstrap = import1.UNINITIALIZED;
-    this.context = new import0.HideItBootstrap(p0,p1,p2);
+    this.context = new import0.HideItBootstrap(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_hideItBootstrap(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._hideItBootstrap,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.hideItBootstrap = currValue;
-      this._hideItBootstrap = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_ResponsiveSizeInfo {
   context:import0.ResponsiveSizeInfo;
   changed:boolean;
-  /*private*/ _responsiveSizeInfo:any;
-  constructor(p0:any,p1:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any) {
     this.changed = false;
-    this._responsiveSizeInfo = import1.UNINITIALIZED;
-    this.context = new import0.ResponsiveSizeInfo(p0,p1);
+    this.context = new import0.ResponsiveSizeInfo(p0,p1,p2);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_responsiveSizeInfo(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._responsiveSizeInfo,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.responsiveSizeInfo = currValue;
-      this._responsiveSizeInfo = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     if (!throwOnChange) { if ((view.numberOfChecks === 0)) { this.context.ngOnInit(); } }
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }

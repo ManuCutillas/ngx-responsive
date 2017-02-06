@@ -3,16 +3,15 @@
  *
  * @Created_by Manu Cutillas
  * @Contributors Christophe HOARAU, Kamil Breguła
- * @created_at May 23, 2016
- * @updated_at Oct 30, 2016 - by ManuCutillas
- * @version_0.6.1
+ * @created_at May 04, 2016
+ * @updated_at Febr 5, 2017 - by ManuCutillas
+ * @version_0.7.5
  *
  * Dependencies:
- * @angular/core : "2.1.1"
- * rxjs: "5.0.0-rc.1"
+ * @angular/core : "2.4.6"
+ * rxjs: "5.1.0"
  *
- * @more_info https://kalypso.agency
- *            https://github.com/ManuCutillas
+ * @more_info https://github.com/ManuCutillas
  *            https://www.npmjs.com/~manucutillas
  *            https://github.com/no-more
  *
@@ -29,7 +28,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/* IMPORTS => MODULES */
 var core_1 = require("@angular/core");
 var index_1 = require("./config/index");
 var index_2 = require("./bootstrap/index");
@@ -71,7 +69,10 @@ ResponsiveModule = __decorate([
             index_8.RESPONSIVEWINDOW_DIRECTIVE,
             index_9.USERAGENT_DIRECTIVE,
         ],
-        providers: [index_1.ResponsiveState, index_1.ResponsiveConfig]
+        providers: [
+            index_1.ResponsiveState,
+            index_1.ResponsiveConfig
+        ]
     }),
     __metadata("design:paramtypes", [])
 ], ResponsiveModule);

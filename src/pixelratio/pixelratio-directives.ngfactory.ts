@@ -11,89 +11,97 @@ import * as import3 from '@angular/core/src/linker/view';
 export class Wrapper_Is1xPixel {
   context:import0.Is1xPixel;
   changed:boolean;
-  /*private*/ _is1xPixel:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._is1xPixel = import1.UNINITIALIZED;
-    this.context = new import0.Is1xPixel(p0,p1,p2);
+    this.context = new import0.Is1xPixel(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_is1xPixel(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._is1xPixel,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.is1xPixel = currValue;
-      this._is1xPixel = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_IsRetina {
   context:import0.IsRetina;
   changed:boolean;
-  /*private*/ _isRetina:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._isRetina = import1.UNINITIALIZED;
-    this.context = new import0.IsRetina(p0,p1,p2);
+    this.context = new import0.IsRetina(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_isRetina(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._isRetina,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.isRetina = currValue;
-      this._isRetina = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_Is4k {
   context:import0.Is4k;
   changed:boolean;
-  /*private*/ _isRetina:any;
-  constructor(p0:any,p1:any,p2:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any,p3:any) {
     this.changed = false;
-    this._isRetina = import1.UNINITIALIZED;
-    this.context = new import0.Is4k(p0,p1,p2);
+    this.context = new import0.Is4k(p0,p1,p2,p3);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_isRetina(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._isRetina,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.isRetina = currValue;
-      this._isRetina = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }
 export class Wrapper_PixelRatioInfo {
   context:import0.PixelRatioInfo;
   changed:boolean;
-  /*private*/ _pixelratioInfo:any;
-  constructor(p0:any,p1:any) {
+  /*private*/ _expr_0:any;
+  constructor(p0:any,p1:any,p2:any) {
     this.changed = false;
-    this._pixelratioInfo = import1.UNINITIALIZED;
-    this.context = new import0.PixelRatioInfo(p0,p1);
+    this.context = new import0.PixelRatioInfo(p0,p1,p2);
+    this._expr_0 = import1.UNINITIALIZED;
   }
   check_pixelratioInfo(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import2.checkBinding(throwOnChange,this._pixelratioInfo,currValue))) {
+    if ((forceUpdate || import2.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this.changed = true;
       this.context.pixelratioInfo = currValue;
-      this._pixelratioInfo = currValue;
+      this._expr_0 = currValue;
     }
   }
-  detectChangesInternal(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
+  detectChangesInInputProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):boolean {
     var changed:any = this.changed;
     this.changed = false;
     if (!throwOnChange) { if ((view.numberOfChecks === 0)) { this.context.ngOnInit(); } }
     return changed;
+  }
+  detectChangesInHostProps(view:import3.AppView<any>,el:any,throwOnChange:boolean):void {
   }
 }

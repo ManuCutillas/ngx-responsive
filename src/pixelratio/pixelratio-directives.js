@@ -15,15 +15,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var index_1 = require("../config/index");
-/*
- * PIXEL RATIO DIRECTIVES
- * @4k @RETINA @1X
- */
 /*======== 1x =========*/
 var Is1xPixel = (function (_super) {
     __extends(Is1xPixel, _super);
-    function Is1xPixel(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function Is1xPixel(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = '1x';
         _this._showWhenTrue = true;
         return _this;
@@ -48,14 +44,15 @@ Is1xPixel = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], Is1xPixel);
 exports.Is1xPixel = Is1xPixel;
 /*======== RETINA =========*/
 var IsRetina = (function (_super) {
     __extends(IsRetina, _super);
-    function IsRetina(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function IsRetina(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'retina';
         _this._showWhenTrue = true;
         return _this;
@@ -80,14 +77,15 @@ IsRetina = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], IsRetina);
 exports.IsRetina = IsRetina;
 /*======== 4K =========*/
 var Is4k = (function (_super) {
     __extends(Is4k, _super);
-    function Is4k(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function Is4k(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = '4k';
         _this._showWhenTrue = true;
         return _this;
@@ -112,16 +110,16 @@ Is4k = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], Is4k);
 exports.Is4k = Is4k;
-//Next to refactor
 /*======== DeviceInfo =========*/
-/* DeviceInfo */
 var PixelRatioInfo = (function () {
-    function PixelRatioInfo(_responsiveState, viewContainer) {
+    function PixelRatioInfo(_responsiveState, viewContainer, cd) {
         this._responsiveState = _responsiveState;
         this.viewContainer = viewContainer;
+        this.cd = cd;
         this.pixelratio = new core_1.EventEmitter();
     }
     Object.defineProperty(PixelRatioInfo.prototype, "pixelratioInfo", {
@@ -132,10 +130,7 @@ var PixelRatioInfo = (function () {
         configurable: true
     });
     PixelRatioInfo.prototype.ngOnInit = function () {
-        var _this = this;
-        this._subscription = this._responsiveState.pixelObserver.subscribe(this.updateData.bind(this), function (value) {
-            _this.currentstate = value;
-        });
+        this._subscription = this._responsiveState.pixelObserver.subscribe(this.updateData.bind(this));
     };
     PixelRatioInfo.prototype.ngOnDestroy = function () {
         this._subscription.unsubscribe();
@@ -144,16 +139,15 @@ var PixelRatioInfo = (function () {
         var update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.pixelratio.emit(value);
+            this.cd.markForCheck();
         }
     };
     PixelRatioInfo.prototype._ifValueChanged = function (oldValue, newValue) {
-        if (oldValue === newValue) {
+        if (oldValue === newValue)
             return false;
-        }
-        else {
+        else
             this.noRepeat = newValue;
-            return true;
-        }
+        return true;
     };
     return PixelRatioInfo;
 }());
@@ -163,11 +157,12 @@ __decorate([
 ], PixelRatioInfo.prototype, "pixelratio", void 0);
 PixelRatioInfo = __decorate([
     core_1.Directive({
-        selector: "pixelratioInfo",
+        selector: 'pixelratioInfo',
         inputs: ['pixelratioInfo']
     }),
     __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef])
+        core_1.ViewContainerRef,
+        core_1.ChangeDetectorRef])
 ], PixelRatioInfo);
 exports.PixelRatioInfo = PixelRatioInfo;
 //# sourceMappingURL=pixelratio-directives.js.map

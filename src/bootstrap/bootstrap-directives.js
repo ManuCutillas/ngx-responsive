@@ -15,16 +15,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var index_1 = require("../config/index");
-/*
- *
- * Bootstrap standard screen sizes directives
- * XL / LG / MD / SM / XS
- */
-/*======== XL STATES =========*/
 var XL = (function (_super) {
     __extends(XL, _super);
-    function XL(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function XL(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'xl';
         _this._showWhenTrue = true;
         return _this;
@@ -49,14 +43,14 @@ XL = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], XL);
 exports.XL = XL;
-/*======== LG STATES =========*/
 var LG = (function (_super) {
     __extends(LG, _super);
-    function LG(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function LG(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'lg';
         _this._showWhenTrue = true;
         return _this;
@@ -81,14 +75,14 @@ LG = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], LG);
 exports.LG = LG;
-/*======== MD STATES =========*/
 var MD = (function (_super) {
     __extends(MD, _super);
-    function MD(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function MD(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'md';
         _this._showWhenTrue = true;
         return _this;
@@ -113,14 +107,14 @@ MD = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], MD);
 exports.MD = MD;
-/*======== SM STATES =========*/
 var SM = (function (_super) {
     __extends(SM, _super);
-    function SM(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function SM(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'sm';
         _this._showWhenTrue = true;
         return _this;
@@ -145,14 +139,14 @@ SM = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], SM);
 exports.SM = SM;
-/*======== XS STATES =========*/
 var XS = (function (_super) {
     __extends(XS, _super);
-    function XS(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function XS(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._state = 'xs';
         _this._showWhenTrue = true;
         return _this;
@@ -177,15 +171,14 @@ XS = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], XS);
 exports.XS = XS;
-/*======== MULTIPLE SIZES STATES =========*/
-/* show */
 var ShowItBootstrap = (function (_super) {
     __extends(ShowItBootstrap, _super);
-    function ShowItBootstrap(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function ShowItBootstrap(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = true;
         return _this;
     }
@@ -209,14 +202,14 @@ ShowItBootstrap = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], ShowItBootstrap);
 exports.ShowItBootstrap = ShowItBootstrap;
-/* hide */
 var HideItBootstrap = (function (_super) {
     __extends(HideItBootstrap, _super);
-    function HideItBootstrap(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function HideItBootstrap(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = false;
         return _this;
     }
@@ -240,14 +233,15 @@ HideItBootstrap = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], HideItBootstrap);
 exports.HideItBootstrap = HideItBootstrap;
-/*======== responsiveSizeInfo =========*/
 var ResponsiveSizeInfo = (function () {
-    function ResponsiveSizeInfo(_responsiveState, viewContainer) {
+    function ResponsiveSizeInfo(_responsiveState, viewContainer, cd) {
         this._responsiveState = _responsiveState;
         this.viewContainer = viewContainer;
+        this.cd = cd;
         this.statechanges = new core_1.EventEmitter();
     }
     Object.defineProperty(ResponsiveSizeInfo.prototype, "responsiveSizeInfo", {
@@ -258,10 +252,7 @@ var ResponsiveSizeInfo = (function () {
         configurable: true
     });
     ResponsiveSizeInfo.prototype.ngOnInit = function () {
-        var _this = this;
-        this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateData.bind(this), function (value) {
-            _this.currentstate = value;
-        });
+        this._subscription = this._responsiveState.elementoObservar.subscribe(this.updateData.bind(this));
     };
     ResponsiveSizeInfo.prototype.ngOnDestroy = function () {
         this._subscription.unsubscribe();
@@ -270,12 +261,12 @@ var ResponsiveSizeInfo = (function () {
         var update = this._ifValueChanged(this._noRepeat, value);
         if (update) {
             this.statechanges.emit(value);
+            this.cd.markForCheck();
         }
     };
     ResponsiveSizeInfo.prototype._ifValueChanged = function (oldValue, newValue) {
-        if (oldValue === newValue) {
+        if (oldValue === newValue)
             return false;
-        }
         else {
             this._noRepeat = newValue;
             return true;
@@ -285,12 +276,13 @@ var ResponsiveSizeInfo = (function () {
 }());
 ResponsiveSizeInfo = __decorate([
     core_1.Directive({
-        selector: "responsiveSizeInfo",
+        selector: 'responsiveSizeInfo',
         inputs: ['responsiveSizeInfo'],
         outputs: ['statechanges']
     }),
     __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef])
+        core_1.ViewContainerRef,
+        core_1.ChangeDetectorRef])
 ], ResponsiveSizeInfo);
 exports.ResponsiveSizeInfo = ResponsiveSizeInfo;
 //# sourceMappingURL=bootstrap-directives.js.map

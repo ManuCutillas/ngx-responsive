@@ -1,30 +1,31 @@
 import { 
     ResponsiveConfig, 
     ResponsiveState,
-    ResponsiveConfigInterface } from './config';
+    ResponsiveConfigInterface 
+} from './config'
 
 import { 
     RESPONSIVE_BASE 
-} from './responsive-base';
+} from './responsive-base'
 
 import { 
     responsivePattern, 
     JsonGrid, 
     responsiveSubscriptions 
-} from './interfaces';
+} from './interfaces'
 
 export { 
     ResponsiveConfig, 
     ResponsiveState,
     ResponsiveConfigInterface
-} from './config'; 
+} from './config'
 
 export { 
     RESPONSIVE_BASE 
-} from './responsive-base';
+} from './responsive-base'
 
 export { 
     responsivePattern, 
     JsonGrid, 
     responsiveSubscriptions 
-} from './interfaces';
+} from './interfaces'

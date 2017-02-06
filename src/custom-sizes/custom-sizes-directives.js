@@ -15,12 +15,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var index_1 = require("../config/index");
-/*======== CUSTOM SIZES =========*/
-/* show */
 var ShowItSizes = (function (_super) {
     __extends(ShowItSizes, _super);
-    function ShowItSizes(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function ShowItSizes(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = true;
         return _this;
     }
@@ -44,14 +42,14 @@ ShowItSizes = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], ShowItSizes);
 exports.ShowItSizes = ShowItSizes;
-/* hide */
 var HideItSizes = (function (_super) {
     __extends(HideItSizes, _super);
-    function HideItSizes(templateRef, viewContainer, _responsiveState) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState) || this;
+    function HideItSizes(templateRef, viewContainer, _responsiveState, cd) {
+        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
         _this._showWhenTrue = false;
         return _this;
     }
@@ -75,7 +73,8 @@ HideItSizes = __decorate([
     }),
     __metadata("design:paramtypes", [core_1.TemplateRef,
         core_1.ViewContainerRef,
-        index_1.ResponsiveState])
+        index_1.ResponsiveState,
+        core_1.ChangeDetectorRef])
 ], HideItSizes);
 exports.HideItSizes = HideItSizes;
 //# sourceMappingURL=custom-sizes-directives.js.map

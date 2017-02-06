@@ -1,4 +1,4 @@
-import { Provider } from '@angular/core';
+import { Provider } from '@angular/core'
 import { 
   XL, 
   LG, 
@@ -7,7 +7,7 @@ import {
   XS, 
   ShowItBootstrap, 
   HideItBootstrap, 
-  ResponsiveSizeInfo } from './bootstrap-directives';
+  ResponsiveSizeInfo } from './bootstrap-directives'
 
 export {
   XL,
@@ -18,7 +18,7 @@ export {
   ShowItBootstrap, 
   HideItBootstrap, 
   ResponsiveSizeInfo
-};
+}
 
 export const BOOTSTRAP_DIRECTIVES: Provider[] = [
   XL,
@@ -29,4 +29,4 @@ export const BOOTSTRAP_DIRECTIVES: Provider[] = [
   ShowItBootstrap, 
   HideItBootstrap, 
   ResponsiveSizeInfo
-];
+]

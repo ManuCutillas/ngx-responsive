@@ -1,18 +1,7 @@
-![n2-responsive](/demo/src/assets/images/ng2-responsive-0-4-0-thin.jpg?raw=true)
+![n2-responsive](/img/ng2-responsive-0-4-0-thin.jpg?raw=true)
 
 # Introduction
-Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2
-
-### AOT - Support ( Working on it )
-- [AOT DEV BRANCH](https://github.com/ManuCutillas/ng2-responsive/tree/ng2-responsive-aot)
-
-### BREAKING CHANGES 
-
-FOR ANGULAR 2 PROYECTS WITH RC.3 / RC.4 VERSIONS
-- [npm package responsive-directives-angular2](https://www.npmjs.com/package/responsive-directives-angular2)
-- [github branch rc.3 - rc.4](https://github.com/ManuCutillas/ng2-responsive/tree/n2-responsive-v3)
-
-FOR ANGULAR 2 PROYECTS WITH RC.5
+Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2 ( aot & jit )
 
 ```
   npm i ng2-responsive@0.4.4 --save
@@ -57,53 +46,57 @@ FOR ANGULAR RC.6 / RC.7 / 2.0.0 FINAL RELEASE
    * with default breaking points
    
     ```
-    import { CommonModule } from '@angular/common';
-    import { ResponsiveModule } from './ng2-responsive';
+    import { NgModule } from '@angular/core'
+    import { ResponsiveModule } from 'ng2-responsive'
     ...
     @NgModule({
-          imports: [
-               BrowserModule,
-               CommonModule,
-               ResponsiveModule
-    ],
-    declarations: [],
-    providers:[],
-    bootstrap: [App]
-})
-export class AppModule { }
+        imports: [
+          ResponsiveModule
+        ],
+        declarations: [
+          AppComponent
+        ],
+        providers:[]
+    })
+    export class AppModule { }
     ```
 
     * with custom Configuration
       
     ```
-     import { CommonModule } from '@angular/common';
-     import { ResponsiveModule, ResponsiveConfig, ResponsiveConfigInterface } from './ng2-responsive';
+     import { NgModule } from '@angular/core'
+     import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
      ...
-     let config: ResponsiveConfigInterface = {
+     let config = {
         breakPoints: {
-                xs: {max: 600},
-                sm: {min: 601, max: 959},
-                md: {min: 960, max: 1279},
-                lg: {min: 1280, max: 1919},
-                xl: {min: 1920}
+            xs: {max: 600},
+            sm: {min: 601, max: 959},
+            md: {min: 960, max: 1279},
+            lg: {min: 1280, max: 1919},
+            xl: {min: 1920}
         },
         debounceTime: 100 // allow to debounce checking timer
-     };
+      };
+
+      export function ResponsiveDefinition(){ 
+              return new ResponsiveConfig(config);
+      };
      ...
-     @NgModule({
+    @NgModule({
         imports: [
-            BrowserModule,
-            CommonModule,
-            ResponsiveModule
-     ],
-     declarations: [],
-     providers:[{provide: ResponsiveConfig, useFactory: () => new ResponsiveConfig(config) }],
-     bootstrap: [App]
-     })
-     export class AppModule { }
+          ResponsiveModule
+        ],
+        declarations: [
+          AppComponent
+        ],
+        providers:[{
+         provide: ResponsiveConfig, 
+         useFactory: ResponsiveDefinition }]
+    })
+    export class AppModule { }
     ```
 
-3.DIRECTIVES:
+ 3.DIRECTIVES:
 
       * In your component to import the RESPONSIVE_DIRECTIVES only need import: 
       
@@ -365,7 +358,7 @@ export class AppModule { }
 ```
 
 - animations show/hide in directives
-- Desktop OS
+- Expose changes in directives like a service.
 
 # Contributors
  * ManuCutillas 
