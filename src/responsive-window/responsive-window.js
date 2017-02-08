@@ -1,6 +1,6 @@
 "use strict";
-var core_1 = require("@angular/core");
-var index_1 = require("../config/index");
+var core_1 = require('@angular/core');
+var index_1 = require('../config/index');
 var ResponsiveWindow = (function () {
     function ResponsiveWindow(_responsiveState, el, cd) {
         this._responsiveState = _responsiveState;
@@ -32,19 +32,21 @@ var ResponsiveWindow = (function () {
             this._noRepeat = newValue;
         return true;
     };
+    ResponsiveWindow.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: "[responsive-window]"
+                },] },
+    ];
+    /** @nocollapse */
+    ResponsiveWindow.ctorParameters = function () { return [
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ElementRef, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    ResponsiveWindow.propDecorators = {
+        'name': [{ type: core_1.Input, args: ['responsive-window',] },],
+    };
     return ResponsiveWindow;
 }());
-__decorate([
-    core_1.Input('responsive-window'),
-    __metadata("design:type", String)
-], ResponsiveWindow.prototype, "name", void 0);
-ResponsiveWindow = __decorate([
-    core_1.Directive({
-        selector: "[responsive-window]"
-    }),
-    __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ElementRef,
-        core_1.ChangeDetectorRef])
-], ResponsiveWindow);
 exports.ResponsiveWindow = ResponsiveWindow;
 //# sourceMappingURL=responsive-window.js.map

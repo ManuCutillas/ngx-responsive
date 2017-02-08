@@ -1,6 +1,6 @@
 "use strict";
-var core_1 = require("@angular/core");
-var index_1 = require("../config/index");
+var core_1 = require('@angular/core');
+var index_1 = require('../config/index');
 var UserAgentInfo = (function () {
     function UserAgentInfo(_responsiveState, cd) {
         this._responsiveState = _responsiveState;
@@ -17,14 +17,17 @@ var UserAgentInfo = (function () {
         this.info.emit(value);
         this.cd.markForCheck();
     };
+    UserAgentInfo.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: 'userAgentInfo', outputs: ['info']
+                },] },
+    ];
+    /** @nocollapse */
+    UserAgentInfo.ctorParameters = function () { return [
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
     return UserAgentInfo;
 }());
-UserAgentInfo = __decorate([
-    core_1.Directive({
-        selector: 'userAgentInfo', outputs: ['info']
-    }),
-    __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], UserAgentInfo);
 exports.UserAgentInfo = UserAgentInfo;
 //# sourceMappingURL=useragent.js.map

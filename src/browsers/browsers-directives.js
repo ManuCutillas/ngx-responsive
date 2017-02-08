@@ -1,13 +1,17 @@
 "use strict";
-var core_1 = require("@angular/core");
-var index_1 = require("../config/index");
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var core_1 = require('@angular/core');
+var index_1 = require('../config/index');
 var IsChrome = (function (_super) {
     __extends(IsChrome, _super);
     function IsChrome(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'chrome';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'chrome';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsChrome.prototype, "isChrome", {
         set: function (grid_state) {
@@ -16,30 +20,30 @@ var IsChrome = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsChrome.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isChrome]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsChrome.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsChrome.propDecorators = {
+        'isChrome': [{ type: core_1.Input },],
+    };
     return IsChrome;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsChrome.prototype, "isChrome", null);
-IsChrome = __decorate([
-    core_1.Directive({
-        selector: '[isChrome]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsChrome);
 exports.IsChrome = IsChrome;
 var IsFirefox = (function (_super) {
     __extends(IsFirefox, _super);
     function IsFirefox(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'firefox';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'firefox';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsFirefox.prototype, "isFirefox", {
         set: function (grid_state) {
@@ -48,30 +52,30 @@ var IsFirefox = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsFirefox.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isFirefox]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsFirefox.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsFirefox.propDecorators = {
+        'isFirefox': [{ type: core_1.Input },],
+    };
     return IsFirefox;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsFirefox.prototype, "isFirefox", null);
-IsFirefox = __decorate([
-    core_1.Directive({
-        selector: '[isFirefox]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsFirefox);
 exports.IsFirefox = IsFirefox;
 var IsSafari = (function (_super) {
     __extends(IsSafari, _super);
     function IsSafari(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'safari';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'safari';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsSafari.prototype, "isSafari", {
         set: function (grid_state) {
@@ -80,30 +84,30 @@ var IsSafari = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsSafari.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isSafari]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsSafari.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsSafari.propDecorators = {
+        'isSafari': [{ type: core_1.Input },],
+    };
     return IsSafari;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsSafari.prototype, "isSafari", null);
-IsSafari = __decorate([
-    core_1.Directive({
-        selector: '[isSafari]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsSafari);
 exports.IsSafari = IsSafari;
 var IsOpera = (function (_super) {
     __extends(IsOpera, _super);
     function IsOpera(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'opera';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'opera';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsOpera.prototype, "isOpera", {
         set: function (grid_state) {
@@ -112,30 +116,30 @@ var IsOpera = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsOpera.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isOpera]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsOpera.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsOpera.propDecorators = {
+        'isOpera': [{ type: core_1.Input },],
+    };
     return IsOpera;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsOpera.prototype, "isOpera", null);
-IsOpera = __decorate([
-    core_1.Directive({
-        selector: '[isOpera]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsOpera);
 exports.IsOpera = IsOpera;
 var IsIE = (function (_super) {
     __extends(IsIE, _super);
     function IsIE(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'ie';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'ie';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsIE.prototype, "isIE", {
         set: function (grid_state) {
@@ -144,29 +148,29 @@ var IsIE = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsIE.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isIE]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsIE.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsIE.propDecorators = {
+        'isIE': [{ type: core_1.Input },],
+    };
     return IsIE;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsIE.prototype, "isIE", null);
-IsIE = __decorate([
-    core_1.Directive({
-        selector: '[isIE]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsIE);
 exports.IsIE = IsIE;
 var ShowItBrowser = (function (_super) {
     __extends(ShowItBrowser, _super);
     function ShowItBrowser(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._showWhenTrue = true;
     }
     Object.defineProperty(ShowItBrowser.prototype, "showItBrowser", {
         set: function (grid_state) {
@@ -175,29 +179,29 @@ var ShowItBrowser = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    ShowItBrowser.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[showItBrowser]'
+                },] },
+    ];
+    /** @nocollapse */
+    ShowItBrowser.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    ShowItBrowser.propDecorators = {
+        'showItBrowser': [{ type: core_1.Input },],
+    };
     return ShowItBrowser;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], ShowItBrowser.prototype, "showItBrowser", null);
-ShowItBrowser = __decorate([
-    core_1.Directive({
-        selector: '[showItBrowser]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], ShowItBrowser);
 exports.ShowItBrowser = ShowItBrowser;
 var HideItBrowser = (function (_super) {
     __extends(HideItBrowser, _super);
     function HideItBrowser(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._showWhenTrue = false;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._showWhenTrue = false;
     }
     Object.defineProperty(HideItBrowser.prototype, "hideItBrowser", {
         set: function (grid_state) {
@@ -206,31 +210,31 @@ var HideItBrowser = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    HideItBrowser.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[hideItBrowser]',
+                    providers: [index_1.ResponsiveState]
+                },] },
+    ];
+    /** @nocollapse */
+    HideItBrowser.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    HideItBrowser.propDecorators = {
+        'hideItBrowser': [{ type: core_1.Input },],
+    };
     return HideItBrowser;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], HideItBrowser.prototype, "hideItBrowser", null);
-HideItBrowser = __decorate([
-    core_1.Directive({
-        selector: '[hideItBrowser]',
-        providers: [index_1.ResponsiveState]
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], HideItBrowser);
 exports.HideItBrowser = HideItBrowser;
 var IsIE9 = (function (_super) {
     __extends(IsIE9, _super);
     function IsIE9(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'ie 9';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'ie 9';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsIE9.prototype, "isIE9", {
         set: function (grid_state) {
@@ -239,30 +243,30 @@ var IsIE9 = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsIE9.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isIE9]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsIE9.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsIE9.propDecorators = {
+        'isIE9': [{ type: core_1.Input },],
+    };
     return IsIE9;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsIE9.prototype, "isIE9", null);
-IsIE9 = __decorate([
-    core_1.Directive({
-        selector: '[isIE9]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsIE9);
 exports.IsIE9 = IsIE9;
 var IsIE10 = (function (_super) {
     __extends(IsIE10, _super);
     function IsIE10(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'ie 10';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'ie 10';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsIE10.prototype, "isIE10", {
         set: function (grid_state) {
@@ -271,30 +275,30 @@ var IsIE10 = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsIE10.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isIE10]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsIE10.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsIE10.propDecorators = {
+        'isIE10': [{ type: core_1.Input },],
+    };
     return IsIE10;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsIE10.prototype, "isIE10", null);
-IsIE10 = __decorate([
-    core_1.Directive({
-        selector: '[isIE10]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsIE10);
 exports.IsIE10 = IsIE10;
 var IsIE11 = (function (_super) {
     __extends(IsIE11, _super);
     function IsIE11(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'ie 11';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'ie 11';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsIE11.prototype, "isIE11", {
         set: function (grid_state) {
@@ -303,30 +307,30 @@ var IsIE11 = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsIE11.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isIE11]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsIE11.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsIE11.propDecorators = {
+        'isIE11': [{ type: core_1.Input },],
+    };
     return IsIE11;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsIE11.prototype, "isIE11", null);
-IsIE11 = __decorate([
-    core_1.Directive({
-        selector: '[isIE11]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsIE11);
 exports.IsIE11 = IsIE11;
 var IsIE12 = (function (_super) {
     __extends(IsIE12, _super);
     function IsIE12(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._state = 'ie 12';
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._state = 'ie 12';
+        this._showWhenTrue = true;
     }
     Object.defineProperty(IsIE12.prototype, "isIE12", {
         set: function (grid_state) {
@@ -335,29 +339,29 @@ var IsIE12 = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    IsIE12.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[isIE12]'
+                },] },
+    ];
+    /** @nocollapse */
+    IsIE12.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    IsIE12.propDecorators = {
+        'isIE12': [{ type: core_1.Input },],
+    };
     return IsIE12;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], IsIE12.prototype, "isIE12", null);
-IsIE12 = __decorate([
-    core_1.Directive({
-        selector: '[isIE12]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], IsIE12);
 exports.IsIE12 = IsIE12;
 var ShowIEVersion = (function (_super) {
     __extends(ShowIEVersion, _super);
     function ShowIEVersion(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._showWhenTrue = true;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._showWhenTrue = true;
     }
     Object.defineProperty(ShowIEVersion.prototype, "showIEVersion", {
         set: function (grid_state) {
@@ -366,29 +370,29 @@ var ShowIEVersion = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    ShowIEVersion.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[showIEVersion]'
+                },] },
+    ];
+    /** @nocollapse */
+    ShowIEVersion.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    ShowIEVersion.propDecorators = {
+        'showIEVersion': [{ type: core_1.Input },],
+    };
     return ShowIEVersion;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], ShowIEVersion.prototype, "showIEVersion", null);
-ShowIEVersion = __decorate([
-    core_1.Directive({
-        selector: '[showIEVersion]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], ShowIEVersion);
 exports.ShowIEVersion = ShowIEVersion;
 var HideIEVersion = (function (_super) {
     __extends(HideIEVersion, _super);
     function HideIEVersion(templateRef, viewContainer, _responsiveState, cd) {
-        var _this = _super.call(this, templateRef, viewContainer, _responsiveState, cd) || this;
-        _this._showWhenTrue = false;
-        return _this;
+        _super.call(this, templateRef, viewContainer, _responsiveState, cd);
+        this._showWhenTrue = false;
     }
     Object.defineProperty(HideIEVersion.prototype, "hideIEVersion", {
         set: function (grid_state) {
@@ -397,22 +401,23 @@ var HideIEVersion = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    HideIEVersion.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[hideIEVersion]'
+                },] },
+    ];
+    /** @nocollapse */
+    HideIEVersion.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: core_1.ViewContainerRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    HideIEVersion.propDecorators = {
+        'hideIEVersion': [{ type: core_1.Input },],
+    };
     return HideIEVersion;
 }(index_1.RESPONSIVE_BASE));
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], HideIEVersion.prototype, "hideIEVersion", null);
-HideIEVersion = __decorate([
-    core_1.Directive({
-        selector: '[hideIEVersion]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        core_1.ViewContainerRef,
-        index_1.ResponsiveState,
-        core_1.ChangeDetectorRef])
-], HideIEVersion);
 exports.HideIEVersion = HideIEVersion;
 var BrowserInfo = (function () {
     function BrowserInfo(_responsiveState, viewContainer, cd) {
@@ -449,16 +454,19 @@ var BrowserInfo = (function () {
             return true;
         }
     };
+    BrowserInfo.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: "browserInfo", inputs: ['browserInfo'], outputs: ['browser']
+                },] },
+    ];
+    /** @nocollapse */
+    BrowserInfo.ctorParameters = function () { return [
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ViewContainerRef, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
     return BrowserInfo;
 }());
-BrowserInfo = __decorate([
-    core_1.Directive({
-        selector: "browserInfo", inputs: ['browserInfo'], outputs: ['browser']
-    }),
-    __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef,
-        core_1.ChangeDetectorRef])
-], BrowserInfo);
 exports.BrowserInfo = BrowserInfo;
 var IeInfo = (function () {
     function IeInfo(_responsiveState, viewContainer, cd) {
@@ -495,15 +503,18 @@ var IeInfo = (function () {
             return true;
         }
     };
+    IeInfo.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: "ieInfo", inputs: ['ieInfo'], outputs: ['ieVersion']
+                },] },
+    ];
+    /** @nocollapse */
+    IeInfo.ctorParameters = function () { return [
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ViewContainerRef, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
     return IeInfo;
 }());
-IeInfo = __decorate([
-    core_1.Directive({
-        selector: "ieInfo", inputs: ['ieInfo'], outputs: ['ieVersion']
-    }),
-    __metadata("design:paramtypes", [index_1.ResponsiveState,
-        core_1.ViewContainerRef,
-        core_1.ChangeDetectorRef])
-], IeInfo);
 exports.IeInfo = IeInfo;
 //# sourceMappingURL=browsers-directives.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"/Users/apple/Desktop/ng2-responsive/src/","sources":["client/app/home/responsive/config/index.ts"],"names":[],"mappings":";AAgBA,mCAIiB;AAHb,oCAAA,gBAAgB,CAAA;AAChB,mCAAA,eAAe,CAAA;AACf,6CAAA,yBAAyB,CAAA;AAG7B,qDAE0B;AADtB,4CAAA,eAAe,CAAA"}
+{"version":3,"file":"index.js","sourceRoot":"/Users/apple/Desktop/ng2-responsive/src/","sources":["client/app/home/responsive/config/index.ts"],"names":[],"mappings":";AAAA,uBAIO,UAEP,CAAC,CAFgB;AAOb,wBAAgB;AAChB,uBAAe;AACf,iCAAyB;AAP7B,gCAEO,mBAEP,CAAC,CAFyB;AAStB,uBAAe;AAOE"}

@@ -1,5 +1,5 @@
 "use strict";
-var devices_directives_1 = require("./devices-directives");
+var devices_directives_1 = require('./devices-directives');
 exports.IsDesktop = devices_directives_1.IsDesktop;
 exports.IsTablet = devices_directives_1.IsTablet;
 exports.IsMobile = devices_directives_1.IsMobile;

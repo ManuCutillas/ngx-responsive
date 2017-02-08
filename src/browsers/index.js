@@ -1,5 +1,5 @@
 "use strict";
-var browsers_directives_1 = require("./browsers-directives");
+var browsers_directives_1 = require('./browsers-directives');
 exports.IsChrome = browsers_directives_1.IsChrome;
 exports.IsFirefox = browsers_directives_1.IsFirefox;
 exports.IsSafari = browsers_directives_1.IsSafari;

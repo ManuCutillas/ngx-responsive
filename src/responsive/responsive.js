@@ -1,6 +1,6 @@
 "use strict";
-var core_1 = require("@angular/core");
-var index_1 = require("../config/index");
+var core_1 = require('@angular/core');
+var index_1 = require('../config/index');
 var Responsive = (function () {
     function Responsive(templateRef, _responsiveState, viewContainer, cd) {
         this.templateRef = templateRef;
@@ -313,25 +313,23 @@ var Responsive = (function () {
             return false;
         }
     };
+    Responsive.decorators = [
+        { type: core_1.Directive, args: [{
+                    selector: '[responsive]'
+                },] },
+    ];
+    /** @nocollapse */
+    Responsive.ctorParameters = function () { return [
+        { type: core_1.TemplateRef, },
+        { type: index_1.ResponsiveState, },
+        { type: core_1.ViewContainerRef, },
+        { type: core_1.ChangeDetectorRef, },
+    ]; };
+    Responsive.propDecorators = {
+        'responsive': [{ type: core_1.Input },],
+        'changes': [{ type: core_1.Output },],
+    };
     return Responsive;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Object),
-    __metadata("design:paramtypes", [Object])
-], Responsive.prototype, "responsive", null);
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", core_1.EventEmitter)
-], Responsive.prototype, "changes", void 0);
-Responsive = __decorate([
-    core_1.Directive({
-        selector: '[responsive]'
-    }),
-    __metadata("design:paramtypes", [core_1.TemplateRef,
-        index_1.ResponsiveState,
-        core_1.ViewContainerRef,
-        core_1.ChangeDetectorRef])
-], Responsive);
 exports.Responsive = Responsive;
 //# sourceMappingURL=responsive.js.map
