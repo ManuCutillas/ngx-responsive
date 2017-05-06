@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+  	"declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+		"target": "ES5",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"suppressImplicitAnyIndexErrors":true,
+		"noImplicitAny": false,
+		"typeRoots": [
+      "node_modules/@types"
+    ],
+		 "lib": ["es6", "dom"]
+	},
+	"exclude": [
+		"node_modules",
+    "demo/node_modules",
+    "demo/public",
+    "demo/typings",
+    "demo/typings/index.d.ts"
+	],
+	 "compileOnSave": true
+}

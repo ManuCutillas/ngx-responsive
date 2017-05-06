@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.GLOBAL_INPUTS = {
     BOOTSTRAP: ['xs', 'sm', 'md', 'lg', 'xl'],
     DEVICES: ['mobile', 'tablet', 'smarttv', 'desktop'],

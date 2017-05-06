@@ -1,6 +1,7 @@
 "use strict";
-var core_1 = require('@angular/core');
-var index_1 = require('../config/index');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var index_1 = require("../config/index");
 var ResponsiveWindow = (function () {
     function ResponsiveWindow(_responsiveState, el, cd) {
         this._responsiveState = _responsiveState;
@@ -32,21 +33,21 @@ var ResponsiveWindow = (function () {
             this._noRepeat = newValue;
         return true;
     };
-    ResponsiveWindow.decorators = [
-        { type: core_1.Directive, args: [{
-                    selector: "[responsive-window]"
-                },] },
-    ];
-    /** @nocollapse */
-    ResponsiveWindow.ctorParameters = function () { return [
-        { type: index_1.ResponsiveState, },
-        { type: core_1.ElementRef, },
-        { type: core_1.ChangeDetectorRef, },
-    ]; };
-    ResponsiveWindow.propDecorators = {
-        'name': [{ type: core_1.Input, args: ['responsive-window',] },],
-    };
     return ResponsiveWindow;
 }());
+ResponsiveWindow.decorators = [
+    { type: core_1.Directive, args: [{
+                selector: "[responsive-window]"
+            },] },
+];
+/** @nocollapse */
+ResponsiveWindow.ctorParameters = function () { return [
+    { type: index_1.ResponsiveState, },
+    { type: core_1.ElementRef, },
+    { type: core_1.ChangeDetectorRef, },
+]; };
+ResponsiveWindow.propDecorators = {
+    'name': [{ type: core_1.Input, args: ['responsive-window',] },],
+};
 exports.ResponsiveWindow = ResponsiveWindow;
 //# sourceMappingURL=responsive-window.js.map

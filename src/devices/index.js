@@ -1,5 +1,6 @@
 "use strict";
-var devices_directives_1 = require('./devices-directives');
+Object.defineProperty(exports, "__esModule", { value: true });
+var devices_directives_1 = require("./devices-directives");
 exports.IsDesktop = devices_directives_1.IsDesktop;
 exports.IsTablet = devices_directives_1.IsTablet;
 exports.IsMobile = devices_directives_1.IsMobile;

@@ -1,6 +1,7 @@
 "use strict";
-var core_1 = require('@angular/core');
-var index_1 = require('../config/index');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var index_1 = require("../config/index");
 var Responsive = (function () {
     function Responsive(templateRef, _responsiveState, viewContainer, cd) {
         this.templateRef = templateRef;
@@ -313,23 +314,23 @@ var Responsive = (function () {
             return false;
         }
     };
-    Responsive.decorators = [
-        { type: core_1.Directive, args: [{
-                    selector: '[responsive]'
-                },] },
-    ];
-    /** @nocollapse */
-    Responsive.ctorParameters = function () { return [
-        { type: core_1.TemplateRef, },
-        { type: index_1.ResponsiveState, },
-        { type: core_1.ViewContainerRef, },
-        { type: core_1.ChangeDetectorRef, },
-    ]; };
-    Responsive.propDecorators = {
-        'responsive': [{ type: core_1.Input },],
-        'changes': [{ type: core_1.Output },],
-    };
     return Responsive;
 }());
+Responsive.decorators = [
+    { type: core_1.Directive, args: [{
+                selector: '[responsive]'
+            },] },
+];
+/** @nocollapse */
+Responsive.ctorParameters = function () { return [
+    { type: core_1.TemplateRef, },
+    { type: index_1.ResponsiveState, },
+    { type: core_1.ViewContainerRef, },
+    { type: core_1.ChangeDetectorRef, },
+]; };
+Responsive.propDecorators = {
+    'responsive': [{ type: core_1.Input },],
+    'changes': [{ type: core_1.Output },],
+};
 exports.Responsive = Responsive;
 //# sourceMappingURL=responsive.js.map

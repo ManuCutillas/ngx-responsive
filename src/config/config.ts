@@ -1,9 +1,7 @@
 import { Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional } from '@angular/core'
 import 'rxjs/add/operator/share'
 import 'rxjs/add/operator/debounce'
-import { Observable } from  'rxjs/Observable'
-import { Observer } from  'rxjs/Observer'
-import { Subscription } from  'rxjs/Subscription'
+import {Observable, Observer, Subscription} from 'rxjs/Rx';
 import { ResponsiveWindow } from '../responsive-window/index'
 import { GLOBAL_INPUTS, REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES, REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION, LINUX_OS } from './const'
 import { responsiveSubscriptions } from './interfaces'
