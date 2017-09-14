@@ -19,6 +19,12 @@
  * @description : NG2-RESPONSIVE
  *
  */
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var index_1 = require("./config/index");
@@ -37,37 +43,35 @@ exports.ResponsiveConfigInterface = index_10.ResponsiveConfigInterface;
 var ResponsiveModule = (function () {
     function ResponsiveModule() {
     }
+    ResponsiveModule = __decorate([
+        core_1.NgModule({
+            declarations: [
+                index_2.BOOTSTRAP_DIRECTIVES,
+                index_3.BROWSER_DIRECTIVES,
+                index_4.CUSTOMSIZES_DIRECTIVES,
+                index_5.DEVICES_DIRECTIVES,
+                index_6.PIXELRATIO_DIRECTIVES,
+                index_7.RESPONSIVE_DIRECTIVE,
+                index_8.RESPONSIVEWINDOW_DIRECTIVE,
+                index_9.USERAGENT_DIRECTIVE
+            ],
+            exports: [
+                index_2.BOOTSTRAP_DIRECTIVES,
+                index_3.BROWSER_DIRECTIVES,
+                index_4.CUSTOMSIZES_DIRECTIVES,
+                index_5.DEVICES_DIRECTIVES,
+                index_6.PIXELRATIO_DIRECTIVES,
+                index_7.RESPONSIVE_DIRECTIVE,
+                index_8.RESPONSIVEWINDOW_DIRECTIVE,
+                index_9.USERAGENT_DIRECTIVE,
+            ],
+            providers: [
+                index_1.ResponsiveState,
+                index_1.ResponsiveConfig
+            ]
+        })
+    ], ResponsiveModule);
     return ResponsiveModule;
 }());
-ResponsiveModule.decorators = [
-    { type: core_1.NgModule, args: [{
-                declarations: [
-                    index_2.BOOTSTRAP_DIRECTIVES,
-                    index_3.BROWSER_DIRECTIVES,
-                    index_4.CUSTOMSIZES_DIRECTIVES,
-                    index_5.DEVICES_DIRECTIVES,
-                    index_6.PIXELRATIO_DIRECTIVES,
-                    index_7.RESPONSIVE_DIRECTIVE,
-                    index_8.RESPONSIVEWINDOW_DIRECTIVE,
-                    index_9.USERAGENT_DIRECTIVE
-                ],
-                exports: [
-                    index_2.BOOTSTRAP_DIRECTIVES,
-                    index_3.BROWSER_DIRECTIVES,
-                    index_4.CUSTOMSIZES_DIRECTIVES,
-                    index_5.DEVICES_DIRECTIVES,
-                    index_6.PIXELRATIO_DIRECTIVES,
-                    index_7.RESPONSIVE_DIRECTIVE,
-                    index_8.RESPONSIVEWINDOW_DIRECTIVE,
-                    index_9.USERAGENT_DIRECTIVE,
-                ],
-                providers: [
-                    index_1.ResponsiveState,
-                    index_1.ResponsiveConfig
-                ]
-            },] },
-];
-/** @nocollapse */
-ResponsiveModule.ctorParameters = function () { return []; };
 exports.ResponsiveModule = ResponsiveModule;
 //# sourceMappingURL=index.js.map

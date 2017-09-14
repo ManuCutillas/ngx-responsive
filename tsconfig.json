@@ -1,23 +1,37 @@
 {
-	"compilerOptions": {
-		"target": "ES5",
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"sourceMap": true,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		 "suppressImplicitAnyIndexErrors":true,
-		 "declaration": true,
-		"noImplicitAny": false,
-		"declarationFiles": true,
-		"rootDir": "./src"
-	},
-	"exclude": [
-	"node_modules",
-    "demo/node_modules",
-    "demo/public",
-    "demo/typings",
-    "demo/typings/index.d.ts"
-	],
-	 "compileOnSave": true
+    "compilerOptions": {
+        "baseUrl": "src",
+        "declaration": true,
+        "stripInternal": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "es2015",
+        "moduleResolution": "node",
+        "paths": {
+            "@angular/core": ["node_modules/@angular/core"],
+            "rxjs/*": ["node_modules/rxjs/*"]
+        },
+        "rootDir": "src",
+        "outDir": "dist",
+        "sourceMap": true,
+        "inlineSources": true,
+        "target": "es5",
+        "skipLibCheck": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "demo/node_modules",
+        "demo/public",
+        "demo/typings",
+        "demo/typings/index.d.ts"
+    ],
+    "angularCompilerOptions": {
+        "strictMetadataEmit": true,
+        "skipTemplateCodegen": true
+    },
+    "compileOnSave": true
 }

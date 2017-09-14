@@ -1,4 +1,16 @@
 "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/share");
@@ -26,15 +38,13 @@ var ResponsiveConfig = (function () {
         if (!!config)
             this.config = config;
     }
+    ResponsiveConfig = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Optional()),
+        __metadata("design:paramtypes", [ResponsiveConfigInterface])
+    ], ResponsiveConfig);
     return ResponsiveConfig;
 }());
-ResponsiveConfig.decorators = [
-    { type: core_1.Injectable },
-];
-/** @nocollapse */
-ResponsiveConfig.ctorParameters = function () { return [
-    { type: ResponsiveConfigInterface, decorators: [{ type: core_1.Optional },] },
-]; };
 exports.ResponsiveConfig = ResponsiveConfig;
 var ResponsiveState = (function () {
     function ResponsiveState(responsiveConfig) {
@@ -49,7 +59,7 @@ var ResponsiveState = (function () {
         this.registerWindow = function (rw) {
             if (rw.name && !_this._windows[rw.name]) {
                 _this._windows[rw.name] = rw;
-                window.dispatchEvent(new Event('resize'));
+                window.dispatchEvent(new Event("resize"));
             }
         };
         this.unregisterWindow = function (rw) {
@@ -57,25 +67,25 @@ var ResponsiveState = (function () {
                 if (_this._windows[rwn] === rw)
                     delete (_this._windows[rwn]);
             }
-            window.dispatchEvent(new Event('resize'));
+            window.dispatchEvent(new Event("resize"));
         };
         this.sizeObserver = function () {
-            return _this._width = _this.getWidth('window');
+            return _this._width = _this.getWidth("window");
         };
         this.sizeOperations = function () {
-            _this._width = _this.getWidth('window');
+            _this._width = _this.getWidth("window");
             try {
                 var breakpoints = _this._responsiveConfig.config.breakPoints;
                 if (breakpoints.xl.min <= _this._width)
-                    return 'xl';
+                    return "xl";
                 else if (breakpoints.lg.max >= _this._width && breakpoints.lg.min <= _this._width)
-                    return 'lg';
+                    return "lg";
                 else if (breakpoints.md.max >= _this._width && breakpoints.md.min <= _this._width)
-                    return 'md';
+                    return "md";
                 else if (breakpoints.sm.max >= _this._width && breakpoints.sm.min <= _this._width)
-                    return 'sm';
+                    return "sm";
                 else if (breakpoints.xs.max >= _this._width)
-                    return 'xs';
+                    return "xs";
             }
             catch (e) { }
             return null;
@@ -83,51 +93,88 @@ var ResponsiveState = (function () {
         this.browserName = function () {
             try {
                 if (const_1.REG_SORT_NAMES.WEBKIT[0].test(_this._userAgent) && const_1.REG_SORT_NAMES.CHROME.test(_this._userAgent) && !const_1.REG_BROWSERS.IE[2].test(_this._userAgent))
-                    return 'chrome';
+                    return "chrome";
                 else if (const_1.REG_SORT_NAMES.MOZILLA.test(_this._userAgent) && const_1.REG_BROWSERS.FIREFOX.test(_this._userAgent))
-                    return 'firefox';
+                    return "firefox";
                 else if (const_1.REG_BROWSERS.IE[0].test(_this._userAgent) || const_1.REG_BROWSERS.IE[1].test(_this._userAgent) || const_1.REG_BROWSERS.IE[2].test(_this._userAgent))
-                    return 'ie';
+                    return "ie";
                 else if (const_1.REG_SORT_NAMES.SAFARI.test(_this._userAgent) && const_1.REG_SORT_NAMES.WEBKIT[1].test(_this._userAgent) && !const_1.REG_SORT_NAMES.CHROME.test(_this._userAgent))
-                    return 'safari';
+                    return "safari";
                 else if (const_1.REG_BROWSERS.OPERA.test(_this._userAgent))
-                    return 'opera';
+                    return "opera";
                 else if (const_1.REG_BROWSERS.SILK.test(_this._userAgent))
-                    return 'silk';
+                    return "silk";
                 else if (const_1.REG_BROWSERS.YANDEX.test(_this._userAgent))
-                    return 'yandex';
+                    return "yandex";
                 else
-                    return 'NA';
+                    return "NA";
             }
             catch (e) { }
             return null;
         };
+        this.chrome_version_detect = function () {
+            try {
+                var msie = _this._userAgent.indexOf("msie ");
+                if (const_1.REG_BROWSERS.IE[0].test(_this._userAgent)) {
+                    var ie_version = parseInt(_this._userAgent.substring(msie + 5, _this._userAgent.indexOf(".", msie)), 10);
+                    if (ie_version === 7) {
+                        return "ie 7";
+                    }
+                    else if (ie_version === 8) {
+                        return "ie 8";
+                    }
+                    else if (ie_version === 9) {
+                        return "ie 9";
+                    }
+                    else if (ie_version === 10) {
+                        return "ie 10";
+                    }
+                    return null;
+                }
+                var trident = _this._userAgent.indexOf("trident/");
+                if (const_1.REG_BROWSERS.IE[1].test(_this._userAgent)) {
+                    var rv = _this._userAgent.indexOf("rv:");
+                    var ie_version = parseInt(_this._userAgent.substring(rv + 3, _this._userAgent.indexOf(".", rv)), 10);
+                    if (ie_version === 11) {
+                        return "ie 11";
+                    }
+                    return null;
+                }
+                var edge = _this._userAgent.indexOf("Edge/");
+                if (const_1.REG_BROWSERS.IE[2].test(_this._userAgent)) {
+                    return "ie +12";
+                }
+            }
+            catch (e) {
+            }
+            return null;
+        };
         this.ie_version_detect = function () {
             try {
-                var msie = _this._userAgent.indexOf('msie ');
+                var msie = _this._userAgent.indexOf("msie ");
                 if (const_1.REG_BROWSERS.IE[0].test(_this._userAgent)) {
-                    var ie_version = parseInt(_this._userAgent.substring(msie + 5, _this._userAgent.indexOf('.', msie)), 10);
+                    var ie_version = parseInt(_this._userAgent.substring(msie + 5, _this._userAgent.indexOf(".", msie)), 10);
                     if (ie_version === 7)
-                        return 'ie 7';
+                        return "ie 7";
                     else if (ie_version === 8)
-                        return 'ie 8';
+                        return "ie 8";
                     else if (ie_version === 9)
-                        return 'ie 9';
+                        return "ie 9";
                     else if (ie_version == 10)
-                        return 'ie 10';
+                        return "ie 10";
                     return null;
                 }
-                var trident = _this._userAgent.indexOf('trident/');
+                var trident = _this._userAgent.indexOf("trident/");
                 if (const_1.REG_BROWSERS.IE[1].test(_this._userAgent)) {
-                    var rv = _this._userAgent.indexOf('rv:');
-                    var ie_version = parseInt(_this._userAgent.substring(rv + 3, _this._userAgent.indexOf('.', rv)), 10);
+                    var rv = _this._userAgent.indexOf("rv:");
+                    var ie_version = parseInt(_this._userAgent.substring(rv + 3, _this._userAgent.indexOf(".", rv)), 10);
                     if (ie_version == 11)
-                        return 'ie 11';
+                        return "ie 11";
                     return null;
                 }
-                var edge = _this._userAgent.indexOf('Edge/');
+                var edge = _this._userAgent.indexOf("Edge/");
                 if (const_1.REG_BROWSERS.IE[2].test(_this._userAgent))
-                    return 'ie +12';
+                    return "ie +12";
             }
             catch (e) { }
             return null;
@@ -135,11 +182,11 @@ var ResponsiveState = (function () {
         this.pixel_ratio = function () {
             try {
                 if (_this.test_Is_4k())
-                    return '4k';
+                    return "4k";
                 else if (_this.getDevicePixelRatio() > 1)
-                    return 'retina';
+                    return "retina";
                 else if (_this.getDevicePixelRatio() === 1)
-                    return '1x';
+                    return "1x";
                 else
                     return null;
             }
@@ -149,13 +196,13 @@ var ResponsiveState = (function () {
         this.device_detection = function () {
             try {
                 if (_this.isMobile())
-                    return 'mobile';
+                    return "mobile";
                 else if (_this.isTablet())
-                    return 'tablet';
+                    return "tablet";
                 else if (_this.isSMART())
-                    return 'smarttv';
+                    return "smarttv";
                 else if (_this.isDesktop())
-                    return 'desktop';
+                    return "desktop";
             }
             catch (e) { }
             return null;
@@ -164,12 +211,12 @@ var ResponsiveState = (function () {
             try {
                 if (_this.isMobile() || _this.isTablet()) {
                     if (window.innerHeight > window.innerWidth)
-                        return 'portrait';
+                        return "portrait";
                     else
-                        return 'landscape';
+                        return "landscape";
                 }
                 else if (_this.isSMART() || _this.isDesktop())
-                    return 'landscape';
+                    return "landscape";
                 else
                     return null;
             }
@@ -179,15 +226,15 @@ var ResponsiveState = (function () {
         this.standard_devices = function () {
             try {
                 if (const_1.REG_MOBILES.IPHONE.test(_this._userAgent))
-                    return 'iphone';
+                    return "iphone";
                 else if (const_1.REG_TABLETS.IPAD.test(_this._userAgent))
-                    return 'ipad';
+                    return "ipad";
                 else if (_this.isMobile() && const_1.REG_MOBILES.ANDROID.test(_this._userAgent))
-                    return 'android mobile';
+                    return "android mobile";
                 else if (_this.isTablet() && const_1.REG_MOBILES.ANDROID.test(_this._userAgent))
-                    return 'android tablet';
+                    return "android tablet";
                 else if (const_1.REG_MOBILES.WINDOWS_PHONE.test(_this._userAgent))
-                    return 'windows phone';
+                    return "windows phone";
             }
             catch (e) { }
             return null;
@@ -195,23 +242,23 @@ var ResponsiveState = (function () {
         this.game_devices = function () {
             try {
                 if (const_1.REG_GAME_DEVICES.PS4.test(_this._userAgent))
-                    return 'Playstation 4';
+                    return "Playstation 4";
                 else if (const_1.REG_GAME_DEVICES.PS3.test(_this._userAgent))
-                    return 'Playstation 3';
+                    return "Playstation 3";
                 else if (const_1.REG_GAME_DEVICES.XBOX_ONE.test(_this._userAgent))
-                    return 'Xbox one';
+                    return "Xbox one";
                 else if (const_1.REG_GAME_DEVICES.XBOX.test(_this._userAgent))
-                    return 'Xbox';
+                    return "Xbox";
                 else if (const_1.REG_GAME_DEVICES.WII.test(_this._userAgent))
-                    return 'Wii';
+                    return "Wii";
                 else if (const_1.REG_GAME_DEVICES.WII_U.test(_this._userAgent))
-                    return 'Wii U';
+                    return "Wii U";
                 else if (const_1.REG_GAME_DEVICES.NINTENDO_3DS.test(_this._userAgent))
-                    return 'Nintendo 3DS';
+                    return "Nintendo 3DS";
                 else if (const_1.REG_GAME_DEVICES.PS_VITA.test(_this._userAgent))
-                    return 'Playstation Vita';
+                    return "Playstation Vita";
                 else if (const_1.REG_GAME_DEVICES.PSP.test(_this._userAgent))
-                    return 'PSP';
+                    return "PSP";
             }
             catch (e) { }
             return null;
@@ -219,17 +266,17 @@ var ResponsiveState = (function () {
         this.smart_tv = function () {
             try {
                 if (const_1.REG_SMARTS_TV.CHROMECAST.test(_this._userAgent))
-                    return 'Chromecast';
+                    return "Chromecast";
                 else if (const_1.REG_SMARTS_TV.APPLE_TV.test(_this._userAgent))
-                    return 'Apple tv';
+                    return "Apple tv";
                 else if (const_1.REG_SMARTS_TV.GOOGLE_TV.test(_this._userAgent))
-                    return 'Google tv';
+                    return "Google tv";
                 else if (const_1.REG_GAME_DEVICES.XBOX_ONE.test(_this._userAgent))
-                    return 'Xbox One';
+                    return "Xbox One";
                 else if (const_1.REG_GAME_DEVICES.PS4.test(_this._userAgent))
-                    return 'Playstation 4';
+                    return "Playstation 4";
                 else if (const_1.REG_SMARTS_TV.GENERIC_TV.test(_this._userAgent))
-                    return 'Generic smartv';
+                    return "Generic smartv";
             }
             catch (e) { }
             return null;
@@ -238,11 +285,11 @@ var ResponsiveState = (function () {
             try {
                 if (_this.isDesktop()) {
                     if (const_1.REG_OS.WINDOWS.test(_this._userAgent))
-                        return 'Windows';
+                        return "Windows";
                     else if (const_1.REG_OS.MAC_OS.test(_this._userAgent))
-                        return 'Mac';
+                        return "Mac";
                     else if (const_1.REG_OS.LINUX.test(_this._userAgent))
-                        return 'Linux';
+                        return "Linux";
                 }
             }
             catch (e) { }
@@ -252,13 +299,13 @@ var ResponsiveState = (function () {
             try {
                 if (_this.isTablet()) {
                     if (const_1.REG_TABLETS.IPAD.test(_this._userAgent))
-                        return 'Ipad';
+                        return "Ipad";
                     else if (const_1.REG_TABLETS.TABLET.test(_this._userAgent) && const_1.REG_MOBILES.ANDROID.test(_this._userAgent))
-                        return 'Android';
+                        return "Android";
                     else if (const_1.REG_TABLETS.KINDLE.test(_this._userAgent))
-                        return 'Kindle';
+                        return "Kindle";
                     else if (const_1.REG_TABLETS.TABLET.test(_this._userAgent))
-                        return 'Generic Tablet';
+                        return "Generic Tablet";
                 }
             }
             catch (e) { }
@@ -268,15 +315,15 @@ var ResponsiveState = (function () {
             try {
                 if (_this.isMobile()) {
                     if (const_1.REG_MOBILES.IPHONE.test(_this._userAgent))
-                        return 'Iphone';
+                        return "Iphone";
                     else if (const_1.REG_MOBILES.ANDROID.test(_this._userAgent))
-                        return 'Android';
+                        return "Android";
                     else if (const_1.REG_MOBILES.WINDOWS_PHONE.test(_this._userAgent))
-                        return 'Windows Phone';
+                        return "Windows Phone";
                     else if (const_1.REG_MOBILES.BLACKBERRY.test(_this._userAgent) || const_1.REG_MOBILES.BB10.test(_this._userAgent))
-                        return 'Blackberry';
+                        return "Blackberry";
                     else
-                        return 'Generic Mobile';
+                        return "Generic Mobile";
                 }
             }
             catch (e) { }
@@ -286,17 +333,17 @@ var ResponsiveState = (function () {
             try {
                 if (_this.isDesktop() && _this.isWindows()) {
                     if (const_1.WINDOWS_OS_VERSION.WINDOWS_XP.test(_this._userAgent))
-                        return 'Windows XP';
+                        return "Windows XP";
                     else if (const_1.WINDOWS_OS_VERSION.WINDOWS_VISTA.test(_this._userAgent))
-                        return 'Windows Vista';
+                        return "Windows Vista";
                     else if (const_1.WINDOWS_OS_VERSION.WINDOWS_7.test(_this._userAgent))
-                        return 'Windows 7';
+                        return "Windows 7";
                     else if (const_1.WINDOWS_OS_VERSION.WINDOWS_8.test(_this._userAgent) || const_1.WINDOWS_OS_VERSION.WINDOWS_8_1.test(_this._userAgent))
-                        return 'Windows 8';
+                        return "Windows 8";
                     else if (const_1.WINDOWS_OS_VERSION.WINDOWS_10.test(_this._userAgent))
-                        return 'Windows 10';
+                        return "Windows 10";
                     else
-                        return 'Generic Windows';
+                        return "Generic Windows";
                 }
             }
             catch (e) { }
@@ -306,54 +353,54 @@ var ResponsiveState = (function () {
             try {
                 if (_this.isDesktop() && _this.isLinux()) {
                     if (const_1.LINUX_OS.DEBIAN.test(_this._userAgent))
-                        return 'Debian';
+                        return "Debian";
                     else if (const_1.LINUX_OS.KNOPPIX.test(_this._userAgent))
-                        return 'Knoppix';
+                        return "Knoppix";
                     else if (const_1.LINUX_OS.MINT.test(_this._userAgent))
-                        return 'Mint';
+                        return "Mint";
                     else if (const_1.LINUX_OS.UBUNTU.test(_this._userAgent))
-                        return 'Ubuntu';
+                        return "Ubuntu";
                     else if (const_1.LINUX_OS.KUBUNTU.test(_this._userAgent))
-                        return 'Kubuntu';
+                        return "Kubuntu";
                     else if (const_1.LINUX_OS.XUBUNTU.test(_this._userAgent))
-                        return 'Xubuntu';
+                        return "Xubuntu";
                     else if (const_1.LINUX_OS.LUBUNTU.test(_this._userAgent))
-                        return 'Lubuntu';
+                        return "Lubuntu";
                     else if (const_1.LINUX_OS.FEDORA.test(_this._userAgent))
-                        return 'Fedora';
+                        return "Fedora";
                     else if (const_1.LINUX_OS.RED_HAT.test(_this._userAgent))
-                        return 'Red hat';
+                        return "Red hat";
                     else if (const_1.LINUX_OS.MANDRIVA.test(_this._userAgent))
-                        return 'Mandriva';
+                        return "Mandriva";
                     else if (const_1.LINUX_OS.GENTOO.test(_this._userAgent))
-                        return 'Gentoo';
+                        return "Gentoo";
                     else if (const_1.LINUX_OS.SABAYON.test(_this._userAgent))
-                        return 'Sabayon';
+                        return "Sabayon";
                     else if (const_1.LINUX_OS.SLACKWARE.test(_this._userAgent))
-                        return 'Slackware';
+                        return "Slackware";
                     else if (const_1.LINUX_OS.SUSE.test(_this._userAgent))
-                        return 'Suse';
+                        return "Suse";
                     else if (const_1.LINUX_OS.CENT_OS.test(_this._userAgent))
-                        return 'CentOS';
+                        return "CentOS";
                     else if (const_1.LINUX_OS.BACKTRACK.test(_this._userAgent))
-                        return 'Backtrack';
+                        return "Backtrack";
                     else
-                        return 'Generic Linux';
+                        return "Generic Linux";
                 }
             }
             catch (e) { }
             return null;
         };
         this.userAgent_data = function () {
-            var ie_version_name = '';
+            var ie_version_name = "";
             var ie_version_state = false;
-            var game_device_name = '';
-            var smart_tv_name = '';
-            var desktop_name = '';
-            var tablet_name = '';
-            var mobile_name = '';
-            var windows_name = '';
-            var linux_name = '';
+            var game_device_name = "";
+            var smart_tv_name = "";
+            var desktop_name = "";
+            var tablet_name = "";
+            var mobile_name = "";
+            var windows_name = "";
+            var linux_name = "";
             if (_this.ie_version_detect() != null) {
                 ie_version_name = _this.ie_version_detect();
                 ie_version_state = true;
@@ -420,23 +467,23 @@ var ResponsiveState = (function () {
         };
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
         var resize_observer = Rx_1.Observable
-            .fromEvent(window, 'resize')
+            .fromEvent(window, "resize")
             .debounceTime(this._responsiveConfig.config.debounceTime)
             .defaultIfEmpty()
-            .startWith(this.getWidth('window'));
+            .startWith(this.getWidth("window"));
         var pixel_ratio_observer = Rx_1.Observable
-            .fromEvent(window, 'onload')
+            .fromEvent(window, "onload")
             .defaultIfEmpty()
             .startWith(this.getDevicePixelRatio());
         var device_observer = Rx_1.Observable
-            .fromEvent(window, 'onload')
+            .fromEvent(window, "onload")
             .defaultIfEmpty()
             .startWith(this.getUserAgent());
-        var user_agent_observer = Rx_1.Observable.fromEvent(window, 'onload')
+        var user_agent_observer = Rx_1.Observable.fromEvent(window, "onload")
             .defaultIfEmpty()
             .startWith(this.userAgent_data());
         var orientation_observer = Rx_1.Observable
-            .fromEvent(window, 'orientationchange')
+            .fromEvent(window, "orientationchange")
             .defaultIfEmpty()
             .startWith(this.getOrientation());
         this.elementoObservar = resize_observer.map(this.sizeOperations);
@@ -460,9 +507,9 @@ var ResponsiveState = (function () {
     };
     ResponsiveState.prototype.getDevicePixelRatio = function () {
         var ratio = 1;
-        if (typeof window.screen.systemXDPI !== 'undefined' && typeof window.screen.logicalXDPI !== 'undefined' && window.screen.systemXDPI > window.screen.logicalXDPI)
+        if (typeof window.screen.systemXDPI !== "undefined" && typeof window.screen.logicalXDPI !== "undefined" && window.screen.systemXDPI > window.screen.logicalXDPI)
             ratio = window.screen.systemXDPI / window.screen.logicalXDPI;
-        else if (typeof window.devicePixelRatio !== 'undefined')
+        else if (typeof window.devicePixelRatio !== "undefined")
             ratio = window.devicePixelRatio;
         return ratio;
     };
@@ -525,14 +572,12 @@ var ResponsiveState = (function () {
     ResponsiveState.prototype.getOrientation = function () {
         return window.orientation;
     };
+    ResponsiveState = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Optional()),
+        __metadata("design:paramtypes", [ResponsiveConfig])
+    ], ResponsiveState);
     return ResponsiveState;
 }());
-ResponsiveState.decorators = [
-    { type: core_1.Injectable },
-];
-/** @nocollapse */
-ResponsiveState.ctorParameters = function () { return [
-    { type: ResponsiveConfig, decorators: [{ type: core_1.Optional },] },
-]; };
 exports.ResponsiveState = ResponsiveState;
 //# sourceMappingURL=config.js.map

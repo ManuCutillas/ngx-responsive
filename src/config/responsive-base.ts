@@ -41,8 +41,9 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     {}
 
     protected eventChanges: EventEmitter<any>= new EventEmitter()
-    protected setGrid(grid_state: any, directive: string): void 
+    protected setGrid(grid_state: any, directive: string): void
     {    
+        console.log('setGrid responsive-base',directive);
         switch ( directive ) 
         {
             case 'bootstrap':

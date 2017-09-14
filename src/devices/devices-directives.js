@@ -9,6 +9,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var index_1 = require("../config/index");
@@ -27,23 +36,22 @@ var IsSmartTv = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsSmartTv.prototype, "isSmartTv", null);
+    IsSmartTv = __decorate([
+        core_1.Directive({
+            selector: '[isSmartTv]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsSmartTv);
     return IsSmartTv;
 }(index_1.RESPONSIVE_BASE));
-IsSmartTv.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isSmartTv]'
-            },] },
-];
-/** @nocollapse */
-IsSmartTv.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsSmartTv.propDecorators = {
-    'isSmartTv': [{ type: core_1.Input },],
-};
 exports.IsSmartTv = IsSmartTv;
 var IsDesktop = (function (_super) {
     __extends(IsDesktop, _super);
@@ -60,23 +68,22 @@ var IsDesktop = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsDesktop.prototype, "isDesktop", null);
+    IsDesktop = __decorate([
+        core_1.Directive({
+            selector: '[isDesktop]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsDesktop);
     return IsDesktop;
 }(index_1.RESPONSIVE_BASE));
-IsDesktop.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isDesktop]'
-            },] },
-];
-/** @nocollapse */
-IsDesktop.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsDesktop.propDecorators = {
-    'isDesktop': [{ type: core_1.Input },],
-};
 exports.IsDesktop = IsDesktop;
 var IsTablet = (function (_super) {
     __extends(IsTablet, _super);
@@ -93,23 +100,22 @@ var IsTablet = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsTablet.prototype, "isTablet", null);
+    IsTablet = __decorate([
+        core_1.Directive({
+            selector: '[isTablet]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsTablet);
     return IsTablet;
 }(index_1.RESPONSIVE_BASE));
-IsTablet.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isTablet]'
-            },] },
-];
-/** @nocollapse */
-IsTablet.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsTablet.propDecorators = {
-    'isTablet': [{ type: core_1.Input },],
-};
 exports.IsTablet = IsTablet;
 var IsMobile = (function (_super) {
     __extends(IsMobile, _super);
@@ -126,23 +132,22 @@ var IsMobile = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsMobile.prototype, "isMobile", null);
+    IsMobile = __decorate([
+        core_1.Directive({
+            selector: '[isMobile]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsMobile);
     return IsMobile;
 }(index_1.RESPONSIVE_BASE));
-IsMobile.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isMobile]'
-            },] },
-];
-/** @nocollapse */
-IsMobile.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsMobile.propDecorators = {
-    'isMobile': [{ type: core_1.Input },],
-};
 exports.IsMobile = IsMobile;
 var ShowItDevice = (function (_super) {
     __extends(ShowItDevice, _super);
@@ -158,23 +163,22 @@ var ShowItDevice = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], ShowItDevice.prototype, "showItDevice", null);
+    ShowItDevice = __decorate([
+        core_1.Directive({
+            selector: '[showItDevice]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], ShowItDevice);
     return ShowItDevice;
 }(index_1.RESPONSIVE_BASE));
-ShowItDevice.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[showItDevice]'
-            },] },
-];
-/** @nocollapse */
-ShowItDevice.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-ShowItDevice.propDecorators = {
-    'showItDevice': [{ type: core_1.Input },],
-};
 exports.ShowItDevice = ShowItDevice;
 var HideItDevice = (function (_super) {
     __extends(HideItDevice, _super);
@@ -190,23 +194,22 @@ var HideItDevice = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], HideItDevice.prototype, "hideItDevice", null);
+    HideItDevice = __decorate([
+        core_1.Directive({
+            selector: '[hideItDevice]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], HideItDevice);
     return HideItDevice;
 }(index_1.RESPONSIVE_BASE));
-HideItDevice.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[hideItDevice]'
-            },] },
-];
-/** @nocollapse */
-HideItDevice.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-HideItDevice.propDecorators = {
-    'hideItDevice': [{ type: core_1.Input },],
-};
 exports.HideItDevice = HideItDevice;
 var IsIphone = (function (_super) {
     __extends(IsIphone, _super);
@@ -223,23 +226,22 @@ var IsIphone = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsIphone.prototype, "isIphone", null);
+    IsIphone = __decorate([
+        core_1.Directive({
+            selector: '[isIphone]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsIphone);
     return IsIphone;
 }(index_1.RESPONSIVE_BASE));
-IsIphone.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isIphone]'
-            },] },
-];
-/** @nocollapse */
-IsIphone.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsIphone.propDecorators = {
-    'isIphone': [{ type: core_1.Input },],
-};
 exports.IsIphone = IsIphone;
 var IsIpad = (function (_super) {
     __extends(IsIpad, _super);
@@ -256,23 +258,22 @@ var IsIpad = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsIpad.prototype, "isIphone", null);
+    IsIpad = __decorate([
+        core_1.Directive({
+            selector: '[isIpad]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsIpad);
     return IsIpad;
 }(index_1.RESPONSIVE_BASE));
-IsIpad.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isIpad]'
-            },] },
-];
-/** @nocollapse */
-IsIpad.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsIpad.propDecorators = {
-    'isIphone': [{ type: core_1.Input },],
-};
 exports.IsIpad = IsIpad;
 var IsAndroidMobile = (function (_super) {
     __extends(IsAndroidMobile, _super);
@@ -289,23 +290,22 @@ var IsAndroidMobile = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsAndroidMobile.prototype, "isAndroidMobile", null);
+    IsAndroidMobile = __decorate([
+        core_1.Directive({
+            selector: '[isAndroidMobile]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsAndroidMobile);
     return IsAndroidMobile;
 }(index_1.RESPONSIVE_BASE));
-IsAndroidMobile.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isAndroidMobile]'
-            },] },
-];
-/** @nocollapse */
-IsAndroidMobile.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsAndroidMobile.propDecorators = {
-    'isAndroidMobile': [{ type: core_1.Input },],
-};
 exports.IsAndroidMobile = IsAndroidMobile;
 var IsAndroidTablet = (function (_super) {
     __extends(IsAndroidTablet, _super);
@@ -322,23 +322,22 @@ var IsAndroidTablet = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsAndroidTablet.prototype, "isAndroidTablet", null);
+    IsAndroidTablet = __decorate([
+        core_1.Directive({
+            selector: '[isAndroidTablet]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsAndroidTablet);
     return IsAndroidTablet;
 }(index_1.RESPONSIVE_BASE));
-IsAndroidTablet.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isAndroidTablet]'
-            },] },
-];
-/** @nocollapse */
-IsAndroidTablet.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsAndroidTablet.propDecorators = {
-    'isAndroidTablet': [{ type: core_1.Input },],
-};
 exports.IsAndroidTablet = IsAndroidTablet;
 var IsWindowsPhone = (function (_super) {
     __extends(IsWindowsPhone, _super);
@@ -355,23 +354,22 @@ var IsWindowsPhone = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], IsWindowsPhone.prototype, "isWindowsPhone", null);
+    IsWindowsPhone = __decorate([
+        core_1.Directive({
+            selector: '[isWindowsPhone]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsWindowsPhone);
     return IsWindowsPhone;
 }(index_1.RESPONSIVE_BASE));
-IsWindowsPhone.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isWindowsPhone]'
-            },] },
-];
-/** @nocollapse */
-IsWindowsPhone.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsWindowsPhone.propDecorators = {
-    'isWindowsPhone': [{ type: core_1.Input },],
-};
 exports.IsWindowsPhone = IsWindowsPhone;
 var ShowItStandard = (function (_super) {
     __extends(ShowItStandard, _super);
@@ -387,23 +385,22 @@ var ShowItStandard = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], ShowItStandard.prototype, "showItStandard", null);
+    ShowItStandard = __decorate([
+        core_1.Directive({
+            selector: '[showItStandard]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], ShowItStandard);
     return ShowItStandard;
 }(index_1.RESPONSIVE_BASE));
-ShowItStandard.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[showItStandard]'
-            },] },
-];
-/** @nocollapse */
-ShowItStandard.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-ShowItStandard.propDecorators = {
-    'showItStandard': [{ type: core_1.Input },],
-};
 exports.ShowItStandard = ShowItStandard;
 var HideItStandard = (function (_super) {
     __extends(HideItStandard, _super);
@@ -419,23 +416,22 @@ var HideItStandard = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], HideItStandard.prototype, "hideItStandard", null);
+    HideItStandard = __decorate([
+        core_1.Directive({
+            selector: '[hideItStandard]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], HideItStandard);
     return HideItStandard;
 }(index_1.RESPONSIVE_BASE));
-HideItStandard.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[hideItStandard]'
-            },] },
-];
-/** @nocollapse */
-HideItStandard.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-HideItStandard.propDecorators = {
-    'hideItStandard': [{ type: core_1.Input },],
-};
 exports.HideItStandard = HideItStandard;
 var IsPortrait = (function (_super) {
     __extends(IsPortrait, _super);
@@ -452,23 +448,22 @@ var IsPortrait = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [String])
+    ], IsPortrait.prototype, "isPortrait", null);
+    IsPortrait = __decorate([
+        core_1.Directive({
+            selector: '[isPortrait]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsPortrait);
     return IsPortrait;
 }(index_1.RESPONSIVE_BASE));
-IsPortrait.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isPortrait]'
-            },] },
-];
-/** @nocollapse */
-IsPortrait.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsPortrait.propDecorators = {
-    'isPortrait': [{ type: core_1.Input },],
-};
 exports.IsPortrait = IsPortrait;
 var IsLandscape = (function (_super) {
     __extends(IsLandscape, _super);
@@ -485,23 +480,22 @@ var IsLandscape = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [String])
+    ], IsLandscape.prototype, "isLandscape", null);
+    IsLandscape = __decorate([
+        core_1.Directive({
+            selector: '[isLandscape]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], IsLandscape);
     return IsLandscape;
 }(index_1.RESPONSIVE_BASE));
-IsLandscape.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[isLandscape]'
-            },] },
-];
-/** @nocollapse */
-IsLandscape.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-IsLandscape.propDecorators = {
-    'isLandscape': [{ type: core_1.Input },],
-};
 exports.IsLandscape = IsLandscape;
 var DeviceInfo = (function () {
     function DeviceInfo(_responsiveState, viewContainer, cd) {
@@ -538,22 +532,20 @@ var DeviceInfo = (function () {
             return true;
         }
     };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], DeviceInfo.prototype, "device", void 0);
+    DeviceInfo = __decorate([
+        core_1.Directive({
+            selector: 'deviceInfo'
+        }),
+        __metadata("design:paramtypes", [index_1.ResponsiveState,
+            core_1.ViewContainerRef,
+            core_1.ChangeDetectorRef])
+    ], DeviceInfo);
     return DeviceInfo;
 }());
-DeviceInfo.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: 'deviceInfo'
-            },] },
-];
-/** @nocollapse */
-DeviceInfo.ctorParameters = function () { return [
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ViewContainerRef, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-DeviceInfo.propDecorators = {
-    'device': [{ type: core_1.Output },],
-};
 exports.DeviceInfo = DeviceInfo;
 var DeviceStandardInfo = (function () {
     function DeviceStandardInfo(_responsiveState, viewContainer, cd) {
@@ -590,19 +582,16 @@ var DeviceStandardInfo = (function () {
             return true;
         }
     };
+    DeviceStandardInfo = __decorate([
+        core_1.Directive({
+            selector: "deviceStandardInfo", inputs: ['deviceStandardInfo'], outputs: ['standard']
+        }),
+        __metadata("design:paramtypes", [index_1.ResponsiveState,
+            core_1.ViewContainerRef,
+            core_1.ChangeDetectorRef])
+    ], DeviceStandardInfo);
     return DeviceStandardInfo;
 }());
-DeviceStandardInfo.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: "deviceStandardInfo", inputs: ['deviceStandardInfo'], outputs: ['standard']
-            },] },
-];
-/** @nocollapse */
-DeviceStandardInfo.ctorParameters = function () { return [
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ViewContainerRef, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
 exports.DeviceStandardInfo = DeviceStandardInfo;
 var OrientationInfo = (function () {
     function OrientationInfo(_responsiveState, viewContainer, cd) {
@@ -639,19 +628,16 @@ var OrientationInfo = (function () {
             return true;
         }
     };
+    OrientationInfo = __decorate([
+        core_1.Directive({
+            selector: 'orientationInfo',
+            outputs: ['orientation']
+        }),
+        __metadata("design:paramtypes", [index_1.ResponsiveState,
+            core_1.ViewContainerRef,
+            core_1.ChangeDetectorRef])
+    ], OrientationInfo);
     return OrientationInfo;
 }());
-OrientationInfo.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: 'orientationInfo',
-                outputs: ['orientation']
-            },] },
-];
-/** @nocollapse */
-OrientationInfo.ctorParameters = function () { return [
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ViewContainerRef, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
 exports.OrientationInfo = OrientationInfo;
 //# sourceMappingURL=devices-directives.js.map

@@ -9,6 +9,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var index_1 = require("../config/index");
@@ -27,23 +36,22 @@ var XL = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], XL.prototype, "xl", null);
+    XL = __decorate([
+        core_1.Directive({
+            selector: '[xl]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], XL);
     return XL;
 }(index_1.RESPONSIVE_BASE));
-XL.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[xl]'
-            },] },
-];
-/** @nocollapse */
-XL.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-XL.propDecorators = {
-    'xl': [{ type: core_1.Input },],
-};
 exports.XL = XL;
 var LG = (function (_super) {
     __extends(LG, _super);
@@ -60,23 +68,22 @@ var LG = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], LG.prototype, "lg", null);
+    LG = __decorate([
+        core_1.Directive({
+            selector: '[lg]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], LG);
     return LG;
 }(index_1.RESPONSIVE_BASE));
-LG.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[lg]'
-            },] },
-];
-/** @nocollapse */
-LG.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-LG.propDecorators = {
-    'lg': [{ type: core_1.Input },],
-};
 exports.LG = LG;
 var MD = (function (_super) {
     __extends(MD, _super);
@@ -93,23 +100,22 @@ var MD = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], MD.prototype, "md", null);
+    MD = __decorate([
+        core_1.Directive({
+            selector: '[md]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], MD);
     return MD;
 }(index_1.RESPONSIVE_BASE));
-MD.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[md]'
-            },] },
-];
-/** @nocollapse */
-MD.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-MD.propDecorators = {
-    'md': [{ type: core_1.Input },],
-};
 exports.MD = MD;
 var SM = (function (_super) {
     __extends(SM, _super);
@@ -126,23 +132,22 @@ var SM = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], SM.prototype, "sm", null);
+    SM = __decorate([
+        core_1.Directive({
+            selector: '[sm]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], SM);
     return SM;
 }(index_1.RESPONSIVE_BASE));
-SM.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[sm]'
-            },] },
-];
-/** @nocollapse */
-SM.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-SM.propDecorators = {
-    'sm': [{ type: core_1.Input },],
-};
 exports.SM = SM;
 var XS = (function (_super) {
     __extends(XS, _super);
@@ -159,23 +164,22 @@ var XS = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], XS.prototype, "xs", null);
+    XS = __decorate([
+        core_1.Directive({
+            selector: '[xs]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], XS);
     return XS;
 }(index_1.RESPONSIVE_BASE));
-XS.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[xs]'
-            },] },
-];
-/** @nocollapse */
-XS.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-XS.propDecorators = {
-    'xs': [{ type: core_1.Input },],
-};
 exports.XS = XS;
 var ShowItBootstrap = (function (_super) {
     __extends(ShowItBootstrap, _super);
@@ -191,23 +195,22 @@ var ShowItBootstrap = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], ShowItBootstrap.prototype, "showItBootstrap", null);
+    ShowItBootstrap = __decorate([
+        core_1.Directive({
+            selector: '[showItBootstrap]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], ShowItBootstrap);
     return ShowItBootstrap;
 }(index_1.RESPONSIVE_BASE));
-ShowItBootstrap.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[showItBootstrap]'
-            },] },
-];
-/** @nocollapse */
-ShowItBootstrap.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-ShowItBootstrap.propDecorators = {
-    'showItBootstrap': [{ type: core_1.Input },],
-};
 exports.ShowItBootstrap = ShowItBootstrap;
 var HideItBootstrap = (function (_super) {
     __extends(HideItBootstrap, _super);
@@ -223,23 +226,22 @@ var HideItBootstrap = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], HideItBootstrap.prototype, "hideItBootstrap", null);
+    HideItBootstrap = __decorate([
+        core_1.Directive({
+            selector: '[hideItBootstrap]'
+        }),
+        __metadata("design:paramtypes", [core_1.TemplateRef,
+            core_1.ViewContainerRef,
+            index_1.ResponsiveState,
+            core_1.ChangeDetectorRef])
+    ], HideItBootstrap);
     return HideItBootstrap;
 }(index_1.RESPONSIVE_BASE));
-HideItBootstrap.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: '[hideItBootstrap]'
-            },] },
-];
-/** @nocollapse */
-HideItBootstrap.ctorParameters = function () { return [
-    { type: core_1.TemplateRef, },
-    { type: core_1.ViewContainerRef, },
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
-HideItBootstrap.propDecorators = {
-    'hideItBootstrap': [{ type: core_1.Input },],
-};
 exports.HideItBootstrap = HideItBootstrap;
 var ResponsiveSizeInfo = (function () {
     function ResponsiveSizeInfo(_responsiveState, viewContainer, cd) {
@@ -276,20 +278,17 @@ var ResponsiveSizeInfo = (function () {
             return true;
         }
     };
+    ResponsiveSizeInfo = __decorate([
+        core_1.Directive({
+            selector: 'responsiveSizeInfo',
+            inputs: ['responsiveSizeInfo'],
+            outputs: ['statechanges']
+        }),
+        __metadata("design:paramtypes", [index_1.ResponsiveState,
+            core_1.ViewContainerRef,
+            core_1.ChangeDetectorRef])
+    ], ResponsiveSizeInfo);
     return ResponsiveSizeInfo;
 }());
-ResponsiveSizeInfo.decorators = [
-    { type: core_1.Directive, args: [{
-                selector: 'responsiveSizeInfo',
-                inputs: ['responsiveSizeInfo'],
-                outputs: ['statechanges']
-            },] },
-];
-/** @nocollapse */
-ResponsiveSizeInfo.ctorParameters = function () { return [
-    { type: index_1.ResponsiveState, },
-    { type: core_1.ViewContainerRef, },
-    { type: core_1.ChangeDetectorRef, },
-]; };
 exports.ResponsiveSizeInfo = ResponsiveSizeInfo;
 //# sourceMappingURL=bootstrap-directives.js.map

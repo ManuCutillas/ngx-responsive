@@ -6,36 +6,15 @@
  /* tslint:disable */
 
 
-import * as import0 from '@angular/core';
-import * as import1 from './index';
-import * as import2 from './config/config';
-class ResponsiveModuleInjector extends import0.ɵNgModuleInjector<import1.ResponsiveModule> {
-  _ResponsiveModule_0:import1.ResponsiveModule;
-  __ResponsiveConfig_1:import2.ResponsiveConfig;
-  __ResponsiveState_2:import2.ResponsiveState;
-  constructor(parent:import0.Injector) {
-    super(parent,([] as any[]),([] as any[]));
-  }
-  get _ResponsiveConfig_1():import2.ResponsiveConfig {
-    if ((this.__ResponsiveConfig_1 == null)) { (this.__ResponsiveConfig_1 = new import2.ResponsiveConfig(this.parent.get(import2.ResponsiveConfigInterface,(null as any)))); }
-    return this.__ResponsiveConfig_1;
-  }
-  get _ResponsiveState_2():import2.ResponsiveState {
-    if ((this.__ResponsiveState_2 == null)) { (this.__ResponsiveState_2 = new import2.ResponsiveState(this._ResponsiveConfig_1)); }
-    return this.__ResponsiveState_2;
-  }
-  createInternal():import1.ResponsiveModule {
-    this._ResponsiveModule_0 = new import1.ResponsiveModule();
-    return this._ResponsiveModule_0;
-  }
-  getInternal(token:any,notFoundResult:any):any {
-    if ((token === import1.ResponsiveModule)) { return this._ResponsiveModule_0; }
-    if ((token === import2.ResponsiveConfig)) { return this._ResponsiveConfig_1; }
-    if ((token === import2.ResponsiveState)) { return this._ResponsiveState_2; }
-    return notFoundResult;
-  }
-  destroyInternal():void {
-  }
-}
-export const ResponsiveModuleNgFactory:import0.NgModuleFactory<import1.ResponsiveModule> = new import0.NgModuleFactory<any>(ResponsiveModuleInjector,import1.ResponsiveModule);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL2hvbWUvbWN1dGlsbGFzL0VzY3JpdG9yaW8vTGlicmVyaWFzL2FuZ3VsYXIyL3Jlc3BvbnNpdmUtYXBwL3NyYy9hcHAvbmcyLXJlc3BvbnNpdmUvaW5kZXgubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vaG9tZS9tY3V0aWxsYXMvRXNjcml0b3Jpby9MaWJyZXJpYXMvYW5ndWxhcjIvcmVzcG9uc2l2ZS1hcHAvc3JjL2FwcC9uZzItcmVzcG9uc2l2ZS9pbmRleC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIgIl0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OyJ9
+import * as i0 from '@angular/core';
+import * as i1 from './index';
+import * as i2 from './config/config';
+export const ResponsiveModuleNgFactory:i0.NgModuleFactory<i1.ResponsiveModule> = i0.ɵcmf(i1.ResponsiveModule,
+    ([] as any[]),(_l:any) => {
+      return i0.ɵmod([i0.ɵmpd(512,i0.ComponentFactoryResolver,i0.ɵCodegenComponentFactoryResolver,
+          [[8,([] as any[])],[3,i0.ComponentFactoryResolver],i0.NgModuleRef]),i0.ɵmpd(4608,
+          i2.ResponsiveConfig,i2.ResponsiveConfig,[[2,i2.ResponsiveConfigInterface]]),
+          i0.ɵmpd(4608,i2.ResponsiveState,i2.ResponsiveState,[[2,i2.ResponsiveConfig]]),
+          i0.ɵmpd(512,i1.ResponsiveModule,i1.ResponsiveModule,([] as any[]))]);
+    });
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiQzovREVWL3Byb2plY3RzL25nMi1yZXNwb25zaXZlL3NyYy9pbmRleC5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9DOi9ERVYvcHJvamVjdHMvbmcyLXJlc3BvbnNpdmUvc3JjL2luZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbIiAiXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7In0=
