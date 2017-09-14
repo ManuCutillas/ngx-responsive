@@ -1,7 +1,7 @@
-import 'rxjs/add/operator/share';
-import 'rxjs/add/operator/debounce';
-import { Observable } from 'rxjs/Rx';
-import { ResponsiveWindow } from '../responsive-window/index';
+import "rxjs/add/operator/share";
+import "rxjs/add/operator/debounce";
+import { Observable } from "rxjs/Rx";
+import { ResponsiveWindow } from "../responsive-window/index";
 export declare class ResponsiveConfigInterface {
     breakPoints: {
         xs: {
@@ -57,6 +57,7 @@ export declare class ResponsiveState {
     private sizeObserver;
     private sizeOperations;
     private browserName;
+    private chrome_version_detect;
     private ie_version_detect;
     private pixel_ratio;
     private test_Is_4k();

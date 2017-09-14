@@ -119,18 +119,25 @@ export class IsIE extends RESPONSIVE_BASE<any> {
 })
 export class ShowItBrowser extends RESPONSIVE_BASE<any> {
     
-    protected _showWhenTrue: boolean = true
+    protected _showWhenTrue: boolean = true;
 
-    @Input() set showItBrowser( grid_state: string[] | string ) 
+    @Input() set showItBrowser(grid_state: string[] | string ) 
     {
-        this.setGrid( grid_state, 'browser' )
+        if( (grid_state instanceof Array) && grid_state.length > 0 && (grid_state.find( browser => 
+            (browser.indexOf('ie 11') > -1 || browser.indexOf('ie 10') > -1 || browser.indexOf('ie +12') > -1 ) ))) {
+            this.setGrid( grid_state, 'ie');
+        } else if ( (typeof grid_state === 'string') && ( grid_state.indexOf('ie 11') > -1 || grid_state.indexOf('ie 10') > -1 || grid_state.indexOf('ie +12') > -1 )) {
+            this.setGrid( grid_state, 'ie' );
+        } else {
+            this.setGrid( grid_state, 'browser' );
+        }
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef )
     {
-        super( templateRef, viewContainer, _responsiveState, cd )
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -145,7 +152,14 @@ export class HideItBrowser extends RESPONSIVE_BASE<any> {
 
     @Input() set hideItBrowser( grid_state: string[] | string ) 
     {
-        this.setGrid( grid_state, 'browser' )
+        if ((grid_state instanceof Array) && grid_state.length > 0 && (grid_state.find(browser =>
+            (browser.indexOf('ie 11') > -1 || browser.indexOf('ie 10') > -1 || browser.indexOf('ie +12') > -1)))) {
+            this.setGrid(grid_state, 'ie');
+        } else if ((typeof grid_state === 'string') && (grid_state.indexOf('ie 11') > -1 || grid_state.indexOf('ie 10') > -1 || grid_state.indexOf('ie +12') > -1)) {
+            this.setGrid(grid_state, 'ie');
+        } else {
+            this.setGrid(grid_state, 'browser');
+        }        
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
@@ -249,8 +263,8 @@ export class IsIE12 extends RESPONSIVE_BASE<any> {
     selector: '[showIEVersion]'
 })
 export class ShowIEVersion extends RESPONSIVE_BASE<any> {
-    
-    protected _showWhenTrue: boolean = true
+
+    protected _showWhenTrue: boolean = true;
 
     @Input() set showIEVersion( grid_state: string[] | string ) 
     {
@@ -259,7 +273,7 @@ export class ShowIEVersion extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) 
+                 cd: ChangeDetectorRef )
     {
         super( templateRef, viewContainer, _responsiveState, cd )
     }

@@ -241,6 +241,7 @@ export class Responsive implements OnDestroy {
     {
         if ( !!this._showWhenTrue ) 
         {
+            console.log('updateEvent', type_directive);
             switch ( type_directive ) 
             {
                 case 'bootstrap':
