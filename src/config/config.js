@@ -3,7 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/share");
 require("rxjs/add/operator/debounce");
-var Rx_1 = require("rxjs/Rx");
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/debounceTime');
+require('rxjs/add/operator/defaultIfEmpty');
+require('rxjs/add/operator/startWith');
+
+var Ob_1 = require('rxjs/Observable').Observable;
+require('rxjs/add/observable/fromEvent');
+
 var const_1 = require("./const");
 var ResponsiveConfigInterface = (function () {
     function ResponsiveConfigInterface() {
@@ -32,9 +39,11 @@ ResponsiveConfig.decorators = [
     { type: core_1.Injectable },
 ];
 /** @nocollapse */
-ResponsiveConfig.ctorParameters = function () { return [
-    { type: ResponsiveConfigInterface, decorators: [{ type: core_1.Optional },] },
-]; };
+ResponsiveConfig.ctorParameters = function () {
+    return [
+        { type: ResponsiveConfigInterface, decorators: [{ type: core_1.Optional },] },
+    ];
+};
 exports.ResponsiveConfig = ResponsiveConfig;
 var ResponsiveState = (function () {
     function ResponsiveState(responsiveConfig) {
@@ -419,23 +428,23 @@ var ResponsiveState = (function () {
             };
         };
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
-        var resize_observer = Rx_1.Observable
+        var resize_observer = Ob_1
             .fromEvent(window, 'resize')
             .debounceTime(this._responsiveConfig.config.debounceTime)
             .defaultIfEmpty()
             .startWith(this.getWidth('window'));
-        var pixel_ratio_observer = Rx_1.Observable
+        var pixel_ratio_observer = Ob_1
             .fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.getDevicePixelRatio());
-        var device_observer = Rx_1.Observable
+        var device_observer = Ob_1
             .fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.getUserAgent());
-        var user_agent_observer = Rx_1.Observable.fromEvent(window, 'onload')
+        var user_agent_observer = Ob_1.fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.userAgent_data());
-        var orientation_observer = Rx_1.Observable
+        var orientation_observer = Ob_1
             .fromEvent(window, 'orientationchange')
             .defaultIfEmpty()
             .startWith(this.getOrientation());
@@ -531,8 +540,10 @@ ResponsiveState.decorators = [
     { type: core_1.Injectable },
 ];
 /** @nocollapse */
-ResponsiveState.ctorParameters = function () { return [
-    { type: ResponsiveConfig, decorators: [{ type: core_1.Optional },] },
-]; };
+ResponsiveState.ctorParameters = function () {
+    return [
+        { type: ResponsiveConfig, decorators: [{ type: core_1.Optional },] },
+    ];
+};
 exports.ResponsiveState = ResponsiveState;
 //# sourceMappingURL=config.js.map
