@@ -1,5 +1,5 @@
 {
-  "name": "responsive-directives-angular",
+  "name": "ng2-responsive",
   "version": "0.2.4",
   "description": "Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 2",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ManuCutillas/responsive-directives-angular2.git"
+    "url": "git+https://github.com/paulyipkh/ng2-responsive.git"
   },
   "keywords": [
     "angular",
