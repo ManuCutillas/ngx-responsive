@@ -1,8 +1,6 @@
 import { Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional } from '@angular/core'
 import 'rxjs/add/operator/share'
 import 'rxjs/add/operator/debounce'
-import 'rxjs/add/operator/share'
-import 'rxjs/add/operator/debounce'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/debounceTime'
 import 'rxjs/add/operator/defaultIfEmpty'
