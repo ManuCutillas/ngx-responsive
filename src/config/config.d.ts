@@ -1,6 +1,13 @@
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/debounce';
-import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/debounce';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/defaultIfEmpty';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/observable/fromEvent';
+import { Observable } from 'rxjs/Observable';
 import { ResponsiveWindow } from '../responsive-window/index';
 export declare class ResponsiveConfigInterface {
     breakPoints: {
