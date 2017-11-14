@@ -7,7 +7,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
   npm i ngx-responsive --save
 ```
 
-## If you use Angular 4 in your project install ng2-responsive.
+### If you use Angular 4 in your project use ng2-responsive.
 
 ```
   npm i ng2-responsive --save
