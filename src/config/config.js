@@ -15,8 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/share");
 require("rxjs/add/operator/debounce");
-require("rxjs/add/operator/share");
-require("rxjs/add/operator/debounce");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/debounceTime");
 require("rxjs/add/operator/defaultIfEmpty");

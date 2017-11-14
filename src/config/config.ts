@@ -7,7 +7,7 @@ import 'rxjs/add/operator/defaultIfEmpty'
 import 'rxjs/add/operator/startWith'
 import 'rxjs/add/observable/fromEvent'
 
-import { Subscription } from 'rxjs/Rx'
+import { Subscription } from 'rxjs/Subscription'
 import { Observable } from 'rxjs/Observable'
 import { Observer } from 'rxjs/Observer'
 import { ResponsiveWindow } from '../responsive-window/index'
