@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var RESPONSIVE_BASE = (function () {
+var RESPONSIVE_BASE = /** @class */ (function () {
     function RESPONSIVE_BASE(templateRef, viewContainer, _responsiveState, cd) {
         this.templateRef = templateRef;
         this.viewContainer = viewContainer;

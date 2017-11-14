@@ -1,17 +1,34 @@
 "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 require("rxjs/add/operator/share");
 require("rxjs/add/operator/debounce");
-var Rx_1 = require("rxjs/Rx");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/debounceTime");
+require("rxjs/add/operator/defaultIfEmpty");
+require("rxjs/add/operator/startWith");
+require("rxjs/add/observable/fromEvent");
+var Observable_1 = require("rxjs/Observable");
 var const_1 = require("./const");
-var ResponsiveConfigInterface = (function () {
+var ResponsiveConfigInterface = /** @class */ (function () {
     function ResponsiveConfigInterface() {
     }
     return ResponsiveConfigInterface;
 }());
 exports.ResponsiveConfigInterface = ResponsiveConfigInterface;
-var ResponsiveConfig = (function () {
+var ResponsiveConfig = /** @class */ (function () {
     function ResponsiveConfig(config) {
         this.config = {
             breakPoints: {
@@ -26,17 +43,15 @@ var ResponsiveConfig = (function () {
         if (!!config)
             this.config = config;
     }
+    ResponsiveConfig = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Optional()),
+        __metadata("design:paramtypes", [ResponsiveConfigInterface])
+    ], ResponsiveConfig);
     return ResponsiveConfig;
 }());
-ResponsiveConfig.decorators = [
-    { type: core_1.Injectable },
-];
-/** @nocollapse */
-ResponsiveConfig.ctorParameters = function () { return [
-    { type: ResponsiveConfigInterface, decorators: [{ type: core_1.Optional },] },
-]; };
 exports.ResponsiveConfig = ResponsiveConfig;
-var ResponsiveState = (function () {
+var ResponsiveState = /** @class */ (function () {
     function ResponsiveState(responsiveConfig) {
         var _this = this;
         this._windows = {};
@@ -419,23 +434,23 @@ var ResponsiveState = (function () {
             };
         };
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
-        var resize_observer = Rx_1.Observable
+        var resize_observer = Observable_1.Observable
             .fromEvent(window, 'resize')
             .debounceTime(this._responsiveConfig.config.debounceTime)
             .defaultIfEmpty()
             .startWith(this.getWidth('window'));
-        var pixel_ratio_observer = Rx_1.Observable
+        var pixel_ratio_observer = Observable_1.Observable
             .fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.getDevicePixelRatio());
-        var device_observer = Rx_1.Observable
+        var device_observer = Observable_1.Observable
             .fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.getUserAgent());
-        var user_agent_observer = Rx_1.Observable.fromEvent(window, 'onload')
+        var user_agent_observer = Observable_1.Observable.fromEvent(window, 'onload')
             .defaultIfEmpty()
             .startWith(this.userAgent_data());
-        var orientation_observer = Rx_1.Observable
+        var orientation_observer = Observable_1.Observable
             .fromEvent(window, 'orientationchange')
             .defaultIfEmpty()
             .startWith(this.getOrientation());
@@ -525,14 +540,12 @@ var ResponsiveState = (function () {
     ResponsiveState.prototype.getOrientation = function () {
         return window.orientation;
     };
+    ResponsiveState = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Optional()),
+        __metadata("design:paramtypes", [ResponsiveConfig])
+    ], ResponsiveState);
     return ResponsiveState;
 }());
-ResponsiveState.decorators = [
-    { type: core_1.Injectable },
-];
-/** @nocollapse */
-ResponsiveState.ctorParameters = function () { return [
-    { type: ResponsiveConfig, decorators: [{ type: core_1.Optional },] },
-]; };
 exports.ResponsiveState = ResponsiveState;
 //# sourceMappingURL=config.js.map
