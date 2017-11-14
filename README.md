@@ -1,7 +1,13 @@
-![n2-responsive](/img/ng2-responsive-0-4-0-thin.jpg?raw=true)
+![n2-responsive](/img/ngx-responsive-0-4-0-thin.jpg?raw=true)
 
 # Introduction
-Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 2 ( aot & jit )
+Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 5 
+
+```
+  npm i ngx-responsive --save
+```
+
+## If you use Angular 4 in your project install ng2-responsive.
 
 ```
   npm i ng2-responsive --save
@@ -25,15 +31,12 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - Feature Responsive Directive - Boolean Events Emitter on change state:
  - Feature responsive-window : Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
  - UserAgent information directive: Get te device, browser, os version and more from the user agent navigator in one event object. 
- - ** NEW ** Webpack Angular 2 Demo : Initial Angular 2 / Webpack / bootstrap + sass.
-
- - Written for the latest release of Angular 2 in typescript.
  
 # How to start
  
 1. installing the package via npm 
      ```
-     npm i ng2-responsive --save
+     npm i ngx-responsive --save
      ```
 2. bootstrap the service
 
@@ -41,7 +44,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
    
     ```
     import { NgModule } from '@angular/core'
-    import { ResponsiveModule } from 'ng2-responsive'
+    import { ResponsiveModule } from 'ngx-responsive'
     ...
     @NgModule({
         imports: [
@@ -59,7 +62,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
       
     ```
      import { NgModule } from '@angular/core'
-     import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive'
+     import { ResponsiveModule, ResponsiveConfig } from 'ngx-responsive'
      ...
      let config = {
         breakPoints: {
