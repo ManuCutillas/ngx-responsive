@@ -347,8 +347,8 @@ export class ResponsiveState {
     }
 
     private isMobile(): boolean {
-        if (REG_MOBILES.GENERIC_REG[0].test(this._userAgent) && this.isTablet() == false ||
-            REG_MOBILES.GENERIC_REG[1].test(this._userAgent.substr(0, 4)) && this.isTablet() == false) return true
+        if (REG_MOBILES.GENERIC_REG[0].test(this._userAgent) && this.isTablet() === false ||
+            REG_MOBILES.GENERIC_REG[1].test(this._userAgent.substr(0, 4)) && this.isTablet() === false) return true
         else return false
     }
 
