@@ -174,7 +174,7 @@ export class ResponsiveState {
 
                 return null
             }
-            let trident = this._userAgent.indexOf('trident/')
+            // let trident = this._userAgent.indexOf('trident/')
             if (REG_BROWSERS.IE[1].test(this._userAgent)) {
                 let rv = this._userAgent.indexOf('rv:')
                 let ie_version = parseInt(this._userAgent.substring(rv + 3, this._userAgent.indexOf('.', rv)), 10)
@@ -183,7 +183,7 @@ export class ResponsiveState {
                 return null
             }
 
-            let edge = this._userAgent.indexOf('Edge/')
+            // let edge = this._userAgent.indexOf('Edge/')
             if (REG_BROWSERS.IE[2].test(this._userAgent)) return 'ie +12'
 
         } catch (e) { }
