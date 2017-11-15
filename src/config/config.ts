@@ -1,14 +1,14 @@
-import { Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional } from '@angular/core'
-import { Observable } from 'rxjs/Observable'
-import { fromEvent } from 'rxjs/observable/fromEvent'
-import { debounceTime } from 'rxjs/operators/debounceTime'
-import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty'
-import { map } from 'rxjs/operators/map'
-import { startWith } from 'rxjs/operators/startWith'
+import { Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { debounceTime } from 'rxjs/operators/debounceTime';
+import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';
+import { map } from 'rxjs/operators/map';
+import { startWith } from 'rxjs/operators/startWith';
 
-import { ResponsiveWindow } from '../responsive-window/index'
-import { GLOBAL_INPUTS, REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES, REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION, LINUX_OS } from './const'
-import { responsiveSubscriptions } from './interfaces'
+import { ResponsiveWindow } from '../responsive-window/index';
+import { GLOBAL_INPUTS, REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES, REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION, LINUX_OS } from './const';
+import { responsiveSubscriptions } from './interfaces';
 
 export class ResponsiveConfigInterface {
     breakPoints: {

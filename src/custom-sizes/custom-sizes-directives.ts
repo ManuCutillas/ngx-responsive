@@ -1,5 +1,5 @@
-import { Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
-import { ResponsiveState, JsonGrid, RESPONSIVE_BASE } from '../config/index'
+import { Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { ResponsiveState, JsonGrid, RESPONSIVE_BASE } from '../config/index';
 
 @Directive(
 {

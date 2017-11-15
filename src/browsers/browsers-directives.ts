@@ -1,6 +1,6 @@
-import { Injectable, Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
-import { Subscription } from  'rxjs/Subscription'
-import { ResponsiveState, RESPONSIVE_BASE } from '../config/index'
+import { Injectable, Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Subscription } from  'rxjs/Subscription';
+import { ResponsiveState, RESPONSIVE_BASE } from '../config/index';
 
 @Directive(
 {

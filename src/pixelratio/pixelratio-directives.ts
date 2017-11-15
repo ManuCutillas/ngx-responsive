@@ -1,6 +1,6 @@
-import { Directive, Input, Output, EventEmitter, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
-import { Subscription } from  'rxjs/Subscription'
-import { ResponsiveState, RESPONSIVE_BASE } from '../config/index'
+import { Directive, Input, Output, EventEmitter, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Subscription } from  'rxjs/Subscription';
+import { ResponsiveState, RESPONSIVE_BASE } from '../config/index';
 
 /*======== 1x =========*/
 @Directive(
@@ -8,18 +8,18 @@ import { ResponsiveState, RESPONSIVE_BASE } from '../config/index'
     selector: '[is1xPixel]'
 })
 export class Is1xPixel extends RESPONSIVE_BASE<any> {
-    
+
     protected _state: string = '1x'
     protected _showWhenTrue: boolean= true
 
-    @Input() set is1xPixel( grid_state: string ) 
+    @Input() set is1xPixel( grid_state: string )
     {
         this.setGrid( this._state, 'pixelratio' )
     }
     constructor ( templateRef: TemplateRef<any>,
                   viewContainer: ViewContainerRef,
                   _responsiveState: ResponsiveState,
-                  cd: ChangeDetectorRef ) 
+                  cd: ChangeDetectorRef )
     {
         super ( templateRef, viewContainer, _responsiveState, cd )
     }
@@ -32,18 +32,18 @@ export class Is1xPixel extends RESPONSIVE_BASE<any> {
 })
 
 export class IsRetina extends RESPONSIVE_BASE<any> {
-    
+
     protected _state: string= 'retina'
     protected _showWhenTrue: boolean= true
 
-    @Input() set isRetina( grid_state: string ) 
+    @Input() set isRetina( grid_state: string )
     {
         this.setGrid( this._state, 'pixelratio' )
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) 
+                 cd: ChangeDetectorRef )
     {
         super ( templateRef, viewContainer, _responsiveState, cd )
     }
@@ -55,18 +55,18 @@ export class IsRetina extends RESPONSIVE_BASE<any> {
     selector: '[is4k]'
 })
 export class Is4k extends RESPONSIVE_BASE<any> {
-    
+
     protected _state: string= '4k'
     protected _showWhenTrue: boolean= true
 
-    @Input() set isRetina( grid_state: string ) 
+    @Input() set isRetina( grid_state: string )
     {
         this.setGrid( this._state, 'pixelratio' )
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState,
-                cd: ChangeDetectorRef ) 
+                cd: ChangeDetectorRef )
     {
         super ( templateRef, viewContainer, _responsiveState, cd )
     }
@@ -79,44 +79,44 @@ export class Is4k extends RESPONSIVE_BASE<any> {
     inputs: [ 'pixelratioInfo' ]
 })
 export class PixelRatioInfo implements OnInit, OnDestroy {
-    
+
     public currentstate: string
     private _subscription: Subscription
     private noRepeat: string
 
-    set pixelratioInfo( grid_state: string[] | string ) 
+    set pixelratioInfo( grid_state: string[] | string )
     {
         this.updateData( this.currentstate )
     }
 
     @Output() pixelratio: EventEmitter<any> = new EventEmitter()
-    
+
     constructor(
         private _responsiveState: ResponsiveState,
         private viewContainer: ViewContainerRef,
         private cd: ChangeDetectorRef ){}
 
-    ngOnInit() 
+    ngOnInit()
     {
         this._subscription= this._responsiveState.pixelObserver.subscribe(this.updateData.bind( this ))
     }
 
-    ngOnDestroy() 
+    ngOnDestroy()
     {
         this._subscription.unsubscribe()
     }
 
-    updateData( value: any ) 
+    updateData( value: any )
     {
         let update= this._ifValueChanged( this.noRepeat, value )
-        if (update) 
+        if (update)
         {
             this.pixelratio.emit( value )
             this.cd.markForCheck()
         }
     }
 
-    _ifValueChanged( oldValue: any, newValue: any ): boolean 
+    _ifValueChanged( oldValue: any, newValue: any ): boolean
     {
         if ( oldValue === newValue ) return false
         else

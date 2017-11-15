@@ -1,10 +1,10 @@
-import { Provider } from '@angular/core'
-import { 
+import { Provider } from '@angular/core';
+import {
   Is1xPixel,
   IsRetina,
   Is4k,
   PixelRatioInfo
-} from './pixelratio-directives'
+} from './pixelratio-directives';
 
 export {
   Is1xPixel,

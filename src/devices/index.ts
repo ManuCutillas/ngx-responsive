@@ -1,68 +1,68 @@
-import { Provider } from '@angular/core'
-import { 
+import { Provider } from '@angular/core';
+import {
 
-  IsDesktop, 
-  IsTablet, 
-  IsMobile, 
-  IsSmartTv, 
-  ShowItDevice, 
-  HideItDevice, 
-  IsIphone, 
+  IsDesktop,
+  IsTablet,
+  IsMobile,
+  IsSmartTv,
+  ShowItDevice,
+  HideItDevice,
+  IsIphone,
   IsIpad,
-  IsAndroidMobile, 
-  IsAndroidTablet, 
-  IsWindowsPhone, 
-  ShowItStandard, 
+  IsAndroidMobile,
+  IsAndroidTablet,
+  IsWindowsPhone,
+  ShowItStandard,
   HideItStandard,
-  IsPortrait, 
-  IsLandscape, 
-  DeviceInfo, 
-  DeviceStandardInfo, 
-  OrientationInfo 
+  IsPortrait,
+  IsLandscape,
+  DeviceInfo,
+  DeviceStandardInfo,
+  OrientationInfo
 
-} from './devices-directives'
+} from './devices-directives';
 
 export {
 
-  IsDesktop, 
-  IsTablet, 
-  IsMobile, 
-  IsSmartTv, 
-  ShowItDevice, 
-  HideItDevice, 
-  IsIphone, 
+  IsDesktop,
+  IsTablet,
+  IsMobile,
+  IsSmartTv,
+  ShowItDevice,
+  HideItDevice,
+  IsIphone,
   IsIpad,
-  IsAndroidMobile, 
-  IsAndroidTablet, 
-  IsWindowsPhone, 
-  ShowItStandard, 
+  IsAndroidMobile,
+  IsAndroidTablet,
+  IsWindowsPhone,
+  ShowItStandard,
   HideItStandard,
-  IsPortrait, 
-  IsLandscape, 
-  DeviceInfo, 
-  DeviceStandardInfo, 
-  OrientationInfo 
+  IsPortrait,
+  IsLandscape,
+  DeviceInfo,
+  DeviceStandardInfo,
+  OrientationInfo
 
 }
 
-export const DEVICES_DIRECTIVES: Provider[]= 
+export const DEVICES_DIRECTIVES: Provider[]=
 [
-  IsDesktop, 
-  IsTablet, 
-  IsMobile, 
-  IsSmartTv, 
-  ShowItDevice, 
-  HideItDevice, 
-  IsIphone, 
+  IsDesktop,
+  IsTablet,
+  IsMobile,
+  IsSmartTv,
+  ShowItDevice,
+  HideItDevice,
+  IsIphone,
   IsIpad,
-  IsAndroidMobile, 
-  IsAndroidTablet, 
-  IsWindowsPhone, 
-  ShowItStandard, 
+  IsAndroidMobile,
+  IsAndroidTablet,
+  IsWindowsPhone,
+  ShowItStandard,
   HideItStandard,
-  IsPortrait, 
-  IsLandscape, 
-  DeviceInfo, 
-  DeviceStandardInfo, 
-  OrientationInfo 
+  IsPortrait,
+  IsLandscape,
+  DeviceInfo,
+  DeviceStandardInfo,
+  OrientationInfo
 ]
