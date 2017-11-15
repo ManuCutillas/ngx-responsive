@@ -1,15 +1,11 @@
 import { Injectable, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, Optional } from '@angular/core'
-import 'rxjs/add/operator/share'
-import 'rxjs/add/operator/debounce'
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/debounceTime'
-import 'rxjs/add/operator/defaultIfEmpty'
-import 'rxjs/add/operator/startWith'
-import 'rxjs/add/observable/fromEvent'
-
-import { Subscription } from 'rxjs/Subscription'
 import { Observable } from 'rxjs/Observable'
-import { Observer } from 'rxjs/Observer'
+import { fromEvent } from 'rxjs/observable/fromEvent'
+import { debounceTime } from 'rxjs/operators/debounceTime'
+import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty'
+import { map } from 'rxjs/operators/map'
+import { startWith } from 'rxjs/operators/startWith'
+
 import { ResponsiveWindow } from '../responsive-window/index'
 import { GLOBAL_INPUTS, REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES, REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION, LINUX_OS } from './const'
 import { responsiveSubscriptions } from './interfaces'
@@ -73,39 +69,46 @@ export class ResponsiveState {
     constructor( @Optional() responsiveConfig: ResponsiveConfig) {
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig()
 
-        let resize_observer = Observable
-            .fromEvent(window, 'resize')
-            .debounceTime(this._responsiveConfig.config.debounceTime)
-            .defaultIfEmpty()
-            .startWith(this.getWidth('window'))
+        let resize_observer = fromEvent(window, 'resize')
+            .pipe(
+                debounceTime(this._responsiveConfig.config.debounceTime),
+                defaultIfEmpty(),
+                startWith(this.getWidth('window'))
+            );
 
-        let pixel_ratio_observer = Observable
-            .fromEvent(window, 'onload')
-            .defaultIfEmpty()
-            .startWith(this.getDevicePixelRatio())
+        let pixel_ratio_observer = fromEvent(window, 'onload')
+            .pipe(
+                defaultIfEmpty(),
+                startWith(this.getDevicePixelRatio())
+            );
 
-        let device_observer = Observable
-            .fromEvent(window, 'onload')
-            .defaultIfEmpty()
-            .startWith(this.getUserAgent())
-        let user_agent_observer = Observable.fromEvent(window, 'onload')
-            .defaultIfEmpty()
-            .startWith(this.userAgent_data())
+        let device_observer = fromEvent(window, 'onload')
+            .pipe(
+                defaultIfEmpty(),
+                startWith(this.getUserAgent())
+            );
 
-        let orientation_observer = Observable
-            .fromEvent(window, 'orientationchange')
-            .defaultIfEmpty()
-            .startWith(this.getOrientation())
+        let user_agent_observer = fromEvent(window, 'onload')
+            .pipe(
+                defaultIfEmpty(),
+                startWith(this.userAgent_data())
+            );
 
-        this.elementoObservar = resize_observer.map(this.sizeOperations)
-        this.anchoObservar = resize_observer.map(this.sizeObserver)
-        this.browserObserver = device_observer.map(this.browserName)
-        this.pixelObserver = pixel_ratio_observer.map(this.pixel_ratio)
-        this.deviceObserver = device_observer.map(this.device_detection)
-        this.orientationObserver = orientation_observer.map(this.orientation_device)
-        this.standardObserver = device_observer.map(this.standard_devices)
-        this.ieVersionObserver = device_observer.map(this.ie_version_detect)
-        this.userAgentObserver = user_agent_observer.map(this.userAgent_data)
+        let orientation_observer = fromEvent(window, 'orientationchange')
+            .pipe(
+                defaultIfEmpty(),
+                startWith(this.getOrientation())
+            );
+
+        this.elementoObservar = resize_observer.pipe(map(this.sizeOperations))
+        this.anchoObservar = resize_observer.pipe(map(this.sizeObserver))
+        this.browserObserver = device_observer.pipe(map(this.browserName))
+        this.pixelObserver = pixel_ratio_observer.pipe(map(this.pixel_ratio))
+        this.deviceObserver = device_observer.pipe(map(this.device_detection))
+        this.orientationObserver = orientation_observer.pipe(map(this.orientation_device))
+        this.standardObserver = device_observer.pipe(map(this.standard_devices))
+        this.ieVersionObserver = device_observer.pipe(map(this.ie_version_detect))
+        this.userAgentObserver = user_agent_observer.pipe(map(this.userAgent_data))
     }
 
     public getWidth(windowName: string): number {

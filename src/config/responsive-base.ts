@@ -20,7 +20,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
 
     protected _showWhenTrue: boolean
 
-    private set_active_subscriptions: responsiveSubscriptions= 
+    private set_active_subscriptions: responsiveSubscriptions=
     {
         bootstrap: false,
         browser: false,
@@ -37,13 +37,13 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
         private viewContainer: ViewContainerRef,
         private _responsiveState: ResponsiveState,
         private cd: ChangeDetectorRef
-        ) 
+        )
     {}
 
     protected eventChanges: EventEmitter<any>= new EventEmitter()
-    protected setGrid(grid_state: any, directive: string): void 
-    {    
-        switch ( directive ) 
+    protected setGrid(grid_state: any, directive: string): void
+    {
+        switch ( directive )
         {
             case 'bootstrap':
                 this.set_active_subscriptions.bootstrap= true
@@ -71,99 +71,99 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
                 break;
             default:
                 null;
-        }   
-                  
+        }
+
         if( directive === 'sizes' ) this._sizes_grid_state= grid_state
         else this._others_grid_state = <string[]> ( Array.isArray( grid_state ) ? grid_state : [ grid_state ] )
-        
+
         this._directive= directive
     }
 
-    public ngOnInit() 
+    public ngOnInit()
     {
-        
-        if ( this.set_active_subscriptions.bootstrap ) 
+
+        if ( this.set_active_subscriptions.bootstrap )
             this._subscription_Bootstrap = this._responsiveState.elementoObservar.subscribe( this.updateView.bind( this ))
-           
-        if ( this.set_active_subscriptions.bootstrap ) 
+
+        if ( this.set_active_subscriptions.bootstrap )
             this._subscription_Bootstrap = this._responsiveState.elementoObservar.subscribe(this.updateView.bind( this ) )
 
         if ( this.set_active_subscriptions.browser )
             this._subscription_Browser = this._responsiveState.browserObserver.subscribe(this.updateView.bind( this ))
 
-        if ( this.set_active_subscriptions.device ) 
+        if ( this.set_active_subscriptions.device )
             this._subscription_Device = this._responsiveState.deviceObserver.subscribe( this.updateView.bind( this ))
 
-        if ( this.set_active_subscriptions.pixelratio ) 
+        if ( this.set_active_subscriptions.pixelratio )
             this._subscription_Pixel_Ratio = this._responsiveState.pixelObserver.subscribe(this.updateView.bind( this ) )
 
-        if ( this.set_active_subscriptions.orientation ) 
+        if ( this.set_active_subscriptions.orientation )
             this._subscription_Orientation = this._responsiveState.orientationObserver.subscribe( this.updateView.bind( this ))
 
-        if ( this.set_active_subscriptions.standard ) 
+        if ( this.set_active_subscriptions.standard )
             this._subscription_Standard = this._responsiveState.standardObserver.subscribe(this.updateView.bind( this ))
 
-        if ( this.set_active_subscriptions.ie ) 
+        if ( this.set_active_subscriptions.ie )
             this._subscription_IE_Version = this._responsiveState.ieVersionObserver.subscribe(this.updateView.bind( this ))
 
-        if (this.set_active_subscriptions.sizes ) 
+        if (this.set_active_subscriptions.sizes )
             this._subscription_custom_sizes = this._responsiveState.anchoObservar.subscribe(this.updateView.bind( this ))
     }
 
-    public ngOnDestroy() 
+    public ngOnDestroy()
     {
         if ( this.set_active_subscriptions.bootstrap )
         this._subscription_Bootstrap.unsubscribe()
 
-        if ( this.set_active_subscriptions.browser ) 
+        if ( this.set_active_subscriptions.browser )
         this._subscription_Browser.unsubscribe()
 
-        if ( this.set_active_subscriptions.device ) 
+        if ( this.set_active_subscriptions.device )
         this._subscription_Device.unsubscribe()
 
-        if ( this.set_active_subscriptions.pixelratio ) 
+        if ( this.set_active_subscriptions.pixelratio )
         this._subscription_Pixel_Ratio.unsubscribe()
 
         if ( this.set_active_subscriptions.orientation )
         this._subscription_Orientation.unsubscribe();
 
-        if ( this.set_active_subscriptions.standard ) 
+        if ( this.set_active_subscriptions.standard )
         this._subscription_Standard.unsubscribe()
 
-        if ( this.set_active_subscriptions.ie ) 
+        if ( this.set_active_subscriptions.ie )
         this._subscription_IE_Version.unsubscribe()
 
-        if ( this.set_active_subscriptions.sizes ) 
+        if ( this.set_active_subscriptions.sizes )
         this._subscription_custom_sizes.unsubscribe()
     }
 
-    private showHide( show: boolean ): void 
+    private showHide( show: boolean ): void
     {
         if (!!show) {
-            if ( this._noRepeat === 0 ) 
+            if ( this._noRepeat === 0 )
             {
                 this._noRepeat = 1
                 this.eventChanges.emit( true )
                 this.viewContainer.createEmbeddedView( this.templateRef )
-                this.cd.markForCheck() 
+                this.cd.markForCheck()
             }
-        } 
+        }
         else {
             this._noRepeat = 0
             this.eventChanges.emit( false )
             this.viewContainer.clear()
-            this.cd.markForCheck() 
+            this.cd.markForCheck()
         }
     }
 
-    private updateView( value: any ): void 
+    private updateView( value: any ): void
     {
         let showBoolean = this._directive === 'sizes' ?
             !!(
                 (typeof this._sizes_grid_state.min === 'undefined' || value >= this._sizes_grid_state.min ) &&
                 (typeof this._sizes_grid_state.max === 'undefined' || value <= this._sizes_grid_state.max )
             ) :
-            !!this._others_grid_state && this._others_grid_state.indexOf( value ) !== -1 
+            !!this._others_grid_state && this._others_grid_state.indexOf( value ) !== -1
 
         this.showHide( !!this._showWhenTrue ? showBoolean : !showBoolean )
     }
