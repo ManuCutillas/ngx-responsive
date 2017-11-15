@@ -1,15 +1,15 @@
-import { Provider } from '@angular/core'
-import { 
-  ShowItSizes, 
+import { Provider } from '@angular/core';
+import {
+  ShowItSizes,
   HideItSizes
-} from './custom-sizes-directives'
+} from './custom-sizes-directives';
 
 export {
- ShowItSizes, 
+ ShowItSizes,
  HideItSizes
 }
 
 export const CUSTOMSIZES_DIRECTIVES: Provider[] = [
- ShowItSizes, 
+ ShowItSizes,
  HideItSizes
 ]

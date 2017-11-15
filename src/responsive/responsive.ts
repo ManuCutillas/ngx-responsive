@@ -1,6 +1,6 @@
-import { Output, EventEmitter, Directive, Input, TemplateRef, ElementRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef  } from '@angular/core'
-import { Subscription } from  'rxjs/Subscription'
-import { ResponsiveState, responsivePattern, responsiveSubscriptions } from '../config/index'
+import { Output, EventEmitter, Directive, Input, TemplateRef, ElementRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef  } from '@angular/core';
+import { Subscription } from  'rxjs/Subscription';
+import { ResponsiveState, responsivePattern, responsiveSubscriptions } from '../config/index';
 
 @Directive(
 {
@@ -8,13 +8,13 @@ import { ResponsiveState, responsivePattern, responsiveSubscriptions } from '../
 })
 export class Responsive implements OnDestroy {
 
-    @Input() set responsive( config: string | string[] ) 
+    @Input() set responsive( config: string | string[] )
     {
         this.init_responsive( config )
     }
     @Output() changes: EventEmitter<any> = new EventEmitter()
 
-    public set_values: responsivePattern = 
+    public set_values: responsivePattern =
     {
         bootstrap: '',
         browser: '',
@@ -25,7 +25,7 @@ export class Responsive implements OnDestroy {
         ie: '',
         sizes: 0
     }
-    private set_active_subscriptions: responsiveSubscriptions = 
+    private set_active_subscriptions: responsiveSubscriptions =
     {
         bootstrap: false,
         browser: false,
@@ -36,7 +36,7 @@ export class Responsive implements OnDestroy {
         ie: false,
         sizes: false
     }
-    private match_multiple: responsiveSubscriptions = 
+    private match_multiple: responsiveSubscriptions =
     {
         bootstrap: false,
         browser: false,
@@ -90,58 +90,58 @@ export class Responsive implements OnDestroy {
         private cd: ChangeDetectorRef
     ){}
 
-    public init_responsive( value: any ): void 
+    public init_responsive( value: any ): void
     {
-        if ( this.isJSON(value) ) 
+        if ( this.isJSON(value) )
         {
-            if ( !!value.bootstrap && this._bootstrapNoRepeat === 0 ) 
+            if ( !!value.bootstrap && this._bootstrapNoRepeat === 0 )
             {
                 this._bootstrap_user_param= <string[]>( Array.isArray( value.bootstrap ) ? value.bootstrap : [ value.bootstrap ] )
                 this._bootstrapNoRepeat= 1
                 this.set_active_subscriptions.bootstrap =true
             }
-            if ( !!value.device && this._deviceNoRepeat === 0 ) 
+            if ( !!value.device && this._deviceNoRepeat === 0 )
             {
-                this._devices_user_param= <string[]>( Array.isArray( value.device ) ? value.device : [ value.device ] ) 
+                this._devices_user_param= <string[]>( Array.isArray( value.device ) ? value.device : [ value.device ] )
                 this._deviceNoRepeat= 1
                 this.set_active_subscriptions.device= true
             }
-            if ( !!value.standard && this._standardNoRepeat === 0 ) 
+            if ( !!value.standard && this._standardNoRepeat === 0 )
             {
                 this._standard_user_param= <string[]>( Array.isArray( value.standard ) ? value.standard : [ value.standard ] )
                 this._standardNoRepeat= 1
                 this.set_active_subscriptions.standard= true
             }
-            if ( !!value.orientation && this._orientationNoRepeat === 0 ) 
+            if ( !!value.orientation && this._orientationNoRepeat === 0 )
             {
                 this._orientation_user_param = <string[]>( Array.isArray( value.orientation ) ? value.orientation : [ value.orientation ] )
                 this._orientationNoRepeat= 1
                 this.set_active_subscriptions.orientation= true;
             }
-            if ( !!value.browser && this._browserNoRepeat === 0) 
+            if ( !!value.browser && this._browserNoRepeat === 0)
             {
                 this._browser_user_param= <string[]>( Array.isArray( value.browser ) ? value.browser : [ value.browser ] )
                 this._browserNoRepeat= 1
                 this.set_active_subscriptions.browser= true
             }
-            if ( !!value.pixelratio && this._pixelratioNoRepeat === 0 ) 
+            if ( !!value.pixelratio && this._pixelratioNoRepeat === 0 )
             {
                 this._pixelratio_user_param= <string[]>( Array.isArray( value.pixelratio ) ? value.pixelratio : [ value.pixelratio ] )
                 this._pixelratioNoRepeat = 1
                 this.set_active_subscriptions.pixelratio = true
             }
-            if ( !!value.ie && this._ieNoRepeat === 0) 
+            if ( !!value.ie && this._ieNoRepeat === 0)
             {
                 this._ie_user_param= <string[]>( Array.isArray( value.ie ) ? value.ie : [ value.ie ] )
                 this._ieNoRepeat= 1
                 this.set_active_subscriptions.ie= true
             }
-            if ( !!value.sizes && this._sizesNoRepeat === 0 ) 
+            if ( !!value.sizes && this._sizesNoRepeat === 0 )
             {
                 let min= value.sizes.min
                 let max= value.sizes.max
                 let win= value.sizes.window
-                if ( win !== undefined ) 
+                if ( win !== undefined )
                 {
                   this._sizes_window= win
                 }
@@ -149,99 +149,99 @@ export class Responsive implements OnDestroy {
                 this._sizesNoRepeat= 1
                 this.set_active_subscriptions.sizes = true
             }
-        } 
-        else if ( Array.isArray( value ) )                         
+        }
+        else if ( Array.isArray( value ) )
             throw new Error( 'Responsive directive don´t work with a only array parameter' )
-        else if ( typeof value === 'string' )                      
+        else if ( typeof value === 'string' )
             throw new Error( 'Responsive directive don´t work with a only string parameter' )
-        else if ( typeof value === 'number' )                      
+        else if ( typeof value === 'number' )
             throw new Error( 'Responsive directive don´t work with a only number parameter' )
-        else if ( typeof value === 'undefined' || value === null ) 
+        else if ( typeof value === 'undefined' || value === null )
             throw new Error( 'Responsive directive don´t work without a param' )
 
-        for ( let key in this.set_active_subscriptions ) 
+        for ( let key in this.set_active_subscriptions )
         {
-            if ( this.set_active_subscriptions[ key ] ) 
+            if ( this.set_active_subscriptions[ key ] )
                 this._actives.push( key )
         }
-        if ( this.set_active_subscriptions.bootstrap ) 
+        if ( this.set_active_subscriptions.bootstrap )
             this._subscription_Bootstrap= this._responsiveState.elementoObservar.subscribe(this.updateBootstrap.bind( this ))
 
-        if ( this.set_active_subscriptions.browser ) 
+        if ( this.set_active_subscriptions.browser )
             this._subscription_Browser= this._responsiveState.browserObserver.subscribe(this.updateBrowser.bind( this ))
 
-        if ( this.set_active_subscriptions.device ) 
+        if ( this.set_active_subscriptions.device )
             this._subscription_Device= this._responsiveState.deviceObserver.subscribe(this.updateDevice.bind( this ))
 
-        if ( this.set_active_subscriptions.pixelratio ) 
+        if ( this.set_active_subscriptions.pixelratio )
             this._subscription_Pixel_Ratio= this._responsiveState.pixelObserver.subscribe(this.updatePixelRatio.bind( this ))
 
-        if ( this.set_active_subscriptions.orientation ) 
+        if ( this.set_active_subscriptions.orientation )
             this._subscription_Orientation= this._responsiveState.orientationObserver.subscribe(this.updateOrientation.bind( this ))
 
-        if ( this.set_active_subscriptions.standard ) 
+        if ( this.set_active_subscriptions.standard )
             this._subscription_Standard= this._responsiveState.standardObserver.subscribe(this.updateStandard.bind( this ))
 
-        if ( this.set_active_subscriptions.ie ) 
-            this._subscription_IE_Version= this._responsiveState.ieVersionObserver.subscribe(this.updateIEversion.bind( this )) 
+        if ( this.set_active_subscriptions.ie )
+            this._subscription_IE_Version= this._responsiveState.ieVersionObserver.subscribe(this.updateIEversion.bind( this ))
 
-        if ( this.set_active_subscriptions.sizes ) 
+        if ( this.set_active_subscriptions.sizes )
             this._subscription_custom_sizes= this._responsiveState.anchoObservar.subscribe(this.updateSizes.bind( this ))
     }
 
-    private updateBootstrap( value: string ): void 
+    private updateBootstrap( value: string ): void
     {
         let _update= this._ifValueChanged( this._noRepeatBootstrapName, value )
-        if (_update) 
+        if (_update)
         {
             this.set_values.bootstrap = value;
         }
         this.updateEvent( this.set_values.bootstrap, 'bootstrap' )
     }
-    private updateBrowser( value: string ): void 
+    private updateBrowser( value: string ): void
     {
         this.set_values.browser= value
         this.updateEvent( this.set_values.browser, 'browser' )
     }
-    private updateDevice( value: string ): void 
+    private updateDevice( value: string ): void
     {
         this.set_values.device= value
         this.updateEvent( this.set_values.device, 'device' )
     }
-    private updatePixelRatio( value: string ): void 
+    private updatePixelRatio( value: string ): void
     {
         this.set_values.pixelratio= value
         this.updateEvent( this.set_values.pixelratio, 'pixelratio' )
     }
-    private updateOrientation( value: string ): void 
+    private updateOrientation( value: string ): void
     {
         this.set_values.orientation= value
         this.updateEvent( this.set_values.orientation, 'orientation' )
     }
-    private updateStandard( value: string ): void 
+    private updateStandard( value: string ): void
     {
         this.set_values.standard= value
         this.updateEvent( this.set_values.standard, 'standard' )
     }
-    private updateIEversion(value: string): void 
+    private updateIEversion(value: string): void
     {
         this.set_values.ie= value
         this.updateEvent( this.set_values.ie, 'ie' )
     }
-    private updateSizes( value: number ): void 
+    private updateSizes( value: number ): void
     {
-        if ( !this._sizes_window ) 
+        if ( !this._sizes_window )
             this.set_values.sizes = value
         else this.set_values.sizes = this._responsiveState.getWidth( this._sizes_window )
 
         this.updateEvent( this.set_values.sizes, 'sizes' )
     }
 
-    private updateEvent( param: any, type_directive: string ): void 
+    private updateEvent( param: any, type_directive: string ): void
     {
-        if ( !!this._showWhenTrue ) 
+        if ( !!this._showWhenTrue )
         {
-            switch ( type_directive ) 
+            switch ( type_directive )
             {
                 case 'bootstrap':
                     this.showHideOperations( this._bootstrap_user_param.indexOf( param ) !== -1, type_directive )
@@ -272,7 +272,7 @@ export class Responsive implements OnDestroy {
             }
         } else {
 
-            switch ( type_directive ) 
+            switch ( type_directive )
             {
                 case 'bootstrap':
                     this.showHideOperations( !( this._bootstrap_user_param.indexOf( param ) ), type_directive )
@@ -304,51 +304,51 @@ export class Responsive implements OnDestroy {
         }
     }
 
-    private showHideOperations( show: boolean, type_directive: string ): void 
+    private showHideOperations( show: boolean, type_directive: string ): void
     {
         let global_state = this.matchValues( show, type_directive )
-        if (!!global_state) 
+        if (!!global_state)
         {
-            if ( this._globalNoRepeat === 0 ) 
+            if ( this._globalNoRepeat === 0 )
             {
                 this._globalNoRepeat= 1
                 this.viewContainer.createEmbeddedView( this.templateRef )
                 this.changes.emit( true )
-                this.cd.markForCheck() 
+                this.cd.markForCheck()
             }
-        } else 
+        } else
         {
             this._globalNoRepeat = 0
             this.changes.emit( false )
             this.viewContainer.clear()
-            this.cd.markForCheck() 
+            this.cd.markForCheck()
         }
     }
 
-    private matchValues( show: boolean, type_directive: string ):Boolean 
+    private matchValues( show: boolean, type_directive: string ):Boolean
     {
         let match: boolean = true;
-        if (show) 
+        if (show)
         {
             this.match_multiple[ type_directive ]= true
-        } 
-        else 
+        }
+        else
         {
             this.match_multiple[ type_directive ]= false
         }
 
-        for ( let all_key in this.match_multiple ) 
+        for ( let all_key in this.match_multiple )
         {
-            for ( let active of this._actives ) 
+            for ( let active of this._actives )
             {
-                if ( all_key == active && this.match_multiple[ all_key ] === false ) 
+                if ( all_key == active && this.match_multiple[ all_key ] === false )
                     return match = false
             }
         }
         return match
     }
 
-    public ngOnDestroy(): void 
+    public ngOnDestroy(): void
     {
         if ( this.set_active_subscriptions.bootstrap ) this._subscription_Bootstrap.unsubscribe()
 
@@ -367,7 +367,7 @@ export class Responsive implements OnDestroy {
         if ( this.set_active_subscriptions.sizes ) this._subscription_custom_sizes.unsubscribe()
     }
 
-    private _ifValueChanged( oldValue: any, newValue: any ): boolean 
+    private _ifValueChanged( oldValue: any, newValue: any ): boolean
     {
         if ( oldValue === newValue ) return false
         else {
@@ -376,12 +376,12 @@ export class Responsive implements OnDestroy {
         }
     }
 
-    private isJSON( value:any ): boolean 
+    private isJSON( value:any ): boolean
     {
         try {
             JSON.stringify( value )
             return true
-        } catch ( ex ) 
+        } catch ( ex )
         {
             return false
         }

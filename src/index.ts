@@ -15,27 +15,27 @@
  *            https://www.npmjs.com/~manucutillas
  *            https://github.com/no-more
  *
- * @description : NG2-RESPONSIVE
+ * @description : NGX-RESPONSIVE
  *
  */
 
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { ResponsiveConfig,ResponsiveState } from './config/index'
-import { BOOTSTRAP_DIRECTIVES } from './bootstrap/index'
-import { BROWSER_DIRECTIVES } from './browsers/index'
-import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes/index'
-import { DEVICES_DIRECTIVES } from './devices/index'
-import { PIXELRATIO_DIRECTIVES } from './pixelratio/index'
-import { RESPONSIVE_DIRECTIVE } from './responsive/index'
-import { RESPONSIVEWINDOW_DIRECTIVE } from './responsive-window/index'
-import { USERAGENT_DIRECTIVE } from './useragent/index'
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ResponsiveConfig,ResponsiveState } from './config/index';
+import { BOOTSTRAP_DIRECTIVES } from './bootstrap/index';
+import { BROWSER_DIRECTIVES } from './browsers/index';
+import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes/index';
+import { DEVICES_DIRECTIVES } from './devices/index';
+import { PIXELRATIO_DIRECTIVES } from './pixelratio/index';
+import { RESPONSIVE_DIRECTIVE } from './responsive/index';
+import { RESPONSIVEWINDOW_DIRECTIVE } from './responsive-window/index';
+import { USERAGENT_DIRECTIVE } from './useragent/index';
 
-export { 
-        ResponsiveConfig, 
+export {
+        ResponsiveConfig,
         ResponsiveState,
         ResponsiveConfigInterface
-      } from './config/index'
+      } from './config/index';
 
 @NgModule({
     declarations:
@@ -60,10 +60,10 @@ export {
         RESPONSIVEWINDOW_DIRECTIVE,
         USERAGENT_DIRECTIVE,
     ],
-    providers: 
+    providers:
     [
         ResponsiveState,
         ResponsiveConfig
     ]
 })
-export class ResponsiveModule{}  
+export class ResponsiveModule{}

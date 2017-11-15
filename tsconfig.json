@@ -1,23 +1,14 @@
 {
-	"compilerOptions": {
-		"target": "ES5",
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"sourceMap": true,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		 "suppressImplicitAnyIndexErrors":true,
-		 "declaration": true,
-		"noImplicitAny": false,
-		"declarationFiles": true,
-		"rootDir": "./src"
-	},
-	"exclude": [
-	"node_modules",
-    "demo/node_modules",
-    "demo/public",
-    "demo/typings",
-    "demo/typings/index.d.ts"
-	],
-	 "compileOnSave": true
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "sourceMap": true,
+        "inlineSources": false,
+        "declaration": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "stripInternal": true,
+        "skipLibCheck": true
+    }
 }

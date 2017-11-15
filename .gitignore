@@ -1,28 +1,30 @@
+
+# compiled output
+/dist
+/tmp
+/deploy
+/screenshots
+/.ng_build
+/.ng_pkg_build
+
+# dependencies
 node_modules
-demo/node_modules/
-demo/src/app/responsive
-demo/public/
-demo/typings/
-dist/
-*.log
-*.tgz
-npm-debug.log.*
-.idea/
-typings/**
-jspm_packages
-demo/jspm_packages
-link-checker-results.txt
-demo/link-checker-results.txt
-**/*npm-debug.log.*
-_test-output
-_temp
-!**/*e2e-spec.js
-!karma*.js
-!protractor*.js
-.vscode
 
-demo/!**/*e2e-spec.js
-demo/!karma*.js
-demo/!protractor*.js
+# IDEs
+/.idea
+/.vscode
 
-
+# misc
+*.js
+*.map
+*.d.ts
+.DS_Store
+Thumbs.db
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/.chrome
+/.git

@@ -1,6 +1,5 @@
-import { Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'
-import { Subscription } from  'rxjs/Subscription'
-import { ResponsiveState, JsonGrid, RESPONSIVE_BASE } from '../config/index'
+import { Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { ResponsiveState, JsonGrid, RESPONSIVE_BASE } from '../config/index';
 
 @Directive(
 {
@@ -13,11 +12,11 @@ export class ShowItSizes extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) 
-    {       
+                 cd: ChangeDetectorRef )
+    {
         super(templateRef, viewContainer, _responsiveState, cd);
     }
-     @Input() set showItSizes( _grid_state: any ) 
+     @Input() set showItSizes( _grid_state: any )
      {
         this.setGrid(_grid_state,'sizes');
     }
@@ -28,18 +27,18 @@ export class ShowItSizes extends RESPONSIVE_BASE<any> {
     selector: '[hideItSizes]'
 })
 export class HideItSizes extends RESPONSIVE_BASE<any> {
-    
+
     protected _showWhenTrue: boolean= false
 
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) 
-    {                 
+                 cd: ChangeDetectorRef )
+    {
         super( templateRef, viewContainer, _responsiveState, cd )
     }
 
-    @Input() set hideItSizes( _grid_state: any ) 
+    @Input() set hideItSizes( _grid_state: any )
     {
         this.setGrid( _grid_state, 'sizes' )
     }
