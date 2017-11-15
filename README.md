@@ -1,4 +1,4 @@
-![n2-responsive](/img/ngx-responsive-0-4-0-thin.jpg?raw=true)
+![ngx-responsive](/img/ng2-responsive-0-4-0-thin.jpg?raw=true)
 
 # Introduction
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 5 
