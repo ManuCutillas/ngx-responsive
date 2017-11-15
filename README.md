@@ -363,6 +363,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  * Kamil Breguła
  * Janne Julkunen
  * phransyz
+ * Michael Burger
 
 # License
 
