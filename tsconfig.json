@@ -5,9 +5,11 @@
         "target": "es5",
         "sourceMap": true,
         "inlineSources": false,
-        "declaration": false,
+        "declaration": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "suppressImplicitAnyIndexErrors":true,
+        "noImplicitAny": false,
         "stripInternal": true,
         "skipLibCheck": true
     }
