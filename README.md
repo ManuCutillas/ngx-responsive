@@ -337,6 +337,52 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
            <userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>
          ```
       
+5. FORMAT OF USER AGENT INFO OBJECT
+
+
+Description of the object given by the `(info)` event of the directive `userAgentInfo` 
+(usage: `<userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>`).
+
+```
+{
+  device: 'mobile' | 'tablet' | 'smarttv' | 'desktop',
+  browser: 'chrome' | 'firefox' | 'ie' | 'safari' | 'opera' | 'silk' | 'yandex' | 'NA',
+  pixelratio:  '4k' | 'retina' | '1x',
+  ie_version: {
+      name: 'ie 7' | 'ie 8' | 'ie 9' | 'ie 10' | 'ie 11' | 'ie +12',
+      state: true | false
+  },
+  game_device: {
+      name:  'Playstation 4' | 'Playstation 3' | 'Xbox one' | 'Xbox' | 'Wii' | 'Wii U' | 'Nintendo 3DS' | 'Playstation Vita' | 'PSP'
+      state: true | false
+  },
+  smart_tv: {
+      name:  'Chromecast' | 'Apple tv' | 'Google tv' | 'Xbox One' | 'Playstation 4' | 'Generic smartv'
+      state: true | false
+  },
+  desktop: {
+      name:  'Windows' | 'Mac' | 'Linux',
+      state: true | false
+  },
+  tablet: {
+      name:  'Ipad' | 'Android' | 'Kindle' | 'Generic Tablet',
+      state: true | false
+  },
+  mobile: {
+      name:  'Iphone' | 'Android' |  'Windows Phone' | 'Blackberry' | 'Generic Mobile'
+      state: true | false
+  },
+  window_os: {
+      name:  'Windows XP' | 'Windows Vista' | 'Windows 7' | 'Windows 8' | 'Windows 10' | 'Generic Windows'
+      state: true | false
+  },
+  linux_os: {
+      name:  'Debian' | 'Knoppix' | 'Mint' | 'Ubuntu' | 'Kubuntu' | 'Xubuntu' | 'Lubuntu' | 'Fedora' | 'Red hat' | 'Mandriva' | 'Gentoo' | 'Sabayon' | 'Slackware' | 'Suse' | 'CentOS' | 'Backtrack' | 'Generic Linux',
+      state: true | false
+  },
+  bot: true | false
+}
+```
       
 # NEXT STEPS 
 - Refactor to more simple code and easy to maintain. Less specific directives.
