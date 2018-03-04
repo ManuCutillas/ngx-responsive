@@ -410,6 +410,8 @@ Description of the object given by the `(info)` event of the directive `userAgen
  * Janne Julkunen
  * phransyz
  * Michael Burger
+ * Alyssa Brunswick
+ * Quentin
 
 # License
 
