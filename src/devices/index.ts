@@ -43,10 +43,9 @@ export {
   DeviceStandardInfo,
   OrientationInfo
 
-}
+} from './devices-directives';
 
-export const DEVICES_DIRECTIVES: Provider[]=
-[
+export const DEVICES_DIRECTIVES: Provider[] = [
   IsDesktop,
   IsTablet,
   IsMobile,
@@ -65,4 +64,4 @@ export const DEVICES_DIRECTIVES: Provider[]=
   DeviceInfo,
   DeviceStandardInfo,
   OrientationInfo
-]
+];

@@ -33,7 +33,7 @@ export {
   HideIEVersion,
   IeInfo,
   BrowserInfo
-};
+}  from './browsers-directives';
 
 export const BROWSER_DIRECTIVES: Provider[] = [
   IsChrome,

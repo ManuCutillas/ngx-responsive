@@ -18,7 +18,7 @@ export {
   ShowItBootstrap,
   HideItBootstrap,
   ResponsiveSizeInfo
-}
+} from './bootstrap-directives';
 
 export const BOOTSTRAP_DIRECTIVES: Provider[] = [
   XL,
@@ -29,4 +29,4 @@ export const BOOTSTRAP_DIRECTIVES: Provider[] = [
   ShowItBootstrap,
   HideItBootstrap,
   ResponsiveSizeInfo
-]
+];

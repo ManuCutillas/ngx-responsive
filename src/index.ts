@@ -20,8 +20,7 @@
  */
 
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ResponsiveConfig,ResponsiveState } from './config/index';
+import { ResponsiveConfig, ResponsiveState } from './config/index';
 import { BOOTSTRAP_DIRECTIVES } from './bootstrap/index';
 import { BROWSER_DIRECTIVES } from './browsers/index';
 import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes/index';
@@ -58,7 +57,7 @@ export {
         PIXELRATIO_DIRECTIVES,
         RESPONSIVE_DIRECTIVE,
         RESPONSIVEWINDOW_DIRECTIVE,
-        USERAGENT_DIRECTIVE,
+        USERAGENT_DIRECTIVE
     ],
     providers:
     [
@@ -66,4 +65,4 @@ export {
         ResponsiveConfig
     ]
 })
-export class ResponsiveModule{}
+export class ResponsiveModule {}

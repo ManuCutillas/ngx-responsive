@@ -11,11 +11,11 @@ export {
   IsRetina,
   Is4k,
   PixelRatioInfo
- }
+ } from './pixelratio-directives';
 
 export const PIXELRATIO_DIRECTIVES: Provider[] = [
   Is1xPixel,
   IsRetina,
   Is4k,
   PixelRatioInfo
-]
+];

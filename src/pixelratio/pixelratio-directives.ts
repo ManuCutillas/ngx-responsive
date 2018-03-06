@@ -1,27 +1,33 @@
-import { Directive, Input, Output, EventEmitter, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Subscription } from  'rxjs/Subscription';
+import {
+    Directive,
+    Input,
+    Output,
+    EventEmitter,
+    TemplateRef,
+    ViewContainerRef,
+    OnInit,
+    OnDestroy,
+    ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { ResponsiveState, RESPONSIVE_BASE } from '../config/index';
 
 /*======== 1x =========*/
-@Directive(
-{
+@Directive({
     selector: '[is1xPixel]'
 })
 export class Is1xPixel extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = '1x'
-    protected _showWhenTrue: boolean= true
+    protected _state = '1x';
+    protected _showWhenTrue = true;
 
-    @Input() set is1xPixel( grid_state: string )
-    {
-        this.setGrid( this._state, 'pixelratio' )
+    @Input() set is1xPixel( grid_state: string ) {
+        this.setGrid( this._state, 'pixelratio' );
     }
     constructor ( templateRef: TemplateRef<any>,
                   viewContainer: ViewContainerRef,
                   _responsiveState: ResponsiveState,
-                  cd: ChangeDetectorRef )
-    {
-        super ( templateRef, viewContainer, _responsiveState, cd )
+                  cd: ChangeDetectorRef ) {
+        super ( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -33,19 +39,17 @@ export class Is1xPixel extends RESPONSIVE_BASE<any> {
 
 export class IsRetina extends RESPONSIVE_BASE<any> {
 
-    protected _state: string= 'retina'
-    protected _showWhenTrue: boolean= true
+    protected _state = 'retina';
+    protected _showWhenTrue = true;
 
-    @Input() set isRetina( grid_state: string )
-    {
-        this.setGrid( this._state, 'pixelratio' )
+    @Input() set isRetina( grid_state: string ) {
+        this.setGrid( this._state, 'pixelratio' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super ( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super ( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -56,19 +60,17 @@ export class IsRetina extends RESPONSIVE_BASE<any> {
 })
 export class Is4k extends RESPONSIVE_BASE<any> {
 
-    protected _state: string= '4k'
-    protected _showWhenTrue: boolean= true
+    protected _state= '4k';
+    protected _showWhenTrue = true;
 
-    @Input() set isRetina( grid_state: string )
-    {
-        this.setGrid( this._state, 'pixelratio' )
+    @Input() set isRetina( grid_state: string ) {
+        this.setGrid( this._state, 'pixelratio' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState,
-                cd: ChangeDetectorRef )
-    {
-        super ( templateRef, viewContainer, _responsiveState, cd )
+                cd: ChangeDetectorRef ) {
+        super ( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -80,47 +82,43 @@ export class Is4k extends RESPONSIVE_BASE<any> {
 })
 export class PixelRatioInfo implements OnInit, OnDestroy {
 
-    public currentstate: string
-    private _subscription: Subscription
-    private noRepeat: string
+    public currentstate: string;
+    private _subscription: Subscription;
+    private noRepeat: string;
 
-    set pixelratioInfo( grid_state: string[] | string )
-    {
-        this.updateData( this.currentstate )
+    set pixelratioInfo( grid_state: string[] | string ) {
+        this.updateData( this.currentstate );
     }
 
-    @Output() pixelratio: EventEmitter<any> = new EventEmitter()
+    @Output() pixelratio: EventEmitter<any> = new EventEmitter();
 
     constructor(
         private _responsiveState: ResponsiveState,
         private viewContainer: ViewContainerRef,
-        private cd: ChangeDetectorRef ){}
+        private cd: ChangeDetectorRef ) {}
 
-    ngOnInit()
-    {
-        this._subscription= this._responsiveState.pixelObserver.subscribe(this.updateData.bind( this ))
+    ngOnInit() {
+        this._subscription = this._responsiveState.pixelObserver.subscribe(this.updateData.bind( this ));
     }
 
-    ngOnDestroy()
-    {
-        this._subscription.unsubscribe()
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
     }
 
-    updateData( value: any )
-    {
-        let update= this._ifValueChanged( this.noRepeat, value )
-        if (update)
-        {
-            this.pixelratio.emit( value )
-            this.cd.markForCheck()
+    updateData( value: any ) {
+        const update = this._ifValueChanged( this.noRepeat, value );
+        if (update) {
+            this.pixelratio.emit( value );
+            this.cd.markForCheck();
         }
     }
 
-    _ifValueChanged( oldValue: any, newValue: any ): boolean
-    {
-        if ( oldValue === newValue ) return false
-        else
-            this.noRepeat = newValue
-            return true
+    _ifValueChanged( oldValue: any, newValue: any ): boolean {
+        if ( oldValue === newValue ) {
+            return false;
+        } else {
+            this.noRepeat = newValue;
+            return true;
+        }
     }
 }

@@ -1,16 +1,27 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "strict": true,
         "module": "commonjs",
         "moduleResolution": "node",
-        "target": "es5",
-        "sourceMap": true,
-        "inlineSources": false,
-        "declaration": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "suppressImplicitAnyIndexErrors":true,
+        "strictNullChecks": false,
         "noImplicitAny": false,
-        "stripInternal": true,
-        "skipLibCheck": true
-    }
+        "rootDir": ".",
+        "sourceMap": true,
+        "inlineSources": true,
+        "target": "es5",
+        "skipLibCheck": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "typeRoots": [
+            "node_modules/@types/"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

@@ -1,5 +1,5 @@
-import { Injectable, Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Subscription } from  'rxjs/Subscription';
+import { EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { ResponsiveState, RESPONSIVE_BASE } from '../config/index';
 
 @Directive(
@@ -8,42 +8,37 @@ import { ResponsiveState, RESPONSIVE_BASE } from '../config/index';
 })
 export class IsChrome extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'chrome'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'chrome';
+    protected _showWhenTrue = true;
 
-    @Input() set isChrome( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'browser' )
+    @Input() set isChrome( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'browser' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
-@Directive(
-{
+@Directive({
     selector: '[isFirefox]'
 })
 
 export class IsFirefox extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'firefox'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'firefox';
+    protected _showWhenTrue = true;
 
-    @Input() set isFirefox( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'browser' )
+    @Input() set isFirefox( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'browser' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -53,19 +48,17 @@ export class IsFirefox extends RESPONSIVE_BASE<any> {
 })
 export class IsSafari extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'safari'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'safari';
+    protected _showWhenTrue = true;
 
-    @Input() set isSafari( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'browser' )
+    @Input() set isSafari( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'browser' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -75,19 +68,17 @@ export class IsSafari extends RESPONSIVE_BASE<any> {
 })
 export class IsOpera extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'opera'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'opera';
+    protected _showWhenTrue = true;
 
-    @Input() set isOpera( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'browser' )
+    @Input() set isOpera( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'browser' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -97,19 +88,17 @@ export class IsOpera extends RESPONSIVE_BASE<any> {
 })
 export class IsIE extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'ie'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'ie';
+    protected _showWhenTrue = true;
 
-    @Input() set isIE( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'browser' )
+    @Input() set isIE( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'browser' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -119,18 +108,16 @@ export class IsIE extends RESPONSIVE_BASE<any> {
 })
 export class ShowItBrowser extends RESPONSIVE_BASE<any> {
 
-    protected _showWhenTrue: boolean = true
+    protected _showWhenTrue = true;
 
-    @Input() set showItBrowser( grid_state: string[] | string )
-    {
-        this.setGrid( grid_state, 'browser' )
+    @Input() set showItBrowser( grid_state: string[] | string ) {
+        this.setGrid( grid_state, 'browser' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -141,18 +128,16 @@ export class ShowItBrowser extends RESPONSIVE_BASE<any> {
 })
 export class HideItBrowser extends RESPONSIVE_BASE<any> {
 
-    protected _showWhenTrue: boolean = false
+    protected _showWhenTrue = false;
 
-    @Input() set hideItBrowser( grid_state: string[] | string )
-    {
-        this.setGrid( grid_state, 'browser' )
+    @Input() set hideItBrowser( grid_state: string[] | string ) {
+        this.setGrid( grid_state, 'browser' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -162,19 +147,17 @@ export class HideItBrowser extends RESPONSIVE_BASE<any> {
 })
 export class IsIE9 extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'ie 9'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'ie 9';
+    protected _showWhenTrue = true;
 
-    @Input() set isIE9( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'ie' )
+    @Input() set isIE9( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'ie' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -184,19 +167,17 @@ export class IsIE9 extends RESPONSIVE_BASE<any> {
 })
 export class IsIE10 extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'ie 10'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'ie 10';
+    protected _showWhenTrue = true;
 
-    @Input() set isIE10( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'ie' )
+    @Input() set isIE10( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'ie' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -206,19 +187,17 @@ export class IsIE10 extends RESPONSIVE_BASE<any> {
 })
 export class IsIE11 extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'ie 11'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'ie 11';
+    protected _showWhenTrue = true;
 
-    @Input() set isIE11( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'ie' )
+    @Input() set isIE11( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'ie' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -228,19 +207,17 @@ export class IsIE11 extends RESPONSIVE_BASE<any> {
 })
 export class IsIE12 extends RESPONSIVE_BASE<any> {
 
-    protected _state: string = 'ie 12'
-    protected _showWhenTrue: boolean = true
+    protected _state = 'ie 12';
+    protected _showWhenTrue = true;
 
-    @Input() set isIE12( grid_state: string[] | string )
-    {
-        this.setGrid( this._state, 'ie' )
+    @Input() set isIE12( grid_state: string[] | string ) {
+        this.setGrid( this._state, 'ie' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -250,18 +227,16 @@ export class IsIE12 extends RESPONSIVE_BASE<any> {
 })
 export class ShowIEVersion extends RESPONSIVE_BASE<any> {
 
-    protected _showWhenTrue: boolean = true
+    protected _showWhenTrue = true;
 
-    @Input() set showIEVersion( grid_state: string[] | string )
-    {
-        this.setGrid( grid_state, 'ie' )
+    @Input() set showIEVersion( grid_state: string[] | string ) {
+        this.setGrid( grid_state, 'ie' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
@@ -271,60 +246,54 @@ export class ShowIEVersion extends RESPONSIVE_BASE<any> {
 })
 export class HideIEVersion extends RESPONSIVE_BASE<any> {
 
-    protected _showWhenTrue: boolean = false
+    protected _showWhenTrue = false;
 
-    @Input() set hideIEVersion( grid_state: string[] | string )
-    {
-        this.setGrid( grid_state, 'ie' )
+    @Input() set hideIEVersion( grid_state: string[] | string ) {
+        this.setGrid( grid_state, 'ie' );
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef )
-    {
-        super( templateRef, viewContainer, _responsiveState, cd )
+                 cd: ChangeDetectorRef ) {
+        super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
 
 @Directive(
 {
-    selector: "browserInfo",inputs:['browserInfo'], outputs:['browser']
+    selector: "browserInfo",
+    inputs:['browserInfo'],
+    outputs:['browser']
 })
-export class BrowserInfo implements OnInit,OnDestroy {
+export class BrowserInfo implements OnInit, OnDestroy {
 
-    public currentstate: string
-    private _subscription: Subscription
-    private noRepeat:string
+    public currentstate: string;
+    private _subscription: Subscription;
+    private noRepeat: string;
 
-    set browserInfo( grid_state: string[] | string )
-    {
-        this.updateData( this.currentstate )
+    set browserInfo( grid_state: string[] | string ) {
+        this.updateData( this.currentstate );
     }
-    public browser:EventEmitter<any> = new EventEmitter()
+    public browser: EventEmitter<any> = new EventEmitter();
     constructor( private _responsiveState: ResponsiveState,
                  private viewContainer: ViewContainerRef,
-                 private cd: ChangeDetectorRef ){}
+                 private cd: ChangeDetectorRef ) {}
 
-    ngOnInit()
-    {
-        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind( this ))
+    ngOnInit() {
+        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind( this ));
     }
-    ngOnDestroy()
-    {
-        this._subscription.unsubscribe()
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
     }
-    updateData( value: any )
-    {
-        let update = this._ifValueChanged( this.noRepeat, value )
-        if (update)
-        {
-            this.browser.emit( value )
-            this.cd.markForCheck()
+    updateData( value: any ) {
+        let update = this._ifValueChanged( this.noRepeat, value );
+        if (update) {
+            this.browser.emit( value );
+            this.cd.markForCheck();
         }
     }
-    _ifValueChanged( oldValue: any, newValue: any ): boolean
-    {
-        if (oldValue === newValue) return false
+    _ifValueChanged( oldValue: any, newValue: any ): boolean {
+        if (oldValue === newValue) return false;
         else {
             this.noRepeat = newValue;
             return true;
@@ -334,42 +303,38 @@ export class BrowserInfo implements OnInit,OnDestroy {
 
 @Directive(
 {
-    selector: "ieInfo",inputs:['ieInfo'], outputs:['ieVersion']
+    selector: "ieInfo",
+    inputs: ['ieInfo'],
+    outputs: ['ieVersion']
 })
-export class IeInfo implements OnInit,OnDestroy {
+export class IeInfo implements OnInit, OnDestroy {
 
-    public currentstate: string
-    private _subscription: Subscription
-    private noRepeat:string
+    public currentstate: string;
+    private _subscription: Subscription;
+    private noRepeat: string;
 
-    set ieInfo( grid_state: string[] | string )
-    {
-        this.updateData( this.currentstate )
+    set ieInfo( grid_state: string[] | string ) {
+        this.updateData( this.currentstate );
     }
-    public ieVersion: EventEmitter<any> = new EventEmitter()
+    public ieVersion: EventEmitter<any> = new EventEmitter();
     constructor( private _responsiveState: ResponsiveState,
                  private viewContainer: ViewContainerRef,
-                 private cd : ChangeDetectorRef ) {}
-    ngOnInit()
-    {
-        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind( this ))
+                 private cd: ChangeDetectorRef ) {}
+    ngOnInit() {
+        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind( this ));
     }
-    ngOnDestroy()
-    {
-        this._subscription.unsubscribe()
+    ngOnDestroy() {
+        this._subscription.unsubscribe();
     }
-    updateData(value: any)
-    {
+    updateData(value: any) {
         let update = this._ifValueChanged( this.noRepeat, value );
-        if (update)
-        {
-            this.ieVersion.emit( value )
-            this.cd.markForCheck()
+        if (update) {
+            this.ieVersion.emit( value );
+            this.cd.markForCheck();
         }
     }
-    _ifValueChanged( oldValue: any, newValue: any ): boolean
-    {
-        if ( oldValue === newValue ) return false
+    _ifValueChanged( oldValue: any, newValue: any ): boolean {
+        if ( oldValue === newValue ) return false;
         else {
             this.noRepeat = newValue;
             return true;
