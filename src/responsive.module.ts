@@ -7,7 +7,7 @@ import { DEVICES_DIRECTIVES } from './devices/index';
 import { PIXELRATIO_DIRECTIVES } from './pixelratio/index';
 import { RESPONSIVE_DIRECTIVE } from './responsive/index';
 import { RESPONSIVEWINDOW_DIRECTIVE } from './responsive-window/index';
-import { USERAGENT_DIRECTIVE } from './useragent/index';
+import { USERAGENT_INFO_DIRECTIVE, USERAGENT_INFO_RX } from './useragent/index';
 import { RESPONSIVE_SIZE_INFO_DIRECTIVE, RESPONSIVE_SIZE_INFO_RX } from './responsive-size-info';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { RESPONSIVE_SIZE_INFO_DIRECTIVE, RESPONSIVE_SIZE_INFO_RX } from './respo
         PIXELRATIO_DIRECTIVES,
         RESPONSIVE_DIRECTIVE,
         RESPONSIVEWINDOW_DIRECTIVE,
-        USERAGENT_DIRECTIVE,
+        USERAGENT_INFO_DIRECTIVE,
         RESPONSIVE_SIZE_INFO_DIRECTIVE
     ],
     exports:
@@ -32,14 +32,15 @@ import { RESPONSIVE_SIZE_INFO_DIRECTIVE, RESPONSIVE_SIZE_INFO_RX } from './respo
         PIXELRATIO_DIRECTIVES,
         RESPONSIVE_DIRECTIVE,
         RESPONSIVEWINDOW_DIRECTIVE,
-        USERAGENT_DIRECTIVE,
+        USERAGENT_INFO_DIRECTIVE,
         RESPONSIVE_SIZE_INFO_DIRECTIVE
     ],
     providers:
     [
         ResponsiveState,
         ResponsiveConfig,
-        RESPONSIVE_SIZE_INFO_RX
+        RESPONSIVE_SIZE_INFO_RX,
+        USERAGENT_INFO_RX
     ]
 })
 export class ResponsiveModule {}
