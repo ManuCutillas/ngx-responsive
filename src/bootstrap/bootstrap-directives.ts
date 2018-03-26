@@ -12,8 +12,10 @@ import { RESPONSIVE_BASE, ResponsiveState } from '../config/index';
     selector: '[xl]'
 })
 export class XlDirective extends RESPONSIVE_BASE<any> {
-    protected _state = 'xl';
-    protected _showWhenTrue = true;
+
+    _state = 'xl';
+    _showWhenTrue = true;
+
     @Input() set xl( grid_state: string[] | string ) {
         this.setGrid(this._state, 'bootstrap');
     }
@@ -41,7 +43,6 @@ export class LgDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef ) {
-
         super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
@@ -135,49 +136,3 @@ export class HideItBootstrap extends RESPONSIVE_BASE<any> {
     }
 }
 
-@Directive(
-{
-    selector: 'responsiveSizeInfo'
-})
-export class ResponsiveSizeInfo implements OnInit, OnDestroy {
-
-    @Input() set responsiveSizeInfo( grid_state: string[] | string ) {
-        this._updateData( this.currentstate );
-    }
-
-    @Output() statechanges: EventEmitter<any> = new EventEmitter();
-
-    public currentstate: string;
-    private _subscription: Subscription;
-    private _noRepeat: string;
-
-    constructor( private _responsiveState: ResponsiveState,
-                 private viewContainer: ViewContainerRef,
-                 private cd: ChangeDetectorRef ) {}
-
-    public ngOnInit() {
-        this._subscription = this._responsiveState.elementoObservar.subscribe(this._updateData.bind( this ));
-    }
-
-    public ngOnDestroy() {
-        this._subscription.unsubscribe();
-    }
-
-
-    private _updateData( value: any ): void {
-        const _update = this._ifValueIsChanged( this._noRepeat, value );
-        if (_update) {
-            this.statechanges.emit(value);
-            this.cd.markForCheck();
-        }
-    }
-
-    private _ifValueIsChanged( oldValue: any, newValue: any ): boolean {
-        if ( oldValue === newValue ) {
-            return false;
-        } else {
-            this._noRepeat = newValue;
-            return true;
-        }
-    }
-}

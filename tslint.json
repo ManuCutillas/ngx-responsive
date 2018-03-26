@@ -3,6 +3,7 @@
         "tslint-angular"
     ],
     "rules": {
+        "max-classes-per-file": true,
         "directive-selector": [
             true,
             "attribute",

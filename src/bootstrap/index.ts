@@ -7,8 +7,7 @@ import {
   SmDirective,
   XsDirective,
   ShowItBootstrap,
-  HideItBootstrap,
-  ResponsiveSizeInfo
+  HideItBootstrap
 } from './bootstrap-directives';
 
 export * from './bootstrap-directives';
@@ -20,6 +19,5 @@ export const BOOTSTRAP_DIRECTIVES: Provider[] = [
   SmDirective,
   XsDirective,
   ShowItBootstrap,
-  HideItBootstrap,
-  ResponsiveSizeInfo
+  HideItBootstrap
 ];
