@@ -8,23 +8,16 @@ import { startWith } from 'rxjs/operators/startWith';
 
 import { ResponsiveWindow } from '../responsive-window/index';
 import { REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES,
-    REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION, LINUX_OS } from './const';
-
-export class ResponsiveConfigInterface {
-    breakPoints: {
-        xs: { max: number },
-        sm: { min: number, max: number },
-        md: { min: number, max: number },
-        lg: { min: number, max: number },
-        xl: { min: number }
-    };
-    debounceTime: number;
-}
-
+    REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION, LINUX_OS } from '../responsive.constants';
+import { IResponsiveConfig } from '../responsive.interfaces';
+import {
+    getWidth, getDevicePixelRatio, getUserAgent, getOrientation, sizeObserver,
+    sizeOperations
+} from '../responsive.utils';
 @Injectable()
 export class ResponsiveConfig {
 
-    public config: ResponsiveConfigInterface = {
+    public config: IResponsiveConfig = {
         breakPoints: {
             xs: { max: 767 },
             sm: { min: 768, max: 991 },
@@ -35,7 +28,7 @@ export class ResponsiveConfig {
         debounceTime: 100
     };
 
-    constructor( @Optional() config?: ResponsiveConfigInterface) {
+    constructor( @Optional() config?: IResponsiveConfig) {
         if (!!config) {
             this.config = config;
         }
@@ -64,25 +57,26 @@ export class ResponsiveState {
     private _userAgent: any = window.navigator.userAgent.toLowerCase();
 
     constructor( @Optional() responsiveConfig: ResponsiveConfig) {
+
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
 
         let resize_observer = fromEvent(window, 'resize')
             .pipe(
                 debounceTime(this._responsiveConfig.config.debounceTime),
                 defaultIfEmpty(),
-                startWith(this.getWidth('window'))
+                startWith(getWidth('window', this._windows, window))
             );
 
         let pixel_ratio_observer = fromEvent(window, 'onload')
             .pipe(
                 defaultIfEmpty(),
-                startWith(this.getDevicePixelRatio())
+                startWith(getDevicePixelRatio(window))
             );
 
         let device_observer = fromEvent(window, 'onload')
             .pipe(
                 defaultIfEmpty(),
-                startWith(this.getUserAgent())
+                startWith(getUserAgent(window))
             );
 
         let user_agent_observer = fromEvent(window, 'onload')
@@ -94,11 +88,11 @@ export class ResponsiveState {
         let orientation_observer = fromEvent(window, 'orientationchange')
             .pipe(
                 defaultIfEmpty(),
-                startWith(this.getOrientation())
+                startWith(getOrientation(window))
             );
 
-        this.elementoObservar = resize_observer.pipe(map(this.sizeOperations));
-        this.anchoObservar = resize_observer.pipe(map(this.sizeObserver));
+        this.elementoObservar = resize_observer.pipe(map(sizeOperations(this._windows, window)));
+        this.anchoObservar = resize_observer.pipe(map(sizeObserver(this._windows, window)));
         this.browserObserver = device_observer.pipe(map(this.browserName));
         this.pixelObserver = pixel_ratio_observer.pipe(map(this.pixel_ratio));
         this.deviceObserver = device_observer.pipe(map(this.device_detection));
@@ -108,46 +102,102 @@ export class ResponsiveState {
         this.userAgentObserver = user_agent_observer.pipe(map(this.userAgent_data));
     }
 
-    public getWidth(windowName: string): any {
-        if (windowName && this._windows[windowName]) {
-            return this._windows[windowName].getWidth();
-        } else {
-            return window.innerWidth;
+
+    public userAgent_data = (): any => {
+        let ie_version_name: any = '';
+        let ie_version_state: any = false;
+        let game_device_name: any = '';
+        let smart_tv_name: any = '';
+        let desktop_name: any = '';
+        let tablet_name: any = '';
+        let mobile_name: any = '';
+        let windows_name: any = '';
+        let linux_name: any = '';
+        if (this.ie_version_detect() != null) {
+            ie_version_name = this.ie_version_detect();
+            ie_version_state = true;
         }
+        if (this.isGameDevice()) {
+            game_device_name = this.game_devices();
+        }
+        if (this.isSMART()) {
+            smart_tv_name = this.smart_tv();
+        }
+        if (this.isDesktop()) {
+            desktop_name = this.desktop();
+        }
+        if (this.isTablet()) {
+            tablet_name = this.tablet();
+        }
+        if (this.isMobile()) {
+            mobile_name = this.mobile();
+        }
+
+        if (this.isWindows()) {
+            windows_name = this.windows();
+        }
+        if (this.isLinux()) {
+            linux_name = this.linux();
+        }
+        return {
+            device: this.device_detection(),
+            browser: this.browserName(),
+            pixelratio: this.pixel_ratio(),
+            ie_version: {
+                name: ie_version_name,
+                state: ie_version_state
+            },
+            game_device: {
+                name: game_device_name,
+                state: this.isGameDevice()
+            },
+            smart_tv: {
+                name: smart_tv_name,
+                state: this.isSMART()
+            },
+            desktop: {
+                name: desktop_name,
+                state: this.isDesktop()
+            },
+            tablet: {
+                name: tablet_name,
+                state: this.isTablet()
+            },
+            mobile: {
+                name: mobile_name,
+                state: this.isMobile()
+            },
+            window_os: {
+                name: windows_name,
+                state: this.isWindows()
+            },
+            linux_os: {
+                name: linux_name,
+                state: this.isLinux()
+            },
+            bot: this.isBot()
+        };
     }
 
-    public registerWindow = (rw: ResponsiveWindow) => {
-        if (rw.name && !this._windows[rw.name]) {
-            this._windows[rw.name] = rw;
-            window.dispatchEvent(new Event('resize'));
-        }
-    }
-
-    public unregisterWindow = (rw: ResponsiveWindow) => {
-        for (let rwn in this._windows) {
-            if (this._windows[rwn] === rw) {
-                delete (this._windows[rwn]);
+    public registerWindow(rw: ResponsiveWindow, _window = null ) {
+        if (_window !== null) {
+            if (rw.name && !this._windows[rw.name]) {
+                this._windows[rw.name] = rw;
+                window.dispatchEvent(new Event('resize'));
             }
         }
-        window.dispatchEvent(new Event('resize'));
     }
 
-    private sizeObserver = (): number => {
-        return this._width = this.getWidth('window');
+    public unregisterWindow(rw: ResponsiveWindow, _window = null ) {
+        if (_window !== null) {
+            for (let rwn in this._windows) {
+                if (this._windows[rwn] === rw) {
+                    delete (this._windows[rwn]);
+                }
+            }
+            _window.dispatchEvent(new Event('resize'));
+        }
     }
-
-    private sizeOperations = (): string => {
-        this._width = this.getWidth('window')
-        try {
-            let breakpoints = this._responsiveConfig.config.breakPoints;
-            if (breakpoints.xl.min <= this._width) return 'xl';
-            else if (breakpoints.lg.max >= this._width && breakpoints.lg.min <= this._width) return 'lg';
-            else if (breakpoints.md.max >= this._width && breakpoints.md.min <= this._width) return 'md';
-            else if (breakpoints.sm.max >= this._width && breakpoints.sm.min <= this._width) return 'sm';
-            else if (breakpoints.xs.max >= this._width) return 'xs';
-        } catch (e) { }
-        return null;
-    };
 
     private browserName = (): string => {
         try {
@@ -195,8 +245,8 @@ export class ResponsiveState {
     private pixel_ratio = (): string => {
         try {
             if (this.test_Is_4k()) return '4k';
-            else if (this.getDevicePixelRatio() > 1) return 'retina';
-            else if (this.getDevicePixelRatio() === 1) return '1x';
+            else if (getDevicePixelRatio(window) > 1) return 'retina';
+            else if (getDevicePixelRatio(window) === 1) return '1x';
             else return null;
         } catch (e) { }
         return null;
@@ -204,16 +254,6 @@ export class ResponsiveState {
 
     private test_Is_4k(): any {
         return ((this._screenHeight < this._screenWidth) ? (this._screenWidth > 3839) : (this._screenHeight > 3839));
-    }
-
-    private getDevicePixelRatio(): any {
-        let ratio = 1;
-        if (typeof window.screen.systemXDPI !== 'undefined' && typeof window.screen.logicalXDPI !== 'undefined' && window.screen.systemXDPI > window.screen.logicalXDPI) {
-            ratio = window.screen.systemXDPI / window.screen.logicalXDPI;
-        } else if (typeof window.devicePixelRatio !== 'undefined'){
-            ratio = window.devicePixelRatio;
-        }
-        return ratio;
     }
 
     private device_detection = (): string => {
@@ -393,89 +433,5 @@ export class ResponsiveState {
     private isBot(): boolean {
         if (REG_BOTS.GENERIC_BOT.test(this._userAgent)) return true;
         else return false;
-    }
-
-    public userAgent_data = (): any => {
-        let ie_version_name: any = '';
-        let ie_version_state: any = false;
-        let game_device_name: any = '';
-        let smart_tv_name: any = '';
-        let desktop_name: any = '';
-        let tablet_name: any = '';
-        let mobile_name: any = '';
-        let windows_name: any = '';
-        let linux_name: any = '';
-        if (this.ie_version_detect() != null) {
-            ie_version_name = this.ie_version_detect();
-            ie_version_state = true;
-        }
-        if (this.isGameDevice()) {
-            game_device_name = this.game_devices();
-        }
-        if (this.isSMART()) {
-            smart_tv_name = this.smart_tv();
-        }
-        if (this.isDesktop()) {
-            desktop_name = this.desktop();
-        }
-        if (this.isTablet()) {
-            tablet_name = this.tablet();
-        }
-        if (this.isMobile()) {
-            mobile_name = this.mobile();
-        }
-
-        if (this.isWindows()) {
-            windows_name = this.windows();
-        }
-        if (this.isLinux()) {
-            linux_name = this.linux();
-        }
-        return {
-            device: this.device_detection(),
-            browser: this.browserName(),
-            pixelratio: this.pixel_ratio(),
-            ie_version: {
-                name: ie_version_name,
-                state: ie_version_state
-            },
-            game_device: {
-                name: game_device_name,
-                state: this.isGameDevice()
-            },
-            smart_tv: {
-                name: smart_tv_name,
-                state: this.isSMART()
-            },
-            desktop: {
-                name: desktop_name,
-                state: this.isDesktop()
-            },
-            tablet: {
-                name: tablet_name,
-                state: this.isTablet()
-            },
-            mobile: {
-                name: mobile_name,
-                state: this.isMobile()
-            },
-            window_os: {
-                name: windows_name,
-                state: this.isWindows()
-            },
-            linux_os: {
-                name: linux_name,
-                state: this.isLinux()
-            },
-            bot: this.isBot()
-        };
-    }
-
-    private getUserAgent(): any {
-        return window.navigator.userAgent.toLowerCase();
-    }
-
-    private getOrientation(): any {
-        return window.orientation;
     }
 }
