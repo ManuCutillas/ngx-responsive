@@ -127,15 +127,15 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
     
         ```
            All combinations = *responsive="{
-                              bootstrap: ['xl,lg,md,sm,xs'],
-                              browser: ['chrome','firefox','ie','safari', 'opera'],
-                              ie:['ie 9','ie 10','ie 11','ie +12'],
-                              pixelratio:['1x','retina','4k'],
-                              standard:['iphone','ipad','android mobile','android tablet','windows phone'],
-                              orientation:['landscape','portrait'],
-                              device: ['mobile','tablet','smarttv','desktop'],
-                              sizes:{min:900,max:1400}
-          }
+                                bootstrap: ['xl','lg','md','sm','xs'],
+                                browser: ['chrome','firefox','ie','safari', 'opera'],
+                                ie:['ie 9','ie 10','ie 11','ie +12'],
+                                pixelratio:['1x','retina','4k'],
+                                standard:['iphone','ipad','android mobile','android tablet','windows phone'],
+                                orientation:['landscape','portrait'],
+                                device: ['mobile','tablet','smarttv','desktop'],
+                                sizes:{min:900,max:1400}
+                              }"
         ```
           
       *Example in component
@@ -334,14 +334,14 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
         - Get the device, browser, os version and more from the user agent navigator in one event object. 
 
          ```
-           <userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>
+           <user-agent-info (info)="thisUserAgent($event)"></user-agent-info>
          ```
       
 5. FORMAT OF USER AGENT INFO OBJECT
 
 
-Description of the object given by the `(info)` event of the directive `userAgentInfo` 
-(usage: `<userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>`).
+Description of the object given by the `(info)` event of the directive `user-agent-info` 
+(usage: `<user-agent-info (info)="thisUserAgent($event)"></user-agent-info>`).
 
 ```
 {

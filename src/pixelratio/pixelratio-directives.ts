@@ -77,7 +77,7 @@ export class Is4k extends RESPONSIVE_BASE<any> {
 /*======== DeviceInfo =========*/
 @Directive(
 {
-    selector: 'pixelratioInfo',
+    selector: 'pixel-ratio-info',
     inputs: [ 'pixelratioInfo' ]
 })
 export class PixelRatioInfo implements OnInit, OnDestroy {

@@ -135,4 +135,3 @@ export class HideItBootstrap extends RESPONSIVE_BASE<any> {
         super( templateRef, viewContainer, _responsiveState, cd );
     }
 }
-
