@@ -137,7 +137,7 @@ export class HideItBootstrap extends RESPONSIVE_BASE<any> {
 
 @Directive(
 {
-    selector: 'responsiveSizeInfo'
+    selector: 'responsive-size-info'
 })
 export class ResponsiveSizeInfo implements OnInit, OnDestroy {
 

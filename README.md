@@ -334,14 +334,14 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
         - Get the device, browser, os version and more from the user agent navigator in one event object. 
 
          ```
-           <userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>
+           <user-agent-info (info)="thisUserAgent($event)"></user-agent-info>
          ```
       
 5. FORMAT OF USER AGENT INFO OBJECT
 
 
-Description of the object given by the `(info)` event of the directive `userAgentInfo` 
-(usage: `<userAgentInfo (info)="thisUserAgent($event)"></userAgentInfo>`).
+Description of the object given by the `(info)` event of the directive `user-agent-info` 
+(usage: `<user-agent-info (info)="thisUserAgent($event)"></user-agent-info>`).
 
 ```
 {

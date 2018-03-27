@@ -37,4 +37,4 @@ import { USERAGENT_DIRECTIVE } from './useragent/index';
         ResponsiveConfig
     ]
 })
-export class ResponsiveModule {};
+export class ResponsiveModule {}

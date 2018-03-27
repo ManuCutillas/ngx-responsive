@@ -4,13 +4,12 @@ import { ResponsiveState } from '../config/index';
 
 @Directive(
 {
-    selector: '[userAgentInfo]',
-    outputs: [ 'info' ]
+    selector: 'user-agent-info'
 })
 export class UserAgentInfo implements OnInit, OnDestroy {
-
-    private _subscription_UserAgent: Subscription
-    public info: EventEmitter <any>= new EventEmitter();
+    
+    private _subscription_UserAgent: Subscription;
+    @Output() info: EventEmitter <any> = new EventEmitter();
     constructor(
         private _responsiveState: ResponsiveState,
         private cd: ChangeDetectorRef){}

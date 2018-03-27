@@ -300,7 +300,7 @@ export class IsLandscape extends RESPONSIVE_BASE<any> {
 
 @Directive(
 {
-    selector: 'deviceInfo'
+    selector: 'device-info'
 })
 export class DeviceInfo implements OnInit, OnDestroy {
 
@@ -346,7 +346,7 @@ export class DeviceInfo implements OnInit, OnDestroy {
 
 @Directive(
 {
-    selector: "deviceStandardInfo",
+    selector: "device-standard-info",
     inputs: [ 'deviceStandardInfo' ],
     outputs: [ 'standard' ]
 })
@@ -393,7 +393,7 @@ export class DeviceStandardInfo implements OnInit, OnDestroy {
 
 @Directive(
 {
-    selector: 'orientationInfo',
+    selector: 'orientation-info',
     outputs:[ 'orientation' ]
 })
 export class OrientationInfo implements OnInit, OnDestroy {
