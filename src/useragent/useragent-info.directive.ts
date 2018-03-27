@@ -5,7 +5,7 @@ import { UserAgentInfo } from './useragent-info';
 
 @Directive(
 {
-    selector: '[userAgentInfo]'
+    selector: 'user-agent-info'
 })
 export class UserAgentInfoDirective extends UserAgentInfo implements OnInit, OnDestroy {
     @Output() info: EventEmitter<any> = new EventEmitter();

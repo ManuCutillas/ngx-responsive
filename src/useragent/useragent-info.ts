@@ -2,6 +2,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ResponsiveState } from '../config/index';
+import { Observable } from 'rxjs/Observable';
 
 export abstract class UserAgentInfo {
 
@@ -17,6 +18,14 @@ export abstract class UserAgentInfo {
 
     disconnect(): void {
         this._subscription.unsubscribe();
+    }
+
+    getSubjectUserAgent(): Observable<any> {
+        return this.infoSubject$.asObservable();
+    }
+
+    getReplaySubjectUserAgent(): Observable<any> {
+        return this.infoReplySubject$.asObservable();
     }
 
     emitUserAgent(value: any): void {

@@ -13,9 +13,8 @@ import { RESPONSIVE_BASE, ResponsiveState } from '../config/index';
 })
 export class XlDirective extends RESPONSIVE_BASE<any> {
 
-    _state = 'xl';
-    _showWhenTrue = true;
-
+    protected _state = 'xl';
+    protected _showWhenTrue = true;
     @Input() set xl( grid_state: string[] | string ) {
         this.setGrid(this._state, 'bootstrap');
     }
@@ -71,7 +70,6 @@ export class SmDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'sm';
     protected _showWhenTrue = true;
-
     @Input() set sm( grid_state: string[] | string ) {
         this.setGrid( this._state, 'bootstrap' );
     }
@@ -105,7 +103,7 @@ export class XsDirective extends RESPONSIVE_BASE<any> {
 {
     selector: '[showItBootstrap]'
 })
-export class ShowItBootstrap extends RESPONSIVE_BASE<any> {
+export class ShowItBootstrapDirective extends RESPONSIVE_BASE<any> {
     protected _showWhenTrue = true;
     @Input() set showItBootstrap( grid_state: string[] | string ) {
         this.setGrid( grid_state, 'bootstrap' );
@@ -121,7 +119,7 @@ export class ShowItBootstrap extends RESPONSIVE_BASE<any> {
 {
     selector: '[hideItBootstrap]'
 })
-export class HideItBootstrap extends RESPONSIVE_BASE<any> {
+export class HideItBootstrapDirective extends RESPONSIVE_BASE<any> {
 
     protected _showWhenTrue = false;
 

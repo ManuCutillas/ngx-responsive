@@ -6,8 +6,8 @@ import {
   MdDirective,
   SmDirective,
   XsDirective,
-  ShowItBootstrap,
-  HideItBootstrap
+  ShowItBootstrapDirective,
+  HideItBootstrapDirective
 } from './bootstrap-directives';
 
 export * from './bootstrap-directives';
@@ -18,6 +18,6 @@ export const BOOTSTRAP_DIRECTIVES: Provider[] = [
   MdDirective,
   SmDirective,
   XsDirective,
-  ShowItBootstrap,
-  HideItBootstrap
+  ShowItBootstrapDirective,
+  HideItBootstrapDirective
 ];

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ResponsiveConfig, ResponsiveState } from './config/index';
 import { BOOTSTRAP_DIRECTIVES } from './bootstrap/index';
-import { BROWSER_DIRECTIVES } from './browsers/index';
+import { BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX } from './browsers/index';
 import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes/index';
 import { DEVICES_DIRECTIVES } from './devices/index';
 import { PIXELRATIO_DIRECTIVES } from './pixelratio/index';
@@ -40,7 +40,9 @@ import { RESPONSIVE_SIZE_INFO_DIRECTIVE, RESPONSIVE_SIZE_INFO_RX } from './respo
         ResponsiveState,
         ResponsiveConfig,
         RESPONSIVE_SIZE_INFO_RX,
-        USERAGENT_INFO_RX
+        USERAGENT_INFO_RX,
+        BROWSER_INFO_RX,
+        IE_INFO_RX
     ]
 })
 export class ResponsiveModule {}
