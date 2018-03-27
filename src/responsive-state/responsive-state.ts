@@ -5,15 +5,16 @@ import { debounceTime } from 'rxjs/operators/debounceTime';
 import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';
 import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
-
 import { ResponsiveWindow } from '../responsive-window/index';
-import { REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES,
-    REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION, LINUX_OS } from '../responsive.constants';
-import { IResponsiveConfig } from '../responsive.interfaces';
+import {
+    REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES,
+    REG_GAME_DEVICES, REG_BOTS, REG_OS, WINDOWS_OS_VERSION, LINUX_OS
+} from '../responsive.constants';
 import {
     getWidth, getDevicePixelRatio, getUserAgent, getOrientation, sizeObserver,
     sizeOperations
 } from '../responsive.utils';
+import { IResponsiveConfig } from '../responsive.interfaces';
 import { ResponsiveConfig } from '../responsive-config';
 
 @Injectable()
@@ -22,15 +23,15 @@ export class ResponsiveState {
     private _windows: Object = {};
     private _responsiveConfig: ResponsiveConfig;
 
-    public elementoObservar: Observable<string>;
-    public anchoObservar: Observable<number>;
-    public browserObserver: Observable<string>;
-    public pixelObserver: Observable<string>;
-    public deviceObserver: Observable<any>;
-    public orientationObserver: Observable<any>;
-    public standardObserver: Observable<any>;
-    public ieVersionObserver: Observable<any>;
-    public userAgentObserver: Observable<any>;
+    public elemento$: Observable<string>;
+    public ancho$: Observable<number>;
+    public browser$: Observable<string>;
+    public pixel$: Observable<string>;
+    public device$: Observable<any>;
+    public orientation$: Observable<any>;
+    public standard$: Observable<any>;
+    public ieVersion$: Observable<any>;
+    public userAgent$: Observable<any>;
 
     private _width: number;
     private _screenWidth: number = window.screen.width;
@@ -41,46 +42,46 @@ export class ResponsiveState {
 
         this._responsiveConfig = !!responsiveConfig ? responsiveConfig : new ResponsiveConfig();
 
-        let resize_observer = fromEvent(window, 'resize')
+        const _resize$ = fromEvent(window, 'resize')
             .pipe(
-                debounceTime(this._responsiveConfig.config.debounceTime),
-                defaultIfEmpty(),
-                startWith(getWidth('window', this._windows, window))
+            debounceTime(this._responsiveConfig.config.debounceTime),
+            defaultIfEmpty(),
+            startWith(getWidth('window', this._windows, window))
             );
 
-        let pixel_ratio_observer = fromEvent(window, 'onload')
+        const _pixelRatio$ = fromEvent(window, 'onload')
             .pipe(
-                defaultIfEmpty(),
-                startWith(getDevicePixelRatio(window))
+            defaultIfEmpty(),
+            startWith(getDevicePixelRatio(window))
             );
 
-        let device_observer = fromEvent(window, 'onload')
+        const _device$ = fromEvent(window, 'onload')
             .pipe(
-                defaultIfEmpty(),
-                startWith(getUserAgent(window))
+            defaultIfEmpty(),
+            startWith(getUserAgent(window))
             );
 
-        let user_agent_observer = fromEvent(window, 'onload')
+        const _userAgent$ = fromEvent(window, 'onload')
             .pipe(
-                defaultIfEmpty(),
-                startWith(this.userAgent_data())
+            defaultIfEmpty(),
+            startWith(this.userAgent_data())
             );
 
-        let orientation_observer = fromEvent(window, 'orientationchange')
+        const _orientation$ = fromEvent(window, 'orientationchange')
             .pipe(
-                defaultIfEmpty(),
-                startWith(getOrientation(window))
+            defaultIfEmpty(),
+            startWith(getOrientation(window))
             );
 
-        this.elementoObservar = resize_observer.pipe(map(sizeOperations(this._windows, window)));
-        this.anchoObservar = resize_observer.pipe(map(sizeObserver(this._windows, window)));
-        this.browserObserver = device_observer.pipe(map(this.browserName));
-        this.pixelObserver = pixel_ratio_observer.pipe(map(this.pixel_ratio));
-        this.deviceObserver = device_observer.pipe(map(this.device_detection));
-        this.orientationObserver = orientation_observer.pipe(map(this.orientation_device));
-        this.standardObserver = device_observer.pipe(map(this.standard_devices));
-        this.ieVersionObserver = device_observer.pipe(map(this.ie_version_detect));
-        this.userAgentObserver = user_agent_observer.pipe(map(this.userAgent_data));
+        this.elemento$ = _resize$.pipe(map(sizeOperations(this._windows, window)));
+        this.ancho$ = _resize$.pipe(map(sizeObserver(this._windows, window)));
+        this.browser$ = _device$.pipe(map(this.browserName));
+        this.pixel$ = _pixelRatio$.pipe(map(this.pixel_ratio));
+        this.device$ = _device$.pipe(map(this.device_detection));
+        this.orientation$ = _orientation$.pipe(map(this.orientation_device));
+        this.standard$ = _device$.pipe(map(this.standard_devices));
+        this.ieVersion$ = _device$.pipe(map(this.ie_version_detect));
+        this.userAgent$ = _userAgent$.pipe(map(this.userAgent_data));
     }
 
 
@@ -160,7 +161,7 @@ export class ResponsiveState {
         };
     }
 
-    public registerWindow(rw: ResponsiveWindow, _window = null ) {
+    public registerWindow(rw: ResponsiveWindow, _window = null) {
         if (_window !== null) {
             if (rw.name && !this._windows[rw.name]) {
                 this._windows[rw.name] = rw;
@@ -169,9 +170,9 @@ export class ResponsiveState {
         }
     }
 
-    public unregisterWindow(rw: ResponsiveWindow, _window = null ) {
+    public unregisterWindow(rw: ResponsiveWindow, _window = null) {
         if (_window !== null) {
-            for (let rwn in this._windows) {
+            for (const rwn in this._windows) {
                 if (this._windows[rwn] === rw) {
                     delete (this._windows[rwn]);
                 }
@@ -182,23 +183,36 @@ export class ResponsiveState {
 
     private browserName = (): string => {
         try {
-            if (REG_SORT_NAMES.WEBKIT[0].test(this._userAgent) && REG_SORT_NAMES.CHROME.test(this._userAgent) && !REG_BROWSERS.IE[2].test(this._userAgent)) return 'chrome';
-            else if (REG_SORT_NAMES.MOZILLA.test(this._userAgent) && REG_BROWSERS.FIREFOX.test(this._userAgent)) return 'firefox';
-            else if (REG_BROWSERS.IE[0].test(this._userAgent) || REG_BROWSERS.IE[1].test(this._userAgent) || REG_BROWSERS.IE[2].test(this._userAgent)) return 'ie';
-            else if (REG_SORT_NAMES.SAFARI.test(this._userAgent) && REG_SORT_NAMES.WEBKIT[1].test(this._userAgent) && !REG_SORT_NAMES.CHROME.test(this._userAgent)) return 'safari';
-            else if (REG_BROWSERS.OPERA.test(this._userAgent)) return 'opera';
-            else if (REG_BROWSERS.SILK.test(this._userAgent)) return 'silk';
-            else if (REG_BROWSERS.YANDEX.test(this._userAgent)) return 'yandex';
-            else return 'NA';
+            if (REG_SORT_NAMES.WEBKIT[0].test(this._userAgent) && REG_SORT_NAMES.CHROME.test(this._userAgent)
+                && !REG_BROWSERS.IE[2].test(this._userAgent)) {
+                return 'chrome';
+            } else if (REG_SORT_NAMES.MOZILLA.test(this._userAgent) &&
+                REG_BROWSERS.FIREFOX.test(this._userAgent)) {
+                return 'firefox';
+            } else if (REG_BROWSERS.IE[0].test(this._userAgent) || REG_BROWSERS.IE[1].test(this._userAgent)
+                || REG_BROWSERS.IE[2].test(this._userAgent)) {
+                return 'ie';
+            } else if (REG_SORT_NAMES.SAFARI.test(this._userAgent) &&
+                REG_SORT_NAMES.WEBKIT[1].test(this._userAgent) && !REG_SORT_NAMES.CHROME.test(this._userAgent)) {
+                return 'safari';
+            } else if (REG_BROWSERS.OPERA.test(this._userAgent)) {
+                return 'opera';
+            } else if (REG_BROWSERS.SILK.test(this._userAgent)) {
+                return 'silk';
+            } else if (REG_BROWSERS.YANDEX.test(this._userAgent)) {
+                return 'yandex';
+            } else {
+                return 'NA';
+            }
         } catch (e) { }
         return null;
     }
 
     private ie_version_detect = (): any => {
         try {
-            let msie = this._userAgent.indexOf('msie ');
+            const msie = this._userAgent.indexOf('msie ');
             if (REG_BROWSERS.IE[0].test(this._userAgent)) {
-                let ie_version = parseInt(this._userAgent.substring(msie + 5, this._userAgent.indexOf('.', msie)), 10);
+                const ie_version = parseInt(this._userAgent.substring(msie + 5, this._userAgent.indexOf('.', msie)), 10);
 
                 if (ie_version === 7) return 'ie 7';
                 else if (ie_version === 8) return 'ie 8';
