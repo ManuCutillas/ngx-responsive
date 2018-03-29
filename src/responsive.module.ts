@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
-import { ResponsiveConfig, ResponsiveState } from './config/index';
-import { BOOTSTRAP_DIRECTIVES } from './bootstrap/index';
-import { BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX } from './browsers/index';
-import { CUSTOMSIZES_DIRECTIVES } from './custom-sizes/index';
-import { DEVICES_DIRECTIVES } from './devices/index';
-import { PIXELRATIO_DIRECTIVES } from './pixelratio/index';
-import { RESPONSIVE_DIRECTIVE } from './responsive/index';
-import { RESPONSIVEWINDOW_DIRECTIVE } from './responsive-window/index';
-import { USERAGENT_INFO_DIRECTIVE, USERAGENT_INFO_RX } from './useragent/index';
-import { RESPONSIVE_SIZE_INFO_DIRECTIVE, RESPONSIVE_SIZE_INFO_RX } from './responsive-size-info';
+import { ResponsiveConfig, ResponsiveState } from './@core/index';
+import {
+    BOOTSTRAP_DIRECTIVES, BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX,
+    CUSTOMSIZES_DIRECTIVES, DEVICES_DIRECTIVES, PIXELRATIO_DIRECTIVES, RESPONSIVE_DIRECTIVE,
+    RESPONSIVEWINDOW_DIRECTIVE, USERAGENT_INFO_DIRECTIVE, USERAGENT_INFO_RX, RESPONSIVE_SIZE_INFO_DIRECTIVE,
+    RESPONSIVE_SIZE_INFO_RX
+} from './@directives/index';
 
 @NgModule({
     declarations:

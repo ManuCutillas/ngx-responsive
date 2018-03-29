@@ -10,14 +10,8 @@
  * @angular/core : "5.x.x"
  * rxjs: "5.x.x"
  */
-export * from './config/index';
-export * from './bootstrap/index';
-export * from './browsers/index';
-export * from './custom-sizes/index';
-export * from './devices/index';
-export * from './pixelratio/index';
-export * from './responsive/index';
-export * from './responsive-window/index';
-export * from './responsive-size-info/index';
-export * from './useragent/index';
-export * from './responsive.module';
+export * from './@core/index';
+export * from './@directives/index';
+export * from './utils/index';
+export * from './responsive.module.ts';
+
