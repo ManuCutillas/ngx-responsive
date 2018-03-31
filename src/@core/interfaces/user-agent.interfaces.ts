@@ -7,7 +7,6 @@
  */
 
 /**
- * @interface IUserAgent
  * @export IUserAgent
  */
 export interface IUserAgent {

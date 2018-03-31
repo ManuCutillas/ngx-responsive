@@ -13,7 +13,6 @@ import {
 } from '../types';
 
 /**
- * @interface ILinuxOS
  * @export ILinuxOS
  */
 export interface ILinuxOS {

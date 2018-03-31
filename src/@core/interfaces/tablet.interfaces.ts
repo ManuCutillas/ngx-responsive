@@ -11,7 +11,6 @@ import {
 } from '../types';
 
 /**
- * @interface ITablet
  * @export ITablet
  */
 export interface ITablet {

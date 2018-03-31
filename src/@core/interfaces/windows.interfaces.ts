@@ -13,7 +13,6 @@ import {
 } from '../types';
 
 /**
- * @interface IWindowsOS
  * @export IWindowsOS
  */
 export interface IWindowsOS {

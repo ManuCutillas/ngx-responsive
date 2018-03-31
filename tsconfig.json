@@ -8,6 +8,7 @@
         "moduleResolution": "node",
         "strictNullChecks": false,
         "noImplicitAny": false,
+        "removeComments": true, 
         "rootDir": ".",
         "sourceMap": true,
         "inlineSources": true,

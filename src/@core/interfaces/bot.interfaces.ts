@@ -11,7 +11,6 @@ import {
 } from '../types';
 
 /**
- * @interface IBot
  * @export IBot
  */
 export interface IBot {

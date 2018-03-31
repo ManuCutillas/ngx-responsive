@@ -1,9 +1,8 @@
-
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { ResponsiveState } from '../../@core';
 import { Observable } from 'rxjs/Observable';
+import { ResponsiveState } from '../../@core';
 
 export abstract class IeInfo {
     public currentstate: string;

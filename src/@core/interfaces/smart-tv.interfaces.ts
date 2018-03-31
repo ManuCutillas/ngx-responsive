@@ -11,7 +11,6 @@ import {
 } from '../types';
 
 /**
- * @interface ISmartTv
  * @export ISmartTv
  */
 export interface ISmartTv {

@@ -10,7 +10,6 @@ import {
 } from '../types';
 
 /**
- * @interface IIEVersions
  * @export IIEVersions
  */
 export interface IIEVersions {

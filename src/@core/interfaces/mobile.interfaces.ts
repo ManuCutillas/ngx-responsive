@@ -11,7 +11,6 @@ import {
 } from '../types';
 
 /**
- * @interface IMobile
  * @export IMobile
  */
 export interface IMobile {

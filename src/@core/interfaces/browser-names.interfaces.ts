@@ -10,7 +10,6 @@ import {
 } from '../types';
 
 /**
- * @interface IBrowserNames
  * @export IBrowserNames
  */
 export interface IBrowserNames {

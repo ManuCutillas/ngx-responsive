@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, InjectionToken } from '@angular/core';
-import { ResponsiveModule, ResponsiveConfig } from './responsive';
+import { ResponsiveModule, ResponsiveConfig } from 'ngx-responsive';
 import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
 
 const config = {
   breakPoints: {
@@ -20,6 +21,7 @@ const config = {
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     ResponsiveModule.forRoot(config)
   ],
   providers: [],

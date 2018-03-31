@@ -109,11 +109,11 @@ export class ResponsiveState {
     }
 
     /**
-    * @public
+    * 
     * @name getWidth
     * @param windowName
     * @export getWidth
-    * @returns {number}
+    *  {number}
     */
     public getWidth(windowName: string = null): any {
         if (this._windows !== null && this._window !== null) {
@@ -127,10 +127,10 @@ export class ResponsiveState {
     }
 
     /**
-    * @public
+    * 
     * @name getDevicePixelRatio
     * @export getDevicePixelRatio
-    * @returns {number}
+    *  {number}
     */
     public getDevicePixelRatio(): any {
         let ratio = 1;
@@ -147,30 +147,30 @@ export class ResponsiveState {
     }
 
     /**
-    * @public
+    * 
     * @name getOrientation
     * @export getOrientation
-    * @returns {any}
+    *  {any}
     */
     public getOrientation(): any {
         return (this._window !== null) ? window.orientation : null;
     }
 
     /**
-    * @public
+    * 
     * @name sizeObserver
     * @export sizeObserver
-    * @returns {any}
+    *  {any}
     */
     public sizeObserver(): any {
         return (this._windows !== null && this._window !== null) ? this.getWidth('window') : 0;
     }
 
     /**
-     * @public
+     * 
      * @name sizeOperations
      * @export sizeOperations
-     * @returns {any}
+     *  {any}
      */
     public sizeOperations(): any {
         let _sizes = null;
@@ -195,10 +195,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name sizeOperations
      * @export sizeOperations
-     * @returns {string}
+     *  {string}
      */
     public pixelRatio(screenHeight = null, screenWidth = null): any {
         let _pixelRatio = null;
@@ -215,12 +215,12 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name testIs4k
      * @param screenHeight
      * @param screenWidth
      * @export testIs4k
-     * @returns {boolean}
+     *  {boolean}
      */
     public testIs4k(screenHeight = null, screenWidth = null): boolean {
         return (screenHeight !== null && screenWidth !== null) ?
@@ -228,10 +228,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name orientationDevice
      * @export orientationDevice
-     * @returns {string}
+     *  {string}
      */
     public orientationDevice(): any {
         let _orientationDevice = null;
@@ -250,20 +250,20 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name getUserAgent
      * @export getUserAgent
-     * @returns window.navigator.userAgent
+     *  window.navigator.userAgent
      */
     public getUserAgent(): any {
         return (this._window !== null) ? this._window.navigator.userAgent.toLowerCase() : null;
     }
 
     /**
-     * @public
+     * 
      * @name userAgentData
      * @export userAgentData
-     * @returns {IUserAgent}
+     *  {IUserAgent}
      */
     public userAgentData(): any {
         if (this._window === null) {
@@ -320,10 +320,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name deviceDetection
      * @export deviceDetection
-     * @returns {any}
+     *  {any}
      */
     public deviceDetection(): any {
         if (this._window !== null) {
@@ -341,10 +341,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name standardDevices
      * @export standardDevices
-     * @returns {TDeviceDetection}
+     *  {TDeviceDetection}
      */
     public standardDevices(): any {
         if (this._window !== null) {
@@ -364,10 +364,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name ieVersionDetect
      * @export ieVersionDetect
-     * @returns {string}
+     *  {string}
      */
     public ieVersionDetect(): any {
         if (this._window !== null) {
@@ -404,10 +404,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name browserName
      * @export browserName
-     * @returns {TGameDevices}
+     *  {TGameDevices}
      */
     public browserName(): any {
         let _browserName = null;
@@ -437,10 +437,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name gameDevices
      * @export gameDevices
-     * @returns {TGameDevices}
+     *  {TGameDevices}
      */
     public gameDevices(): TGameDevices {
         let _gameDevice = null;
@@ -455,10 +455,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name smartTv
      * @export smartTv
-     * @returns {TSmartTv}
+     *  {TSmartTv}
      */
     public smartTv(): TSmartTv {
         let _smartTv = null;
@@ -481,10 +481,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name desktop
      * @export desktop
-     * @returns {TosSystems}
+     *  {TosSystems}
      */
     public desktop(): TosSystems {
         let _desktop = null;
@@ -505,10 +505,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name tablet
      * @export tablet
-     * @returns {TTablet}
+     *  {TTablet}
      */
     public tablet(): TTablet {
         let _tablet = null;
@@ -527,10 +527,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name mobile
      * @export mobile
-     * @returns {TMobile}
+     *  {TMobile}
      */
     public mobile(): TMobile {
         let _mobile = null;
@@ -548,10 +548,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name windows
      * @export windows
-     * @returns {TWindowsOS}
+     *  {TWindowsOS}
      */
     public windows(): TWindowsOS {
         let _windows = null;
@@ -569,10 +569,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name linux
      * @export linux
-     * @returns {TLinuxOS}
+     *  {TLinuxOS}
      */
     public linux(): TLinuxOS {
         let _linux: TLinuxOS = null;
@@ -590,10 +590,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name isMobile
      * @export isMobile
-     * @returns {boolean}
+     *  {boolean}
      */
     public isMobile(): boolean {
         let _result = false;
@@ -606,10 +606,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name isTablet
      * @export isTablet
-     * @returns {boolean}
+     *  {boolean}
      */
     public isTablet(): boolean {
         let _result = false;
@@ -622,10 +622,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name isSMART
      * @export isSMART
-     * @returns {boolean}
+     *  {boolean}
      */
     public isSMART(): boolean {
         let _result = false;
@@ -638,10 +638,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name isDesktop
      * @export isDesktop
-     * @returns {boolean}
+     *  {boolean}
      */
     public isDesktop(): boolean {
         let _result = false;
@@ -652,10 +652,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name isGameDevice
      * @export isGameDevice
-     * @returns {boolean}
+     *  {boolean}
      */
     public isGameDevice(): boolean {
         let _result = false;
@@ -670,10 +670,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name isWindows
      * @export isWindows
-     * @returns {boolean}
+     *  {boolean}
      */
     public isWindows(): boolean {
         let _result = false;
@@ -684,10 +684,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name isLinux
      * @export isLinux
-     * @returns {boolean}
+     *  {boolean}
      */
     public isLinux(): boolean {
         let _result = false;
@@ -698,10 +698,10 @@ export class ResponsiveState {
     }
 
     /**
-     * @public
+     * 
      * @name isBot
      * @export isBot
-     * @returns {boolean}
+     *  {boolean}
      */
     public isBot(): boolean {
         let _result = false;

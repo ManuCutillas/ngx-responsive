@@ -11,7 +11,6 @@ import {
 } from '../types';
 
 /**
- * @interface IOsSistems
  * @export IOsSistems
  */
 export interface IOsSistems {

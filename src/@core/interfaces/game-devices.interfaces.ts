@@ -10,7 +10,6 @@ import {
 } from '../types';
 
 /**
- * @interface IGameDevices
  * @export IGameDevices
  */
 export interface IGameDevices {
