@@ -4,7 +4,7 @@ import {
     BOOTSTRAP_DIRECTIVES, BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX,
     CUSTOMSIZES_DIRECTIVES, DEVICES_DIRECTIVES, PIXELRATIO_DIRECTIVES, RESPONSIVE_DIRECTIVE,
     RESPONSIVEWINDOW_DIRECTIVE, USERAGENT_INFO_DIRECTIVE, USERAGENT_INFO_RX, RESPONSIVE_SIZE_INFO_DIRECTIVE,
-    RESPONSIVE_SIZE_INFO_RX
+    RESPONSIVE_SIZE_INFO_RX, DEVICES_INFO_RX
 } from './@directives/index';
 import { IResponsiveConfig } from './@core';
 
@@ -40,13 +40,12 @@ import { IResponsiveConfig } from './@core';
         RESPONSIVE_SIZE_INFO_RX,
         USERAGENT_INFO_RX,
         BROWSER_INFO_RX,
-        IE_INFO_RX
+        IE_INFO_RX,
+        DEVICES_INFO_RX
     ]
 })
 export class ResponsiveModule {
     static forRoot(config: IResponsiveConfig): ModuleWithProviders {
-        // User config get logged here
-        console.log(config);
         let _config = {
             breakPoints: {
                 xs: { max: 767 },

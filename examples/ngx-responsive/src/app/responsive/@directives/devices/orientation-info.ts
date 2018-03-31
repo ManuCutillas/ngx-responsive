@@ -4,32 +4,31 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
 import { ResponsiveState } from '../../@core';
 
-export abstract class IeInfo {
+export abstract class OrientationInfo {
     public currentstate: string;
     public _subscription: Subscription;
     public noRepeat: string;
-    public ieVersionSubject$: Subject<any> = new Subject();
-    public ieVersionReplaySubject$: ReplaySubject<any> = new ReplaySubject();
-    constructor(public _responsiveState: ResponsiveState) { }
-
+    public orientationSubject$: Subject<any> = new Subject();
+    public orientationReplaySubject$: ReplaySubject<any> = new ReplaySubject();
+    constructor(protected _responsiveState: ResponsiveState) { }
     connect() {
-        this._subscription = this._responsiveState.browser$.subscribe(this.updateData.bind(this));
+        this._subscription = this._responsiveState.orientation$.subscribe(this.updateData.bind(this));
     }
     disconnect() {
         this._subscription.unsubscribe();
     }
-    getSubjectIEVersion(): Observable<any> {
-        return this.ieVersionSubject$.asObservable();
-    }
-    getReplaySubjectIEVersion(): Observable<any> {
-        return this.ieVersionReplaySubject$.asObservable();
-    }
     updateData(value: any) {
         const update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
-            this.ieVersionSubject$.next(value);
-            this.ieVersionReplaySubject$.next(value);
+            this.orientationSubject$.next(value);
+            this.orientationReplaySubject$.next(value);
         }
+    }
+    getSubjectOrientation(): Observable<any> {
+        return this.orientationSubject$.asObservable();
+    }
+    getReplaySubjectOrientation(): Observable<any> {
+        return this.orientationReplaySubject$.asObservable();
     }
     _ifValueChanged(oldValue: any, newValue: any): boolean {
         if (oldValue === newValue) {
