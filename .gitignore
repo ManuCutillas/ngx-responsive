@@ -16,7 +16,7 @@ $ cat .gitignore
 
 # dependencies
 node_modules
-examples/ngx-responsive/node_modules
+examples/node_modules
 
 # IDEs
 /.idea
