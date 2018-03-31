@@ -13,7 +13,7 @@ export abstract class UserAgentInfo {
     constructor(public _responsiveState: ResponsiveState) {}
 
     connect(): void {
-        this._subscription = this._responsiveState.userAgentObserver.subscribe(this.emitUserAgent.bind(this));
+        this._subscription = this._responsiveState.userAgent$.subscribe(this.emitUserAgent.bind(this));
     }
 
     disconnect(): void {

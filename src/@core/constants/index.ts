@@ -16,4 +16,6 @@ export * from './smart-tv.constants';
 export * from './generic-bots.constants';
 export * from './browser-names.constants';
 export * from './ie-versions.constants';
+export * from './user-agent.constants';
+
 

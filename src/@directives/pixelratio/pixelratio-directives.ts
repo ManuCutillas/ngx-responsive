@@ -6,7 +6,7 @@ import { RESPONSIVE_BASE, ResponsiveState } from '../../@core';
 @Directive({
     selector: '[is1xPixel]'
 })
-export class Is1xPixel extends RESPONSIVE_BASE<any> {
+export class Is1xPixelDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = '1x';
     protected _showWhenTrue = true;
@@ -28,7 +28,7 @@ export class Is1xPixel extends RESPONSIVE_BASE<any> {
     selector: '[isRetina]'
 })
 
-export class IsRetina extends RESPONSIVE_BASE<any> {
+export class IsRetinaDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'retina';
     protected _showWhenTrue = true;
@@ -49,9 +49,9 @@ export class IsRetina extends RESPONSIVE_BASE<any> {
 {
     selector: '[is4k]'
 })
-export class Is4k extends RESPONSIVE_BASE<any> {
+export class Is4kDirective extends RESPONSIVE_BASE<any> {
 
-    protected _state= '4k';
+    protected _state = '4k';
     protected _showWhenTrue = true;
 
     @Input() set isRetina( grid_state: string ) {
@@ -66,18 +66,14 @@ export class Is4k extends RESPONSIVE_BASE<any> {
 }
 
 /*======== DeviceInfo =========*/
-@Directive(
-{
-    selector: 'pixel-ratio-info',
-    inputs: [ 'pixelratioInfo' ]
-})
-export class PixelRatioInfo implements OnInit, OnDestroy {
+@Directive({ selector: 'pixel-ratio-info' })
+export class PixelRatioInfoDirective implements OnInit, OnDestroy {
 
     public currentstate: string;
     private _subscription: Subscription;
     private noRepeat: string;
 
-    set pixelratioInfo( grid_state: string[] | string ) {
+    @Input() set pixelratioInfo( grid_state: string[] | string ) {
         this.updateData( this.currentstate );
     }
 
@@ -89,7 +85,7 @@ export class PixelRatioInfo implements OnInit, OnDestroy {
         private cd: ChangeDetectorRef ) {}
 
     ngOnInit() {
-        this._subscription = this._responsiveState.pixelObserver.subscribe(this.updateData.bind( this ));
+        this._subscription = this._responsiveState.pixel$.subscribe(this.updateData.bind( this ));
     }
 
     ngOnDestroy() {

@@ -1,11 +1,11 @@
 import { Provider } from '@angular/core';
 import {
-  ShowItSizes,
-  HideItSizes
+  ShowItSizesDirective,
+  HideItSizesDirective
 } from './custom-sizes-directives';
 
 export const CUSTOMSIZES_DIRECTIVES: Provider[] = [
- ShowItSizes,
- HideItSizes
+ ShowItSizesDirective,
+ HideItSizesDirective
 ];
 export * from './custom-sizes-directives';

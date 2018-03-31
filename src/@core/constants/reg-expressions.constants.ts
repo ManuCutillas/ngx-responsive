@@ -14,7 +14,7 @@ import { OS_SYSTEMS } from './os-systems.constants';
 import { SMART_TV } from './smart-tv.constants';
 import { GAME_DEVICES } from './game-devices.constants';
 import { BOTS } from './generic-bots.constants';
-import { BROWSER_NAMES } from 'src/@core/constants/browser-names.constants';
+import { BROWSER_NAMES } from './browser-names.constants';
 
 /* export const GLOBAL_INPUTS = {
     BOOTSTRAP: ['xs', 'sm', 'md', 'lg', 'xl'],

@@ -14,7 +14,7 @@ export abstract class IeInfo {
     constructor(public _responsiveState: ResponsiveState) { }
 
     connect() {
-        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind(this));
+        this._subscription = this._responsiveState.browser$.subscribe(this.updateData.bind(this));
     }
     disconnect() {
         this._subscription.unsubscribe();
@@ -26,7 +26,7 @@ export abstract class IeInfo {
         return this.ieVersionReplaySubject$.asObservable();
     }
     updateData(value: any) {
-        let update = this._ifValueChanged(this.noRepeat, value);
+        const update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.ieVersionSubject$.next(value);
             this.ieVersionReplaySubject$.next(value);

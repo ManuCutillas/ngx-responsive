@@ -14,7 +14,7 @@ export class UserAgentInfo implements OnInit, OnDestroy {
         private _responsiveState: ResponsiveState,
         private cd: ChangeDetectorRef){}
     public ngOnInit(): void {
-        this._subscription_UserAgent = this._responsiveState.userAgentObserver.subscribe(this.emitUserAgent.bind( this ));
+        this._subscription_UserAgent = this._responsiveState.userAgent$.subscribe(this.emitUserAgent.bind( this ));
     }
     public ngOnDestroy(): void {
         this._subscription_UserAgent.unsubscribe();

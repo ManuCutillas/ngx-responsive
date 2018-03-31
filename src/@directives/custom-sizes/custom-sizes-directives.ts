@@ -5,7 +5,7 @@ import { RESPONSIVE_BASE, ResponsiveState } from '../../@core';
 {
     selector: '[showItSizes]'
 })
-export class ShowItSizes extends RESPONSIVE_BASE<any> {
+export class ShowItSizesDirective extends RESPONSIVE_BASE<any> {
 
     protected _showWhenTrue = true;
 
@@ -16,7 +16,7 @@ export class ShowItSizes extends RESPONSIVE_BASE<any> {
         super(templateRef, viewContainer, _responsiveState, cd);
     }
      @Input() set showItSizes( _grid_state: any ) {
-        this.setGrid(_grid_state,'sizes');
+        this.setGrid(_grid_state, 'sizes');
     }
 }
 
@@ -24,7 +24,7 @@ export class ShowItSizes extends RESPONSIVE_BASE<any> {
 {
     selector: '[hideItSizes]'
 })
-export class HideItSizes extends RESPONSIVE_BASE<any> {
+export class HideItSizesDirective extends RESPONSIVE_BASE<any> {
 
     protected _showWhenTrue = false;
 

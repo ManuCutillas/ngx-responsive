@@ -15,7 +15,7 @@ export abstract class ResponsiveSizeInfo {
         public _responsiveState: ResponsiveState,
         public viewContainer: ViewContainerRef) { }
     connect(): void {
-        this._subscription = this._responsiveState.elementoObservar.subscribe(this._updateData.bind(this));
+        this._subscription = this._responsiveState.elemento$.subscribe(this._updateData.bind(this));
     }
     disconnect(): void {
         this._subscription.unsubscribe();

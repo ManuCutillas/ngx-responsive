@@ -17,14 +17,14 @@ export abstract class BrowserInfo {
     constructor(public _responsiveState: ResponsiveState) {}
 
     connect(): void {
-        this._subscription = this._responsiveState.browserObserver.subscribe(this.updateData.bind(this));
+        this._subscription = this._responsiveState.browser$.subscribe(this.updateData.bind(this));
     }
 
     disconnect(): void {
         this._subscription.unsubscribe();
     }
     updateData(value: any): void {
-        let update = this._ifValueChanged(this.noRepeat, value);
+        const update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.browserSubject$.next(value);
             this.browserReplaySubject$.next(value);

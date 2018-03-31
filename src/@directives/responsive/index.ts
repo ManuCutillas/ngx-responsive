@@ -1,4 +1,4 @@
 import { Provider } from '@angular/core';
-import { Responsive } from './responsive';
-export const RESPONSIVE_DIRECTIVE: Provider[] = [ Responsive ];
+import { ResponsiveDirective } from './responsive';
+export const RESPONSIVE_DIRECTIVE: Provider[] = [ ResponsiveDirective ];
 export * from './responsive';

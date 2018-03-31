@@ -19,7 +19,7 @@ export class IeInfoDirective extends IeInfo implements OnInit, OnDestroy {
         this.disconnect();
     }
     updateData(value: any) {
-        let update = this._ifValueChanged(this.noRepeat, value);
+        const update = this._ifValueChanged(this.noRepeat, value);
         if (update) {
             this.ieVersion.emit(value);
             this.cd.markForCheck();

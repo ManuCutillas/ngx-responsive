@@ -6,7 +6,7 @@
  * @license MIT
  */
 import { IOsSistems } from '../interfaces';
-import { MOBILE } from 'src';
+import { MOBILE } from './mobile.constants';
 
 export const OS_SYSTEMS: IOsSistems = {
     WINDOWS: 'Windows',

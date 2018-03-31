@@ -5,7 +5,7 @@ import { RESPONSIVE_BASE, ResponsiveState } from '../../@core';
 @Directive({
     selector: '[isSmartTv]'
 })
-export class IsSmartTv extends RESPONSIVE_BASE<any> {
+export class IsSmartTvDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'smarttv';
     protected _showWhenTrue = true;
@@ -25,7 +25,7 @@ export class IsSmartTv extends RESPONSIVE_BASE<any> {
 @Directive({
     selector: '[isDesktop]'
 })
-export class IsDesktop extends RESPONSIVE_BASE<any> {
+export class IsDesktopDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'desktop';
     protected _showWhenTrue = true;
@@ -44,7 +44,7 @@ export class IsDesktop extends RESPONSIVE_BASE<any> {
 @Directive({
     selector: '[isTablet]'
 })
-export class IsTablet extends RESPONSIVE_BASE<any> {
+export class IsTabletDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'tablet';
     protected _showWhenTrue = true;
@@ -63,7 +63,7 @@ export class IsTablet extends RESPONSIVE_BASE<any> {
 @Directive({
     selector: '[isMobile]'
 })
-export class IsMobile extends RESPONSIVE_BASE<any> {
+export class IsMobileDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'mobile';
     protected _showWhenTrue = true;
@@ -83,7 +83,7 @@ export class IsMobile extends RESPONSIVE_BASE<any> {
 {
     selector: '[showItDevice]'
 })
-export class ShowItDevice extends RESPONSIVE_BASE<any> {
+export class ShowItDeviceDirective extends RESPONSIVE_BASE<any> {
 
     protected _showWhenTrue = true;
 
@@ -101,9 +101,9 @@ export class ShowItDevice extends RESPONSIVE_BASE<any> {
 @Directive({
     selector: '[hideItDevice]'
 })
-export class HideItDevice extends RESPONSIVE_BASE<any> {
+export class HideItDeviceDirective extends RESPONSIVE_BASE<any> {
 
-    protected _showWhenTrue= false;
+    protected _showWhenTrue = false;
 
     @Input() set hideItDevice( grid_state: string[] | string )
     {
@@ -121,13 +121,13 @@ export class HideItDevice extends RESPONSIVE_BASE<any> {
 {
     selector: '[isIphone]'
 })
-export class IsIphone extends RESPONSIVE_BASE<any> {
+export class IsIphoneDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'iphone';
     protected _showWhenTrue = true;
 
     @Input() set isIphone( grid_state: string[]|string ) {
-        this.setGrid(this._state,'standard');
+        this.setGrid(this._state, 'standard');
     }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
@@ -141,7 +141,7 @@ export class IsIphone extends RESPONSIVE_BASE<any> {
 {
     selector: '[isIpad]'
 })
-export class IsIpad extends RESPONSIVE_BASE<any> {
+export class IsIpadDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'iphone';
     protected _showWhenTrue = true;
@@ -161,13 +161,13 @@ export class IsIpad extends RESPONSIVE_BASE<any> {
 {
     selector: '[isAndroidMobile]'
 })
-export class IsAndroidMobile extends RESPONSIVE_BASE<any> {
+export class IsAndroidMobileDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'android mobile';
     protected _showWhenTrue = true;
 
     @Input() set isAndroidMobile( grid_state: string[] | string ) {
-        this.setGrid(this._state,'standard');
+        this.setGrid(this._state, 'standard');
     }
 
     constructor( templateRef: TemplateRef<any>,
@@ -182,7 +182,7 @@ export class IsAndroidMobile extends RESPONSIVE_BASE<any> {
 {
     selector: '[isAndroidTablet]'
 })
-export class IsAndroidTablet extends RESPONSIVE_BASE<any> {
+export class IsAndroidTabletDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'android tablet';
     protected _showWhenTrue = true;
@@ -203,7 +203,7 @@ export class IsAndroidTablet extends RESPONSIVE_BASE<any> {
 {
     selector: '[isWindowsPhone]'
 })
-export class IsWindowsPhone extends RESPONSIVE_BASE<any> {
+export class IsWindowsPhoneDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'windows phone';
     protected _showWhenTrue = true;
@@ -224,7 +224,7 @@ export class IsWindowsPhone extends RESPONSIVE_BASE<any> {
 {
     selector: '[showItStandard]'
 })
-export class ShowItStandard extends RESPONSIVE_BASE<any> {
+export class ShowItStandardDirective extends RESPONSIVE_BASE<any> {
 
     protected _showWhenTrue = true;
 
@@ -243,7 +243,7 @@ export class ShowItStandard extends RESPONSIVE_BASE<any> {
 {
     selector: '[hideItStandard]'
 })
-export class HideItStandard extends RESPONSIVE_BASE<any> {
+export class HideItStandardDirective extends RESPONSIVE_BASE<any> {
 
     protected _showWhenTrue = false;
 
@@ -262,7 +262,7 @@ export class HideItStandard extends RESPONSIVE_BASE<any> {
 {
     selector: '[isPortrait]'
 })
-export class IsPortrait extends RESPONSIVE_BASE<any> {
+export class IsPortraitDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'portrait';
     protected _showWhenTrue = false;
@@ -282,7 +282,7 @@ export class IsPortrait extends RESPONSIVE_BASE<any> {
 {
     selector: '[isLandscape]'
 })
-export class IsLandscape extends RESPONSIVE_BASE<any> {
+export class IsLandscapeDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'landscape';
     protected _showWhenTrue = false;
@@ -302,7 +302,7 @@ export class IsLandscape extends RESPONSIVE_BASE<any> {
 {
     selector: 'device-info'
 })
-export class DeviceInfo implements OnInit, OnDestroy {
+export class DeviceInfoDirective implements OnInit, OnDestroy {
 
     public currentstate: string;
     private _subscription: Subscription;
@@ -312,14 +312,14 @@ export class DeviceInfo implements OnInit, OnDestroy {
         this.updateData( this.currentstate );
     }
 
-    @Output() device: EventEmitter<any>= new EventEmitter();
+    @Output() device: EventEmitter<any> = new EventEmitter();
 
     constructor( private _responsiveState: ResponsiveState,
                  private viewContainer: ViewContainerRef,
                  private cd: ChangeDetectorRef ) {}
 
     ngOnInit() {
-        this._subscription = this._responsiveState.deviceObserver.subscribe(this.updateData.bind( this ));
+        this._subscription = this._responsiveState.device$.subscribe(this.updateData.bind( this ));
     }
 
     ngOnDestroy() {
@@ -344,29 +344,24 @@ export class DeviceInfo implements OnInit, OnDestroy {
     }
 }
 
-@Directive(
-{
-    selector: "device-standard-info",
-    inputs: [ 'deviceStandardInfo' ],
-    outputs: [ 'standard' ]
-})
-export class DeviceStandardInfo implements OnInit, OnDestroy {
+@Directive({ selector: 'device-standard-info' })
+export class DeviceStandardInfoDirective implements OnInit, OnDestroy {
 
     public currentstate: string;
     private _subscription: Subscription;
     private noRepeat: string;
 
-    set deviceStandardInfo( grid_state: string[] | string ) {
+    @Input() set deviceStandardInfo( grid_state: string[] | string ) {
         this.updateData( this.currentstate );
     }
 
-    public standard: EventEmitter<any>= new EventEmitter();
+    @Output() public standard: EventEmitter<any> = new EventEmitter();
     constructor( private _responsiveState: ResponsiveState,
                  private viewContainer: ViewContainerRef,
                  private cd: ChangeDetectorRef ) {}
 
     ngOnInit() {
-        this._subscription = this._responsiveState.standardObserver.subscribe(this.updateData.bind( this ));
+        this._subscription = this._responsiveState.standard$.subscribe(this.updateData.bind( this ));
     }
 
     ngOnDestroy() {
@@ -374,7 +369,7 @@ export class DeviceStandardInfo implements OnInit, OnDestroy {
     }
 
     updateData( value: any ) {
-        let update = this._ifValueChanged( this.noRepeat, value );
+        const update = this._ifValueChanged( this.noRepeat, value );
         if ( update ) {
             this.standard.emit( value );
             this.cd.markForCheck();
@@ -393,10 +388,9 @@ export class DeviceStandardInfo implements OnInit, OnDestroy {
 
 @Directive(
 {
-    selector: 'orientation-info',
-    outputs:[ 'orientation' ]
+    selector: 'orientation-info'
 })
-export class OrientationInfo implements OnInit, OnDestroy {
+export class OrientationInfoDirective implements OnInit, OnDestroy {
 
     public currentstate: string;
     private _subscription: Subscription;
@@ -406,14 +400,14 @@ export class OrientationInfo implements OnInit, OnDestroy {
         this.updateData( this.currentstate );
     }
 
-    public orientation: EventEmitter<any>= new EventEmitter()
+    @Output() public orientation: EventEmitter<any> = new EventEmitter();
 
     constructor( private _responsiveState: ResponsiveState,
                  private viewContainer: ViewContainerRef,
                  private cd: ChangeDetectorRef ) {}
 
     ngOnInit() {
-        this._subscription = this._responsiveState.orientationObserver.subscribe(this.updateData.bind( this ));
+        this._subscription = this._responsiveState.orientation$.subscribe(this.updateData.bind( this ));
     }
 
     ngOnDestroy() {
@@ -421,7 +415,7 @@ export class OrientationInfo implements OnInit, OnDestroy {
     }
 
     updateData( value: any ) {
-        let update = this._ifValueChanged( this.noRepeat, value );
+        const update = this._ifValueChanged( this.noRepeat, value );
         if (update) {
             this.orientation.emit( value );
             this.cd.markForCheck();
