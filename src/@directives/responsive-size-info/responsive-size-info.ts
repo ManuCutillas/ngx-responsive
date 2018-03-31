@@ -11,9 +11,7 @@ export abstract class ResponsiveSizeInfo {
     protected _noRepeat: string;
     public emitSizeReplaySubject$: ReplaySubject<any> = new ReplaySubject<any>();
     public emitSizeSubject$: Subject<any> = new Subject<any>();
-    constructor(
-        public _responsiveState: ResponsiveState,
-        public viewContainer: ViewContainerRef) { }
+    constructor( public _responsiveState: ResponsiveState ) { }
     connect(): void {
         this._subscription = this._responsiveState.elemento$.subscribe(this._updateData.bind(this));
     }

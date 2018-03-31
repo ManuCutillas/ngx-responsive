@@ -14,7 +14,7 @@ export class ResponsiveSizeInfoDirective extends ResponsiveSizeInfo implements O
     constructor(public _responsiveState: ResponsiveState,
         public viewContainer: ViewContainerRef,
         public cd: ChangeDetectorRef) {
-        super(_responsiveState, viewContainer);
+        super(_responsiveState);
     }
 
     ngOnInit(): void {

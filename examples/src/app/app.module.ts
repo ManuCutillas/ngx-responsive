@@ -20,9 +20,9 @@ const config = {
     AppComponent
   ],
   imports: [
+    ResponsiveModule.forRoot(config),
     BrowserModule,
-    CommonModule,
-    ResponsiveModule.forRoot(config)
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

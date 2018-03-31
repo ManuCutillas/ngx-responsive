@@ -44,31 +44,31 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   private _subscribe(): void {
     this._subscriptions.push(
-      this.ieInfoRx.getSubjectIEVersion().subscribe((data) => {
+      this.ieInfoRx.getReplaySubjectIEVersion().subscribe((data) => {
         console.log('this.ieInfoRx.getSubjectIEVersion ===>', data);
       }));
     this._subscriptions.push(
-      this.devicesInfoRx.getSubjectDeviceInfo().subscribe((data) => {
+      this.devicesInfoRx.getReplaySubjectDeviceInfo().subscribe((data) => {
         console.log('this.devicesInfoRx.getSubjectDeviceInfo ===>', data);
       })
     );
     this._subscriptions.push(
-      this.devicesStandardInfoRx.getSubjectStandardDevice().subscribe((data) => {
+      this.devicesStandardInfoRx.getReplaySubjectStandardDevice().subscribe((data) => {
         console.log('this.devicesStandardInfoRx.getSubjectStandardDevice ===>', data);
       })
     );
     this._subscriptions.push(
-      this.orientationInfoRx.getSubjectOrientation().subscribe((data) => {
+      this.orientationInfoRx.getReplaySubjectOrientation().subscribe((data) => {
         console.log('this.orientationInfoRx.getSubjectOrientation ===>', data);
       })
     );
     this._subscriptions.push(
-      this.responsiveSizeInfoRx.getSubjectSizeInfo().subscribe((data) => {
+      this.responsiveSizeInfoRx.getReplaySubjectSizeInfo().subscribe((data) => {
         console.log('this.responsiveSizeInfoRx.getSubjectSizeInfo ===>', data);
       })
     );
     this._subscriptions.push(
-      this.userAgentInfoRx.getSubjectUserAgent().subscribe((data) => {
+      this.userAgentInfoRx.getReplaySubjectUserAgent().subscribe((data) => {
         console.log('this.userAgentInfoRx.getSubjectUserAgent ===>', data);
       })
     );
