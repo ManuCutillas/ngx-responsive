@@ -3,33 +3,25 @@ import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ResponsiveState } from '../../@core';
 import { Observable } from 'rxjs/Observable';
-
+import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class UserAgentInfo {
 
-    infoSubject$: Subject<any> = new Subject();
-    infoReplySubject$: ReplaySubject<any> = new ReplaySubject();
-    _subscription: Subscription;
-
+    public subject$: Subject<any> = new Subject();
+    public replySubject$: ReplaySubject<any> = new ReplaySubject();
+    private _subscription: Subscription;
     constructor(public _responsiveState: ResponsiveState) {}
-
     connect(): void {
-        this._subscription = this._responsiveState.userAgent$.subscribe(this.emitUserAgent.bind(this));
+        this._subscription = this._responsiveState.userAgent$.pipe(distinctUntilChanged())
+        .subscribe((data) => {
+            console.log('this._responsiveState.userAgent$ ===>', data);
+            this.emitUserAgent(data);
+        });
     }
-
     disconnect(): void {
         this._subscription.unsubscribe();
     }
-
-    getSubjectUserAgent(): Observable<any> {
-        return this.infoSubject$.asObservable();
-    }
-
-    getReplaySubjectUserAgent(): Observable<any> {
-        return this.infoReplySubject$.asObservable();
-    }
-
-    emitUserAgent(value: any): void {
-        this.infoSubject$.next(value);
-        this.infoReplySubject$.next(value);
+    protected emitUserAgent(value: any): void {
+        this.subject$.next(value);
+        this.replySubject$.next(value);
     }
 }

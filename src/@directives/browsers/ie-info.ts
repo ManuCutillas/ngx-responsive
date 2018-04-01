@@ -3,40 +3,26 @@ import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
 import { ResponsiveState } from '../../@core';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 export abstract class IeInfo {
     public currentstate: string;
-    public _subscription: Subscription;
-    public noRepeat: string;
+    private _subscription: Subscription;
     public ieVersionSubject$: Subject<any> = new Subject();
     public ieVersionReplaySubject$: ReplaySubject<any> = new ReplaySubject();
     constructor(public _responsiveState: ResponsiveState) { }
-
-    connect() {
-        this._subscription = this._responsiveState.browser$.subscribe(this.updateData.bind(this));
+    public connect() {
+        this._subscription = this._responsiveState.ieVersion$.pipe(distinctUntilChanged())
+        .subscribe((data) => {
+            console.log('this._responsiveState.ieVersion$ ===>', data);
+            this._updateData(data);
+        });
     }
-    disconnect() {
+    public disconnect() {
         this._subscription.unsubscribe();
     }
-    getSubjectIEVersion(): Observable<any> {
-        return this.ieVersionSubject$.asObservable();
-    }
-    getReplaySubjectIEVersion(): Observable<any> {
-        return this.ieVersionReplaySubject$.asObservable();
-    }
-    updateData(value: any) {
-        const update = this._ifValueChanged(this.noRepeat, value);
-        if (update) {
-            this.ieVersionSubject$.next(value);
-            this.ieVersionReplaySubject$.next(value);
-        }
-    }
-    _ifValueChanged(oldValue: any, newValue: any): boolean {
-        if (oldValue === newValue) {
-            return false;
-        } else {
-            this.noRepeat = newValue;
-            return true;
-        }
+    protected _updateData(value: any) {
+        this.ieVersionSubject$.next(value);
+        this.ieVersionReplaySubject$.next(value);
     }
 }

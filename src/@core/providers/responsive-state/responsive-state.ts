@@ -88,6 +88,11 @@ export class ResponsiveState {
         this.userAgent$ = _userAgent$.pipe(map(this.userAgentData.bind(this)));
     }
 
+    /**
+    * @name registerWindow
+    * @param rw
+    * @param _window
+    */
     public registerWindow(rw: ResponsiveWindow, _window = null) {
         if (_window !== null) {
             if (rw.name && !this._windows[rw.name]) {
@@ -97,6 +102,11 @@ export class ResponsiveState {
         }
     }
 
+    /**
+    * @name unregisterWindow
+    * @param rw
+    * @param _window
+    */
     public unregisterWindow(rw: ResponsiveWindow, _window = null) {
         if (_window !== null) {
             for (const rwn in this._windows) {
@@ -109,11 +119,8 @@ export class ResponsiveState {
     }
 
     /**
-    * 
     * @name getWidth
     * @param windowName
-    * @export getWidth
-    *  {number}
     */
     public getWidth(windowName: string = null): any {
         if (this._windows !== null && this._window !== null) {
@@ -127,10 +134,7 @@ export class ResponsiveState {
     }
 
     /**
-    * 
     * @name getDevicePixelRatio
-    * @export getDevicePixelRatio
-    *  {number}
     */
     public getDevicePixelRatio(): any {
         let ratio = 1;
@@ -147,35 +151,24 @@ export class ResponsiveState {
     }
 
     /**
-    * 
     * @name getOrientation
-    * @export getOrientation
-    *  {any}
     */
     public getOrientation(): any {
         return (this._window !== null) ? window.orientation : null;
     }
 
     /**
-    * 
     * @name sizeObserver
-    * @export sizeObserver
-    *  {any}
     */
     public sizeObserver(): any {
         return (this._windows !== null && this._window !== null) ? this.getWidth('window') : 0;
     }
 
     /**
-     * 
      * @name sizeOperations
-     * @export sizeOperations
-     *  {any}
      */
     public sizeOperations(): any {
         let _sizes = null;
-        console.log('size operations', this._responsiveConfig);
-        console.log(this);
         const _breackpoints = this._responsiveConfig.config.breakPoints;
         if (this._windows !== null && this._window !== null && _breackpoints !== null) {
             const _width = this.getWidth('window');
@@ -195,10 +188,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name sizeOperations
-     * @export sizeOperations
-     *  {string}
      */
     public pixelRatio(screenHeight = null, screenWidth = null): any {
         let _pixelRatio = null;
@@ -215,12 +205,9 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name testIs4k
      * @param screenHeight
      * @param screenWidth
-     * @export testIs4k
-     *  {boolean}
      */
     public testIs4k(screenHeight = null, screenWidth = null): boolean {
         return (screenHeight !== null && screenWidth !== null) ?
@@ -228,10 +215,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name orientationDevice
-     * @export orientationDevice
-     *  {string}
      */
     public orientationDevice(): any {
         let _orientationDevice = null;
@@ -250,20 +234,14 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name getUserAgent
-     * @export getUserAgent
-     *  window.navigator.userAgent
      */
     public getUserAgent(): any {
         return (this._window !== null) ? this._window.navigator.userAgent.toLowerCase() : null;
     }
 
     /**
-     * 
      * @name userAgentData
-     * @export userAgentData
-     *  {IUserAgent}
      */
     public userAgentData(): any {
         if (this._window === null) {
@@ -320,10 +298,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name deviceDetection
-     * @export deviceDetection
-     *  {any}
      */
     public deviceDetection(): any {
         if (this._window !== null) {
@@ -341,10 +316,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name standardDevices
-     * @export standardDevices
-     *  {TDeviceDetection}
      */
     public standardDevices(): any {
         if (this._window !== null) {
@@ -364,10 +336,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name ieVersionDetect
-     * @export ieVersionDetect
-     *  {string}
      */
     public ieVersionDetect(): any {
         if (this._window !== null) {
@@ -404,10 +373,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name browserName
-     * @export browserName
-     *  {TGameDevices}
      */
     public browserName(): any {
         let _browserName = null;
@@ -437,10 +403,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name gameDevices
-     * @export gameDevices
-     *  {TGameDevices}
      */
     public gameDevices(): TGameDevices {
         let _gameDevice = null;
@@ -455,10 +418,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name smartTv
-     * @export smartTv
-     *  {TSmartTv}
      */
     public smartTv(): TSmartTv {
         let _smartTv = null;
@@ -481,10 +441,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name desktop
-     * @export desktop
-     *  {TosSystems}
      */
     public desktop(): TosSystems {
         let _desktop = null;
@@ -505,10 +462,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name tablet
-     * @export tablet
-     *  {TTablet}
      */
     public tablet(): TTablet {
         let _tablet = null;
@@ -527,10 +481,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name mobile
-     * @export mobile
-     *  {TMobile}
      */
     public mobile(): TMobile {
         let _mobile = null;
@@ -548,10 +499,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name windows
-     * @export windows
-     *  {TWindowsOS}
      */
     public windows(): TWindowsOS {
         let _windows = null;
@@ -569,10 +517,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name linux
-     * @export linux
-     *  {TLinuxOS}
      */
     public linux(): TLinuxOS {
         let _linux: TLinuxOS = null;
@@ -590,10 +535,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name isMobile
-     * @export isMobile
-     *  {boolean}
      */
     public isMobile(): boolean {
         let _result = false;
@@ -606,10 +548,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name isTablet
-     * @export isTablet
-     *  {boolean}
      */
     public isTablet(): boolean {
         let _result = false;
@@ -622,10 +561,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name isSMART
-     * @export isSMART
-     *  {boolean}
      */
     public isSMART(): boolean {
         let _result = false;
@@ -638,10 +574,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name isDesktop
-     * @export isDesktop
-     *  {boolean}
      */
     public isDesktop(): boolean {
         let _result = false;
@@ -652,10 +585,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name isGameDevice
-     * @export isGameDevice
-     *  {boolean}
      */
     public isGameDevice(): boolean {
         let _result = false;
@@ -670,10 +600,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name isWindows
-     * @export isWindows
-     *  {boolean}
      */
     public isWindows(): boolean {
         let _result = false;
@@ -684,10 +611,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name isLinux
-     * @export isLinux
-     *  {boolean}
      */
     public isLinux(): boolean {
         let _result = false;
@@ -698,10 +622,7 @@ export class ResponsiveState {
     }
 
     /**
-     * 
      * @name isBot
-     * @export isBot
-     *  {boolean}
      */
     public isBot(): boolean {
         let _result = false;

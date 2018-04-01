@@ -17,11 +17,8 @@ export class DeviceInfoDirective extends DevicesInfo implements OnInit, OnDestro
     ngOnDestroy() {
         this.disconnect();
     }
-    updateData(value: any) {
-        const update = this._ifValueChanged(this.noRepeat, value);
-        if (update) {
-            this.device.emit(value);
-            this.cd.markForCheck();
-        }
+    protected _updateData(value: any) {
+        this.device.emit(value);
+        this.cd.markForCheck();
     }
 }

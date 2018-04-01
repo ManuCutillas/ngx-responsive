@@ -6,7 +6,7 @@ import { IeInfo } from './ie-info';
 @Directive({ selector: 'ie-info' })
 export class IeInfoDirective extends IeInfo implements OnInit, OnDestroy {
     @Input() set ieInfo(grid_state: string[] | string) {
-        this.updateData(this.currentstate);
+        this._updateData(this.currentstate);
     }
     @Output() public ieVersion: EventEmitter<any> = new EventEmitter();
     constructor(public _responsiveState: ResponsiveState,
@@ -18,11 +18,8 @@ export class IeInfoDirective extends IeInfo implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.disconnect();
     }
-    updateData(value: any) {
-        const update = this._ifValueChanged(this.noRepeat, value);
-        if (update) {
-            this.ieVersion.emit(value);
-            this.cd.markForCheck();
-        }
+    protected _updateData(value: any) {
+        this.ieVersion.emit(value);
+        this.cd.markForCheck();
     }
 }

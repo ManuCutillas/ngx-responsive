@@ -4,47 +4,25 @@ import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ResponsiveState } from '../../@core';
 import { Observable } from 'rxjs/Observable';
-
+import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class BrowserInfo {
-
     public currentstate: string;
-    public _subscription: Subscription;
-    public noRepeat: string;
-
-    public browserSubject$: Subject<any> = new Subject();
-    public browserReplaySubject$: ReplaySubject<any> = new ReplaySubject();
-
+    private _subscription: Subscription;
+    public subject$: Subject<any> = new Subject();
+    public replaySubject$: ReplaySubject<any> = new ReplaySubject();
     constructor(public _responsiveState: ResponsiveState) {}
-
-    connect(): void {
-        this._subscription = this._responsiveState.browser$.subscribe(this.updateData.bind(this));
+    public connect(): void {
+        this._subscription = this._responsiveState.browser$.pipe(distinctUntilChanged())
+        .subscribe((data) => {
+            console.log('this._responsiveState.browser$ ===>', data);
+            this._updateData(data);
+        });
     }
-
-    disconnect(): void {
+    public disconnect(): void {
         this._subscription.unsubscribe();
     }
-    updateData(value: any): void {
-        const update = this._ifValueChanged(this.noRepeat, value);
-        if (update) {
-            this.browserSubject$.next(value);
-            this.browserReplaySubject$.next(value);
-        }
-    }
-
-    getSubjectBrowser(): Observable<any> {
-        return this.browserSubject$.asObservable();
-    }
-
-    getReplaySubjectBrowser(): Observable<any> {
-        return this.browserReplaySubject$.asObservable();
-    }
-
-    _ifValueChanged(oldValue: any, newValue: any): boolean {
-        if (oldValue === newValue) {
-            return false;
-        } else {
-            this.noRepeat = newValue;
-            return true;
-        }
+    protected _updateData(value: any): void {
+        this.subject$.next(value);
+        this.replaySubject$.next(value);
     }
 }

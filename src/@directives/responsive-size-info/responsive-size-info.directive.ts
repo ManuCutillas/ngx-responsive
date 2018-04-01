@@ -5,7 +5,7 @@ import { ResponsiveSizeInfo } from './responsive-size-info';
 
 @Directive({ selector: 'responsiveSizeInfo' })
 export class ResponsiveSizeInfoDirective extends ResponsiveSizeInfo implements OnInit, OnDestroy {
-    currentstate: string;
+    public currentstate: string;
     @Input() set responsiveSizeInfo(grid_state: string[] | string) {
         this._updateData(this.currentstate);
     }
@@ -16,20 +16,14 @@ export class ResponsiveSizeInfoDirective extends ResponsiveSizeInfo implements O
         public cd: ChangeDetectorRef) {
         super(_responsiveState);
     }
-
     ngOnInit(): void {
         this.connect();
     }
-
     ngOnDestroy(): void {
         this.disconnect();
     }
-
-    _updateData(value: any): void {
-        const _update = this._ifValueIsChanged(this._noRepeat, value);
-        if (_update) {
-            this.statechanges.emit(value);
-            this.cd.markForCheck();
-        }
+    protected _updateData(value: any): void {
+        this.statechanges.emit(value);
+        this.cd.markForCheck();
     }
 }

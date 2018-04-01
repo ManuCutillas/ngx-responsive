@@ -40,11 +40,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.userAgentInfoRx.disconnect();
   }
   public thisUserAgent(userAgent) {
-    console.log(userAgent);
+    console.log('userAgent ==========>', userAgent);
   }
   private _subscribe(): void {
     this._subscriptions.push(
-      this.ieInfoRx.getReplaySubjectIEVersion().subscribe((data) => {
+      this.ieInfoRx.ieVersionSubject$.subscribe((data) => {
         console.log('this.ieInfoRx.getSubjectIEVersion ===>', data);
       }));
     this._subscriptions.push(

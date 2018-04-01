@@ -6,7 +6,7 @@ import { DeviceStandardInfo } from './devices-standard-info';
 @Directive({ selector: 'device-standard-info' })
 export class DeviceStandardInfoDirective extends DeviceStandardInfo implements OnInit, OnDestroy {
     @Input() set deviceStandardInfo( grid_state: string[] | string ) {
-        this.updateData( this.currentstate );
+        this._updateData( this.currentstate );
     }
     @Output() public standard: EventEmitter<any> = new EventEmitter();
     constructor( protected _responsiveState: ResponsiveState,
@@ -20,11 +20,8 @@ export class DeviceStandardInfoDirective extends DeviceStandardInfo implements O
     ngOnDestroy() {
         this.disconnect();
     }
-    updateData( value: any ) {
-        const update = this._ifValueChanged( this.noRepeat, value );
-        if ( update ) {
-            this.standard.emit( value );
-            this.cd.markForCheck();
-        }
+    protected _updateData( value: any ) {
+        this.standard.emit( value );
+        this.cd.markForCheck();
     }
 }

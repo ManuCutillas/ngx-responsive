@@ -17,11 +17,8 @@ export class OrientationInfoDirective extends OrientationInfo implements OnInit,
     ngOnDestroy() {
         this.disconnect();
     }
-    updateData(value: any) {
-        const update = this._ifValueChanged(this.noRepeat, value);
-        if (update) {
-            this.orientation.emit(value);
-            this.cd.markForCheck();
-        }
+    protected _updateData(value: any) {
+        this.orientation.emit(value);
+        this.cd.markForCheck();
     }
 }

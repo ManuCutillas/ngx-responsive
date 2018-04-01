@@ -5,38 +5,25 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 import { RESPONSIVE_BASE, ResponsiveState } from '../../@core';
 import { Observable } from 'rxjs/Observable';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 export abstract class ResponsiveSizeInfo {
-    protected _subscription: Subscription;
-    protected _noRepeat: string;
-    public emitSizeReplaySubject$: ReplaySubject<any> = new ReplaySubject<any>();
-    public emitSizeSubject$: Subject<any> = new Subject<any>();
+    private _subscription: Subscription;
+    public replaySubject$: ReplaySubject<any> = new ReplaySubject<any>();
+    public subject$: Subject<any> = new Subject<any>();
     constructor( public _responsiveState: ResponsiveState ) { }
-    connect(): void {
-        this._subscription = this._responsiveState.elemento$.subscribe(this._updateData.bind(this));
+    public connect(): void {
+        this._subscription = this._responsiveState.elemento$.pipe(distinctUntilChanged())
+        .subscribe((data) => {
+            console.log('this._responsiveState.elemento$ ===>', data);
+            this._updateData(data);
+        });
     }
-    disconnect(): void {
+    public disconnect(): void {
         this._subscription.unsubscribe();
     }
-    getSubjectSizeInfo(): Observable<any> {
-        return this.emitSizeSubject$.asObservable();
-    }
-    getReplaySubjectSizeInfo(): Observable<any> {
-        return this.emitSizeReplaySubject$.asObservable();
-    }
-    _updateData(value: any): void {
-        const _update = this._ifValueIsChanged(this._noRepeat, value);
-        if (_update) {
-            this.emitSizeReplaySubject$.next(value);
-            this.emitSizeSubject$.next(value);
-        }
-    }
-    _ifValueIsChanged(oldValue: any, newValue: any): boolean {
-        if (oldValue === newValue) {
-            return false;
-        } else {
-            this._noRepeat = newValue;
-            return true;
-        }
+    protected _updateData(value: any): void {
+            this.replaySubject$.next(value);
+            this.subject$.next(value);
     }
 }

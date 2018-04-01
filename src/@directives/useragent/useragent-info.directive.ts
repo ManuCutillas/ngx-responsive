@@ -18,7 +18,7 @@ export class UserAgentInfoDirective extends UserAgentInfo implements OnInit, OnD
     public ngOnDestroy(): void {
         this.disconnect();
     }
-    emitUserAgent ( value: any ): void {
+    protected emitUserAgent ( value: any ): void {
         this.info.emit( value );
         this.cd.markForCheck();
     }
