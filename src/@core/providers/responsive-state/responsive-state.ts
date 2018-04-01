@@ -11,7 +11,7 @@ import { debounceTime } from 'rxjs/operators/debounceTime';
 import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';
 import { map } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
-import { ResponsiveWindow } from '../../../@directives';
+import { ResponsiveWindowDirective } from '../../../@directives';
 import {
     REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES,
     REG_GAME_DEVICES, REG_BOTS, REG_OS, REG_WINDOWS_OS_VERSION, REG_LINUX_OS,
@@ -99,7 +99,7 @@ export class ResponsiveState {
     * @param rw
     * @param _window
     */
-    public registerWindow(rw: ResponsiveWindow, _window = null) {
+    public registerWindow(rw: ResponsiveWindowDirective, _window = null) {
         if (_window !== null) {
             if (rw.name && !this._windows[rw.name]) {
                 this._windows[rw.name] = rw;
@@ -113,7 +113,7 @@ export class ResponsiveState {
     * @param rw
     * @param _window
     */
-    public unregisterWindow(rw: ResponsiveWindow, _window = null) {
+    public unregisterWindow(rw: ResponsiveWindowDirective, _window = null) {
         if (_window !== null) {
             for (const rwn in this._windows) {
                 if (this._windows[rwn] === rw) {
