@@ -1,5 +1,11 @@
+/**
+ * @name ie-info
+ * @description IE Info abstract class in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Subscription } from 'rxjs/Subscription';
-import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
 import { ResponsiveState } from '../../@core';
@@ -8,21 +14,22 @@ import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class IeInfo {
     public currentstate: string;
     private _subscription: Subscription;
-    public ieVersionSubject$: Subject<any> = new Subject();
-    public ieVersionReplaySubject$: ReplaySubject<any> = new ReplaySubject();
+    public replaySubject$: ReplaySubject<any> = new ReplaySubject();
     constructor(public _responsiveState: ResponsiveState) { }
-    public connect() {
+    public connect(): Observable<any> {
         this._subscription = this._responsiveState.ieVersion$.pipe(distinctUntilChanged())
         .subscribe((data) => {
-            console.log('this._responsiveState.ieVersion$ ===>', data);
             this._updateData(data);
         });
+        return this.replaySubject$.asObservable();
     }
-    public disconnect() {
+    public disconnect(): void {
         this._subscription.unsubscribe();
     }
-    protected _updateData(value: any) {
-        this.ieVersionSubject$.next(value);
-        this.ieVersionReplaySubject$.next(value);
+    get getIE(): Observable<any> {
+        return this.replaySubject$.asObservable();
+    }
+    protected _updateData(value: any): void {
+        this.replaySubject$.next(value);
     }
 }

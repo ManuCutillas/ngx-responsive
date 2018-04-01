@@ -1,3 +1,10 @@
+/**
+ * @name responsive-size-info.directive
+ * @description Responsive Size Info directive in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ResponsiveState } from '../../@core';

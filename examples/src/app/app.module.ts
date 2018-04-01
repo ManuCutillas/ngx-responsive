@@ -12,7 +12,7 @@ const config = {
     lg: { min: 1280, max: 1919 },
     xl: { min: 1920 }
   },
-  debounceTime: 100 // allow to debounce checking timer
+  debounceTime: 100
 };
 
 @NgModule({

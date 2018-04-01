@@ -1,3 +1,10 @@
+/**
+ * @name devices.directives
+ * @description Devices directives in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { RESPONSIVE_BASE, ResponsiveState } from '../../@core';

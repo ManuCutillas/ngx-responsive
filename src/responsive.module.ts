@@ -1,3 +1,10 @@
+/**
+ * @name responsive.module
+ * @description Core module in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { ResponsiveConfig, ResponsiveState } from './@core/index';
 import {

@@ -1,10 +1,16 @@
+/**
+ * @name responsive-window
+ * @description responsiveWindow Directive in ngx-responsive
+ *
+ * @license MIT
+ */
 import { DoCheck, Directive, Input, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { ResponsiveState } from '../../@core';
 
 @Directive({
     selector: "[responsive-window]"
 })
-export class ResponsiveWindow implements OnInit, OnDestroy, DoCheck {
+export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
 
     private _noRepeat: string;
     private element: HTMLElement;

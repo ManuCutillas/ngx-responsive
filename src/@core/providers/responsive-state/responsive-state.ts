@@ -1,3 +1,10 @@
+/**
+ * @name responsive-state
+ * @description Core responsive state provider in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { fromEvent } from 'rxjs/observable/fromEvent';

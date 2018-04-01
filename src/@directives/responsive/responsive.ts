@@ -1,3 +1,10 @@
+/**
+ * @name responsive
+ * @description Responsive directive in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, OnDestroy, ChangeDetectorRef  } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../@core';

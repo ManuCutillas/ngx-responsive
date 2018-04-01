@@ -1,3 +1,10 @@
+/**
+ * @name ie-info.rx
+ * @description IE Info reactive service in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Injectable} from '@angular/core';
 import { ResponsiveState } from '../../@core';
 import { IeInfo } from './ie-info';

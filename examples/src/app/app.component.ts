@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
   IeInfoRx, ResponsiveSizeInfoRx, OrientationInfoRx, DeviceStandardInfoRx, DeviceInfoRx,
-  UserAgentInfoRx
+  UserAgentInfoRx, BrowserInfoRx
 } from 'ngx-responsive';
 import { OnInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Subscription } from 'rxjs/Subscription';
@@ -13,17 +13,18 @@ import { Subscription } from 'rxjs/Subscription';
 export class AppComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription[] = [];
   constructor(
-    private ieInfoRx: IeInfoRx,
-    private devicesInfoRx: DeviceInfoRx,
-    private devicesStandardInfoRx: DeviceStandardInfoRx,
-    private orientationInfoRx: OrientationInfoRx,
-    private responsiveSizeInfoRx: ResponsiveSizeInfoRx,
-    private userAgentInfoRx: UserAgentInfoRx
-  ) {
-
-  }
+    public ieInfoRx: IeInfoRx,
+    public browserInfoRx: BrowserInfoRx,
+    public devicesInfoRx: DeviceInfoRx,
+    public devicesStandardInfoRx: DeviceStandardInfoRx,
+    public orientationInfoRx: OrientationInfoRx,
+    public responsiveSizeInfoRx: ResponsiveSizeInfoRx,
+    public userAgentInfoRx: UserAgentInfoRx
+  ) {}
   public ngOnInit(): void {
+    this._subscribe();
     this.ieInfoRx.connect();
+    this.browserInfoRx.connect();
     this.devicesInfoRx.connect();
     this.devicesStandardInfoRx.connect();
     this.orientationInfoRx.connect();
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this._unsubscribe();
     this.ieInfoRx.disconnect();
+    this.browserInfoRx.connect();
     this.devicesInfoRx.disconnect();
     this.devicesStandardInfoRx.disconnect();
     this.orientationInfoRx.disconnect();
@@ -44,32 +46,52 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   private _subscribe(): void {
     this._subscriptions.push(
-      this.ieInfoRx.ieVersionSubject$.subscribe((data) => {
-        console.log('this.ieInfoRx.getSubjectIEVersion ===>', data);
-      }));
-    this._subscriptions.push(
-      this.devicesInfoRx.getReplaySubjectDeviceInfo().subscribe((data) => {
-        console.log('this.devicesInfoRx.getSubjectDeviceInfo ===>', data);
+      this.ieInfoRx.getIE.subscribe((data) => {
+        console.log('this.ieInfoRx.getIE ===>', data);
+      }, (err) => {
+        console.log('Error', err);
       })
     );
     this._subscriptions.push(
-      this.devicesStandardInfoRx.getReplaySubjectStandardDevice().subscribe((data) => {
-        console.log('this.devicesStandardInfoRx.getSubjectStandardDevice ===>', data);
+      this.browserInfoRx.getBrowser.subscribe((data) => {
+        console.log('this.browserInfoRx.getBrowser ===>', data);
+      }, (err) => {
+        console.log('Error', err);
       })
     );
     this._subscriptions.push(
-      this.orientationInfoRx.getReplaySubjectOrientation().subscribe((data) => {
-        console.log('this.orientationInfoRx.getSubjectOrientation ===>', data);
+      this.devicesInfoRx.getDevice.subscribe((data) => {
+        console.log('this.devicesInfoRx.getDevice ===>', data);
+      }, (err) => {
+        console.log('Error', err);
       })
     );
     this._subscriptions.push(
-      this.responsiveSizeInfoRx.getReplaySubjectSizeInfo().subscribe((data) => {
-        console.log('this.responsiveSizeInfoRx.getSubjectSizeInfo ===>', data);
+      this.devicesStandardInfoRx.getStandardDevice.subscribe((data) => {
+        console.log('this.devicesStandardInfoRx.subject$ ===>', data);
+      }, (err) => {
+        console.log('Error', err);
       })
     );
     this._subscriptions.push(
-      this.userAgentInfoRx.getReplaySubjectUserAgent().subscribe((data) => {
-        console.log('this.userAgentInfoRx.getSubjectUserAgent ===>', data);
+      this.orientationInfoRx.getOrientation.subscribe((data) => {
+        console.log('this.orientationInfoRx.getOrientation ===>', data);
+      }, (err) => {
+        console.log('Error', err);
+      })
+    );
+    this._subscriptions.push(
+      this.responsiveSizeInfoRx.getResponsiveSize.subscribe((data) => {
+        console.log('this.responsiveSizeInfoRx.getResponsiveSize ===>', data);
+      }, (err) => {
+        console.log('Error', err);
+      })
+    );
+    this._subscriptions.push(
+      this.userAgentInfoRx.getUserAgent.subscribe((data) => {
+        console.log('this.userAgentInfoRx.getUserAgent ===>', data);
+      }, (err) => {
+        console.log('Error', err);
       })
     );
   }

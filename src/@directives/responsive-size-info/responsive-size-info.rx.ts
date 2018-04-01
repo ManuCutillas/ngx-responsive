@@ -1,4 +1,10 @@
-
+/**
+ * @name responsive-size-info.rx
+ * @description Responsive Size Info reactive service in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Injectable } from '@angular/core';
 import { ViewContainerRef } from '@angular/core';
 import { ResponsiveState } from '../../@core';

@@ -1,3 +1,10 @@
+/**
+ * @name devices-standard-info.rx
+ * @description devices-standard reactive service in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Injectable } from '@angular/core';
 import { ResponsiveState } from '../../@core';
 import { DeviceStandardInfo } from './devices-standard-info';

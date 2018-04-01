@@ -1,3 +1,10 @@
+/**
+ * @name pixelratio.directives
+ * @description pixelratio directives in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Directive, Input, Output, EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { RESPONSIVE_BASE, ResponsiveState } from '../../@core';
@@ -66,6 +73,7 @@ export class Is4kDirective extends RESPONSIVE_BASE<any> {
 }
 
 /*======== DeviceInfo =========*/
+
 @Directive({ selector: 'pixel-ratio-info' })
 export class PixelRatioInfoDirective implements OnInit, OnDestroy {
 

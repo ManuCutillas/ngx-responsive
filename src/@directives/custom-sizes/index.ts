@@ -1,3 +1,10 @@
+/**
+ * @name custom-sizes
+ * @description Custom sizes in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Provider } from '@angular/core';
 import {
   ShowItSizesDirective,

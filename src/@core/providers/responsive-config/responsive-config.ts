@@ -2,7 +2,6 @@
  * @name responsive-config
  * @description Core responsive-config provider in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Injectable, Inject, Optional } from '@angular/core';

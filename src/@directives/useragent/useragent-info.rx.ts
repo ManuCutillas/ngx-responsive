@@ -1,3 +1,10 @@
+/**
+ * @name useragent-info.rx
+ * @description Useragent info reactive service in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Injectable} from '@angular/core';
 import { ResponsiveState } from '../../@core';
 import { UserAgentInfo } from './useragent-info';

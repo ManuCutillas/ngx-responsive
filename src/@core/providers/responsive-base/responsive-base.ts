@@ -1,3 +1,10 @@
+/**
+ * @name responsive-config
+ * @description Core responsive-config provider in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../interfaces';

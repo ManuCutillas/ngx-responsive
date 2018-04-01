@@ -1,3 +1,10 @@
+/**
+ * @name responsive-size-info
+ * @description Responsive Size Info in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Provider } from '@angular/core';
 import { ResponsiveSizeInfoDirective } from './responsive-size-info.directive';
 import { ResponsiveSizeInfoRx } from './responsive-size-info.rx';

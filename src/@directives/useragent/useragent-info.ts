@@ -1,27 +1,33 @@
+/**
+ * @name useragent-info
+ * @description User agent info abstract class in ngx-responsive
+ *
+ * @author Manu Cutillas
+ * @license MIT
+ */
 import { Subscription } from 'rxjs/Subscription';
-import { Subject } from 'rxjs/Subject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ResponsiveState } from '../../@core';
 import { Observable } from 'rxjs/Observable';
 import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class UserAgentInfo {
-
-    public subject$: Subject<any> = new Subject();
-    public replySubject$: ReplaySubject<any> = new ReplaySubject();
+    public replaySubject$: ReplaySubject<any> = new ReplaySubject();
     private _subscription: Subscription;
     constructor(public _responsiveState: ResponsiveState) {}
-    connect(): void {
+    public connect(): Observable<any> {
         this._subscription = this._responsiveState.userAgent$.pipe(distinctUntilChanged())
         .subscribe((data) => {
-            console.log('this._responsiveState.userAgent$ ===>', data);
-            this.emitUserAgent(data);
+            this._emitUserAgent(data);
         });
+        return this.replaySubject$.asObservable();
     }
-    disconnect(): void {
+    public disconnect(): void {
         this._subscription.unsubscribe();
     }
-    protected emitUserAgent(value: any): void {
-        this.subject$.next(value);
-        this.replySubject$.next(value);
+    get getUserAgent(): Observable<any> {
+        return this.replaySubject$.asObservable();
+    }
+    protected _emitUserAgent(value: any): void {
+        this.replaySubject$.next(value);
     }
 }
