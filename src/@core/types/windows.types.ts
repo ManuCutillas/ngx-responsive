@@ -2,7 +2,6 @@
  * @name windows.types
  * @description Core windows types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

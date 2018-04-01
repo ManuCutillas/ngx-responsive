@@ -2,7 +2,6 @@
  * @name types
  * @description Core types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 export * from './linux.types';

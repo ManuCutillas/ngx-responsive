@@ -2,7 +2,6 @@
  * @name browser-info
  * @description Browser info abstract class in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Subscription } from 'rxjs/Subscription';

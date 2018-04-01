@@ -2,7 +2,6 @@
  * @name pixelratio
  * @description pixelratio in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Provider } from '@angular/core';

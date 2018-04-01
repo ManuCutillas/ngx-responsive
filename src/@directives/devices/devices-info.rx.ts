@@ -2,7 +2,6 @@
  * @name devices-info.rx
  * @description devices-info reactive service in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Injectable } from '@angular/core';

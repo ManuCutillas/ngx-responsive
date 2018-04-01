@@ -2,7 +2,6 @@
  * @name user-agent.constants
  * @description Core user agent in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

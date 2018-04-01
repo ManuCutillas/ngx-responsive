@@ -3,7 +3,6 @@
  * @name ie-versions.types
  * @description IE Versions types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

@@ -2,7 +2,6 @@
  * @name browser-names.constants
  * @description Core browser names constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { IBrowserNames } from '../interfaces';

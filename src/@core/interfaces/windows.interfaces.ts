@@ -3,7 +3,6 @@
  * @name windows.interfaces
  * @description Core windows interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

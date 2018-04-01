@@ -2,7 +2,6 @@
  * @name game-devices.constants
  * @description Core game-devices.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { IGameDevices } from '../interfaces';

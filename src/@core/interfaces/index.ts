@@ -2,7 +2,6 @@
  * @name interfaces
  * @description Core interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 export * from './linux.interfaces';

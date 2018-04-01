@@ -2,7 +2,6 @@
  * @name bot.interfaces
  * @description Core bot interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

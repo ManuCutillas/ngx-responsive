@@ -3,7 +3,6 @@
  * @name mobile.types
  * @description Mobile types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

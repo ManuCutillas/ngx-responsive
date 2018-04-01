@@ -2,7 +2,6 @@
  * @name responsive-size-info
  * @description Responsive Size Info abstract class in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { TemplateRef, ViewContainerRef } from '@angular/core';

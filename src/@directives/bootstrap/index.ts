@@ -2,7 +2,6 @@
  * @name bootstrap
  * @description Bootstrap module in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Provider } from '@angular/core';

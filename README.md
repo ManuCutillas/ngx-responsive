@@ -7,6 +7,14 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
   npm i ngx-responsive --save
 ```
 
+### New version with breaking changes: v5.0.x :
+
+**v4.0.1 to v5.0.3 < v5.0.x documentation:**
+
+-   [ngx-responsive v4.x.x to v5.x.x changes](/v4-0-1-to-v5-0-3.md)
+
+-   [ngx-responsive v4.0.1 latest code](https://github.com/ManuCutillas/ngx-responsive/tree/v4.0.1)
+
 ### If you use Angular 4 in your project use ng2-responsive.
 
 ```
@@ -24,13 +32,19 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
  - Internet Explorer Versions Detect : IE 9 / IE 10 / IE 11 / IE +12
  - New standard devices: iPhone, iPad, Android Mobile, Android Tablet, Windows Phone.
  - Device orientation detect: portrait, landscape.
- - Pixel ratio detect : 1x / Retina / 4k.
- - Directives Info: DeviceInfo, OrientationInfo, ResponsiveSizeInfo, PixelRatioInfo. 
+ - Directives Info: DeviceInfo, OrientationInfo, ResponsiveSizeInfo, DeviceStandardInfo, BrowserInfo, IeInfo.
  - Directive: responsive - Detection of multiple functions at once.
- - Directives: DeviceStandardInfo, BrowserInfo, IeInfo.
  - Feature Responsive Directive - Boolean Events Emitter on change state:
  - Feature responsive-window : Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
- - UserAgent information directive: Get te device, browser, os version and more from the user agent navigator in one event object. 
+ - UserAgent information directive: Get te device, browser, os version and more from the user agent navigator in one event object.
+ - **New Feature :** Reactive services that expose changes through observables:
+    - BrowserInfoRx
+    - IeInfoRx
+    - DeviceInfoRx
+    - DeviceStandardInfoRx
+    - OrientationInfoRx
+    - ResponsiveSizeInfoRx
+    - UserAgentInfoRx
  
 # How to start
  
@@ -62,9 +76,9 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
       
     ```
      import { NgModule } from '@angular/core'
-     import { ResponsiveModule, ResponsiveConfig } from 'ngx-responsive'
+     import { ResponsiveModule } from 'ngx-responsive'
      ...
-     let config = {
+     const config = {
         breakPoints: {
             xs: {max: 600},
             sm: {min: 601, max: 959},
@@ -72,23 +86,18 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
             lg: {min: 1280, max: 1919},
             xl: {min: 1920}
         },
-        debounceTime: 100 // allow to debounce checking timer
-      };
-
-      export function ResponsiveDefinition(){ 
-              return new ResponsiveConfig(config);
+        debounceTime: 100
       };
      ...
     @NgModule({
         imports: [
-          ResponsiveModule
+          BrowserModule,
+          ResponsiveModule.forRoot(config)
         ],
         declarations: [
           AppComponent
         ],
-        providers:[{
-         provide: ResponsiveConfig, 
-         useFactory: ResponsiveDefinition }]
+        providers:[]
     })
     export class AppModule { }
     ```
@@ -318,17 +327,6 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
             '
         })
         ```
-        * With pixel ratio detect:
-        ```
-          @Component({
-            selector: 'my-component',
-            template: '
-                <p *is1xPixel>I'll show you if I'm a 1x screen.</p>
-                <p *isRetina>I'll show you if I'm a retina screen.</p>
-                <p *is4k>I'll show you if I'm a 4k screen.</p>
-            '
-          })
-        ```
 
         * Get the userAgent info directive:
         - Get the device, browser, os version and more from the user agent navigator in one event object. 
@@ -383,9 +381,11 @@ Description of the object given by the `(info)` event of the directive `user-age
   bot: true | false
 }
 ```
-      
+
 # NEXT STEPS 
-- Refactor to more simple code and easy to maintain. Less specific directives.
+- Work in Unit-test and e2e.
+- Work in a documentation page.
+- ngx-responsive compatible with angular universal.
 - Work in demo page
 - Directive css classes:
 ```
@@ -395,13 +395,7 @@ Description of the object given by the `(info)` event of the directive `user-age
         }"></h1>
 
 ```
-- Webp images browser compatibility: 
-```
-<img *webp="{webp:image.webp, not:image.jpg", lazyload:true}  alt="awesome directive">
-```
-
 - animations show/hide in directives
-- Expose changes in directives like a service.
 
 # Contributors
  * ManuCutillas 
@@ -416,5 +410,7 @@ Description of the object given by the `(info)` event of the directive `user-age
 # License
 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+
+
 
 

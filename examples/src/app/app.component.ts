@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this._unsubscribe();
     this.ieInfoRx.disconnect();
-    this.browserInfoRx.connect();
+    this.browserInfoRx.disconnect();
     this.devicesInfoRx.disconnect();
     this.devicesStandardInfoRx.disconnect();
     this.orientationInfoRx.disconnect();

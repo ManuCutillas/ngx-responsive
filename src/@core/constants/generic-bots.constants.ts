@@ -2,7 +2,6 @@
  * @name generic-bots.constants
  * @description Core generic-bots.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { IBot } from '../interfaces';

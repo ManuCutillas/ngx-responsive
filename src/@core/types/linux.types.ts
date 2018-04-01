@@ -1,7 +1,6 @@
 /**
  * @name linux.types
  * @description Linux types in ngx-responsive
- * @author Manu Cutillas
  * @license MIT
  */
 

@@ -2,7 +2,6 @@
  * @name linux.constants
  * @description Core linux.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { ILinuxOS } from '../interfaces';

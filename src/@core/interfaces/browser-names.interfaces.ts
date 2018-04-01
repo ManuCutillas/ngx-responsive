@@ -2,7 +2,6 @@
  * @name browser-names.interfaces
  * @description Browser names interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import {

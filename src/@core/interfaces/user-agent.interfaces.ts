@@ -2,7 +2,6 @@
  * @name user-agent.interfaces
  * @description Core user agent interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

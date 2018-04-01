@@ -2,7 +2,6 @@
  * @name custom-sizes.directives
  * @description Custom sizes directives in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Directive, Input, TemplateRef, ViewContainerRef, ChangeDetectorRef } from '@angular/core';

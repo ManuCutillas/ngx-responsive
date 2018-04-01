@@ -2,7 +2,6 @@
  * @name bot.types
  * @description Bot types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

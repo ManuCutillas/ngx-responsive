@@ -2,7 +2,6 @@
  * @name mobile.interfaces
  * @description Core mobile interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

@@ -2,7 +2,6 @@
  * @name orientation-info.rx
  * @description Orientation reactive service in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Injectable } from '@angular/core';

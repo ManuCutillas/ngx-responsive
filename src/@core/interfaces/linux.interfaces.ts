@@ -2,7 +2,6 @@
  * @name linux.interfaces
  * @description Core linux interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

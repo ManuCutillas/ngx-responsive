@@ -2,7 +2,6 @@
  * @name tablet.constants
  * @description Core tablet.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { ITablet } from '../interfaces';

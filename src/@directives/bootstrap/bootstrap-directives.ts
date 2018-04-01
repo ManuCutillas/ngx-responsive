@@ -2,7 +2,6 @@
  *  @name bootstrap.directives
  *  @description bootstrap directives
  *  @license MIT
- *  @author Manu cutillas
  */
 import { Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';

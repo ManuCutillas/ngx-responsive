@@ -2,7 +2,6 @@
  * @name orientation-info
  * @description Orientation abstract class in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Subscription } from 'rxjs/Subscription';

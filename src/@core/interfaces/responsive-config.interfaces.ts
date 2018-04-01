@@ -2,7 +2,6 @@
  * @name responsive-config.interfaces
  * @description Core responsive-config interface in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 export interface IResponsiveConfig {

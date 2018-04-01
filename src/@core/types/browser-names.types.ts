@@ -2,7 +2,6 @@
  * @name browser-names.types
  * @description Browser names types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

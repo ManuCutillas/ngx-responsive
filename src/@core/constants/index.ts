@@ -2,7 +2,6 @@
  * @name constants
  * @description Core constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 export * from './linux.constants';

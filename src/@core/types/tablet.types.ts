@@ -2,7 +2,6 @@
  * @name tablet.types
  * @description Tablet types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { TAndroid, TWindowsPhone } from './mobile.types';

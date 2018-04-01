@@ -2,7 +2,6 @@
  * @name ie-versions.interfaces
  * @description IE versions interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import {

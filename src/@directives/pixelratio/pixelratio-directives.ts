@@ -2,7 +2,6 @@
  * @name pixelratio.directives
  * @description pixelratio directives in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Directive, Input, Output, EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';

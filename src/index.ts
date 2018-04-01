@@ -3,6 +3,17 @@
  * @description Devices Detect Directives for Angular
  * @author Manu Cutillas
  *
+ * ```
+ * #Contributors
+ *  - Christophe HOARAU
+ *  - Kamil Breguła
+ *  - Janne Julkunen
+ *  - phransyz
+ *  - Michael Burger
+ *  - Alyssa Brunswick
+ *  - Quentin
+ *
+ * ```
  * @created_at May 04, 2016
  * @updated_at March 16, 2018
  * @version v5.0.0-beta

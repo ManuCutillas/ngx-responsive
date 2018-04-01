@@ -2,7 +2,6 @@
  * @name os-systems.types
  * @description Os systems types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

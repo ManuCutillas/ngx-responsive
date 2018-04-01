@@ -2,7 +2,6 @@
  * @name windows.constants
  * @description Core windows.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { IWindowsOS } from '../interfaces';

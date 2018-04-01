@@ -1,10 +1,7 @@
-
-
 /**
  * @name mobile.constants
  * @description Core mobile.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { IMobile } from '../interfaces';

@@ -2,7 +2,6 @@
  * @name useragent-info.directive
  * @description Useragent info directive in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Output, EventEmitter, Directive, OnInit, OnDestroy, ChangeDetectorRef} from '@angular/core';

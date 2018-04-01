@@ -3,7 +3,6 @@
  * @name browser-info.directive
  * @description Browser info directive in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { EventEmitter, Directive, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';

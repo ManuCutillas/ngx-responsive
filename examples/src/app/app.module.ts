@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, InjectionToken } from '@angular/core';
-import { ResponsiveModule, ResponsiveConfig } from 'ngx-responsive';
+import { ResponsiveModule, IResponsiveConfig } from 'ngx-responsive';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 
-const config = {
+const config: IResponsiveConfig = {
   breakPoints: {
     xs: { max: 600 },
     sm: { min: 601, max: 959 },

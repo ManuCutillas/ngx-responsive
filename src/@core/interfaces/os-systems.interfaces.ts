@@ -2,7 +2,6 @@
  * @name os-systems.interfaces
  * @description Core os systems interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

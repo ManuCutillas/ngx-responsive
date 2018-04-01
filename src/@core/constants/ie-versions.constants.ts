@@ -2,7 +2,6 @@
  * @name ie-versions.constants
  * @description Core ie versions constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { IIEVersions } from '../interfaces';

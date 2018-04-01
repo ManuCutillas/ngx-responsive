@@ -2,7 +2,6 @@
  * @name game-devices.types
  * @description Game devices types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

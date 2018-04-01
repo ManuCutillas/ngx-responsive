@@ -2,7 +2,6 @@
  * @name os-sistems.constants
  * @description Core os-sistems.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { IOsSistems } from '../interfaces';

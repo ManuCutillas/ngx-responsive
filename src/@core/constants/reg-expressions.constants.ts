@@ -2,7 +2,6 @@
  * @name reg-expressions.constants
  * @description Core reg-expressions.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

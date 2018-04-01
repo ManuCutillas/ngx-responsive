@@ -2,7 +2,6 @@
  * @name smart-tv.constants
  * @description Core smart-tv.constants in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { ISmartTv } from '../interfaces';

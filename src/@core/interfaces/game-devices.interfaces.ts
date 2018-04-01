@@ -2,7 +2,6 @@
  * @name game-devices.interfaces
  * @description Game devices interfaces in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import {

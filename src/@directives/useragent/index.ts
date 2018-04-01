@@ -2,7 +2,6 @@
  * @name useragent
  * @description Useragent in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { Provider } from '@angular/core';

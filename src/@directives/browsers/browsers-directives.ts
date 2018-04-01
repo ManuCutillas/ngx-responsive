@@ -2,7 +2,6 @@
  * @name browser-directives
  * @description Browser directives in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';

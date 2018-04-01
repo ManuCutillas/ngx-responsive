@@ -2,7 +2,6 @@
  * @name smart-tv.types
  * @description Smart tv types in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 import { TPs4, TXboxOne } from './game-devices.types';

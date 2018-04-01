@@ -2,7 +2,6 @@
  * @name directives
  * @description Directives in ngx-responsive
  *
- * @author Manu Cutillas
  * @license MIT
  */
 

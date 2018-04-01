@@ -2,7 +2,7 @@
  * @name devices-standard-info.rx
  * @description devices-standard reactive service in ngx-responsive
  *
- * @author Manu Cutillas
+ * 
  * @license MIT
  */
 import { Injectable } from '@angular/core';
