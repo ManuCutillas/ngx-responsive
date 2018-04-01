@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^5.2.9",
     "@angular/router": "^5.2.9",
     "core-js": "^2.4.1",
-    "ngx-responsive": "^5.0.2-beta",
+    "ngx-responsive": "^5.0.3",
     "rxjs": "^5.5.8",
     "zone.js": "^0.8.22"
   },
