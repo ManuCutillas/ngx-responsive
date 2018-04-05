@@ -7,7 +7,7 @@
 import { Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, OnDestroy, ChangeDetectorRef  } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../@core';
-import { ResponsiveState } from '../../@core';
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 
 @Directive(
 {

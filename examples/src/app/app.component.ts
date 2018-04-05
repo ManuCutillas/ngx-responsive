@@ -21,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public responsiveSizeInfoRx: ResponsiveSizeInfoRx,
     public userAgentInfoRx: UserAgentInfoRx
   ) {}
+  public title = 'Hello NGX-RESPONSIVE';
   public ngOnInit(): void {
     this._subscribe();
     this.ieInfoRx.connect();

@@ -7,7 +7,7 @@
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../interfaces';
-import { ResponsiveState } from '../responsive-state';
+import { ResponsiveState } from '../responsive-state/responsive-state';
 
 export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
 

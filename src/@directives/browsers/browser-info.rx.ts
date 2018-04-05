@@ -5,7 +5,7 @@
  * @license MIT
  */
 import { Injectable} from '@angular/core';
-import { ResponsiveState } from '../../@core';
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { BrowserInfo } from './browser-info';
 
 @Injectable()

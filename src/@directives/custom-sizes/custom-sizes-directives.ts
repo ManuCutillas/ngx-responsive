@@ -5,8 +5,8 @@
  * @license MIT
  */
 import { Directive, Input, TemplateRef, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
-import { RESPONSIVE_BASE, ResponsiveState } from '../../@core';
-
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
+import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
 @Directive(
 {
     selector: '[showItSizes]'

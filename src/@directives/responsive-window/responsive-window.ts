@@ -5,7 +5,7 @@
  * @license MIT
  */
 import { DoCheck, Directive, Input, ElementRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { ResponsiveState } from '../../@core';
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 
 @Directive({
     selector: "[responsive-window]"

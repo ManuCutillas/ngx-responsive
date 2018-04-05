@@ -6,7 +6,8 @@
  * @license MIT
  */
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { ResponsiveConfig, ResponsiveState } from './@core/index';
+import { ResponsiveState } from './@core/providers/responsive-state/responsive-state';
+import { ResponsiveConfig } from './@core/providers/responsive-config/responsive-config';
 import {
     BOOTSTRAP_DIRECTIVES, BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX,
     CUSTOMSIZES_DIRECTIVES, DEVICES_DIRECTIVES, PIXELRATIO_DIRECTIVES, RESPONSIVE_DIRECTIVE,
@@ -52,7 +53,7 @@ import { IResponsiveConfig } from './@core';
     ]
 })
 export class ResponsiveModule {
-    static forRoot(config: IResponsiveConfig): ModuleWithProviders {
+    public static forRoot(config: IResponsiveConfig = null): ModuleWithProviders {
         let _config = {
             breakPoints: {
                 xs: { max: 767 },
@@ -68,7 +69,7 @@ export class ResponsiveModule {
         }
         return {
           ngModule: ResponsiveModule,
-          providers: [ResponsiveConfig, {provide: 'config', useValue: _config}]
+          providers: [ ResponsiveConfig, {provide: 'config', useValue: _config}]
         };
       }
 }

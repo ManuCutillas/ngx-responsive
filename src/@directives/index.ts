@@ -12,5 +12,7 @@ export * from './devices/index';
 export * from './pixelratio/index';
 export * from './responsive/index';
 export * from './responsive-size-info/index';
+export * from './responsive-size-info/index';
+export * from './responsive-size-info/index';
 export * from './responsive-window/index';
 export * from './useragent/index';

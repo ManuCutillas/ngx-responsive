@@ -7,7 +7,7 @@
 import { Subscription } from 'rxjs/Subscription';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
-import { ResponsiveState } from '../../@core';
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 export abstract class IeInfo {

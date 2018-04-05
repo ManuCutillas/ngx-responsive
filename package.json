@@ -7,7 +7,10 @@
     "start": "ng serve --aot",
     "build": "ng-packagr -p ng-package.json",
     "compodoc": "compodoc -p tsconfig.json",
-    "compodoc:serve": "compodoc -s"
+    "compodoc:serve": "compodoc -s",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "typings": "./index.d.ts",
   "repository": {
@@ -83,10 +86,11 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-sourcemap-loader": "0.3.7",
     "karma-spec-reporter": "0.0.31",
+    "karma-typescript": "^3.0.12",
+    "karma-typescript-angular2-transform": "^1.0.2",
     "karma-webpack": "2.0.5",
     "ng-packagr": "^2.4.1",
     "protractor": "~5.3.0",
-    "tslib": "^1.9.0",
     "reflect-metadata": "0.1.12",
     "rollup": "0.57.1",
     "rollup-plugin-license": "0.6.0",
@@ -98,6 +102,7 @@
     "ts-loader": "4.1.0",
     "ts-node": "~3.3.0",
     "tsickle": "^0.27.2",
+    "tslib": "^1.9.0",
     "tslint": "~5.9.1",
     "tslint-angular": "1.1.1",
     "typescript": "^2.6.2",

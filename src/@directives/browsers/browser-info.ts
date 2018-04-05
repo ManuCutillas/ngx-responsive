@@ -6,7 +6,7 @@
  */
 import { Subscription } from 'rxjs/Subscription';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { ResponsiveState } from '../../@core';
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { Observable } from 'rxjs/Observable';
 import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class BrowserInfo {

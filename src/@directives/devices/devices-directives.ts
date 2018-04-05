@@ -6,8 +6,8 @@
  */
 import { Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { RESPONSIVE_BASE, ResponsiveState } from '../../@core';
-
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
+import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
 @Directive({
     selector: '[isSmartTv]'
 })

@@ -6,7 +6,7 @@
  */
 import { EventEmitter, Directive, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ResponsiveState } from '../../@core';
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { DeviceStandardInfo } from './devices-standard-info';
 
 @Directive({ selector: 'device-standard-info' })

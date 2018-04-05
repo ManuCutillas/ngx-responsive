@@ -24,7 +24,7 @@ import {
     TosSystems, TSmartTv, TGameDevices, TBrowserNames,
     TIE_VERSIONS
 } from '../../types';
-import { ResponsiveConfig } from '../responsive-config';
+import { ResponsiveConfig } from '../responsive-config/responsive-config';
 
 @Injectable()
 export class ResponsiveState {
