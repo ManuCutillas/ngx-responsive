@@ -1,6 +1,6 @@
 {
   "name": "ngx-responsive",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 5",
   "main": "src/index.ts",
   "scripts": {
