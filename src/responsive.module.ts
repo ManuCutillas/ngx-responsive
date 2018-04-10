@@ -5,17 +5,21 @@
  * @author Manu Cutillas
  * @license MIT
  */
+
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { ResponsiveState } from './@core/providers/responsive-state/responsive-state';
 import { ResponsiveConfig } from './@core/providers/responsive-config/responsive-config';
 import { InjectionToken } from '@angular/core';
-import {
-    BOOTSTRAP_DIRECTIVES, BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX,
-    CUSTOMSIZES_DIRECTIVES, DEVICES_DIRECTIVES, PIXELRATIO_DIRECTIVES, RESPONSIVE_DIRECTIVE,
-    RESPONSIVEWINDOW_DIRECTIVE, USERAGENT_INFO_DIRECTIVE, USERAGENT_INFO_RX, RESPONSIVE_SIZE_INFO_DIRECTIVE,
-    RESPONSIVE_SIZE_INFO_RX, DEVICES_INFO_RX
-} from './@directives/index';
-import { IResponsiveConfig } from './@core';
+import { BOOTSTRAP_DIRECTIVES } from './@directives/bootstrap/index';
+import { BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX } from './@directives/browsers/index';
+import { CUSTOMSIZES_DIRECTIVES } from './@directives/custom-sizes/index';
+import { DEVICES_DIRECTIVES, DEVICES_INFO_RX } from './@directives/devices/index';
+import { PIXELRATIO_DIRECTIVES } from './@directives/pixelratio/index';
+import { RESPONSIVE_DIRECTIVE } from './@directives/responsive/index';
+import { RESPONSIVE_SIZE_INFO_DIRECTIVE, RESPONSIVE_SIZE_INFO_RX } from './@directives/responsive-size-info/index';
+import { RESPONSIVEWINDOW_DIRECTIVE } from './@directives/responsive-window/index';
+import { USERAGENT_INFO_DIRECTIVE, USERAGENT_INFO_RX } from './@directives/useragent/index';
+import { IResponsiveConfig } from './@core/interfaces/responsive-config.interfaces';
 
 export const RESPONSIVE_CONFIGURATION = new InjectionToken<IResponsiveConfig>('config');
 
@@ -76,13 +80,16 @@ export class ResponsiveModule {
         return {
             ngModule: ResponsiveModule,
             providers: [{
-                provide: RESPONSIVE_CONFIGURATION,
-                useValue: _config
+                provide: ResponsiveConfig,
+                useFactory: responsiveConfiguration,
+                deps:[RESPONSIVE_CONFIGURATION]
             },
             {
-                provide: ResponsiveConfig,
-                useFactory: responsiveConfiguration
+                provide: RESPONSIVE_CONFIGURATION,
+                useValue: _config
             }]
         };
     }
 }
+
+
