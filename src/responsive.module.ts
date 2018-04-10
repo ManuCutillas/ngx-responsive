@@ -8,7 +8,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { ResponsiveState } from './@core/providers/responsive-state/responsive-state';
 import { ResponsiveConfig } from './@core/providers/responsive-config/responsive-config';
-import { InjectionToken } from '@angular/core/src/di/injection_token';
+import { InjectionToken } from '@angular/core';
 import {
     BOOTSTRAP_DIRECTIVES, BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX,
     CUSTOMSIZES_DIRECTIVES, DEVICES_DIRECTIVES, PIXELRATIO_DIRECTIVES, RESPONSIVE_DIRECTIVE,
