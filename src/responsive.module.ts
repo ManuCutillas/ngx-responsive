@@ -8,6 +8,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { ResponsiveState } from './@core/providers/responsive-state/responsive-state';
 import { ResponsiveConfig } from './@core/providers/responsive-config/responsive-config';
+import { InjectionToken } from '@angular/core/src/di/injection_token';
 import {
     BOOTSTRAP_DIRECTIVES, BROWSER_DIRECTIVES, BROWSER_INFO_RX, IE_INFO_RX,
     CUSTOMSIZES_DIRECTIVES, DEVICES_DIRECTIVES, PIXELRATIO_DIRECTIVES, RESPONSIVE_DIRECTIVE,
@@ -16,41 +17,46 @@ import {
 } from './@directives/index';
 import { IResponsiveConfig } from './@core';
 
+export const RESPONSIVE_CONFIGURATION = new InjectionToken<IResponsiveConfig>('config');
+
+export function responsiveConfiguration(config: IResponsiveConfig) {
+    return new ResponsiveConfig(config);
+}
 @NgModule({
     declarations:
-    [
-        BOOTSTRAP_DIRECTIVES,
-        BROWSER_DIRECTIVES,
-        CUSTOMSIZES_DIRECTIVES,
-        DEVICES_DIRECTIVES,
-        PIXELRATIO_DIRECTIVES,
-        RESPONSIVE_DIRECTIVE,
-        RESPONSIVEWINDOW_DIRECTIVE,
-        USERAGENT_INFO_DIRECTIVE,
-        RESPONSIVE_SIZE_INFO_DIRECTIVE
-    ],
+        [
+            BOOTSTRAP_DIRECTIVES,
+            BROWSER_DIRECTIVES,
+            CUSTOMSIZES_DIRECTIVES,
+            DEVICES_DIRECTIVES,
+            PIXELRATIO_DIRECTIVES,
+            RESPONSIVE_DIRECTIVE,
+            RESPONSIVEWINDOW_DIRECTIVE,
+            USERAGENT_INFO_DIRECTIVE,
+            RESPONSIVE_SIZE_INFO_DIRECTIVE
+        ],
     exports:
-    [
-        BOOTSTRAP_DIRECTIVES,
-        BROWSER_DIRECTIVES,
-        CUSTOMSIZES_DIRECTIVES,
-        DEVICES_DIRECTIVES,
-        PIXELRATIO_DIRECTIVES,
-        RESPONSIVE_DIRECTIVE,
-        RESPONSIVEWINDOW_DIRECTIVE,
-        USERAGENT_INFO_DIRECTIVE,
-        RESPONSIVE_SIZE_INFO_DIRECTIVE
-    ],
+        [
+            BOOTSTRAP_DIRECTIVES,
+            BROWSER_DIRECTIVES,
+            CUSTOMSIZES_DIRECTIVES,
+            DEVICES_DIRECTIVES,
+            PIXELRATIO_DIRECTIVES,
+            RESPONSIVE_DIRECTIVE,
+            RESPONSIVEWINDOW_DIRECTIVE,
+            USERAGENT_INFO_DIRECTIVE,
+            RESPONSIVE_SIZE_INFO_DIRECTIVE
+        ],
     providers:
-    [
-        ResponsiveState,
-        ResponsiveConfig,
-        RESPONSIVE_SIZE_INFO_RX,
-        USERAGENT_INFO_RX,
-        BROWSER_INFO_RX,
-        IE_INFO_RX,
-        DEVICES_INFO_RX
-    ]
+        [
+            ResponsiveState,
+            ResponsiveConfig,
+            RESPONSIVE_SIZE_INFO_RX,
+            USERAGENT_INFO_RX,
+            BROWSER_INFO_RX,
+            IE_INFO_RX,
+            DEVICES_INFO_RX
+        ]
 })
 export class ResponsiveModule {
     public static forRoot(config: IResponsiveConfig = null): ModuleWithProviders {
@@ -68,8 +74,15 @@ export class ResponsiveModule {
             _config = config;
         }
         return {
-          ngModule: ResponsiveModule,
-          providers: [ ResponsiveConfig, {provide: 'config', useValue: _config}]
+            ngModule: ResponsiveModule,
+            providers: [{
+                provide: RESPONSIVE_CONFIGURATION,
+                useValue: _config
+            },
+            {
+                provide: ResponsiveConfig,
+                useFactory: responsiveConfiguration
+            }]
         };
-      }
+    }
 }
