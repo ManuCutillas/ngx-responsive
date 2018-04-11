@@ -62,7 +62,7 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
     ...
     @NgModule({
         imports: [
-          ResponsiveModule
+          ResponsiveModule.forRoot()
         ],
         declarations: [
           AppComponent

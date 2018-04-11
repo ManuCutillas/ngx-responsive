@@ -64,29 +64,24 @@ export function responsiveConfiguration(config: IResponsiveConfig) {
 })
 export class ResponsiveModule {
     public static forRoot(config: IResponsiveConfig = null): ModuleWithProviders {
-        let _config = {
-            breakPoints: {
-                xs: { max: 767 },
-                sm: { min: 768, max: 991 },
-                md: { min: 992, max: 1199 },
-                lg: { min: 1200, max: 1599 },
-                xl: { min: 1600 }
-            },
-            debounceTime: 100
-        };
-        if (!!config) {
-            _config = config;
-        }
         return {
             ngModule: ResponsiveModule,
-            providers: [{
+            providers: [            {
+                provide: RESPONSIVE_CONFIGURATION,
+                useValue: (config !== null) ? config : {
+                    breakPoints: {
+                        xs: { max: 767 },
+                        sm: { min: 768, max: 991 },
+                        md: { min: 992, max: 1199 },
+                        lg: { min: 1200, max: 1599 },
+                        xl: { min: 1600 }
+                    },
+                    debounceTime: 100
+                } 
+            },{
                 provide: ResponsiveConfig,
                 useFactory: responsiveConfiguration,
                 deps:[RESPONSIVE_CONFIGURATION]
-            },
-            {
-                provide: RESPONSIVE_CONFIGURATION,
-                useValue: _config
             }]
         };
     }
