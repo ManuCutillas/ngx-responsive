@@ -5,6 +5,8 @@
  * @license MIT
  */
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../interfaces';
 import { ResponsiveState } from '../responsive-state/responsive-state';
@@ -37,13 +39,17 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
         ie: false,
         sizes: false
     };
+    private _isBrowser: any = null;
 
     constructor(
         private templateRef: TemplateRef<any>,
         private viewContainer: ViewContainerRef,
         private _responsiveState: ResponsiveState,
-        private cd: ChangeDetectorRef
-        ) {}
+        private cd: ChangeDetectorRef,
+        @Inject(PLATFORM_ID) protected readonly _platformId
+        ) {
+            this._isBrowser = isPlatformBrowser(this._platformId);
+        }
 
     protected eventChanges: EventEmitter<any> = new EventEmitter();
     protected setGrid(grid_state: any, directive: string): void {
@@ -155,18 +161,20 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     }
 
     private showHide( show: boolean ): void {
-        if (show) {
-            if ( this._noRepeat === 0 ) {
-                this._noRepeat = 1;
-                this.eventChanges.emit( true );
-                this.viewContainer.createEmbeddedView( this.templateRef );
+        if(this._isBrowser) {
+            if (show) {
+                if ( this._noRepeat === 0 ) {
+                    this._noRepeat = 1;
+                    this.eventChanges.emit( true );
+                    this.viewContainer.createEmbeddedView( this.templateRef );
+                    this.cd.markForCheck();
+                }
+            } else {
+                this._noRepeat = 0;
+                this.eventChanges.emit( false );
+                this.viewContainer.clear();
                 this.cd.markForCheck();
             }
-        } else {
-            this._noRepeat = 0;
-            this.eventChanges.emit( false );
-            this.viewContainer.clear();
-            this.cd.markForCheck();
         }
     }
 
