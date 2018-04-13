@@ -58,6 +58,8 @@ export class ResponsiveState {
         this._screenWidth = (this._isBrowser) ? this._window.screen.width : 0;
         this._screenHeight = (this._isBrowser) ? this._window.screen.height : 0;
         this._userAgent = (this._isBrowser) ? this._window.navigator.userAgent.toLowerCase() : null;
+        if(this._isBrowser) {
+
         const _resize$ = fromEvent(this._window, 'resize')
             .pipe(
             debounceTime(this._responsiveConfig.config.debounceTime),
@@ -98,6 +100,7 @@ export class ResponsiveState {
         this.standard$ = _device$.pipe(map(this.standardDevices.bind(this)));
         this.ieVersion$ = _device$.pipe(map(this.ieVersionDetect.bind(this)));
         this.userAgent$ = _userAgent$.pipe(map(this.userAgentData.bind(this)));
+        }
     }
 
     /**

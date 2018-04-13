@@ -4,6 +4,8 @@
  *
  * @license MIT
  */
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
@@ -11,17 +13,26 @@ import { Observable } from 'rxjs/Observable';
 import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class UserAgentInfo {
     public replaySubject$: ReplaySubject<any> = new ReplaySubject();
+    private _isBrowser: boolean = null;
     private _subscription: Subscription;
-    constructor(public _responsiveState: ResponsiveState) {}
+    constructor(public _responsiveState: ResponsiveState,
+        @Inject(PLATFORM_ID) protected _platformId
+    ) {
+        this._isBrowser = isPlatformBrowser(this._platformId);
+    }
     public connect(): Observable<any> {
-        this._subscription = this._responsiveState.userAgent$.pipe(distinctUntilChanged())
-        .subscribe((data) => {
-            this._emitUserAgent(data);
-        });
+        if (this._isBrowser) {
+            this._subscription = this._responsiveState.userAgent$.pipe(distinctUntilChanged())
+                .subscribe((data) => {
+                    this._emitUserAgent(data);
+            });
+        }
         return this.replaySubject$.asObservable();
     }
     public disconnect(): void {
-        this._subscription.unsubscribe();
+        if (this._isBrowser) {
+            this._subscription.unsubscribe();
+        }
     }
     get getUserAgent(): Observable<any> {
         return this.replaySubject$.asObservable();

@@ -4,6 +4,8 @@
  *
  * @license MIT
  */
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
@@ -13,17 +15,26 @@ import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class OrientationInfo {
     public currentstate: string;
     private _subscription: Subscription;
+    private _isBrowser: boolean = null;
     public replaySubject$: ReplaySubject<any> = new ReplaySubject();
-    constructor(protected _responsiveState: ResponsiveState) { }
+    constructor(protected _responsiveState: ResponsiveState,
+        @Inject(PLATFORM_ID) protected _platformId
+    ) {
+        this._isBrowser = isPlatformBrowser(this._platformId);
+    }
     public connect(): Observable<any> {
-        this._subscription = this._responsiveState.orientation$.pipe(distinctUntilChanged())
-        .subscribe((data) => {
-            this._updateData(data);
-        });
+        if (this._isBrowser) {
+            this._subscription = this._responsiveState.orientation$.pipe(distinctUntilChanged())
+            .subscribe((data) => {
+                this._updateData(data);
+            });
+        }
         return this.replaySubject$.asObservable();
     }
     public disconnect(): void {
-        this._subscription.unsubscribe();
+        if (this._isBrowser) {
+            this._subscription.unsubscribe();
+        }
     }
     get getOrientation(): Observable<any> {
         return this.replaySubject$.asObservable();

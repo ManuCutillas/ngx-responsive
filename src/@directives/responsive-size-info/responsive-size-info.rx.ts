@@ -5,13 +5,14 @@
  * @license MIT
  */
 import { Injectable } from '@angular/core';
-import { ViewContainerRef } from '@angular/core';
+import { PLATFORM_ID, Inject } from '@angular/core';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { ResponsiveSizeInfo } from './responsive-size-info';
 
 @Injectable()
 export class ResponsiveSizeInfoRx extends ResponsiveSizeInfo {
-    constructor(public _responsiveState: ResponsiveState) {
-            super(_responsiveState);
-        }
+    constructor( 
+        public _responsiveState: ResponsiveState,
+        @Inject(PLATFORM_ID) protected _platformId
+    ) { super(_responsiveState, _platformId); }
 }
