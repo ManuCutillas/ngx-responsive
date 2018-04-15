@@ -4,7 +4,6 @@
  *
  * @license MIT
  */
-import { TemplateRef, ViewContainerRef } from '@angular/core';
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';

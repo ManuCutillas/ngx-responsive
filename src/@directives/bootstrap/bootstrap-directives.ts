@@ -3,9 +3,8 @@
  *  @description bootstrap directives
  *  @license MIT
  */
-import { Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
 import { PLATFORM_ID, Inject } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
 @Directive({

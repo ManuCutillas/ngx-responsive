@@ -8,7 +8,7 @@ import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeD
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
-import { IResponsivePattern, IResponsiveSubscriptions } from '../../interfaces';
+import { IResponsiveSubscriptions } from '../../interfaces';
 import { ResponsiveState } from '../responsive-state/responsive-state';
 
 export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {

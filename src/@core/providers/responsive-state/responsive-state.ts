@@ -4,7 +4,7 @@
  *
  * @license MIT
  */
-import { Injectable, Optional, PLATFORM_ID, Inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { fromEvent } from 'rxjs/observable/fromEvent';
@@ -16,14 +16,12 @@ import { ResponsiveWindowDirective } from '../../../@directives';
 import {
     REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES,
     REG_GAME_DEVICES, REG_BOTS, REG_OS, REG_WINDOWS_OS_VERSION, REG_LINUX_OS,
-    USER_AGENT, REG_IE_VERSIONS, TABLET, OS_SYSTEMS, WINDOWS_OS, LINUX_OS, MOBILE,
+    USER_AGENT, REG_IE_VERSIONS, TABLET, WINDOWS_OS, LINUX_OS, MOBILE,
     IE_VERSIONS
 } from '../../constants';
-import { IResponsiveConfig, IUserAgent } from '../../interfaces';
 import {
     TLinuxOS, TWindowsOS, TTablet, TMobile,
-    TosSystems, TSmartTv, TGameDevices, TBrowserNames,
-    TIE_VERSIONS
+    TosSystems, TSmartTv, TGameDevices
 } from '../../types';
 import { ResponsiveConfig } from '../responsive-config/responsive-config';
 
@@ -262,7 +260,6 @@ export class ResponsiveState {
         if (this._window === null) {
             return USER_AGENT;
         }
-        const _userAgent = this.getUserAgent();
         const DEFAULT_USER_AGENT_VALUE = '';
         const _ieVersionState = (this.ieVersionDetect() !== null);
         const _isGameDevice = this.isGameDevice();

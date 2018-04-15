@@ -4,9 +4,8 @@
  *
  * @license MIT
  */
-import { EventEmitter, Directive, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { EventEmitter, Directive, Output, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { PLATFORM_ID, Inject } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { DevicesInfo } from './devices-info';
 
