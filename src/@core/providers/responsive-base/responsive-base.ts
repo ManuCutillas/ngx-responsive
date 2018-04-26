@@ -5,7 +5,7 @@
  * @license MIT
  */
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../interfaces';
 import { ResponsiveState } from '../responsive-state/responsive-state';
 

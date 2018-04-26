@@ -4,9 +4,9 @@
  *
  * @license MIT
  */
-import { Subscription } from 'rxjs/Subscription';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class DevicesInfo {

@@ -4,10 +4,10 @@
  *
  * @license MIT
  */
-import { Subscription } from 'rxjs/Subscription';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subscription } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 export abstract class BrowserInfo {
     public currentstate: string;

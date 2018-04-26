@@ -5,7 +5,7 @@
  * @license MIT
  */
 import { Injectable, Optional } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';

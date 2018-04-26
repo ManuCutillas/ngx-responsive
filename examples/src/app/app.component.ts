@@ -4,7 +4,7 @@ import {
   UserAgentInfoRx, BrowserInfoRx
 } from 'ngx-responsive';
 import { OnInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
