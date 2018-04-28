@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^5.2.9",
     "@angular/router": "^5.2.9",
     "core-js": "^2.4.1",
-    "ngx-responsive": "^5.0.6",
+    "ngx-responsive": "^5.0.7-universal-beta",
     "rxjs": "^5.5.8",
     "zone.js": "^0.8.26"
   },

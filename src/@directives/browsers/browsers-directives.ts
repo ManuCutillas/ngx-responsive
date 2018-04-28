@@ -4,8 +4,8 @@
  *
  * @license MIT
  */
-import { EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Directive, Input, TemplateRef, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
+import { PLATFORM_ID, Inject } from '@angular/core';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
 @Directive(
@@ -22,8 +22,10 @@ export class IsChromeDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -41,8 +43,10 @@ export class IsFirefoxDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -60,8 +64,10 @@ export class IsSafariDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -79,8 +85,10 @@ export class IsOperaDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -98,8 +106,10 @@ export class IsIEDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -116,8 +126,10 @@ export class ShowItBrowserDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -134,8 +146,10 @@ export class HideItBrowserDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -153,8 +167,10 @@ export class IsIE9Directive extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -172,8 +188,10 @@ export class IsIE10Directive extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -191,8 +209,10 @@ export class IsIE11Directive extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -210,8 +230,10 @@ export class IsIE12Directive extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -228,8 +250,10 @@ export class ShowIEVersionDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -246,8 +270,10 @@ export class HideIEVersionDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 

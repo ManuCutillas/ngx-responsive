@@ -5,8 +5,10 @@
  * @license MIT
  */
 import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
-import { IResponsivePattern, IResponsiveSubscriptions } from '../../interfaces';
+import { IResponsiveSubscriptions } from '../../interfaces';
 import { ResponsiveState } from '../responsive-state/responsive-state';
 
 export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
@@ -37,17 +39,21 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
         ie: false,
         sizes: false
     };
+    private _isBrowser: any = null;
 
     constructor(
         private templateRef: TemplateRef<any>,
         private viewContainer: ViewContainerRef,
         private _responsiveState: ResponsiveState,
-        private cd: ChangeDetectorRef
-        ) {}
+        private cd: ChangeDetectorRef,
+        @Inject(PLATFORM_ID) protected readonly _platformId
+    ) {
+        this._isBrowser = isPlatformBrowser(this._platformId);
+    }
 
     protected eventChanges: EventEmitter<any> = new EventEmitter();
     protected setGrid(grid_state: any, directive: string): void {
-        switch ( directive ) {
+        switch (directive) {
             case 'bootstrap':
                 this.set_active_subscriptions.bootstrap = true;
                 break;
@@ -56,7 +62,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
                 break;
             case 'standard':
                 this.set_active_subscriptions.standard = true;
-                    break;
+                break;
             case 'orientation':
                 this.set_active_subscriptions.orientation = true;
                 break;
@@ -77,107 +83,112 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
         if (directive === 'sizes') {
             this._sizes_grid_state = grid_state;
         } else {
-            this._others_grid_state = <string[]> ( Array.isArray( grid_state ) ? grid_state : [ grid_state ] );
+            this._others_grid_state = <string[]>(Array.isArray(grid_state) ? grid_state : [grid_state]);
         }
         this._directive = directive;
     }
 
     public ngOnInit() {
+        if (this._isBrowser) {
+            if (this.set_active_subscriptions.bootstrap) {
+                this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(this.updateView.bind(this));
+            }
 
-        if ( this.set_active_subscriptions.bootstrap ) {
-            this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe( this.updateView.bind( this ));
-        }
+            if (this.set_active_subscriptions.bootstrap) {
+                this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(this.updateView.bind(this));
+            }
 
-        if ( this.set_active_subscriptions.bootstrap ) {
-            this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(this.updateView.bind( this ) );
-        }
+            if (this.set_active_subscriptions.browser) {
+                this._subscription_Browser = this._responsiveState.browser$.subscribe(this.updateView.bind(this));
+            }
+            if (this.set_active_subscriptions.device) {
+                this._subscription_Device = this._responsiveState.device$.subscribe(this.updateView.bind(this));
+            }
 
-        if ( this.set_active_subscriptions.browser ) {
-            this._subscription_Browser = this._responsiveState.browser$.subscribe(this.updateView.bind( this ));
-        }
-        if ( this.set_active_subscriptions.device ) {
-            this._subscription_Device = this._responsiveState.device$.subscribe( this.updateView.bind( this ));
-        }
+            if (this.set_active_subscriptions.pixelratio) {
+                this._subscription_Pixel_Ratio = this._responsiveState.pixel$.subscribe(this.updateView.bind(this));
+            }
 
-        if ( this.set_active_subscriptions.pixelratio ) {
-            this._subscription_Pixel_Ratio = this._responsiveState.pixel$.subscribe(this.updateView.bind( this ) );
-        }
+            if (this.set_active_subscriptions.orientation) {
+                this._subscription_Orientation = this._responsiveState.orientation$.subscribe(this.updateView.bind(this));
+            }
 
-        if ( this.set_active_subscriptions.orientation ) {
-            this._subscription_Orientation = this._responsiveState.orientation$.subscribe( this.updateView.bind( this ));
-        }
+            if (this.set_active_subscriptions.standard) {
+                this._subscription_Standard = this._responsiveState.standard$.subscribe(this.updateView.bind(this));
+            }
 
-        if ( this.set_active_subscriptions.standard ) {
-            this._subscription_Standard = this._responsiveState.standard$.subscribe(this.updateView.bind( this ));
-        }
+            if (this.set_active_subscriptions.ie) {
+                this._subscription_IE_Version = this._responsiveState.ieVersion$.subscribe(this.updateView.bind(this));
+            }
 
-        if ( this.set_active_subscriptions.ie ) {
-            this._subscription_IE_Version = this._responsiveState.ieVersion$.subscribe(this.updateView.bind( this ));
-        }
-
-        if (this.set_active_subscriptions.sizes ) {
-            this._subscription_custom_sizes = this._responsiveState.ancho$.subscribe(this.updateView.bind( this ));
+            if (this.set_active_subscriptions.sizes) {
+                this._subscription_custom_sizes = this._responsiveState.ancho$.subscribe(this.updateView.bind(this));
+            }
         }
     }
 
     public ngOnDestroy() {
-        if ( this.set_active_subscriptions.bootstrap ) {
-            this._subscription_Bootstrap.unsubscribe();
-        }
+        if (this._isBrowser) {
+            if (this.set_active_subscriptions.bootstrap) {
+                this._subscription_Bootstrap.unsubscribe();
+            }
 
-        if ( this.set_active_subscriptions.browser ) {
-            this._subscription_Browser.unsubscribe();
-        }
+            if (this.set_active_subscriptions.browser) {
+                this._subscription_Browser.unsubscribe();
+            }
 
-        if ( this.set_active_subscriptions.device ) {
-            this._subscription_Device.unsubscribe();
-        }
+            if (this.set_active_subscriptions.device) {
+                this._subscription_Device.unsubscribe();
+            }
 
-        if ( this.set_active_subscriptions.pixelratio ) {
-            this._subscription_Pixel_Ratio.unsubscribe();
-        }
+            if (this.set_active_subscriptions.pixelratio) {
+                this._subscription_Pixel_Ratio.unsubscribe();
+            }
 
-        if ( this.set_active_subscriptions.orientation ) {
-            this._subscription_Orientation.unsubscribe();
-        }
+            if (this.set_active_subscriptions.orientation) {
+                this._subscription_Orientation.unsubscribe();
+            }
 
-        if ( this.set_active_subscriptions.standard ) {
-            this._subscription_Standard.unsubscribe();
-        }
+            if (this.set_active_subscriptions.standard) {
+                this._subscription_Standard.unsubscribe();
+            }
 
-        if ( this.set_active_subscriptions.ie ) {
-            this._subscription_IE_Version.unsubscribe();
-        }
+            if (this.set_active_subscriptions.ie) {
+                this._subscription_IE_Version.unsubscribe();
+            }
 
-        if ( this.set_active_subscriptions.sizes ) {
-            this._subscription_custom_sizes.unsubscribe();
+            if (this.set_active_subscriptions.sizes) {
+                this._subscription_custom_sizes.unsubscribe();
+            }
         }
     }
 
-    private showHide( show: boolean ): void {
-        if (show) {
-            if ( this._noRepeat === 0 ) {
-                this._noRepeat = 1;
-                this.eventChanges.emit( true );
-                this.viewContainer.createEmbeddedView( this.templateRef );
+    private showHide(show: boolean): void {
+        if (this._isBrowser) {
+            if (show) {
+                if (this._noRepeat === 0) {
+                    this._noRepeat = 1;
+                    this.eventChanges.emit(true);
+                    this.viewContainer.createEmbeddedView(this.templateRef);
+                    this.cd.markForCheck();
+                }
+            } else {
+                this._noRepeat = 0;
+                this.eventChanges.emit(false);
+                this.viewContainer.clear();
                 this.cd.markForCheck();
             }
-        } else {
-            this._noRepeat = 0;
-            this.eventChanges.emit( false );
-            this.viewContainer.clear();
-            this.cd.markForCheck();
         }
     }
 
-    private updateView( value: any ): void {
+    private updateView(value: any): void {
         const showBoolean = this._directive === 'sizes' ?
             (
-                (typeof this._sizes_grid_state.min === 'undefined' || value >= this._sizes_grid_state.min ) &&
-                (typeof this._sizes_grid_state.max === 'undefined' || value <= this._sizes_grid_state.max )
+                (typeof this._sizes_grid_state.min === 'undefined' || value >= this._sizes_grid_state.min) &&
+                (typeof this._sizes_grid_state.max === 'undefined' || value <= this._sizes_grid_state.max)
             ) :
-            !!this._others_grid_state && this._others_grid_state.indexOf( value ) !== -1;
+            !!this._others_grid_state && this._others_grid_state.indexOf(value) !== -1;
 
-        this.showHide( this._showWhenTrue ? showBoolean : !showBoolean );
+        this.showHide(this._showWhenTrue ? showBoolean : !showBoolean);
     }
 }

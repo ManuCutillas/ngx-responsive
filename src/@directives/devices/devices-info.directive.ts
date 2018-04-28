@@ -4,8 +4,8 @@
  *
  * @license MIT
  */
-import { EventEmitter, Directive, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { EventEmitter, Directive, Output, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { PLATFORM_ID, Inject } from '@angular/core';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { DevicesInfo } from './devices-info';
 
@@ -14,9 +14,9 @@ export class DeviceInfoDirective extends DevicesInfo implements OnInit, OnDestro
     @Output() device: EventEmitter<any> = new EventEmitter();
     constructor(protected _responsiveState: ResponsiveState,
         protected viewContainer: ViewContainerRef,
-        protected cd: ChangeDetectorRef) {
-        super(_responsiveState);
-    }
+        protected cd: ChangeDetectorRef,
+        @Inject(PLATFORM_ID) protected _platformId
+    ) { super(_responsiveState, _platformId); }
     ngOnInit() {
         this.connect();
     }
