@@ -203,10 +203,10 @@ export class ResponsiveState {
     /**
      * @name sizeOperations
      */
-    public pixelRatio(screenHeight = null, screenWidth = null): any {
+    public pixelRatio(): any {
         let _pixelRatio = null;
-        if (this._isBrowser && screenHeight !== null && screenWidth !== null) {
-            if (this.testIs4k(screenHeight, screenWidth)) {
+        if (this._isBrowser && this._screenWidth !== 0 && this._screenHeight !== 0) {
+            if (this.testIs4k()) {
                 _pixelRatio = '4k';
             } else if (this.getDevicePixelRatio() > 1) {
                 _pixelRatio = 'retina';
@@ -222,9 +222,9 @@ export class ResponsiveState {
      * @param screenHeight
      * @param screenWidth
      */
-    public testIs4k(screenHeight = null, screenWidth = null): boolean {
-        return (screenHeight !== null && screenWidth !== null) ?
-            ((screenHeight < screenWidth) ? (screenWidth > 3839) : (screenHeight > 3839)) : false;
+    public testIs4k(): boolean {
+        return (this._screenHeight !== 0 && this._screenWidth !== 0) ?
+            ((this._screenHeight < this._screenWidth) ? (this._screenWidth > 3839) : (this._screenHeight > 3839)) : false;
     }
 
     /**

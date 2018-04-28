@@ -20,7 +20,7 @@ import { RESPONSIVE_SIZE_INFO_DIRECTIVE, RESPONSIVE_SIZE_INFO_RX } from './@dire
 import { RESPONSIVEWINDOW_DIRECTIVE } from './@directives/responsive-window/index';
 import { USERAGENT_INFO_DIRECTIVE, USERAGENT_INFO_RX } from './@directives/useragent/index';
 import { IResponsiveConfig } from './@core/interfaces/responsive-config.interfaces';
-
+import { DEFAULT_BREACKPOINTS } from './@core/constants/default-breackpoints.constants';
 export const RESPONSIVE_CONFIGURATION = new InjectionToken<IResponsiveConfig>('config');
 
 export function responsiveConfiguration(config: IResponsiveConfig) {
@@ -50,16 +50,6 @@ export function responsiveConfiguration(config: IResponsiveConfig) {
             RESPONSIVEWINDOW_DIRECTIVE,
             USERAGENT_INFO_DIRECTIVE,
             RESPONSIVE_SIZE_INFO_DIRECTIVE
-        ],
-    providers:
-        [
-            ResponsiveState,
-            ResponsiveConfig,
-            RESPONSIVE_SIZE_INFO_RX,
-            USERAGENT_INFO_RX,
-            BROWSER_INFO_RX,
-            IE_INFO_RX,
-            DEVICES_INFO_RX
         ]
 })
 export class ResponsiveModule {
@@ -82,7 +72,13 @@ export class ResponsiveModule {
                 provide: ResponsiveConfig,
                 useFactory: responsiveConfiguration,
                 deps:[RESPONSIVE_CONFIGURATION]
-            }]
+            },
+            ResponsiveState,
+            RESPONSIVE_SIZE_INFO_RX,
+            USERAGENT_INFO_RX,
+            BROWSER_INFO_RX,
+            IE_INFO_RX,
+            DEVICES_INFO_RX]
         };
     }
 }
