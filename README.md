@@ -1,10 +1,10 @@
 ![ngx-responsive](/img/ng2-responsive-0-4-0-thin.jpg?raw=true)
 
 # Introduction
-Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 5 
+Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 5.
 
 ```
-  npm i ngx-responsive@5.0.7-universal-beta --save
+  npm i ngx-responsive@5.0.8 --save
 ```
 
 ### New version with breaking changes: v5.0.x :
@@ -14,6 +14,14 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 -   [ngx-responsive v4.x.x to v5.x.x changes](/v4-0-1-to-v5-0-3.md)
 
 -   [ngx-responsive v4.0.1 latest code](https://github.com/ManuCutillas/ngx-responsive/tree/v4.0.1)
+
+### New version with Universal compatibility :
+
+```
+npm i ngx-responsive@5.0.8 --save
+
+```
+-  Branch : [ngx-responsive@5.0.7-universal-beta](https://github.com/ManuCutillas/ngx-responsive/tree/v5.0.7-universal-beta)
 
 ### If you use Angular 4 in your project use ng2-responsive.
 
