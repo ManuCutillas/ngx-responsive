@@ -4,25 +4,25 @@
  *
  * @license MIT
  */
-import { Injectable, Optional } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Observable } from 'rxjs';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { defaultIfEmpty } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { startWith } from 'rxjs/operators';
+
 import { ResponsiveWindowDirective } from '../../../@directives';
 import {
     REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES,
     REG_GAME_DEVICES, REG_BOTS, REG_OS, REG_WINDOWS_OS_VERSION, REG_LINUX_OS,
-    USER_AGENT, REG_IE_VERSIONS, TABLET, OS_SYSTEMS, WINDOWS_OS, LINUX_OS, MOBILE,
+    USER_AGENT, REG_IE_VERSIONS, TABLET, WINDOWS_OS, LINUX_OS, MOBILE,
     IE_VERSIONS
 } from '../../constants';
-import { IResponsiveConfig, IUserAgent } from '../../interfaces';
 import {
     TLinuxOS, TWindowsOS, TTablet, TMobile,
-    TosSystems, TSmartTv, TGameDevices, TBrowserNames,
-    TIE_VERSIONS
+    TosSystems, TSmartTv, TGameDevices
 } from '../../types';
 import { ResponsiveConfig } from '../responsive-config/responsive-config';
 
@@ -46,12 +46,19 @@ export class ResponsiveState {
     private _screenWidth: number = null;
     private _screenHeight: number = null;
     private _userAgent: any = null;
+    private _isBrowser: boolean = null;
 
-    constructor(private _responsiveConfig: ResponsiveConfig) {
-        this._window = (typeof window !== 'undefined') ? window : null;
-        this._screenWidth = this._window.screen.width;
-        this._screenHeight = this._window.screen.height;
-        this._userAgent = (this._window !== null) ? this._window.navigator.userAgent.toLowerCase() : null;
+    constructor(
+        private _responsiveConfig: ResponsiveConfig,
+        @Inject(PLATFORM_ID) private _platformId
+    ) {
+        this._isBrowser = isPlatformBrowser(this._platformId);
+        this._window = (this._isBrowser) ? window : null;
+        this._screenWidth = (this._isBrowser) ? this._window.screen.width : 0;
+        this._screenHeight = (this._isBrowser) ? this._window.screen.height : 0;
+        this._userAgent = (this._isBrowser) ? this._window.navigator.userAgent.toLowerCase() : null;
+        if(this._isBrowser) {
+
         const _resize$ = fromEvent(this._window, 'resize')
             .pipe(
             debounceTime(this._responsiveConfig.config.debounceTime),
@@ -92,6 +99,7 @@ export class ResponsiveState {
         this.standard$ = _device$.pipe(map(this.standardDevices.bind(this)));
         this.ieVersion$ = _device$.pipe(map(this.ieVersionDetect.bind(this)));
         this.userAgent$ = _userAgent$.pipe(map(this.userAgentData.bind(this)));
+        }
     }
 
     /**
@@ -129,7 +137,7 @@ export class ResponsiveState {
     * @param windowName
     */
     public getWidth(windowName: string = null): any {
-        if (this._windows !== null && this._window !== null) {
+        if (this._windows !== null && this._isBrowser) {
             if (windowName && this._windows[windowName]) {
                 return this._windows[windowName].getWidth();
             } else {
@@ -144,7 +152,7 @@ export class ResponsiveState {
     */
     public getDevicePixelRatio(): any {
         let ratio = 1;
-        if (this._window !== null) {
+        if (this._isBrowser) {
             if (typeof this._window.screen.systemXDPI !== 'undefined' &&
                 typeof this._window.screen.logicalXDPI !== 'undefined' &&
                 this._window.screen.systemXDPI > this._window.screen.logicalXDPI) {
@@ -160,14 +168,14 @@ export class ResponsiveState {
     * @name getOrientation
     */
     public getOrientation(): any {
-        return (this._window !== null) ? window.orientation : null;
+        return (this._isBrowser) ? window.orientation : null;
     }
 
     /**
     * @name sizeObserver
     */
     public sizeObserver(): any {
-        return (this._windows !== null && this._window !== null) ? this.getWidth('window') : 0;
+        return (this._windows !== null && this._isBrowser) ? this.getWidth('window') : 0;
     }
 
     /**
@@ -176,7 +184,7 @@ export class ResponsiveState {
     public sizeOperations(): any {
         let _sizes = null;
         const _breackpoints = this._responsiveConfig.config.breakPoints;
-        if (this._windows !== null && this._window !== null && _breackpoints !== null) {
+        if (this._windows !== null && this._isBrowser && _breackpoints !== null) {
             const _width = this.getWidth('window');
             if (_breackpoints.xl.min <= _width) {
                 _sizes = 'xl';
@@ -196,10 +204,10 @@ export class ResponsiveState {
     /**
      * @name sizeOperations
      */
-    public pixelRatio(screenHeight = null, screenWidth = null): any {
+    public pixelRatio(): any {
         let _pixelRatio = null;
-        if (this._window !== null && screenHeight !== null && screenWidth !== null) {
-            if (this.testIs4k(screenHeight, screenWidth)) {
+        if (this._isBrowser && this._screenWidth !== 0 && this._screenHeight !== 0) {
+            if (this.testIs4k()) {
                 _pixelRatio = '4k';
             } else if (this.getDevicePixelRatio() > 1) {
                 _pixelRatio = 'retina';
@@ -215,9 +223,9 @@ export class ResponsiveState {
      * @param screenHeight
      * @param screenWidth
      */
-    public testIs4k(screenHeight = null, screenWidth = null): boolean {
-        return (screenHeight !== null && screenWidth !== null) ?
-            ((screenHeight < screenWidth) ? (screenWidth > 3839) : (screenHeight > 3839)) : false;
+    public testIs4k(): boolean {
+        return (this._screenHeight !== 0 && this._screenWidth !== 0) ?
+            ((this._screenHeight < this._screenWidth) ? (this._screenWidth > 3839) : (this._screenHeight > 3839)) : false;
     }
 
     /**
@@ -225,7 +233,7 @@ export class ResponsiveState {
      */
     public orientationDevice(): any {
         let _orientationDevice = null;
-        if (this._window !== null) {
+        if (this._isBrowser) {
             if (this.isMobile() || this.isTablet()) {
                 if (this._window.innerHeight > this._window.innerWidth) {
                     _orientationDevice = 'portrait';
@@ -243,7 +251,7 @@ export class ResponsiveState {
      * @name getUserAgent
      */
     public getUserAgent(): any {
-        return (this._window !== null) ? this._window.navigator.userAgent.toLowerCase() : null;
+        return (this._isBrowser) ? this._window.navigator.userAgent.toLowerCase() : null;
     }
 
     /**
@@ -253,7 +261,6 @@ export class ResponsiveState {
         if (this._window === null) {
             return USER_AGENT;
         }
-        const _userAgent = this.getUserAgent();
         const DEFAULT_USER_AGENT_VALUE = '';
         const _ieVersionState = (this.ieVersionDetect() !== null);
         const _isGameDevice = this.isGameDevice();
@@ -307,7 +314,7 @@ export class ResponsiveState {
      * @name deviceDetection
      */
     public deviceDetection(): any {
-        if (this._window !== null) {
+        if (this._isBrowser) {
             if (this.isMobile()) {
                 return 'mobile';
             } else if (this.isTablet()) {
@@ -325,7 +332,7 @@ export class ResponsiveState {
      * @name standardDevices
      */
     public standardDevices(): any {
-        if (this._window !== null) {
+        if (this._isBrowser) {
             if (REG_MOBILES.IPHONE.REG.test(this._userAgent)) {
                 return 'iphone';
             } else if (REG_TABLETS.IPAD.REG.test(this._userAgent)) {
@@ -345,7 +352,7 @@ export class ResponsiveState {
      * @name ieVersionDetect
      */
     public ieVersionDetect(): any {
-        if (this._window !== null) {
+        if (this._isBrowser) {
             const _userAgent = this.getUserAgent();
             const msie = _userAgent.indexOf('msie ');
             let _ieVersion = null;
@@ -383,7 +390,7 @@ export class ResponsiveState {
      */
     public browserName(): any {
         let _browserName = null;
-        if (this._window !== null) {
+        if (this._isBrowser) {
             if (REG_SORT_NAMES.WEBKIT.REG.test(this._userAgent) && REG_SORT_NAMES.CHROME.REG.test(this._userAgent)
                 && !REG_BROWSERS.IE.REG.test(this._userAgent)) {
                 _browserName = REG_BROWSERS.CHROME.VALUE;

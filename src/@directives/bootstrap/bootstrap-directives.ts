@@ -3,8 +3,9 @@
  *  @description bootstrap directives
  *  @license MIT
  */
-import { Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Directive, Input, TemplateRef, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
+import { PLATFORM_ID, Inject } from '@angular/core';
+
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
 @Directive({
@@ -20,9 +21,11 @@ export class XlDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+    ) {
 
-        super ( templateRef, viewContainer, _responsiveState, cd );
+        super ( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -40,8 +43,10 @@ export class LgDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+    ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 @Directive(
@@ -57,8 +62,10 @@ export class MdDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+    ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -76,8 +83,10 @@ export class SmDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+    ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -94,8 +103,10 @@ export class XsDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+    ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 @Directive(
@@ -110,8 +121,10 @@ export class ShowItBootstrapDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+    ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 @Directive(
@@ -128,7 +141,9 @@ export class HideItBootstrapDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+    ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }

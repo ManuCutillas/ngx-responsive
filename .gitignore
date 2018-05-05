@@ -17,6 +17,7 @@ $ cat .gitignore
 # dependencies
 node_modules
 examples/node_modules
+expamples/package-lock.json
 
 # IDEs
 /.idea

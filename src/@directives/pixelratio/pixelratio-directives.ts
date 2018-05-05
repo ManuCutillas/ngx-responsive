@@ -5,9 +5,13 @@
  * @license MIT
  */
 import { Directive, Input, Output, EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
+
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
+
 /*======== 1x =========*/
 @Directive({
     selector: '[is1xPixel]'
@@ -23,8 +27,10 @@ export class Is1xPixelDirective extends RESPONSIVE_BASE<any> {
     constructor ( templateRef: TemplateRef<any>,
                   viewContainer: ViewContainerRef,
                   _responsiveState: ResponsiveState,
-                  cd: ChangeDetectorRef ) {
-        super ( templateRef, viewContainer, _responsiveState, cd );
+                  cd: ChangeDetectorRef,
+                  @Inject(PLATFORM_ID) _platformId 
+         ) {
+         super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -45,8 +51,10 @@ export class IsRetinaDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
-                 cd: ChangeDetectorRef ) {
-        super ( templateRef, viewContainer, _responsiveState, cd );
+                 cd: ChangeDetectorRef,
+                 @Inject(PLATFORM_ID) _platformId 
+        ) {
+        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -66,8 +74,10 @@ export class Is4kDirective extends RESPONSIVE_BASE<any> {
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState,
-                cd: ChangeDetectorRef ) {
-        super ( templateRef, viewContainer, _responsiveState, cd );
+                cd: ChangeDetectorRef,
+                @Inject(PLATFORM_ID) _platformId 
+       ) {
+       super( templateRef, viewContainer, _responsiveState, cd, _platformId );
     }
 }
 
@@ -79,6 +89,7 @@ export class PixelRatioInfoDirective implements OnInit, OnDestroy {
     public currentstate: string;
     private _subscription: Subscription;
     private noRepeat: string;
+    private _isBrowser: boolean = null;
 
     @Input() set pixelratioInfo( grid_state: string[] | string ) {
         this.updateData( this.currentstate );
@@ -89,14 +100,22 @@ export class PixelRatioInfoDirective implements OnInit, OnDestroy {
     constructor(
         private _responsiveState: ResponsiveState,
         private viewContainer: ViewContainerRef,
-        private cd: ChangeDetectorRef ) {}
+        private cd: ChangeDetectorRef,
+        @Inject(PLATFORM_ID) protected _platformId
+    ) {
+        this._isBrowser = isPlatformBrowser(this._platformId);
+    }
 
     ngOnInit() {
-        this._subscription = this._responsiveState.pixel$.subscribe(this.updateData.bind( this ));
+        if (this._isBrowser) {
+            this._subscription = this._responsiveState.pixel$.subscribe(this.updateData.bind( this ));
+        }
     }
 
     ngOnDestroy() {
-        this._subscription.unsubscribe();
+        if (this._isBrowser) {
+            this._subscription.unsubscribe();
+        }
     }
 
     updateData( value: any ) {

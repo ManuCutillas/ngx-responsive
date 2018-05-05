@@ -4,8 +4,9 @@
  *
  * @license MIT
  */
-import { Directive, EventEmitter, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Directive, EventEmitter, Input, Output, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { PLATFORM_ID, Inject } from '@angular/core';
+
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { ResponsiveSizeInfo } from './responsive-size-info';
 
@@ -19,9 +20,9 @@ export class ResponsiveSizeInfoDirective extends ResponsiveSizeInfo implements O
 
     constructor(public _responsiveState: ResponsiveState,
         public viewContainer: ViewContainerRef,
-        public cd: ChangeDetectorRef) {
-        super(_responsiveState);
-    }
+        public cd: ChangeDetectorRef,
+        @Inject(PLATFORM_ID) protected _platformId
+    ) { super(_responsiveState, _platformId); }
     ngOnInit(): void {
         this.connect();
     }
