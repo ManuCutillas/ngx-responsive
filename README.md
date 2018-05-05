@@ -4,7 +4,7 @@
 Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 6.
 
 ```
-  npm i ngx-responsive@6.0.0-beta --save
+  npm i ngx-responsive@6.0.0 --save
 ```
 
 ### If you use Angular 5 in your project use this version : 5.0.8

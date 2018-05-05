@@ -1,6 +1,6 @@
 {
   "name": "ngx-responsive",
-  "version": "6.0.0-beta",
+  "version": "6.0.0",
   "description": "Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 5",
   "main": "src/index.ts",
   "scripts": {
@@ -49,7 +49,8 @@
     "paulyipkh (https://github.com/paulyipkh)",
     "mburger81 (https://github.com/mburger81)",
     "Alyssa Brunswick (https://github.com/alyssabrunswick)",
-    "Quentin (https://github.com/bobbybobby)"
+    "Quentin (https://github.com/bobbybobby)",
+    "Thomas Christensen (https://github.com/tocDK)"
   ],
   "license": "MIT",
   "bugs": {

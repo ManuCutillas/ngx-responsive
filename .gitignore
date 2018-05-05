@@ -16,6 +16,7 @@ $ cat .gitignore
 
 # dependencies
 node_modules
+package-lock.json
 examples/node_modules
 expamples/package-lock.json
 
