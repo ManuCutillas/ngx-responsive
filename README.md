@@ -1,33 +1,28 @@
 ![ngx-responsive](/img/ng2-responsive-0-4-0-thin.jpg?raw=true)
 
 # Introduction
-Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 5.
+Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 6.
+
+```
+  npm i ngx-responsive@6.0.0 --save
+```
+
+### If you use Angular 5 in your project use this version : 5.0.8
 
 ```
   npm i ngx-responsive@5.0.8 --save
 ```
 
-### New version with breaking changes: v5.0.x :
-
-**v4.0.1 to v5.0.3 < v5.0.x documentation:**
-
--   [ngx-responsive v4.x.x to v5.x.x changes](/v4-0-1-to-v5-0-3.md)
-
--   [ngx-responsive v4.0.1 latest code](https://github.com/ManuCutillas/ngx-responsive/tree/v4.0.1)
-
-### New version with Universal compatibility :
-
-```
-npm i ngx-responsive@5.0.8 --save
-
-```
--  Branch : [ngx-responsive@5.0.7-universal-beta](https://github.com/ManuCutillas/ngx-responsive/tree/v5.0.7-universal-beta)
+-  Branch : [ngx-responsive@5.0.8](https://github.com/ManuCutillas/ngx-responsive/tree/v5.0.8)
 
 ### If you use Angular 4 in your project use ng2-responsive.
 
 ```
   npm i ng2-responsive --save
 ```
+
+-  Branch : [ng2-responsive](https://github.com/ManuCutillas/ngx-responsive/tree/v4.0.1)
+ 
 
 `RESPONSIVE_DIRECTIVES` provides the following features:
  - Directives detecting states according to standard measures in BOOTSTRAP: xs / sm / md / lg / xl
@@ -406,7 +401,7 @@ Description of the object given by the `(info)` event of the directive `user-age
 - animations show/hide in directives
 
 # Contributors
- * ManuCutillas 
+ * Manu Cutillas 
  * Christophe HOARAU
  * Kamil Breguła
  * Janne Julkunen
@@ -414,6 +409,7 @@ Description of the object given by the `(info)` event of the directive `user-age
  * Michael Burger
  * Alyssa Brunswick
  * Quentin
+ * Thomas Christensen
 
 # License
 

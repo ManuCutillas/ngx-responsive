@@ -12,14 +12,14 @@
  *  - Michael Burger
  *  - Alyssa Brunswick
  *  - Quentin
- *
+ *  - Thomas Christensen
  * ```
  * @created_at May 04, 2016
- * @updated_at March 16, 2018
- * @version v5.0.0-beta
+ * @updated_at May 05, 2018
+ * @version v6.0.0-beta
  *
- * @angular/core : "5.x.x"
- * rxjs: "5.x.x"
+ * @angular/core : "6.x.x"
+ * rxjs: "6.x.x"
  */
 export * from './@core/index';
 export * from './@directives/index';
