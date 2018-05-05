@@ -7,9 +7,11 @@
 import { Directive, Input, Output, EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
+
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
+
 /*======== 1x =========*/
 @Directive({
     selector: '[is1xPixel]'

@@ -6,12 +6,13 @@
  */
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Observable } from 'rxjs/Observable';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { debounceTime } from 'rxjs/operators/debounceTime';
-import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';
-import { map } from 'rxjs/operators/map';
-import { startWith } from 'rxjs/operators/startWith';
+import { Observable } from 'rxjs';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { defaultIfEmpty } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { startWith } from 'rxjs/operators';
+
 import { ResponsiveWindowDirective } from '../../../@directives';
 import {
     REG_TABLETS, REG_MOBILES, REG_SMARTS_TV, REG_BROWSERS, REG_SORT_NAMES,

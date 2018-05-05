@@ -6,11 +6,13 @@
  */
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Subscription } from 'rxjs/Subscription';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
-import { Observable } from 'rxjs/Observable';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
+import { Observable } from 'rxjs';
+
+import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
+
 export abstract class UserAgentInfo {
     public replaySubject$: ReplaySubject<any> = new ReplaySubject();
     private _isBrowser: boolean = null;

@@ -7,7 +7,8 @@
 import { Output, EventEmitter, Directive, Input, TemplateRef, ViewContainerRef, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
+
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../@core';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 

@@ -37,3 +37,4 @@ npm-debug.log
 testem.log
 /.chrome
 /.git
+yarn.lock
