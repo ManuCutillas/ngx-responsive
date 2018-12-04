@@ -88,7 +88,7 @@ export class ResponsiveDirective implements OnDestroy {
     private _browser_user_param: string[] = [];
     private _pixelratio_user_param: string[] = [];
     private _ie_user_param: string[] = [];
-    private _sizes_user_param: string[] = [];
+    private _sizes_user_param: [number, number] = [0, Number.MAX_VALUE];
     private _sizes_window = 'window';
 
     protected _actives: string[] = [];
@@ -141,8 +141,8 @@ export class ResponsiveDirective implements OnDestroy {
                 this.set_active_subscriptions.ie = true;
             }
             if (!!value.sizes && this._sizesNoRepeat === 0) {
-                const _min = value.sizes.min;
-                const _max = value.sizes.max;
+                const _min = value.sizes.min || 0;
+                const _max = value.sizes.max || Number.MAX_VALUE;
                 const _win = value.sizes.window;
                 if (_win !== undefined) {
                     this._sizes_window = _win;
@@ -268,7 +268,7 @@ export class ResponsiveDirective implements OnDestroy {
                     this.showHideOperations(
                         (
                             param >= this._sizes_user_param[0] &&
-                            param <= this._sizes_user_param[1]
+                            param < this._sizes_user_param[1]
                         ),
                         type_directive);
                     break;
@@ -300,7 +300,7 @@ export class ResponsiveDirective implements OnDestroy {
                 case 'sizes':
                     this.showHideOperations(!((
                         param >= this._sizes_user_param[0] &&
-                        param <= this._sizes_user_param[1])),
+                        param < this._sizes_user_param[1])),
                         type_directive);
                     break;
             }
