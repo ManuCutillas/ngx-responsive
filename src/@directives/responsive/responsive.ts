@@ -11,6 +11,8 @@ import { Subscription } from 'rxjs';
 
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../@core';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
+import { ComponentType } from "@angular/core/src/render3";
+import { ResponsiveWindowDirective } from "../responsive-window/responsive-window";
 
 @Directive(
     {
@@ -18,9 +20,31 @@ import { ResponsiveState } from '../../@core/providers/responsive-state/responsi
     })
 export class ResponsiveDirective implements OnDestroy {
 
+    private _config: string | string[];
     @Input() set responsive(config: string | string[]) {
-        this.init_responsive(config);
+        this._config = config;
+        this.init_responsive();
     }
+    get config(): string | string[]{
+        return this._config;
+    }
+    
+    // @Input() responsiveContainer: ResponsiveWindowDirective;
+    private _responsiveContainer:ResponsiveWindowDirective;
+    @Input() 
+    set responsiveContainer(value: ResponsiveWindowDirective) {
+      this._responsiveContainer = value;
+      if(this.config){
+          if(this._sizes_window !== null && this._sizes_window !== "window") {
+            throw new Error('Responsive directive cannot use window AND responsiveContainer together');
+          }
+          this.init_responsive();
+      }
+    }
+    get responsiveContainer(): ResponsiveWindowDirective{
+        return this._responsiveContainer;
+    }
+
     @Output() changes: EventEmitter<any> = new EventEmitter();
     private _windows = null;
     private _window = null;
@@ -35,6 +59,7 @@ export class ResponsiveDirective implements OnDestroy {
         ie: '',
         sizes: 0
     };
+
     private set_active_subscriptions: IResponsiveSubscriptions =
         {
             bootstrap: false,
@@ -90,6 +115,7 @@ export class ResponsiveDirective implements OnDestroy {
     private _ie_user_param: string[] = [];
     private _sizes_user_param: [number, number] = [0, Number.MAX_VALUE];
     private _sizes_window = 'window';
+    // private _sizes_container = null;
 
     protected _actives: string[] = [];
 
@@ -103,61 +129,63 @@ export class ResponsiveDirective implements OnDestroy {
         this._isBrowser = isPlatformBrowser(this._platformId);
     }
 
-    public init_responsive(value: any): void {
-        if (this.isJSON(value)) {
-            if (!!value.bootstrap && this._bootstrapNoRepeat === 0) {
-                this._bootstrap_user_param = <string[]>(Array.isArray(value.bootstrap) ? value.bootstrap : [value.bootstrap]);
+    public init_responsive(): void {
+        const config: any = this.config;
+        if (this.isJSON(config)) {
+            if (!!config.bootstrap && this._bootstrapNoRepeat === 0) {
+                this._bootstrap_user_param = <string[]>(Array.isArray(config.bootstrap) ? config.bootstrap : [config.bootstrap]);
                 this._bootstrapNoRepeat = 1;
                 this.set_active_subscriptions.bootstrap = true;
             }
-            if (!!value.device && this._deviceNoRepeat === 0) {
-                this._devices_user_param = <string[]>(Array.isArray(value.device) ? value.device : [value.device]);
+            if (!!config.device && this._deviceNoRepeat === 0) {
+                this._devices_user_param = <string[]>(Array.isArray(config.device) ? config.device : [config.device]);
                 this._deviceNoRepeat = 1;
                 this.set_active_subscriptions.device = true;
             }
-            if (!!value.standard && this._standardNoRepeat === 0) {
-                this._standard_user_param = <string[]>(Array.isArray(value.standard) ? value.standard : [value.standard]);
+            if (!!config.standard && this._standardNoRepeat === 0) {
+                this._standard_user_param = <string[]>(Array.isArray(config.standard) ? config.standard : [config.standard]);
                 this._standardNoRepeat = 1;
                 this.set_active_subscriptions.standard = true;
             }
-            if (!!value.orientation && this._orientationNoRepeat === 0) {
-                this._orientation_user_param = <string[]>(Array.isArray(value.orientation) ? value.orientation : [value.orientation]);
+            if (!!config.orientation && this._orientationNoRepeat === 0) {
+                this._orientation_user_param = <string[]>(Array.isArray(config.orientation) ? config.orientation : [config.orientation]);
                 this._orientationNoRepeat = 1;
                 this.set_active_subscriptions.orientation = true;
             }
-            if (!!value.browser && this._browserNoRepeat === 0) {
-                this._browser_user_param = <string[]>(Array.isArray(value.browser) ? value.browser : [value.browser]);
+            if (!!config.browser && this._browserNoRepeat === 0) {
+                this._browser_user_param = <string[]>(Array.isArray(config.browser) ? config.browser : [config.browser]);
                 this._browserNoRepeat = 1;
                 this.set_active_subscriptions.browser = true;
             }
-            if (!!value.pixelratio && this._pixelratioNoRepeat === 0) {
-                this._pixelratio_user_param = <string[]>(Array.isArray(value.pixelratio) ? value.pixelratio : [value.pixelratio]);
+            if (!!config.pixelratio && this._pixelratioNoRepeat === 0) {
+                this._pixelratio_user_param = <string[]>(Array.isArray(config.pixelratio) ? config.pixelratio : [config.pixelratio]);
                 this._pixelratioNoRepeat = 1;
                 this.set_active_subscriptions.pixelratio = true;
             }
-            if (!!value.ie && this._ieNoRepeat === 0) {
-                this._ie_user_param = <string[]>(Array.isArray(value.ie) ? value.ie : [value.ie]);
+            if (!!config.ie && this._ieNoRepeat === 0) {
+                this._ie_user_param = <string[]>(Array.isArray(config.ie) ? config.ie : [config.ie]);
                 this._ieNoRepeat = 1;
                 this.set_active_subscriptions.ie = true;
             }
-            if (!!value.sizes && this._sizesNoRepeat === 0) {
-                const _min = value.sizes.min || 0;
-                const _max = value.sizes.max || Number.MAX_VALUE;
-                const _win = value.sizes.window;
+            if (!!config.sizes && this._sizesNoRepeat === 0) {
+                const _min = config.sizes.min || 0;
+                const _max = config.sizes.max || Number.MAX_VALUE;
+                const _win = config.sizes.window;
                 if (_win !== undefined) {
                     this._sizes_window = _win;
                 }
+                // this._sizes_container = value.sizes.container;
                 this._sizes_user_param = [_min, _max];
                 this._sizesNoRepeat = 1;
                 this.set_active_subscriptions.sizes = true;
             }
-        } else if (Array.isArray(value)) {
+        } else if (Array.isArray(config)) {
             throw new Error('Responsive directive don´t work with a only array parameter');
-        } else if (typeof value === 'string') {
+        } else if (typeof config === 'string') {
             throw new Error('Responsive directive don´t work with a only string parameter');
-        } else if (typeof value === 'number') {
+        } else if (typeof config === 'number') {
             throw new Error('Responsive directive don´t work with a only number parameter');
-        } else if (typeof value === 'undefined' || value === null) {
+        } else if (typeof config === 'undefined' || config === null) {
             throw new Error('Responsive directive don´t work without a param');
         }
 
@@ -232,10 +260,12 @@ export class ResponsiveDirective implements OnDestroy {
         this.updateEvent(this.set_values.ie, 'ie');
     }
     private updateSizes(value: number): void {
-        if (!this._sizes_window) {
-            this.set_values.sizes = value;
-        } else {
+        if(this.responsiveContainer){
+            this.set_values.sizes = this._isBrowser ? this.responsiveContainer.getWidth() : 0;
+        }else if (this._sizes_window){
             this.set_values.sizes = this._responsiveState.getWidth(this._sizes_window);
+        }else{
+            this.set_values.sizes = value;
         }
         this.updateEvent(this.set_values.sizes, 'sizes');
     }

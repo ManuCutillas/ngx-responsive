@@ -10,7 +10,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 
 @Directive({
-    selector: "[responsive-window]"
+    selector: "[responsive-window]",
+    exportAs: "container"
 })
 export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
 
