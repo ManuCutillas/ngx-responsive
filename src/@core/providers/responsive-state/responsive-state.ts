@@ -108,9 +108,9 @@ export class ResponsiveState {
     * @param _window
     */
     public registerWindow(rw: ResponsiveWindowDirective, _window = null) {
-        if (_window !== null) {
-            if (rw.name && !this._windows[rw.name]) {
-                this._windows[rw.name] = rw;
+        if (rw.name && !this._windows[rw.name]) {
+            this._windows[rw.name] = rw;
+            if (_window !== null) {
                 _window.dispatchEvent(new Event('resize'));
             }
         }
@@ -122,12 +122,12 @@ export class ResponsiveState {
     * @param _window
     */
     public unregisterWindow(rw: ResponsiveWindowDirective, _window = null) {
-        if (_window !== null) {
-            for (const rwn in this._windows) {
-                if (this._windows[rwn] === rw) {
-                    delete (this._windows[rwn]);
-                }
+        for (const rwn in this._windows) {
+            if (this._windows[rwn] === rw) {
+                delete (this._windows[rwn]);
             }
+        }
+        if (_window !== null) {
             _window.dispatchEvent(new Event('resize'));
         }
     }
