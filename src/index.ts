@@ -16,7 +16,7 @@
  * ```
  * @created_at May 04, 2016
  * @updated_at Dec 08, 2018
- * @version v7.0.0
+ * @version v7.0.1
  *
  * @angular/core : "7.x.x"
  * rxjs: "7.x.x"
