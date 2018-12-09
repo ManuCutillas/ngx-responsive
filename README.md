@@ -410,9 +410,8 @@ Description of the object given by the `(info)` event of the directive `user-age
 ```
 
 # NEXT STEPS 
-- Work in Unit-test and e2e.
-- Work in a documentation page.
-- ngx-responsive compatible with angular universal.
+- Unit test and e2e.
+- Create a documentation page.
 - Work in demo page
 - Directive css classes:
 ```
