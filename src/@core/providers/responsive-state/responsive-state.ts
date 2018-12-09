@@ -6,7 +6,7 @@
  */
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { defaultIfEmpty } from 'rxjs/operators';
@@ -48,6 +48,8 @@ export class ResponsiveState {
     private _userAgent: any = null;
     private _isBrowser: boolean = null;
 
+    private _forceRefresh$: BehaviorSubject<null> = new BehaviorSubject<null>(null);
+
     constructor(
         private _responsiveConfig: ResponsiveConfig,
         @Inject(PLATFORM_ID) private _platformId
@@ -57,49 +59,58 @@ export class ResponsiveState {
         this._screenWidth = (this._isBrowser) ? this._window.screen.width : 0;
         this._screenHeight = (this._isBrowser) ? this._window.screen.height : 0;
         this._userAgent = (this._isBrowser) ? this._window.navigator.userAgent.toLowerCase() : null;
+
         if(this._isBrowser) {
-
-        const _resize$ = fromEvent(this._window, 'resize')
-            .pipe(
-            debounceTime(this._responsiveConfig.config.debounceTime),
-            defaultIfEmpty(),
-            startWith(this.getWidth('window'))
+           
+            const _resize$ =  combineLatest(
+                fromEvent(this._window, 'resize').pipe(
+                    debounceTime(this._responsiveConfig.config.debounceTime),
+                    defaultIfEmpty(),
+                    startWith(this.getWidth('window'))
+                ),
+                this._forceRefresh$
+            ).pipe(
+                debounceTime(this._responsiveConfig.config.debounceTime)
             );
 
-        const _pixelRatio$ = fromEvent(this._window, 'onload')
-            .pipe(
-            defaultIfEmpty(),
-            startWith(this.getDevicePixelRatio())
-            );
+            const _pixelRatio$ = fromEvent(this._window, 'onload')
+                .pipe(
+                defaultIfEmpty(),
+                startWith(this.getDevicePixelRatio())
+                );
 
-        const _device$ = fromEvent(this._window, 'onload')
-            .pipe(
-            defaultIfEmpty(),
-            startWith(this.getUserAgent())
-            );
+            const _device$ = fromEvent(this._window, 'onload')
+                .pipe(
+                defaultIfEmpty(),
+                startWith(this.getUserAgent())
+                );
 
-        const _userAgent$ = fromEvent(this._window, 'onload')
-            .pipe(
-            defaultIfEmpty(),
-            startWith(this.userAgentData())
-            );
+            const _userAgent$ = fromEvent(this._window, 'onload')
+                .pipe(
+                defaultIfEmpty(),
+                startWith(this.userAgentData())
+                );
 
-        const _orientation$ = fromEvent(this._window, 'orientationchange')
-            .pipe(
-            defaultIfEmpty(),
-            startWith(this.getOrientation())
-            );
+            const _orientation$ = fromEvent(this._window, 'orientationchange')
+                .pipe(
+                defaultIfEmpty(),
+                startWith(this.getOrientation())
+                );
 
-        this.elemento$ = _resize$.pipe(map(this.sizeOperations.bind(this)));
-        this.ancho$ = _resize$.pipe(map(this.sizeObserver.bind(this)));
-        this.browser$ = _device$.pipe(map(this.browserName.bind(this)));
-        this.pixel$ = _pixelRatio$.pipe(map(this.pixelRatio.bind(this)));
-        this.device$ = _device$.pipe(map(this.deviceDetection.bind(this)));
-        this.orientation$ = _orientation$.pipe(map(this.orientationDevice.bind(this)));
-        this.standard$ = _device$.pipe(map(this.standardDevices.bind(this)));
-        this.ieVersion$ = _device$.pipe(map(this.ieVersionDetect.bind(this)));
-        this.userAgent$ = _userAgent$.pipe(map(this.userAgentData.bind(this)));
+            this.elemento$ = _resize$.pipe(map(this.sizeOperations.bind(this)));
+            this.ancho$ = _resize$.pipe(map(this.sizeObserver.bind(this)));
+            this.browser$ = _device$.pipe(map(this.browserName.bind(this)));
+            this.pixel$ = _pixelRatio$.pipe(map(this.pixelRatio.bind(this)));
+            this.device$ = _device$.pipe(map(this.deviceDetection.bind(this)));
+            this.orientation$ = _orientation$.pipe(map(this.orientationDevice.bind(this)));
+            this.standard$ = _device$.pipe(map(this.standardDevices.bind(this)));
+            this.ieVersion$ = _device$.pipe(map(this.ieVersionDetect.bind(this)));
+            this.userAgent$ = _userAgent$.pipe(map(this.userAgentData.bind(this)));
         }
+    }
+
+    public forceRefresh(){
+        this._forceRefresh$.next(null);
     }
 
     /**
