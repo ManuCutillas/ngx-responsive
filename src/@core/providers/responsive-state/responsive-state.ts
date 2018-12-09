@@ -603,7 +603,7 @@ export class ResponsiveState {
     public isDesktop(): boolean {
         let _result = false;
         if (this._userAgent !== null) {
-            _result = (!this.isMobile() || !this.isTablet() || !this.isSMART());
+            _result = !(this.isMobile() || this.isTablet() || this.isSMART());
         }
         return _result;
     }
