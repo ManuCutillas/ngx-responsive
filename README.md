@@ -128,12 +128,30 @@ Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the siz
 4. ALL RESPONSIVE DIRECTIVES OPTIONS 
 
       * Responsive Window directive: Capture the size of the parent element to show or hide fill elements. If the parent responsive size is x show or hide.
+        1. First syntax
         
-          ```
-          <div [responsive-window]="'parent'">
-               <p *responsive="{ sizes:{  window: 'parent', min:900, max:1400} }"></p>
-          </div>
-          ```
+           Define a named parrent element, the reference is stored on the service and available outside of the current container. Name must be unique to avoid conflicts 
+              ```
+               <div [responsive-window]="'parent'">
+                   <p *responsive="{ sizes:{  window: 'parent', min:900, max:1400} }"></p>
+               </div>
+              ```
+        2. Second syntax
+
+            Define a reference to the parent element
+              ```
+               <div responsive-window #myContainerRef="container">
+                   <p *responsive="{ sizes: { min:900, max:1400 } } ; container:myContainerRef">...</p>
+               </div>
+              ```
+               Or:
+              ```
+               <div responsive-window #myContainerRef="container">
+		            <ng-template [responsive]="{ sizes:{ min:900, max:1400 } }" [responsiveContainer]="myContainerRef">
+                        <p>....</p>
+                    </ng-template>
+               </div>
+              ```
     
     1. * New Detection of multiple functions at once.
     
