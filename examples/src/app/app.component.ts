@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import {
-  IeInfoRx, ResponsiveSizeInfoRx, OrientationInfoRx, DeviceStandardInfoRx, DeviceInfoRx,
-  UserAgentInfoRx, BrowserInfoRx
+  IeInfoRx, ResponsiveSizeInfoRx, OrientationInfoRx, DeviceStandardInfoRx,
+  DeviceInfoRx,
+  UserAgentInfoRx, BrowserInfoRx,
 } from 'ngx-responsive';
-import { OnInit, OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+// tslint:disable-next-line:ordered-imports
+import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription[] = [];

@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, InjectionToken } from '@angular/core';
-import { ResponsiveModule, IResponsiveConfig } from 'ngx-responsive';
-import { AppComponent } from './app.component';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ResponsiveModule, IResponsiveConfig } from 'ngx-responsive';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 const config: IResponsiveConfig = {
   breakPoints: {
@@ -22,6 +23,7 @@ const config: IResponsiveConfig = {
   imports: [
     BrowserModule,
     CommonModule,
+    AppRoutingModule,
     ResponsiveModule.forRoot(config)
   ],
   providers: [],
