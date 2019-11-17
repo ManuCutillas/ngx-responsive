@@ -72,7 +72,7 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
 
     public getCurrentBreakpoint(): string {
         const width: number = this.getWidth();
-        console.error("getCurrentBreakpoint", width)
+        // console.error("getCurrentBreakpoint", width)
         if (this._responsiveConfig.config.breakPoints.xl.min <= width) {
             return 'xl';
         } else if (this._responsiveConfig.config.breakPoints.lg.max >= width && this._responsiveConfig.config.breakPoints.lg.min <= width) {
