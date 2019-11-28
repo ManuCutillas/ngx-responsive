@@ -8,6 +8,9 @@ import { DoCheck, Directive, Input, ElementRef, OnInit, OnDestroy, ChangeDetecto
 import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
+import { ResponsiveConfig } from "../../@core/providers/responsive-config/responsive-config";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Directive({
     selector: "[responsive-window]",
@@ -21,15 +24,25 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
 
     @Input('responsive-window') name: string;
 
+    public currentBreakpoint$: Observable<string>;
+
     constructor(
         private _responsiveState: ResponsiveState,
         private el: ElementRef,
         private cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected _platformId) {
+        @Inject(PLATFORM_ID) protected _platformId,
+        private _responsiveConfig: ResponsiveConfig) {
+
         this._isBrowser = isPlatformBrowser(this._platformId);
         if (this._isBrowser) {
             this.element = el.nativeElement;
         }
+
+        this.currentBreakpoint$ = this._responsiveState
+            .ancho$
+            .pipe(
+                map(this.getCurrentBreakpoint.bind(this))
+            );
     }
     public ngOnInit(): void {
         if (this._isBrowser) {
@@ -48,7 +61,7 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
         }
     }
     public ngOnDestroy() {
-        if(this._isBrowser) {
+        if (this._isBrowser) {
             this._responsiveState.unregisterWindow(this);
         }
     }
@@ -56,6 +69,23 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
     public getWidth() {
         return (this._isBrowser) ? this.element.offsetWidth : 0;
     }
+
+    public getCurrentBreakpoint(): string {
+        const width: number = this.getWidth();
+        // console.error("getCurrentBreakpoint", width)
+        if (this._responsiveConfig.config.breakPoints.xl.min <= width) {
+            return 'xl';
+        } else if (this._responsiveConfig.config.breakPoints.lg.max >= width && this._responsiveConfig.config.breakPoints.lg.min <= width) {
+            return 'lg';
+        } else if (this._responsiveConfig.config.breakPoints.md.max >= width && this._responsiveConfig.config.breakPoints.md.min <= width) {
+            return 'md';
+        } else if (this._responsiveConfig.config.breakPoints.sm.max >= width && this._responsiveConfig.config.breakPoints.sm.min <= width) {
+            return 'sm';
+        } else if (this._responsiveConfig.config.breakPoints.xs.max >= width) {
+            return 'xs';
+        }
+    }
+
 
     private _ifValueChanged(oldValue: any, newValue: any): boolean {
         if (oldValue === newValue) {
