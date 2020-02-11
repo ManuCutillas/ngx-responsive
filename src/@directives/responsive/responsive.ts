@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
 
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../@core';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
-import { ComponentType } from "@angular/core/src/render3";
 import { ResponsiveWindowDirective } from "../responsive-window/responsive-window";
 
 @Directive(

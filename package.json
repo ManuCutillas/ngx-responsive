@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "ngx-responsive",
-  "version": "8.0.0-test1",
+  "version": "8.2.0",
   "description": "Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 7",
   "main": "src/index.ts",
   "scripts": {
