@@ -136,7 +136,9 @@
       }
     }
   },
-  "cli": {},
+  "cli": {
+    "analytics": "2ae75a54-5a03-420a-afd7-7f2ac2949526"
+  },
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

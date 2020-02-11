@@ -1,10 +1,16 @@
 ![ngx-responsive](/img/ng2-responsive-0-4-0-thin.jpg?raw=true)
 
 # Introduction
-Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 8.
+Superset of **RESPONSIVE DIRECTIVES** to show or hide items according to the size of the device screen and another features in Angular 9.
 
 ```
   npm i ngx-responsive --save
+```
+
+### If you use Angular 8 in your project.
+
+```
+  npm i ngx-responsive@8.2.0 --save
 ```
 
 ### If you use Angular 7 in your project.

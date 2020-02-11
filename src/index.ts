@@ -15,11 +15,11 @@
  *  - Thomas Christensen
  * ```
  * @created_at May 04, 2016
- * @updated_at Dec 08, 2018
- * @version v7.0.1
+ * @updated_at Feb 11, 2020
+ * @version v9.0.0
  *
- * @angular/core : "7.x.x"
- * rxjs: "7.x.x"
+ * @angular/core : "9.x.x"
+ * rxjs: "9.x.x"
  */
 export * from './@core/index';
 export * from './@directives/index';
