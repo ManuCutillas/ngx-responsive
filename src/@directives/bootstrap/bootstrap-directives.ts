@@ -15,9 +15,7 @@ export class XlDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'xl';
     protected _showWhenTrue = true;
-    @Input() set xl( grid_state: string[] | string ) {
-        this.setGrid(this._state, 'bootstrap');
-    }
+    
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
@@ -26,6 +24,7 @@ export class XlDirective extends RESPONSIVE_BASE<any> {
     ) {
 
         super ( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        this.setGrid(this._state, 'bootstrap');
     }
 }
 
@@ -37,9 +36,6 @@ export class LgDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'lg';
     protected _showWhenTrue = true;
-    @Input() set lg( grid_state: string[] | string ) {
-        this.setGrid( this._state, 'bootstrap' );
-    }
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
@@ -47,6 +43,7 @@ export class LgDirective extends RESPONSIVE_BASE<any> {
                  @Inject(PLATFORM_ID) _platformId 
     ) {
         super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        this.setGrid( this._state, 'bootstrap' );
     }
 }
 @Directive(
@@ -56,9 +53,7 @@ export class LgDirective extends RESPONSIVE_BASE<any> {
 export class MdDirective extends RESPONSIVE_BASE<any> {
     protected _state = 'md';
     protected _showWhenTrue = true;
-    @Input() set md( grid_state: string[] | string ) {
-        this.setGrid( this._state, 'bootstrap' );
-    }
+    
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
@@ -66,6 +61,7 @@ export class MdDirective extends RESPONSIVE_BASE<any> {
                  @Inject(PLATFORM_ID) _platformId 
     ) {
         super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        this.setGrid( this._state, 'bootstrap' );
     }
 }
 
@@ -76,9 +72,6 @@ export class SmDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'sm';
     protected _showWhenTrue = true;
-    @Input() set sm( grid_state: string[] | string ) {
-        this.setGrid( this._state, 'bootstrap' );
-    }
 
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
@@ -87,6 +80,7 @@ export class SmDirective extends RESPONSIVE_BASE<any> {
                  @Inject(PLATFORM_ID) _platformId 
     ) {
         super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        this.setGrid( this._state, 'bootstrap' );
     }
 }
 
@@ -97,9 +91,7 @@ export class XsDirective extends RESPONSIVE_BASE<any> {
 
     protected _state = 'xs';
     protected _showWhenTrue = true;
-    @Input() set xs( grid_state: string[] | string ) {
-        this.setGrid(this._state, 'bootstrap');
-    }
+    
     constructor( templateRef: TemplateRef<any>,
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
@@ -107,6 +99,7 @@ export class XsDirective extends RESPONSIVE_BASE<any> {
                  @Inject(PLATFORM_ID) _platformId 
     ) {
         super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        this.setGrid(this._state, 'bootstrap');
     }
 }
 @Directive(
