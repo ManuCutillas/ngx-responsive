@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 /*======== 1x =========*/
 @Directive({
@@ -28,9 +29,9 @@ export class Is1xPixelDirective extends RESPONSIVE_BASE<any> {
                   viewContainer: ViewContainerRef,
                   _responsiveState: ResponsiveState,
                   cd: ChangeDetectorRef,
-                  @Inject(PLATFORM_ID) _platformId 
+                  platformService: PlatformService
          ) {
-         super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+         super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -89,7 +90,7 @@ export class PixelRatioInfoDirective implements OnInit, OnDestroy {
     public currentstate: string;
     private _subscription: Subscription;
     private noRepeat: string;
-    private _isBrowser: boolean = null;
+    private _isEnabledForPlatform: boolean = null;
 
     @Input() set pixelratioInfo( grid_state: string[] | string ) {
         this.updateData( this.currentstate );
@@ -101,19 +102,19 @@ export class PixelRatioInfoDirective implements OnInit, OnDestroy {
         private _responsiveState: ResponsiveState,
         private viewContainer: ViewContainerRef,
         private cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected _platformId
+        platformService: PlatformService
     ) {
-        this._isBrowser = isPlatformBrowser(this._platformId);
+        this._isEnabledForPlatform = platformService.isEnabledForPlatform();
     }
 
     ngOnInit() {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             this._subscription = this._responsiveState.pixel$.subscribe(this.updateData.bind( this ));
         }
     }
 
     ngOnDestroy() {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             this._subscription.unsubscribe();
         }
     }

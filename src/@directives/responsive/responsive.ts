@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 import { IResponsivePattern, IResponsiveSubscriptions } from '../../@core';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { ResponsiveWindowDirective } from "../responsive-window/responsive-window";
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 @Directive(
     {
@@ -47,7 +48,7 @@ export class ResponsiveDirective implements OnDestroy {
     @Output() changes: EventEmitter<any> = new EventEmitter();
     private _windows = null;
     private _window = null;
-    private _isBrowser: boolean = null;
+    private _isEnabledForPlatform: boolean = null;
     public set_values: IResponsivePattern = {
         bootstrap: '',
         browser: '',
@@ -123,9 +124,9 @@ export class ResponsiveDirective implements OnDestroy {
         private _responsiveState: ResponsiveState,
         private viewContainer: ViewContainerRef,
         private cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected _platformId
+        platformService: PlatformService
     ) {
-        this._isBrowser = isPlatformBrowser(this._platformId);
+        this._isEnabledForPlatform = platformService.isEnabledForPlatform();
     }
 
     public init_responsive(): void {
@@ -193,7 +194,7 @@ export class ResponsiveDirective implements OnDestroy {
                 this._actives.push(key);
             }
         }
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             if (this.set_active_subscriptions.bootstrap) {
                 this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(this.updateBootstrap.bind(this));
             }
@@ -260,7 +261,7 @@ export class ResponsiveDirective implements OnDestroy {
     }
     private updateSizes(value: number): void {
         if(this.responsiveContainer){
-            this.set_values.sizes = this._isBrowser ? this.responsiveContainer.getWidth() : 0;
+            this.set_values.sizes = this._isEnabledForPlatform ? this.responsiveContainer.getWidth() : 0;
         }else if (this._sizes_window){
             this.set_values.sizes = this._responsiveState.getWidth(this._sizes_window);
         }else{
@@ -371,7 +372,7 @@ export class ResponsiveDirective implements OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             if (this.set_active_subscriptions.bootstrap) {
                 this._subscription_Bootstrap.unsubscribe();
             }

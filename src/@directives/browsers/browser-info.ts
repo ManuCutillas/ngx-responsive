@@ -4,28 +4,27 @@
  *
  * @license MIT
  */
-import { PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ReplaySubject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 export abstract class BrowserInfo {
     public currentstate: string;
     private _subscription: Subscription;
-    private _isBrowser: boolean = null;
+    private _isEnabledForPlatform: boolean = null;
     public replaySubject$: ReplaySubject<any> = new ReplaySubject();
     constructor(
         public _responsiveState: ResponsiveState,
-        @Inject(PLATFORM_ID) protected _platformId
+        protected platformService: PlatformService
     ) {
-        this._isBrowser = isPlatformBrowser(this._platformId);
+        this._isEnabledForPlatform = platformService.isEnabledForPlatform();
     }
     public connect(): Observable<any> {
-        if(this._isBrowser) {
+        if(this._isEnabledForPlatform) {
             this._subscription = this._responsiveState.browser$.pipe(distinctUntilChanged())
             .subscribe((data) => {
                 this._updateData(data);
@@ -34,7 +33,7 @@ export abstract class BrowserInfo {
         return this.replaySubject$.asObservable();
     }
     public disconnect(): void {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
            this._subscription.unsubscribe();
         }
     }

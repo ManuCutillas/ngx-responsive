@@ -5,12 +5,11 @@
  *
  * @license MIT
  */
-import { EventEmitter, Directive, Input, Output, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { PLATFORM_ID, Inject } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { EventEmitter, Directive, Input, Output, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { BrowserInfo } from './browser-info';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 @Directive({
     selector: 'browser-info'
@@ -21,10 +20,9 @@ export class BrowserInfoDirective extends BrowserInfo implements OnInit, OnDestr
         this._updateData(this.currentstate);
     }
     constructor(public _responsiveState: ResponsiveState,
-        private viewContainer: ViewContainerRef,
         private cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected _platformId
-    ) { super(_responsiveState, _platformId); }
+        protected platformService: PlatformService
+    ) { super(_responsiveState, platformService); }
 
     ngOnInit(): void {
         this.connect();

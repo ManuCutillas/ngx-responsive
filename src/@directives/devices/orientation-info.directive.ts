@@ -5,10 +5,10 @@
  * @license MIT
  */
 import { EventEmitter, Directive, Output, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { PLATFORM_ID, Inject } from '@angular/core';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { OrientationInfo } from './orientation-info';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 @Directive({ selector: 'orientation-info' })
 export class OrientationInfoDirective extends OrientationInfo implements OnInit, OnDestroy {
@@ -16,8 +16,8 @@ export class OrientationInfoDirective extends OrientationInfo implements OnInit,
     constructor(protected _responsiveState: ResponsiveState,
         protected viewContainer: ViewContainerRef,
         protected cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected _platformId
-    ) { super(_responsiveState, _platformId); }
+        platformService: PlatformService
+    ) { super(_responsiveState, platformService); }
     ngOnInit() {
         this.connect();
     }

@@ -4,12 +4,18 @@
  *
  * @license MIT
  */
-import { EventEmitter, TemplateRef, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import {
+    EventEmitter,
+    TemplateRef,
+    ViewContainerRef,
+    OnInit,
+    OnDestroy,
+    ChangeDetectorRef,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IResponsiveSubscriptions } from '../../interfaces';
 import { ResponsiveState } from '../responsive-state/responsive-state';
+import { PlatformService } from '../platform-service/platform.service';
 
 export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
 
@@ -39,16 +45,16 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
         ie: false,
         sizes: false
     };
-    private _isBrowser: any = null;
+    private _isEnabledForPlatform: boolean;
 
     constructor(
         private templateRef: TemplateRef<any>,
         private viewContainer: ViewContainerRef,
         private _responsiveState: ResponsiveState,
         private cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected readonly _platformId
+        private platformService: PlatformService
     ) {
-        this._isBrowser = isPlatformBrowser(this._platformId);
+        this._isEnabledForPlatform = this.platformService.isEnabledForPlatform();
     }
 
     protected eventChanges: EventEmitter<any> = new EventEmitter();
@@ -89,14 +95,11 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     }
 
     public ngOnInit() {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             if (this.set_active_subscriptions.bootstrap) {
                 this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(this.updateView.bind(this));
             }
 
-            if (this.set_active_subscriptions.bootstrap) {
-                this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(this.updateView.bind(this));
-            }
 
             if (this.set_active_subscriptions.browser) {
                 this._subscription_Browser = this._responsiveState.browser$.subscribe(this.updateView.bind(this));
@@ -128,7 +131,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy() {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             if (this.set_active_subscriptions.bootstrap) {
                 this._subscription_Bootstrap.unsubscribe();
             }
@@ -164,7 +167,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     }
 
     private showHide(show: boolean): void {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             if (show) {
                 if (this._noRepeat === 0) {
                     this._noRepeat = 1;

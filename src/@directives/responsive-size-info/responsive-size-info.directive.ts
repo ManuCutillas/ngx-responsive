@@ -5,10 +5,10 @@
  * @license MIT
  */
 import { Directive, EventEmitter, Input, Output, ViewContainerRef, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { PLATFORM_ID, Inject } from '@angular/core';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { ResponsiveSizeInfo } from './responsive-size-info';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 @Directive({ selector: 'responsiveSizeInfo' })
 export class ResponsiveSizeInfoDirective extends ResponsiveSizeInfo implements OnInit, OnDestroy {
@@ -21,8 +21,8 @@ export class ResponsiveSizeInfoDirective extends ResponsiveSizeInfo implements O
     constructor(public _responsiveState: ResponsiveState,
         public viewContainer: ViewContainerRef,
         public cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected _platformId
-    ) { super(_responsiveState, _platformId); }
+        platformService: PlatformService
+    ) { super(_responsiveState, platformService); }
     ngOnInit(): void {
         this.connect();
     }

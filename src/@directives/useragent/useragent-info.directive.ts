@@ -5,11 +5,10 @@
  * @license MIT
  */
 import { Output, EventEmitter, Directive, OnInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
-import { PLATFORM_ID, Inject } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { UserAgentInfo } from './useragent-info';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 @Directive(
 {
@@ -20,8 +19,8 @@ export class UserAgentInfoDirective extends UserAgentInfo implements OnInit, OnD
     constructor(
         public _responsiveState: ResponsiveState,
         public cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected _platformId
-    ) { super(_responsiveState, _platformId); }
+        platformService: PlatformService
+    ) { super(_responsiveState, platformService); }
     public ngOnInit(): void {
         this.connect();
     }

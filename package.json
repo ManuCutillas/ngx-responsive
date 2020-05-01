@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ng serve --aot",
     "build": "ng-packagr -p ng-package.json",
+    "build:watch": "onchange -i -k 'src/**/*.ts' -- npm run build",
     "compodoc": "compodoc -p tsconfig.json",
     "compodoc:serve": "compodoc -s",
     "test": "ng test",
@@ -99,6 +100,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "ng-packagr": "^9.0.0",
+    "onchange": "^7.0.2",
     "protractor": "~5.4.3",
     "source-map-explorer": "^2.2.2",
     "ts-loader": "^6.2.1",

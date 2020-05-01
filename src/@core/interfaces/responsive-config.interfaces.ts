@@ -13,4 +13,5 @@ export interface IResponsiveConfig {
         xl: { min: number }
     };
     debounceTime: number;
+    renderOnServer?: boolean;
 }
