@@ -11,6 +11,7 @@ import { ResponsiveState } from '../../@core/providers/responsive-state/responsi
 import { ResponsiveConfig } from "../../@core/providers/responsive-config/responsive-config";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 @Directive({
     selector: "[responsive-window]",
@@ -20,7 +21,7 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
 
     private _noRepeat: string;
     private element: HTMLElement;
-    private _isBrowser: boolean = null;
+    private _isEnabledForPlatform: boolean = null;
 
     @Input('responsive-window') name: string;
 
@@ -30,11 +31,11 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
         private _responsiveState: ResponsiveState,
         private el: ElementRef,
         private cd: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) protected _platformId,
+        platformService: PlatformService,
         private _responsiveConfig: ResponsiveConfig) {
 
-        this._isBrowser = isPlatformBrowser(this._platformId);
-        if (this._isBrowser) {
+        this._isEnabledForPlatform = platformService.isEnabledForPlatform();
+        if (this._isEnabledForPlatform) {
             this.element = el.nativeElement;
         }
 
@@ -45,13 +46,13 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
             );
     }
     public ngOnInit(): void {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             this._responsiveState.registerWindow(this);
         }
     }
 
     public ngDoCheck(): void {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             const _update = this._ifValueChanged(this._noRepeat, this.name);
             if (_update) {
                 this._responsiveState.unregisterWindow(this);
@@ -61,13 +62,13 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
         }
     }
     public ngOnDestroy() {
-        if (this._isBrowser) {
+        if (this._isEnabledForPlatform) {
             this._responsiveState.unregisterWindow(this);
         }
     }
 
     public getWidth() {
-        return (this._isBrowser) ? this.element.offsetWidth : 0;
+        return (this._isEnabledForPlatform) ? this.element.offsetWidth : 0;
     }
 
     public getCurrentBreakpoint(): string {
