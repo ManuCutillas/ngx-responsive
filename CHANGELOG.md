@@ -11,5 +11,6 @@
  - responsive-window improvements
    - Add ability to use container reference directly #123
    - add manual refresh action to force refresh when non media event occurs #124
+ - added support for rendering responsive directives on server
 
 

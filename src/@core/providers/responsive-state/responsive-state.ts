@@ -4,8 +4,7 @@
  *
  * @license MIT
  */
-import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -25,6 +24,7 @@ import {
     TosSystems, TSmartTv, TGameDevices
 } from '../../types';
 import { ResponsiveConfig } from '../responsive-config/responsive-config';
+import { PlatformService } from '../platform-service/platform.service';
 
 @Injectable()
 export class ResponsiveState {
@@ -42,25 +42,24 @@ export class ResponsiveState {
     public ieVersion$: Observable<any>;
     public userAgent$: Observable<any>;
 
-    private _width: number;
     private _screenWidth: number = null;
     private _screenHeight: number = null;
     private _userAgent: any = null;
-    private _isBrowser: boolean = null;
+    private isEnabledForPlatform: boolean = null;
 
     private _forceRefresh$: BehaviorSubject<null> = new BehaviorSubject<null>(null);
 
     constructor(
+        platformService: PlatformService,
         private _responsiveConfig: ResponsiveConfig,
-        @Inject(PLATFORM_ID) private _platformId
     ) {
-        this._isBrowser = isPlatformBrowser(this._platformId);
-        this._window = (this._isBrowser) ? window : null;
-        this._screenWidth = (this._isBrowser) ? this._window.screen.width : 0;
-        this._screenHeight = (this._isBrowser) ? this._window.screen.height : 0;
-        this._userAgent = (this._isBrowser) ? this._window.navigator.userAgent.toLowerCase() : null;
+        this.isEnabledForPlatform = platformService.isEnabledForPlatform();
+        this._window = (this.isEnabledForPlatform) ? window : null;
+        this._screenWidth = (this.isEnabledForPlatform) ? this._window.screen.width : 0;
+        this._screenHeight = (this.isEnabledForPlatform) ? this._window.screen.height : 0;
+        this._userAgent = (this.isEnabledForPlatform) ? this._window.navigator.userAgent.toLowerCase() : null;
 
-        if(this._isBrowser) {
+        if(this.isEnabledForPlatform) {
            
             const _resize$ =  combineLatest(
                 fromEvent(this._window, 'resize').pipe(
@@ -148,7 +147,7 @@ export class ResponsiveState {
     * @param windowName
     */
     public getWidth(windowName: string = null): any {
-        if (this._windows !== null && this._isBrowser) {
+        if (this._windows !== null && this.isEnabledForPlatform) {
             if (windowName && this._windows[windowName]) {
                 return this._windows[windowName].getWidth();
             } else {
@@ -163,7 +162,7 @@ export class ResponsiveState {
     */
     public getDevicePixelRatio(): any {
         let ratio = 1;
-        if (this._isBrowser) {
+        if (this.isEnabledForPlatform) {
             if (typeof this._window.screen.systemXDPI !== 'undefined' &&
                 typeof this._window.screen.logicalXDPI !== 'undefined' &&
                 this._window.screen.systemXDPI > this._window.screen.logicalXDPI) {
@@ -179,14 +178,14 @@ export class ResponsiveState {
     * @name getOrientation
     */
     public getOrientation(): any {
-        return (this._isBrowser) ? window.orientation : null;
+        return (this.isEnabledForPlatform) ? window.orientation : null;
     }
 
     /**
     * @name sizeObserver
     */
     public sizeObserver(): any {
-        return (this._windows !== null && this._isBrowser) ? this.getWidth('window') : 0;
+        return (this._windows !== null && this.isEnabledForPlatform) ? this.getWidth('window') : 0;
     }
 
     /**
@@ -195,7 +194,7 @@ export class ResponsiveState {
     public sizeOperations(): any {
         let _sizes = null;
         const _breackpoints = this._responsiveConfig.config.breakPoints;
-        if (this._windows !== null && this._isBrowser && _breackpoints !== null) {
+        if (this._windows !== null && this.isEnabledForPlatform && _breackpoints !== null) {
             const _width = this.getWidth('window');
             if (_breackpoints.xl.min <= _width) {
                 _sizes = 'xl';
@@ -217,7 +216,7 @@ export class ResponsiveState {
      */
     public pixelRatio(): any {
         let _pixelRatio = null;
-        if (this._isBrowser && this._screenWidth !== 0 && this._screenHeight !== 0) {
+        if (this.isEnabledForPlatform && this._screenWidth !== 0 && this._screenHeight !== 0) {
             if (this.testIs4k()) {
                 _pixelRatio = '4k';
             } else if (this.getDevicePixelRatio() > 1) {
@@ -244,7 +243,7 @@ export class ResponsiveState {
      */
     public orientationDevice(): any {
         let _orientationDevice = null;
-        if (this._isBrowser) {
+        if (this.isEnabledForPlatform) {
             if (this.isMobile() || this.isTablet()) {
                 if (this._window.innerHeight > this._window.innerWidth) {
                     _orientationDevice = 'portrait';
@@ -262,7 +261,7 @@ export class ResponsiveState {
      * @name getUserAgent
      */
     public getUserAgent(): any {
-        return (this._isBrowser) ? this._window.navigator.userAgent.toLowerCase() : null;
+        return (this.isEnabledForPlatform) ? this._window.navigator.userAgent.toLowerCase() : null;
     }
 
     /**
@@ -325,7 +324,7 @@ export class ResponsiveState {
      * @name deviceDetection
      */
     public deviceDetection(): any {
-        if (this._isBrowser) {
+        if (this.isEnabledForPlatform) {
             if (this.isMobile()) {
                 return 'mobile';
             } else if (this.isTablet()) {
@@ -343,7 +342,7 @@ export class ResponsiveState {
      * @name standardDevices
      */
     public standardDevices(): any {
-        if (this._isBrowser) {
+        if (this.isEnabledForPlatform) {
             if (REG_MOBILES.IPHONE.REG.test(this._userAgent)) {
                 return 'iphone';
             } else if (REG_TABLETS.IPAD.REG.test(this._userAgent)) {
@@ -363,7 +362,7 @@ export class ResponsiveState {
      * @name ieVersionDetect
      */
     public ieVersionDetect(): any {
-        if (this._isBrowser) {
+        if (this.isEnabledForPlatform) {
             const _userAgent = this.getUserAgent();
             const msie = _userAgent.indexOf('msie ');
             let _ieVersion = null;
@@ -401,7 +400,7 @@ export class ResponsiveState {
      */
     public browserName(): any {
         let _browserName = null;
-        if (this._isBrowser) {
+        if (this.isEnabledForPlatform) {
             if (REG_SORT_NAMES.WEBKIT.REG.test(this._userAgent) && REG_SORT_NAMES.CHROME.REG.test(this._userAgent)
                 && !REG_BROWSERS.IE.REG.test(this._userAgent)) {
                 _browserName = REG_BROWSERS.CHROME.VALUE;
