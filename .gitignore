@@ -23,6 +23,7 @@ expamples/package-lock.json
 # IDEs
 /.idea
 /.vscode
+*.iml
 
 # misc
 *.js
