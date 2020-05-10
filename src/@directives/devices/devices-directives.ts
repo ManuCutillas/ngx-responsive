@@ -5,10 +5,10 @@
  * @license MIT
  */
 import { Directive, Input, TemplateRef, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
-import { PLATFORM_ID, Inject } from '@angular/core';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 @Directive({
     selector: '[isSmartTv]'
@@ -25,9 +25,9 @@ export class IsSmartTvDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -46,9 +46,9 @@ export class IsDesktopDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -67,9 +67,9 @@ export class IsTabletDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -88,9 +88,9 @@ export class IsMobileDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -109,9 +109,9 @@ export class ShowItDeviceDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -130,9 +130,9 @@ export class HideItDeviceDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -152,9 +152,9 @@ export class IsIphoneDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -174,9 +174,9 @@ export class IsIpadDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -197,9 +197,9 @@ export class IsAndroidMobileDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -219,9 +219,9 @@ export class IsAndroidTabletDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -242,9 +242,9 @@ export class IsWindowsPhoneDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -264,9 +264,9 @@ export class ShowItStandardDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -285,9 +285,9 @@ export class HideItStandardDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -307,9 +307,9 @@ export class IsPortraitDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -329,8 +329,8 @@ export class IsLandscapeDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }

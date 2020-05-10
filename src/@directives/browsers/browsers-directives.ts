@@ -5,10 +5,10 @@
  * @license MIT
  */
 import { Directive, Input, TemplateRef, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
-import { PLATFORM_ID, Inject } from '@angular/core';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { RESPONSIVE_BASE } from '../../@core/providers/responsive-base/responsive-base';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 @Directive(
 {
@@ -25,9 +25,9 @@ export class IsChromeDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -46,9 +46,9 @@ export class IsFirefoxDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -67,9 +67,9 @@ export class IsSafariDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -88,9 +88,9 @@ export class IsOperaDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -109,9 +109,9 @@ export class IsIEDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -129,9 +129,9 @@ export class ShowItBrowserDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -149,9 +149,9 @@ export class HideItBrowserDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -170,9 +170,9 @@ export class IsIE9Directive extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -191,9 +191,9 @@ export class IsIE10Directive extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -212,9 +212,9 @@ export class IsIE11Directive extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -233,9 +233,9 @@ export class IsIE12Directive extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -253,9 +253,9 @@ export class ShowIEVersionDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService 
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -273,9 +273,9 @@ export class HideIEVersionDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService 
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
