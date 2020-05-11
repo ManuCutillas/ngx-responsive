@@ -13,6 +13,8 @@
  *  - Alyssa Brunswick
  *  - Quentin
  *  - Thomas Christensen
+ *  - MattSenter
+ *  - lydemann
  * ```
  * @created_at May 04, 2016
  * @updated_at Feb 11, 2020
@@ -21,7 +23,6 @@
  * @angular/core : "9.x.x"
  * rxjs: "9.x.x"
  */
-export * from './@core/index';
-export * from './@directives/index';
-export * from './responsive.module';
-
+export * from "./@core/index";
+export * from "./@directives/index";
+export * from "./responsive.module";
