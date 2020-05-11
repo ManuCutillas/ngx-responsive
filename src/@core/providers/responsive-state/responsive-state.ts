@@ -387,7 +387,7 @@ export class ResponsiveState {
                 }
             }
 
-            // let edge = this._userAgent.indexOf('Edge/')
+            // let edge = this._userAgent.indexOf('Edg/')
             if (REG_IE_VERSIONS.MS_EDGE.REG.test(_userAgent)) {
                 return IE_VERSIONS.IE_12;
             }

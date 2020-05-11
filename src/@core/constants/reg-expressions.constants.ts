@@ -171,7 +171,7 @@ export const REG_IE_VERSIONS = {
         VALUE: null
     },
     MS_EDGE: {
-        REG: /edge/i,
+        REG: /edg/i,
         VALUE: null
     }
 };
@@ -198,7 +198,7 @@ export const REG_BROWSERS = {
         VALUE: BROWSER_NAMES.OPERA
     },
     IE: {
-        REG: /msie|trident|edge/,
+        REG: /msie|trident|edg/,
         VALUE: BROWSER_NAMES.IE
     },
     SILK: {
