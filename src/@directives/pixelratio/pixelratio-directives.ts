@@ -53,9 +53,9 @@ export class IsRetinaDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                  _responsiveState: ResponsiveState,
                  cd: ChangeDetectorRef,
-                 @Inject(PLATFORM_ID) _platformId 
+                 platformService: PlatformService
         ) {
-        super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+        super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
@@ -76,9 +76,9 @@ export class Is4kDirective extends RESPONSIVE_BASE<any> {
                  viewContainer: ViewContainerRef,
                 _responsiveState: ResponsiveState,
                 cd: ChangeDetectorRef,
-                @Inject(PLATFORM_ID) _platformId 
+                platformService: PlatformService
        ) {
-       super( templateRef, viewContainer, _responsiveState, cd, _platformId );
+       super( templateRef, viewContainer, _responsiveState, cd, platformService );
     }
 }
 
