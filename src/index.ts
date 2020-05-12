@@ -1,7 +1,7 @@
 /**
  * @name ngx-responsive
  * @description Devices Detect Directives for Angular
- * @author Manu Cutillas
+ * @author Manuel Cutillas
  *
  * ```
  * #Contributors
@@ -17,7 +17,7 @@
  *  - lydemann
  * ```
  * @created_at May 04, 2016
- * @updated_at Feb 11, 2020
+ * @updated_at May 12, 2020
  * @version v9.0.0
  *
  * @angular/core : "9.x.x"

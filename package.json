@@ -59,7 +59,9 @@
     "mburger81 (https://github.com/mburger81)",
     "Alyssa Brunswick (https://github.com/alyssabrunswick)",
     "Quentin (https://github.com/bobbybobby)",
-    "Thomas Christensen (https://github.com/tocDK)"
+    "Thomas Christensen (https://github.com/tocDK)",
+    "Christian Lüdemann (https://github.com/lydemann)",
+    "Matt Senter (https://github.com/MattSenter)"
   ],
   "license": "MIT",
   "bugs": {
@@ -82,12 +84,10 @@
     "@angular/platform-browser": "^9.1.6",
     "@angular/platform-browser-dynamic": "^9.1.6",
     "@angular/platform-server": "^9.1.6",
-    "@compodoc/compodoc": "1.1.10",
+    "@compodoc/compodoc": "1.1.11",
     "@nguniversal/express-engine": "^9.1.1",
     "@nguniversal/module-map-ngfactory-loader": "^8.2.6",
     "@types/node": "~8.9.4",
-    "@types/jasmine": "~3.3.8",
-    "@types/jasminewd2": "~2.0.8",
     "copyfiles": "^2.2.0",
     "cpr": "^3.0.1",
     "del-cli": "^3.0.0",
