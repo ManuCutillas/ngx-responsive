@@ -53,7 +53,7 @@ export function responsiveConfiguration(config: IResponsiveConfig) {
         ]
 })
 export class ResponsiveModule {
-    public static forRoot(config: IResponsiveConfig = null): ModuleWithProviders {
+    public static forRoot(config: IResponsiveConfig = null): ModuleWithProviders<ResponsiveModule> {
         return {
             ngModule: ResponsiveModule,
             providers: [            {
