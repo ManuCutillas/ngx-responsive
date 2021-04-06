@@ -42,14 +42,51 @@ export class LgDirective extends RESPONSIVE_BASE<any> {
     ) {
         super(templateRef, viewContainer, _responsiveState, cd, platformService);
         this.setGrid(this._state, 'bootstrap');
-        console.log('LgDirective');
     }
 }
+
+@Directive({
+    selector: '[lgUp]',
+})
+export class LgUpDirective extends RESPONSIVE_BASE<any> {
+    protected _state = 'lgUp';
+    protected _showWhenTrue = true;
+    constructor(
+        templateRef: TemplateRef<any>,
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState,
+        cd: ChangeDetectorRef,
+        platformService: PlatformService
+    ) {
+        super(templateRef, viewContainer, _responsiveState, cd, platformService);
+        this.setGrid(this._state, 'bootstrap');
+    }
+}
+
 @Directive({
     selector: '[md]',
 })
 export class MdDirective extends RESPONSIVE_BASE<any> {
     protected _state = 'md';
+    protected _showWhenTrue = true;
+
+    constructor(
+        templateRef: TemplateRef<any>,
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState,
+        cd: ChangeDetectorRef,
+        platformService: PlatformService
+    ) {
+        super(templateRef, viewContainer, _responsiveState, cd, platformService);
+        this.setGrid(this._state, 'bootstrap');
+    }
+}
+
+@Directive({
+    selector: '[mdUp]',
+})
+export class MdUpDirective extends RESPONSIVE_BASE<any> {
+    protected _state = 'mdUp';
     protected _showWhenTrue = true;
 
     constructor(
@@ -84,6 +121,25 @@ export class SmDirective extends RESPONSIVE_BASE<any> {
 }
 
 @Directive({
+    selector: '[smUp]',
+})
+export class SmUpDirective extends RESPONSIVE_BASE<any> {
+    protected _state = 'smUp';
+    protected _showWhenTrue = true;
+
+    constructor(
+        templateRef: TemplateRef<any>,
+        viewContainer: ViewContainerRef,
+        _responsiveState: ResponsiveState,
+        cd: ChangeDetectorRef,
+        platformService: PlatformService
+    ) {
+        super(templateRef, viewContainer, _responsiveState, cd, platformService);
+        this.setGrid(this._state, 'bootstrap');
+    }
+}
+
+@Directive({
     selector: '[xs]',
 })
 export class XsDirective extends RESPONSIVE_BASE<any> {
@@ -101,6 +157,7 @@ export class XsDirective extends RESPONSIVE_BASE<any> {
         this.setGrid(this._state, 'bootstrap');
     }
 }
+
 @Directive({
     selector: '[showItBootstrap]',
 })
