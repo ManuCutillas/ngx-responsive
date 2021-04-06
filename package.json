@@ -1,6 +1,6 @@
 {
     "$schema": "./node_modules/ng-packagr/package.schema.json",
-    "name": "@stefanski/ngx-responsive",
+    "name": "@stefanski/ngx-responsive2",
     "version": "9.0.5",
     "description": "Superset of RESPONSIVE DIRECTIVES to show or hide items according to the size of the device screen and another features in Angular 9",
     "scripts": {
