@@ -4,31 +4,41 @@
  *
  * @license MIT
  */
-import { Output, EventEmitter, Directive, OnInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
+import { Output, EventEmitter, Directive, OnInit, OnDestroy, ChangeDetectorRef, Inject } from '@angular/core';
+
+import { IUserAgent } from '../../@core/interfaces';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
-import { UserAgentInfo } from './useragent-info';
 import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
-@Directive(
-{
+import { UserAgentInfo } from '../../@directives/useragent/useragent-info';
+
+@Directive({
     selector: 'user-agent-info'
 })
 export class UserAgentInfoDirective extends UserAgentInfo implements OnInit, OnDestroy {
-    @Output() info: EventEmitter<any> = new EventEmitter();
+    @Output()
+    public readonly info: EventEmitter<IUserAgent> = new EventEmitter();
+
     constructor(
-        public _responsiveState: ResponsiveState,
-        public cd: ChangeDetectorRef,
-        platformService: PlatformService
-    ) { super(_responsiveState, platformService); }
+        protected readonly responsiveState: ResponsiveState,
+        @Inject(PlatformService) protected readonly platformService: PlatformService,
+        private readonly _cd: ChangeDetectorRef
+    ) {
+        super(responsiveState, platformService);
+    }
+
     public ngOnInit(): void {
         this.connect();
     }
+
     public ngOnDestroy(): void {
         this.disconnect();
     }
-    protected _emitUserAgent ( value: any ): void {
-        this.info.emit( value );
-        this.cd.markForCheck();
+
+    protected emitUserAgent(userAgent: IUserAgent): void {
+        this.info.next(userAgent);
+
+        this._cd.markForCheck();
     }
 }

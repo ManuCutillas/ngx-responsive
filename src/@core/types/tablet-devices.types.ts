@@ -4,7 +4,7 @@
  *
  * @license MIT
  */
-import { TAndroid, TWindowsPhone } from './mobile.types';
+import { TAndroid, TWindowsPhone } from './mobile-devices.types';
 /**
  * @type
  * @name TIpad
@@ -28,8 +28,8 @@ export type TGenericTablet = 'Generic Tablet';
 
 /**
  * @type
- * @name TTablet
- * @export TTablet
+ * @name TTabletDevices
+ * @export TTabletDevices
  */
-export type TTablet = TIpad | TAndroid | TWindowsPhone | TKindle | TGenericTablet | null;
+export type TTabletDevices = TIpad | TAndroid | TWindowsPhone | TKindle | TGenericTablet | null;
 

@@ -5,14 +5,19 @@
  * @license MIT
  */
 import { Injectable} from '@angular/core';
-import { PLATFORM_ID, Inject } from '@angular/core';
+import { Inject } from '@angular/core';
+
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
-import { UserAgentInfo } from './useragent-info';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
+
+import { UserAgentInfo } from '../../@directives/useragent/useragent-info';
 
 @Injectable()
-export class UserAgentInfoRx extends UserAgentInfo  {
+export class UserAgentInfoRx extends UserAgentInfo {
     constructor( 
-        public _responsiveState: ResponsiveState,
-        @Inject(PLATFORM_ID) protected _platformId
-    ) { super(_responsiveState, _platformId); }
+        protected readonly responsiveState: ResponsiveState,
+        @Inject(PlatformService) protected readonly platformService: PlatformService
+    ) {
+        super(responsiveState, platformService);
+    }
 }

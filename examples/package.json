@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~9.1.6",
     "@angular/router": "~9.1.6",
     "core-js": "^3.6.5",
-    "ngx-responsive": "9.0.2-beta",
+    "ngx-responsive": "./../dist",
     "rxjs": "~6.5.5",
     "tslib": "^1.11.2",
     "zone.js": "~0.10.3"

@@ -67,13 +67,13 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
         }
     }
 
-    public getWidth() {
+    public getWidth(): number {
         return (this._isEnabledForPlatform) ? this.element.offsetWidth : 0;
     }
 
     public getCurrentBreakpoint(): string {
         const width: number = this.getWidth();
-        // console.error("getCurrentBreakpoint", width)
+
         if (this._responsiveConfig.config.breakPoints.xl.min <= width) {
             return 'xl';
         } else if (this._responsiveConfig.config.breakPoints.lg.max >= width && this._responsiveConfig.config.breakPoints.lg.min <= width) {
@@ -86,7 +86,6 @@ export class ResponsiveWindowDirective implements OnInit, OnDestroy, DoCheck {
             return 'xs';
         }
     }
-
 
     private _ifValueChanged(oldValue: any, newValue: any): boolean {
         if (oldValue === newValue) {

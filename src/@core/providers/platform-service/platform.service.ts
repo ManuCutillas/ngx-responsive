@@ -1,24 +1,24 @@
 
 
 import { Inject, PLATFORM_ID, Injectable } from '@angular/core';
-import { ResponsiveConfig } from '../responsive-config/responsive-config';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+
+import { ResponsiveConfig } from '../responsive-config/responsive-config';
 
 @Injectable()
 export class PlatformService {
+    public readonly isServer: boolean;
+    public readonly isBrowser: boolean;
 
-  isServer: boolean;
-  isBrowser: boolean;
+    constructor(
+        @Inject(PLATFORM_ID) private readonly _platformId,
+        @Inject(ResponsiveConfig) private readonly _responsiveConfig: ResponsiveConfig
+    ) {
+        this.isServer = isPlatformServer(this._platformId);
+        this.isBrowser = isPlatformBrowser(this._platformId);
+    }
 
-  constructor(
-    @Inject(PLATFORM_ID) private readonly _platformId,
-    @Inject(ResponsiveConfig) private responsiveConfig: ResponsiveConfig
-  ) {
-    this.isServer = isPlatformServer(_platformId);
-    this.isBrowser = isPlatformBrowser(_platformId);
-  }
-
-  public isEnabledForPlatform() {
-    return this.isBrowser || this.responsiveConfig.config.renderOnServer;
-  }
+    public isEnabledForPlatform() {
+        return this.isBrowser || this._responsiveConfig.config.renderOnServer;
+    }
 }

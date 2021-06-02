@@ -4,42 +4,53 @@
  *
  * @license MIT
  */
-import { PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { distinctUntilChanged } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { ReplaySubject } from 'rxjs';
 import { Observable } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
+
+import { IUserAgent } from '../../@core/interfaces';
 
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
+import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
 export abstract class UserAgentInfo {
-    public replaySubject$: ReplaySubject<any> = new ReplaySubject();
-    private _isBrowser: boolean = null;
+    public get getUserAgent(): ReplaySubject<IUserAgent> {
+        return this._replaySubject$;
+    }
+
+    private readonly _replaySubject$: ReplaySubject<IUserAgent> = new ReplaySubject();
+
+    private get _isBrowser(): boolean {
+        return this.platformService.isBrowser;
+    }
+
     private _subscription: Subscription;
-    constructor(public _responsiveState: ResponsiveState,
-        @Inject(PLATFORM_ID) protected _platformId
-    ) {
-        this._isBrowser = isPlatformBrowser(this._platformId);
-    }
-    public connect(): Observable<any> {
+
+    constructor(
+        protected readonly responsiveState: ResponsiveState,
+        protected readonly platformService: PlatformService
+    ) {}
+
+    public connect(): Observable<IUserAgent> {
         if (this._isBrowser) {
-            this._subscription = this._responsiveState.userAgent$.pipe(distinctUntilChanged())
-                .subscribe((data) => {
-                    this._emitUserAgent(data);
-            });
+            this._subscription = this.responsiveState.userAgent$
+                .pipe(distinctUntilChanged())
+                .subscribe(data => {
+                    this.emitUserAgent(data);
+                });
         }
-        return this.replaySubject$.asObservable();
+    
+        return this._replaySubject$.asObservable();
     }
+
     public disconnect(): void {
         if (this._isBrowser) {
             this._subscription.unsubscribe();
         }
     }
-    get getUserAgent(): Observable<any> {
-        return this.replaySubject$.asObservable();
-    }
-    protected _emitUserAgent(value: any): void {
-        this.replaySubject$.next(value);
+
+    protected emitUserAgent(value: IUserAgent): void {
+        this._replaySubject$.next(value);
     }
 }

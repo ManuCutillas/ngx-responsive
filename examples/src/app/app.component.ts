@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {
   IeInfoRx, ResponsiveSizeInfoRx, OrientationInfoRx, DeviceStandardInfoRx,
   DeviceInfoRx,
-  UserAgentInfoRx, BrowserInfoRx,
+  UserAgentInfoRx, BrowserInfoRx, IResponsivePattern,
 } from 'ngx-responsive';
 // tslint:disable-next-line:ordered-imports
 import { OnInit, OnDestroy } from '@angular/core';
@@ -13,6 +13,21 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  public readonly xsPattern: IResponsivePattern = {
+    bootstrap: 'xs'
+  };
+  public readonly smPattern: IResponsivePattern = {
+    bootstrap: 'sm'
+  };
+  public readonly mdPattern: IResponsivePattern = {
+    bootstrap: 'md'
+  };
+  public readonly lgPattern: IResponsivePattern = {
+    bootstrap: 'lg'
+  };
+  public readonly xlPattern: IResponsivePattern = {
+    bootstrap: 'xl'
+  };
   private _subscriptions: Subscription[] = [];
   constructor(
     public ieInfoRx: IeInfoRx,
