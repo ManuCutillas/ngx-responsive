@@ -5,43 +5,57 @@
  * @license MIT
  */
 
+import {
+    TBrowserNames,
+    TDevices,
+    TGameDevices,
+    TIE_VERSIONS,
+    TLinuxOS,
+    TMobileDevices,
+    TosSystems,
+    TPixelRatios,
+    TSmartTv,
+    TTabletDevices,
+    TWindowsOS
+} from "../types";
+
 /**
  * @export IUserAgent
  */
 export interface IUserAgent {
-    device: string;
-    browser: string;
-    pixelratio: string;
+    device: TDevices;
+    browser: TBrowserNames;
+    pixelRatio: TPixelRatios;
     ie_version: {
-        name: string;
+        name: TIE_VERSIONS;
         state: boolean;
     };
     game_device: {
-        name: string;
+        name: TGameDevices;
         state: boolean;
     };
     smart_tv: {
-        name: string;
+        name: TSmartTv;
         state: boolean;
     };
     desktop: {
-        name: string;
+        name: TosSystems;
         state: boolean;
     };
     tablet: {
-        name: string;
+        name: TTabletDevices;
         state: boolean;
     };
     mobile: {
-        name: string;
+        name: TMobileDevices;
         state: boolean;
     };
     window_os: {
-        name: string;
+        name: TWindowsOS;
         state: boolean;
     };
     linux_os: {
-        name: string;
+        name: TLinuxOS;
         state: boolean;
     };
     bot: boolean;

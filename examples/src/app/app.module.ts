@@ -23,6 +23,7 @@ const config: IResponsiveConfig = {
   imports: [
     BrowserModule,
     CommonModule,
+    AppRoutingModule,
     ResponsiveModule.forRoot(config)
   ],
   providers: [],

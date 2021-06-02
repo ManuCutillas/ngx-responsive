@@ -11,12 +11,14 @@ import {
     OnInit,
     OnDestroy,
     ChangeDetectorRef,
+    Directive,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IResponsiveSubscriptions } from '../../interfaces';
 import { ResponsiveState } from '../responsive-state/responsive-state';
 import { PlatformService } from '../platform-service/platform.service';
 
+@Directive()
 export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
 
     private _noRepeat = 0;
@@ -39,7 +41,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
         bootstrap: false,
         browser: false,
         device: false,
-        pixelratio: false,
+        pixelRatio: false,
         orientation: false,
         standard: false,
         ie: false,
@@ -76,7 +78,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
                 this.set_active_subscriptions.browser = true;
                 break;
             case 'pixelratio':
-                this.set_active_subscriptions.pixelratio = true;
+                this.set_active_subscriptions.pixelRatio = true;
                 break;
             case 'ie':
                 this.set_active_subscriptions.ie = true;
@@ -100,7 +102,6 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
                 this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(this.updateView.bind(this));
             }
 
-
             if (this.set_active_subscriptions.browser) {
                 this._subscription_Browser = this._responsiveState.browser$.subscribe(this.updateView.bind(this));
             }
@@ -108,7 +109,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
                 this._subscription_Device = this._responsiveState.device$.subscribe(this.updateView.bind(this));
             }
 
-            if (this.set_active_subscriptions.pixelratio) {
+            if (this.set_active_subscriptions.pixelRatio) {
                 this._subscription_Pixel_Ratio = this._responsiveState.pixel$.subscribe(this.updateView.bind(this));
             }
 
@@ -144,7 +145,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
                 this._subscription_Device.unsubscribe();
             }
 
-            if (this.set_active_subscriptions.pixelratio) {
+            if (this.set_active_subscriptions.pixelRatio) {
                 this._subscription_Pixel_Ratio.unsubscribe();
             }
 

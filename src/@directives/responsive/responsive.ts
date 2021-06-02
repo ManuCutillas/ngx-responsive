@@ -9,25 +9,27 @@ import { PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { IResponsivePattern, IResponsiveSubscriptions } from '../../@core';
+import { IResponsivePattern, IResponsiveSubscriptions, TBootstraps, TBrowserNames, TDevices, TIE_VERSIONS, TOrientations, TPixelRatios, TSizes, TStandards } from '../../@core';
 import { ResponsiveState } from '../../@core/providers/responsive-state/responsive-state';
 import { ResponsiveWindowDirective } from "../responsive-window/responsive-window";
 import { PlatformService } from '../../@core/providers/platform-service/platform.service';
 
-@Directive(
-    {
-        selector: '[responsive]'
-    })
+@Directive({
+    selector: '[responsive]'
+})
 export class ResponsiveDirective implements OnDestroy {
-
-    private _config: string | string[];
-    @Input() set responsive(config: string | string[]) {
+    @Input()
+    public set responsive(config: IResponsivePattern) {
         this._config = config;
+
         this.init_responsive();
     }
-    get config(): string | string[]{
+
+    public get config(): IResponsivePattern {
         return this._config;
     }
+
+    private _config: IResponsivePattern;
     
     // @Input() responsiveContainer: ResponsiveWindowDirective;
     private _responsiveContainer:ResponsiveWindowDirective;
@@ -49,15 +51,16 @@ export class ResponsiveDirective implements OnDestroy {
     private _windows = null;
     private _window = null;
     private _isEnabledForPlatform: boolean = null;
+
     public set_values: IResponsivePattern = {
-        bootstrap: '',
-        browser: '',
-        device: '',
-        pixelratio: '',
-        orientation: '',
-        standard: '',
-        ie: '',
-        sizes: 0
+        bootstrap: null,
+        browser: null,
+        device: null,
+        pixelRatio: null,
+        orientation: null,
+        standard: null,
+        ie: null,
+        sizes: null
     };
 
     private set_active_subscriptions: IResponsiveSubscriptions =
@@ -65,7 +68,7 @@ export class ResponsiveDirective implements OnDestroy {
             bootstrap: false,
             browser: false,
             device: false,
-            pixelratio: false,
+            pixelRatio: false,
             orientation: false,
             standard: false,
             ie: false,
@@ -76,7 +79,7 @@ export class ResponsiveDirective implements OnDestroy {
             bootstrap: false,
             browser: false,
             device: false,
-            pixelratio: false,
+            pixelRatio: false,
             orientation: false,
             standard: false,
             ie: false,
@@ -130,7 +133,8 @@ export class ResponsiveDirective implements OnDestroy {
     }
 
     public init_responsive(): void {
-        const config: any = this.config;
+        const config = this.config;
+
         if (this.isJSON(config)) {
             if (!!config.bootstrap && this._bootstrapNoRepeat === 0) {
                 this._bootstrap_user_param = <string[]>(Array.isArray(config.bootstrap) ? config.bootstrap : [config.bootstrap]);
@@ -157,10 +161,10 @@ export class ResponsiveDirective implements OnDestroy {
                 this._browserNoRepeat = 1;
                 this.set_active_subscriptions.browser = true;
             }
-            if (!!config.pixelratio && this._pixelratioNoRepeat === 0) {
-                this._pixelratio_user_param = <string[]>(Array.isArray(config.pixelratio) ? config.pixelratio : [config.pixelratio]);
+            if (!!config.pixelRatio && this._pixelratioNoRepeat === 0) {
+                this._pixelratio_user_param = <string[]>(Array.isArray(config.pixelRatio) ? config.pixelRatio : [config.pixelRatio]);
                 this._pixelratioNoRepeat = 1;
-                this.set_active_subscriptions.pixelratio = true;
+                this.set_active_subscriptions.pixelRatio = true;
             }
             if (!!config.ie && this._ieNoRepeat === 0) {
                 this._ie_user_param = <string[]>(Array.isArray(config.ie) ? config.ie : [config.ie]);
@@ -168,13 +172,25 @@ export class ResponsiveDirective implements OnDestroy {
                 this.set_active_subscriptions.ie = true;
             }
             if (!!config.sizes && this._sizesNoRepeat === 0) {
-                const _min = config.sizes.min || 0;
-                const _max = config.sizes.max || Number.MAX_VALUE;
-                const _win = config.sizes.window;
+                let _min: number;
+                let _max: number;
+                let _win: string;
+
+                if (typeof config.sizes === 'number') {
+                    _min = 0;
+                    _max = (config.sizes as number) || Number.MAX_VALUE;
+                } else {
+                    const sizes = config.sizes as TSizes;
+
+                    _min = sizes.min || 0;
+                    _max = sizes.max || Number.MAX_VALUE;
+                    _win = sizes.window;
+                }
+                
                 if (_win !== undefined) {
                     this._sizes_window = _win;
                 }
-                // this._sizes_container = value.sizes.container;
+
                 this._sizes_user_param = [_min, _max];
                 this._sizesNoRepeat = 1;
                 this.set_active_subscriptions.sizes = true;
@@ -206,7 +222,7 @@ export class ResponsiveDirective implements OnDestroy {
                 this._subscription_Device = this._responsiveState.device$.subscribe(this.updateDevice.bind(this));
             }
 
-            if (this.set_active_subscriptions.pixelratio) {
+            if (this.set_active_subscriptions.pixelRatio) {
                 this._subscription_Pixel_Ratio = this._responsiveState.pixel$.subscribe(this.updatePixelRatio.bind(this));
             }
 
@@ -228,45 +244,61 @@ export class ResponsiveDirective implements OnDestroy {
         }
     }
 
-    private updateBootstrap(value: string): void {
+    private updateBootstrap(value: TBootstraps): void {
         const _update = this._ifValueChanged(this._noRepeatBootstrapName, value);
+
         if (_update) {
             this.set_values.bootstrap = value;
         }
+
         this.updateEvent(this.set_values.bootstrap, 'bootstrap');
     }
-    private updateBrowser(value: string): void {
+
+    private updateBrowser(value: TBrowserNames): void {
         this.set_values.browser = value;
+
         this.updateEvent(this.set_values.browser, 'browser');
     }
-    private updateDevice(value: string): void {
+
+    private updateDevice(value: TDevices): void {
         this.set_values.device = value;
+
         this.updateEvent(this.set_values.device, 'device');
     }
-    private updatePixelRatio(value: string): void {
-        this.set_values.pixelratio = value;
-        this.updateEvent(this.set_values.pixelratio, 'pixelratio');
+
+    private updatePixelRatio(value: TPixelRatios): void {
+        this.set_values.pixelRatio = value;
+
+        this.updateEvent(this.set_values.pixelRatio, 'pixelratio');
     }
-    private updateOrientation(value: string): void {
+
+    private updateOrientation(value: TOrientations): void {
         this.set_values.orientation = value;
+
         this.updateEvent(this.set_values.orientation, 'orientation');
     }
-    private updateStandard(value: string): void {
+
+    private updateStandard(value: TStandards): void {
         this.set_values.standard = value;
+
         this.updateEvent(this.set_values.standard, 'standard');
     }
-    private updateIEversion(value: string): void {
+
+    private updateIEversion(value: TIE_VERSIONS): void {
         this.set_values.ie = value;
+
         this.updateEvent(this.set_values.ie, 'ie');
     }
-    private updateSizes(value: number): void {
-        if(this.responsiveContainer){
+
+    private updateSizes(value: number | TSizes): void {
+        if (this.responsiveContainer){
             this.set_values.sizes = this._isEnabledForPlatform ? this.responsiveContainer.getWidth() : 0;
-        }else if (this._sizes_window){
+        } else if (this._sizes_window){
             this.set_values.sizes = this._responsiveState.getWidth(this._sizes_window);
-        }else{
+        } else{
             this.set_values.sizes = value;
         }
+
         this.updateEvent(this.set_values.sizes, 'sizes');
     }
 
@@ -385,7 +417,7 @@ export class ResponsiveDirective implements OnDestroy {
                 this._subscription_Device.unsubscribe();
             }
 
-            if (this.set_active_subscriptions.pixelratio) {
+            if (this.set_active_subscriptions.pixelRatio) {
                 this._subscription_Pixel_Ratio.unsubscribe();
             }
 

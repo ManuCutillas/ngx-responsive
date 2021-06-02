@@ -111,6 +111,7 @@
     "jest-preset-angular": "^8.0.0",
     "ts-loader": "^6.2.1",
     "rimraf": "2.6.2",
+    "rxjs": "~6.5.5",
     "tsickle": "^0.38.1",
     "ts-node": "~8.10.1",
     "tslint": "~6.1.2",

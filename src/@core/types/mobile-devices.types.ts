@@ -43,8 +43,8 @@ export type TGenericMobile = 'Generic Mobile';
 
 /**
  * @type
- * @name TMobile
- * @export TMobile
+ * @name TMobileDevices
+ * @export TMobileDevices
  */
-export type TMobile = TIphone | TAndroid | TWindowsPhone | TBlackberry | TGenericMobile | null;
+export type TMobileDevices = TIphone | TAndroid | TWindowsPhone | TBlackberry | TGenericMobile | null;
 

@@ -4,11 +4,12 @@
  *
  * @license MIT
  */
+import { IUserAgent } from "../interfaces";
 
-export const USER_AGENT = {
+export const USER_AGENT: IUserAgent = {
     device: null,
     browser: null,
-    pixelratio: null,
+    pixelRatio: null,
     ie_version: {
         name: null,
         state: null

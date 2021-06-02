@@ -17,11 +17,19 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul>
+
 <div *xl>HELLO XL</div>
 <div *lg>HELLO LG</div>
 <div *md>HELLO MD</div>
 <div *sm>HELLO SM</div>
 <div *xs>HELLO XS</div>
+
+<div *responsive="xlPattern">HELLO XL PATTERN</div>
+<div *responsive="lgPattern">HELLO LG PATTERN</div>
+<div *responsive="mdPattern">HELLO MD PATTERN</div>
+<div *responsive="smPattern">HELLO SM PATTERN</div>
+<div *responsive="xsPattern">HELLO XS PATTERN</div>
+
 <user-agent-info (info)="thisUserAgent($event)"></user-agent-info>
 
 <router-outlet></router-outlet>

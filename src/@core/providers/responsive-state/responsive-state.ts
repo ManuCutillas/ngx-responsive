@@ -19,28 +19,28 @@ import {
     USER_AGENT, REG_IE_VERSIONS, TABLET, WINDOWS_OS, LINUX_OS, MOBILE,
     IE_VERSIONS
 } from '../../constants';
+import { IUserAgent } from '../../interfaces';
 import {
-    TLinuxOS, TWindowsOS, TTablet, TMobile,
-    TosSystems, TSmartTv, TGameDevices
+    TLinuxOS, TWindowsOS, TTabletDevices, TMobileDevices,
+    TosSystems, TSmartTv, TGameDevices, TBootstraps, TBrowserNames, TDevices, TPixelRatios, TOrientations, TStandards, TIE_VERSIONS, TSizes
 } from '../../types';
 import { ResponsiveConfig } from '../responsive-config/responsive-config';
 import { PlatformService } from '../platform-service/platform.service';
 
 @Injectable()
 export class ResponsiveState {
+    public _windows: { [name: string]: ResponsiveWindowDirective } = {};
+    public _window: Window;
 
-    public _windows: Object = {};
-    public _window: any = null;
-
-    public elemento$: Observable<string>;
-    public ancho$: Observable<number>;
-    public browser$: Observable<string>;
-    public pixel$: Observable<string>;
-    public device$: Observable<any>;
-    public orientation$: Observable<any>;
-    public standard$: Observable<any>;
-    public ieVersion$: Observable<any>;
-    public userAgent$: Observable<any>;
+    public elemento$: Observable<TBootstraps>;
+    public ancho$: Observable<number | TSizes>;
+    public browser$: Observable<TBrowserNames>;
+    public pixel$: Observable<TPixelRatios>;
+    public device$: Observable<TDevices>;
+    public orientation$: Observable<TOrientations>;
+    public standard$: Observable<TStandards>;
+    public ieVersion$: Observable<TIE_VERSIONS>;
+    public userAgent$: Observable<IUserAgent>;
 
     private _screenWidth: number = null;
     private _screenHeight: number = null;
@@ -59,14 +59,14 @@ export class ResponsiveState {
         this._screenHeight = (this.isEnabledForPlatform) ? this._window.screen.height : 0;
         this._userAgent = (this.isEnabledForPlatform) ? this._window.navigator.userAgent.toLowerCase() : null;
 
-        if(this.isEnabledForPlatform) {
-           
+        if (this.isEnabledForPlatform) {
             const _resize$ =  combineLatest(
-                fromEvent(this._window, 'resize').pipe(
-                    debounceTime(this._responsiveConfig.config.debounceTime),
-                    defaultIfEmpty(),
-                    startWith(this.getWidth('window'))
-                ),
+                fromEvent(this._window, 'resize')
+                    .pipe(
+                        debounceTime(this._responsiveConfig.config.debounceTime),
+                        defaultIfEmpty<any>(),
+                        startWith(this.getWidth('window'))
+                    ),
                 this._forceRefresh$
             ).pipe(
                 debounceTime(this._responsiveConfig.config.debounceTime)
@@ -74,26 +74,26 @@ export class ResponsiveState {
 
             const _pixelRatio$ = fromEvent(this._window, 'onload')
                 .pipe(
-                defaultIfEmpty(),
-                startWith(this.getDevicePixelRatio())
+                    defaultIfEmpty(),
+                    startWith(this.getDevicePixelRatio())
                 );
 
             const _device$ = fromEvent(this._window, 'onload')
                 .pipe(
-                defaultIfEmpty(),
-                startWith(this.getUserAgent())
+                    defaultIfEmpty(),
+                    startWith(this.getUserAgent())
                 );
 
             const _userAgent$ = fromEvent(this._window, 'onload')
                 .pipe(
-                defaultIfEmpty(),
-                startWith(this.userAgentData())
+                    defaultIfEmpty<any>(),
+                    startWith(this.userAgentData())
                 );
 
             const _orientation$ = fromEvent(this._window, 'orientationchange')
                 .pipe(
-                defaultIfEmpty(),
-                startWith(this.getOrientation())
+                    defaultIfEmpty(),
+                    startWith(this.getOrientation())
                 );
 
             this.elemento$ = _resize$.pipe(map(this.sizeOperations.bind(this)));
@@ -146,7 +146,7 @@ export class ResponsiveState {
     * @name getWidth
     * @param windowName
     */
-    public getWidth(windowName: string = null): any {
+    public getWidth(windowName: string = null): number {
         if (this._windows !== null && this.isEnabledForPlatform) {
             if (windowName && this._windows[windowName]) {
                 return this._windows[windowName].getWidth();
@@ -163,10 +163,12 @@ export class ResponsiveState {
     public getDevicePixelRatio(): any {
         let ratio = 1;
         if (this.isEnabledForPlatform) {
-            if (typeof this._window.screen.systemXDPI !== 'undefined' &&
-                typeof this._window.screen.logicalXDPI !== 'undefined' &&
-                this._window.screen.systemXDPI > this._window.screen.logicalXDPI) {
-                ratio = this._window.screen.systemXDPI / this._window.screen.logicalXDPI;
+            const screen = this._window.screen as any;
+
+            if (typeof screen.systemXDPI !== 'undefined' &&
+                typeof screen.logicalXDPI !== 'undefined' &&
+                screen.systemXDPI > screen.logicalXDPI) {
+                ratio = screen.systemXDPI / screen.logicalXDPI;
             } else if (typeof this._window.devicePixelRatio !== 'undefined') {
                 ratio = this._window.devicePixelRatio;
             }
@@ -184,18 +186,21 @@ export class ResponsiveState {
     /**
     * @name sizeObserver
     */
-    public sizeObserver(): any {
+    public sizeObserver(): number {
         return (this._windows !== null && this.isEnabledForPlatform) ? this.getWidth('window') : 0;
     }
 
     /**
      * @name sizeOperations
      */
-    public sizeOperations(): any {
-        let _sizes = null;
+    public sizeOperations(): TBootstraps {
+        let _sizes: TBootstraps = null;
+
         const _breackpoints = this._responsiveConfig.config.breakPoints;
+
         if (this._windows !== null && this.isEnabledForPlatform && _breackpoints !== null) {
             const _width = this.getWidth('window');
+
             if (_breackpoints.xl.min <= _width) {
                 _sizes = 'xl';
             } else if (_breackpoints.lg.max >= _width && _breackpoints.lg.min <= _width) {
@@ -208,14 +213,16 @@ export class ResponsiveState {
                 _sizes = 'xs';
             }
         }
+
         return _sizes;
     }
 
     /**
      * @name sizeOperations
      */
-    public pixelRatio(): any {
-        let _pixelRatio = null;
+    public pixelRatio(): TPixelRatios {
+        let _pixelRatio: TPixelRatios = null;
+
         if (this.isEnabledForPlatform && this._screenWidth !== 0 && this._screenHeight !== 0) {
             if (this.testIs4k()) {
                 _pixelRatio = '4k';
@@ -225,6 +232,7 @@ export class ResponsiveState {
                 _pixelRatio = '1x';
             }
         }
+
         return _pixelRatio;
     }
 
@@ -241,7 +249,7 @@ export class ResponsiveState {
     /**
      * @name orientationDevice
      */
-    public orientationDevice(): any {
+    public orientationDevice(): TOrientations {
         let _orientationDevice = null;
         if (this.isEnabledForPlatform) {
             if (this.isMobile() || this.isTablet()) {
@@ -260,14 +268,14 @@ export class ResponsiveState {
     /**
      * @name getUserAgent
      */
-    public getUserAgent(): any {
+    public getUserAgent(): string {
         return (this.isEnabledForPlatform) ? this._window.navigator.userAgent.toLowerCase() : null;
     }
 
     /**
      * @name userAgentData
      */
-    public userAgentData(): any {
+    public userAgentData(): IUserAgent {
         if (this._window === null) {
             return USER_AGENT;
         }
@@ -283,37 +291,37 @@ export class ResponsiveState {
         return {
             device: this.deviceDetection(),
             browser: this.browserName(),
-            pixelratio: this.pixelRatio(),
+            pixelRatio: this.pixelRatio(),
             ie_version: {
-                name: (_ieVersionState) ? this.ieVersionDetect() : DEFAULT_USER_AGENT_VALUE,
+                name: (_ieVersionState) ? this.ieVersionDetect() : null,
                 state: _ieVersionState
             },
             game_device: {
-                name: (_isGameDevice) ? this.gameDevices() : DEFAULT_USER_AGENT_VALUE,
+                name: (_isGameDevice) ? this.gameDevices() : null,
                 state: _isGameDevice
             },
             smart_tv: {
-                name: (_isSMART) ? this.smartTv() : DEFAULT_USER_AGENT_VALUE,
+                name: (_isSMART) ? this.smartTv() : null,
                 state: _isSMART
             },
             desktop: {
-                name: (_isDesktop) ? this.desktop() : DEFAULT_USER_AGENT_VALUE,
+                name: (_isDesktop) ? this.desktop() : null,
                 state: _isDesktop
             },
             tablet: {
-                name: (_isTablet) ? this.tablet() : DEFAULT_USER_AGENT_VALUE,
+                name: (_isTablet) ? this.tablet() : null,
                 state: _isTablet
             },
             mobile: {
-                name: (_isMobile) ? this.mobile() : DEFAULT_USER_AGENT_VALUE,
+                name: (_isMobile) ? this.mobile() : null,
                 state: _isMobile
             },
             window_os: {
-                name: (_isWindows) ? this.windows() : DEFAULT_USER_AGENT_VALUE,
+                name: (_isWindows) ? this.windows() : null,
                 state: _isWindows
             },
             linux_os: {
-                name: (_isLinux) ? this.linux() : DEFAULT_USER_AGENT_VALUE,
+                name: (_isLinux) ? this.linux() : null,
                 state: _isLinux
             },
             bot: this.isBot()
@@ -323,7 +331,7 @@ export class ResponsiveState {
     /**
      * @name deviceDetection
      */
-    public deviceDetection(): any {
+    public deviceDetection(): TDevices {
         if (this.isEnabledForPlatform) {
             if (this.isMobile()) {
                 return 'mobile';
@@ -335,13 +343,14 @@ export class ResponsiveState {
                 return 'desktop';
             }
         }
+
         return null;
     }
 
     /**
      * @name standardDevices
      */
-    public standardDevices(): any {
+    public standardDevices(): TStandards {
         if (this.isEnabledForPlatform) {
             if (REG_MOBILES.IPHONE.REG.test(this._userAgent)) {
                 return 'iphone';
@@ -355,13 +364,14 @@ export class ResponsiveState {
                 return 'windows phone';
             }
         }
+
         return null;
     }
 
     /**
      * @name ieVersionDetect
      */
-    public ieVersionDetect(): any {
+    public ieVersionDetect(): TIE_VERSIONS {
         if (this.isEnabledForPlatform) {
             const _userAgent = this.getUserAgent();
             const msie = _userAgent.indexOf('msie ');
@@ -392,14 +402,15 @@ export class ResponsiveState {
                 return IE_VERSIONS.IE_12;
             }
         }
+
         return null;
     }
 
     /**
      * @name browserName
      */
-    public browserName(): any {
-        let _browserName = null;
+    public browserName(): TBrowserNames {
+        let _browserName: TBrowserNames = null;
         if (this.isEnabledForPlatform) {
             if (REG_SORT_NAMES.WEBKIT.REG.test(this._userAgent) && REG_SORT_NAMES.CHROME.REG.test(this._userAgent)
                 && !REG_BROWSERS.IE.REG.test(this._userAgent)) {
@@ -487,7 +498,7 @@ export class ResponsiveState {
     /**
      * @name tablet
      */
-    public tablet(): TTablet {
+    public tablet(): TTabletDevices {
         let _tablet = null;
         if (this._userAgent !== null) {
             if (REG_TABLETS.IPAD.REG.test(this._userAgent)) {
@@ -506,7 +517,7 @@ export class ResponsiveState {
     /**
      * @name mobile
      */
-    public mobile(): TMobile {
+    public mobile(): TMobileDevices {
         let _mobile = null;
         if (this._userAgent !== null) {
             for (let _reg in REG_MOBILES) {

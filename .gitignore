@@ -40,3 +40,4 @@ testem.log
 /.chrome
 /.git
 yarn.lock
+/examples/.vscode/settings.json
