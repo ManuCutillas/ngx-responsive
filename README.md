@@ -1,3 +1,5 @@
+# DEPRECATED LIBRARY - no longer actively maintained.
+
 ![ngx-responsive](/img/ng2-responsive-0-4-0-thin.jpg?raw=true)
 
 # Introduction
