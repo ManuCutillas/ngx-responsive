@@ -5,20 +5,19 @@
  * @license MIT
  */
 import {
+    ChangeDetectorRef,
     EventEmitter,
+    OnDestroy,
+    OnInit,
     TemplateRef,
     ViewContainerRef,
-    OnInit,
-    OnDestroy,
-    ChangeDetectorRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IResponsiveSubscriptions } from '../../interfaces';
-import { ResponsiveState } from '../responsive-state/responsive-state';
 import { PlatformService } from '../platform-service/platform.service';
+import { ResponsiveState } from '../responsive-state/responsive-state';
 
 export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
-
     private _noRepeat = 0;
     private _sizes_grid_state: any;
     private _others_grid_state: string[];
@@ -43,7 +42,7 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
         orientation: false,
         standard: false,
         ie: false,
-        sizes: false
+        sizes: false,
     };
     private _isEnabledForPlatform: boolean;
 
@@ -89,7 +88,9 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
         if (directive === 'sizes') {
             this._sizes_grid_state = grid_state;
         } else {
-            this._others_grid_state = <string[]>(Array.isArray(grid_state) ? grid_state : [grid_state]);
+            this._others_grid_state = <string[]>(
+                (Array.isArray(grid_state) ? grid_state : [grid_state])
+            );
         }
         this._directive = directive;
     }
@@ -97,35 +98,50 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     public ngOnInit() {
         if (this._isEnabledForPlatform) {
             if (this.set_active_subscriptions.bootstrap) {
-                this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(this.updateView.bind(this));
+                this._subscription_Bootstrap = this._responsiveState.elemento$.subscribe(
+                    this.updateView.bind(this)
+                );
             }
-
 
             if (this.set_active_subscriptions.browser) {
-                this._subscription_Browser = this._responsiveState.browser$.subscribe(this.updateView.bind(this));
+                this._subscription_Browser = this._responsiveState.browser$.subscribe(
+                    this.updateView.bind(this)
+                );
             }
             if (this.set_active_subscriptions.device) {
-                this._subscription_Device = this._responsiveState.device$.subscribe(this.updateView.bind(this));
+                this._subscription_Device = this._responsiveState.device$.subscribe(
+                    this.updateView.bind(this)
+                );
             }
 
             if (this.set_active_subscriptions.pixelratio) {
-                this._subscription_Pixel_Ratio = this._responsiveState.pixel$.subscribe(this.updateView.bind(this));
+                this._subscription_Pixel_Ratio = this._responsiveState.pixel$.subscribe(
+                    this.updateView.bind(this)
+                );
             }
 
             if (this.set_active_subscriptions.orientation) {
-                this._subscription_Orientation = this._responsiveState.orientation$.subscribe(this.updateView.bind(this));
+                this._subscription_Orientation = this._responsiveState.orientation$.subscribe(
+                    this.updateView.bind(this)
+                );
             }
 
             if (this.set_active_subscriptions.standard) {
-                this._subscription_Standard = this._responsiveState.standard$.subscribe(this.updateView.bind(this));
+                this._subscription_Standard = this._responsiveState.standard$.subscribe(
+                    this.updateView.bind(this)
+                );
             }
 
             if (this.set_active_subscriptions.ie) {
-                this._subscription_IE_Version = this._responsiveState.ieVersion$.subscribe(this.updateView.bind(this));
+                this._subscription_IE_Version = this._responsiveState.ieVersion$.subscribe(
+                    this.updateView.bind(this)
+                );
             }
 
             if (this.set_active_subscriptions.sizes) {
-                this._subscription_custom_sizes = this._responsiveState.ancho$.subscribe(this.updateView.bind(this));
+                this._subscription_custom_sizes = this._responsiveState.ancho$.subscribe(
+                    this.updateView.bind(this)
+                );
             }
         }
     }
@@ -185,13 +201,35 @@ export abstract class RESPONSIVE_BASE<T> implements OnInit, OnDestroy {
     }
 
     private updateView(value: any): void {
-        const showBoolean = this._directive === 'sizes' ?
-            (
-                (typeof this._sizes_grid_state.min === 'undefined' || value >= this._sizes_grid_state.min) &&
-                (typeof this._sizes_grid_state.max === 'undefined' || value <= this._sizes_grid_state.max)
-            ) :
-            !!this._others_grid_state && this._others_grid_state.indexOf(value) !== -1;
+        const showBoolean =
+            this._directive === 'sizes'
+                ? (typeof this._sizes_grid_state.min === 'undefined' ||
+                      value >= this._sizes_grid_state.min) &&
+                  (typeof this._sizes_grid_state.max === 'undefined' ||
+                      value <= this._sizes_grid_state.max)
+                : this.otherGridStateVisible(value);
 
         this.showHide(this._showWhenTrue ? showBoolean : !showBoolean);
+    }
+
+    private otherGridStateVisible(value: string): boolean {
+        if (!this._others_grid_state) return false;
+        if (this._others_grid_state.indexOf(value) !== -1) return true;
+        if (['lg', 'xl'].indexOf(value) !== -1 && this._others_grid_state.indexOf('lgUp') !== -1) {
+            return true;
+        }
+        if (
+            ['md', 'lg', 'xl'].indexOf(value) !== -1 &&
+            this._others_grid_state.indexOf('mdUp') !== -1
+        ) {
+            return true;
+        }
+        if (
+            ['sm', 'md', 'lg', 'xl'].indexOf(value) !== -1 &&
+            this._others_grid_state.indexOf('smUp') !== -1
+        ) {
+            return true;
+        }
+        return false;
     }
 }

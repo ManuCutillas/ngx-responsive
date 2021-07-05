@@ -6,23 +6,29 @@
  */
 import { Provider } from '@angular/core';
 import {
-  XlDirective,
-  LgDirective,
-  MdDirective,
-  SmDirective,
-  XsDirective,
-  ShowItBootstrapDirective,
-  HideItBootstrapDirective
+    HideItBootstrapDirective,
+    LgDirective,
+    LgUpDirective,
+    MdDirective,
+    MdUpDirective,
+    ShowItBootstrapDirective,
+    SmDirective,
+    SmUpDirective,
+    XlDirective,
+    XsDirective,
 } from './bootstrap-directives';
 
 export * from './bootstrap-directives';
 
 export const BOOTSTRAP_DIRECTIVES: Provider[] = [
-  XlDirective,
-  LgDirective,
-  MdDirective,
-  SmDirective,
-  XsDirective,
-  ShowItBootstrapDirective,
-  HideItBootstrapDirective
+    XlDirective,
+    LgDirective,
+    LgUpDirective,
+    MdDirective,
+    MdUpDirective,
+    SmDirective,
+    SmUpDirective,
+    XsDirective,
+    ShowItBootstrapDirective,
+    HideItBootstrapDirective,
 ];
