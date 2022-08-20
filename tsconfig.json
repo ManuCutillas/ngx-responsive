@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "strict": true,
         "module": "commonjs",
