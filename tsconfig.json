@@ -3,7 +3,6 @@
         "baseUrl": ".",
         "experimentalDecorators": true,
         "strict": true,
-        "module": "commonjs",
         "moduleResolution": "node",
         "strictNullChecks": false,
         "noImplicitAny": false,
@@ -14,7 +13,7 @@
         "target": "es2020",
         "skipLibCheck": true,
         "lib": [
-            "es2015",
+            "es2018",
             "dom"
         ],
         "typeRoots": [

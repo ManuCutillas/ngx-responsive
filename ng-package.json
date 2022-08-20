@@ -1,7 +1,5 @@
 {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "name": "ngx-responsive",
-    "version": "9.0.1",
     "lib": {
         "entryFile": "src/public_api.ts"
     }
