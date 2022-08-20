@@ -87,7 +87,6 @@
     "@angular/platform-server": "^9.1.6",
     "@compodoc/compodoc": "1.1.11",
     "@nguniversal/express-engine": "^9.1.1",
-    "@nguniversal/module-map-ngfactory-loader": "^8.2.6",
     "@types/node": "~8.9.4",
     "copyfiles": "^2.2.0",
     "cpr": "^3.0.1",
