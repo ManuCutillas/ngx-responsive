@@ -1,10 +1,8 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "strict": true,
-        "module": "commonjs",
         "moduleResolution": "node",
         "strictNullChecks": false,
         "noImplicitAny": false,
@@ -12,10 +10,10 @@
         "rootDir": ".",
         "sourceMap": true,
         "inlineSources": true,
-        "target": "es5",
+        "target": "es2020",
         "skipLibCheck": true,
         "lib": [
-            "es2015",
+            "es2018",
             "dom"
         ],
         "typeRoots": [

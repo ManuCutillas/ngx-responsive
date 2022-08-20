@@ -26,6 +26,7 @@ expamples/package-lock.json
 *.iml
 
 # misc
+/.angular/cache
 *.js
 *.map
 *.d.ts
